@@ -1,8 +1,11 @@
 from django.conf.urls import patterns, include, url
-from order_form.views import order_form
+from main.views import *
+from login.views import *
+from order_form.views import *
+from user_manage.views import *
 # Uncomment the next two lines to enable the admin:
-# from django.contrib import admin
-# admin.autodiscover()
+from django.contrib import admin
+admin.autodiscover()
 
 urlpatterns = patterns('',
     # Examples:
@@ -13,7 +16,17 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    # url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', order_form),
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^$', login),
+    url(r'^login_auth/', login_auth),
+    url(r'^logout/', logout),
+    url(r'^accounts/login/$',not_login),
+    url(r'^main/', main),
+    url(r'^chpasswd/', chpasswd),
+    url(r'^post_chpasswd/', post_chpasswd),
     url(r'^order_form/', order_form),
+    url(r'^order_form_data/', order_form_data),
+    url(r'^order_form_dropdown/', order_form_dropdown),
+    url(r'^order_form_save/', order_form_save),
+    url(r'^order_form_del/', order_form_del),
 )

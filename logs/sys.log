@@ -1,0 +1,1063 @@
+[2015-07-28 01:25:58,489] ERROR : Internal Server Error: /staff
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/lib/python2.6/site-packages/django/middleware/common.py", line 67, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 557, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 446, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 2, in <module>
+    from order_form.views import staff,order_form
+ImportError: cannot import name order_form
+[2015-07-28 01:25:58,870] ERROR : Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/lib/python2.6/site-packages/django/middleware/common.py", line 67, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 557, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 446, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 2, in <module>
+    from order_form.views import staff,order_form
+ImportError: cannot import name order_form
+[2015-07-28 01:25:59,140] ERROR : Internal Server Error: /favicon.ico
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/lib/python2.6/site-packages/django/middleware/common.py", line 67, in process_request
+    if (not urlresolvers.is_valid_path(request.path_info, urlconf) and
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 557, in is_valid_path
+    resolve(path, urlconf)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 446, in resolve
+    return get_resolver(urlconf).resolve(path)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 2, in <module>
+    from order_form.views import staff,order_form
+ImportError: cannot import name order_form
+[2015-07-28 01:26:27,453] WARNING : Not Found: /assets_asset_data/
+[2015-07-28 01:26:33,510] WARNING : Not Found: /logout/
+[2015-07-28 01:27:19,478] WARNING : Not Found: /assets_asset_data/
+[2015-07-28 01:30:54,248] WARNING : Not Found: /assets_asset_data/
+[2015-07-28 01:33:36,623] WARNING : Not Found: /assets_asset_data/
+[2015-07-28 01:36:42,321] WARNING : Not Found: /assets_asset_data/
+[2015-07-28 01:38:26,780] WARNING : Not Found: /assets_asset_data/
+[2015-07-28 01:38:42,055] WARNING : Not Found: /assets_asset_data/
+[2015-07-28 01:44:13,017] ERROR : Internal Server Error: /staff/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 2, in <module>
+    from order_form.views import staff,order_form
+  File "/usr/share/nginx/html/order_form/views.py", line 6, in <module>
+    import simplejson
+ImportError: No module named simplejson
+[2015-07-28 01:44:27,286] ERROR : Internal Server Error: /staff/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 2, in <module>
+    from order_form.views import staff,order_form
+  File "/usr/share/nginx/html/order_form/views.py", line 6, in <module>
+    import simplejson
+ImportError: No module named simplejson
+[2015-07-28 01:45:12,843] WARNING : Not Found: /assets_asset_data/
+[2015-07-28 01:46:06,916] WARNING : Not Found: /staff_data/
+[2015-07-28 01:46:59,745] ERROR : Internal Server Error: /staff_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 40, in staff_data
+    result_data = user.objects.all().order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+IndexError: list index out of range
+[2015-07-28 01:47:04,326] ERROR : Internal Server Error: /staff_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 40, in staff_data
+    result_data = user.objects.all().order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+IndexError: list index out of range
+[2015-07-28 01:59:30,477] WARNING : Not Found: /staff_save/
+[2015-07-28 02:00:05,589] ERROR : Internal Server Error: /staff_save/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 71, in staff_save
+    orm = user.objects.get(name=name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user matching query does not exist.
+[2015-07-28 02:05:55,881] WARNING : Not Found: /assets_asset_del/
+[2015-07-28 02:11:45,193] ERROR : Internal Server Error: /order_form/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 127, in get_response
+    raise ValueError("The view %s.%s didn't return an HttpResponse object." % (callback.__module__, view_name))
+ValueError: The view order_form.views.order_form didn't return an HttpResponse object.
+[2015-07-28 02:12:27,103] WARNING : Not Found: /server_group_data/
+[2015-07-28 02:13:44,906] WARNING : Not Found: /server_group_data/
+[2015-07-28 02:13:46,781] WARNING : Not Found: /server_group_data/
+[2015-07-28 02:25:52,447] ERROR : Internal Server Error: /staff/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 12, in staff
+    print request.get_ip()
+AttributeError: 'WSGIRequest' object has no attribute 'get_ip'
+[2015-07-28 02:26:44,304] ERROR : Internal Server Error: /staff/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 12, in staff
+    print get_ip()
+TypeError: get_ip() takes exactly 2 arguments (0 given)
+[2015-07-28 02:27:25,296] ERROR : Internal Server Error: /staff/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 12, in staff
+    print get_ip(request)
+TypeError: get_ip() takes exactly 2 arguments (1 given)
+[2015-07-28 02:27:30,246] ERROR : Internal Server Error: /staff/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 12, in staff
+    print get_ip(self,request)
+NameError: global name 'self' is not defined
+[2015-07-28 02:27:36,835] ERROR : Internal Server Error: /staff/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 12, in staff
+    print get_ip(request)
+TypeError: get_ip() takes exactly 2 arguments (1 given)
+[2015-07-28 02:32:25,277] WARNING : Not Found: /server_group_data/
+[2015-07-28 02:34:21,318] WARNING : Not Found: /server_group_data/
+[2015-07-28 02:34:30,788] WARNING : Not Found: /server_group_data/
+[2015-07-28 02:34:37,249] WARNING : Not Found: /server_group_data/
+[2015-07-28 03:02:08,865] WARNING : Not Found: /order_form_data/
+[2015-07-28 03:02:41,964] WARNING : Not Found: /order_form_data/
+[2015-07-28 03:05:28,553] WARNING : Not Found: /order_form_data/
+[2015-07-28 04:25:38,346] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 04:44:21,152] WARNING : Not Found: /main/
+[2015-07-28 04:45:51,830] WARNING : Not Found: /main/
+[2015-07-28 04:46:32,204] WARNING : Not Found: /main/
+[2015-07-28 04:47:04,998] WARNING : Not Found: /accounts/login/
+[2015-07-28 04:47:23,278] WARNING : Not Found: /accounts/login/
+[2015-07-28 04:50:31,266] ERROR : Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/login/views.py", line 10, in login
+    return render_to_response('login/login.html')
+  File "/usr/lib/python2.6/site-packages/django/shortcuts/__init__.py", line 20, in render_to_response
+    return HttpResponse(loader.render_to_string(*args, **kwargs), **httpresponse_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 169, in render_to_string
+    t = get_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: login/login.html
+[2015-07-28 04:53:28,452] INFO : <admin> login in sucess.
+[2015-07-28 04:53:34,860] ERROR : Internal Server Error: /staff_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 56, in staff_data
+    '1':i.department,
+AttributeError: 'order' object has no attribute 'department'
+[2015-07-28 04:54:07,115] ERROR : Internal Server Error: /staff_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 56, in staff_data
+    '1':i.department,
+AttributeError: 'order' object has no attribute 'department'
+[2015-07-28 04:54:52,204] ERROR : Internal Server Error: /staff_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 57, in staff_data
+    '1':i.department,
+AttributeError: 'order' object has no attribute 'department'
+[2015-07-28 05:01:55,513] ERROR : Internal Server Error: /staff/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 13, in staff
+    return render_to_response('order_form/staff.html',{'user':request.user.get_full_name(request.user.username),
+TypeError: get_full_name() takes exactly 1 argument (2 given)
+[2015-07-28 05:02:08,863] ERROR : Internal Server Error: /staff/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 13, in staff
+    return render_to_response('order_form/staff.html',{'user':request.user.get_full_name(self,request.user.username),
+NameError: global name 'self' is not defined
+[2015-07-28 05:02:29,500] ERROR : Internal Server Error: /staff/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 13, in staff
+    return render_to_response('order_form/staff.html',{'user':request.user.get_full_name(self),
+NameError: global name 'self' is not defined
+[2015-07-28 05:02:53,012] INFO : <xuezhimin> login in sucess.
+[2015-07-28 05:05:34,558] ERROR : Internal Server Error: /staff/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 4, in <module>
+    from order_form.views import *
+  File "/usr/share/nginx/html/order_form/views.py", line 13
+     return render_to_response('order_form/staff.html',{'user':request.user.last_name,request.user.first_name,
+                                                                                                             ^
+ SyntaxError: invalid syntax
+[2015-07-28 05:12:47,057] WARNING : Not Found: /admin/auth/
+[2015-07-28 05:12:52,713] WARNING : Forbidden (Permission denied): /admin/auth/user/
+[2015-07-28 05:16:49,714] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 05:22:14,600] INFO : <nipeijun> login in sucess.
+[2015-07-28 05:25:56,050] WARNING : Forbidden (Permission denied): /admin/auth/user/
+[2015-07-28 05:26:07,741] WARNING : Not Found: /admin/auth/user/add/
+[2015-07-28 05:26:18,141] WARNING : Not Found: /admin/auth/user/add/
+[2015-07-28 05:28:46,264] WARNING : Not Found: /chpasswd/
+[2015-07-28 05:30:02,740] ERROR : Internal Server Error: /staff/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 5, in <module>
+    from user_manage.views import chpasswd
+  File "/usr/share/nginx/html/user_manage/views.py", line 9, in <module>
+    from operation.models import server_group_list
+ImportError: No module named operation.models
+[2015-07-28 05:37:49,673] WARNING : Not Found: /post_chpasswd/
+[2015-07-28 05:37:52,307] WARNING : Not Found: /post_chpasswd/
+[2015-07-28 05:46:25,370] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 05:46:39,841] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 05:47:08,129] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 05:49:45,913] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 05:50:51,406] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 05:50:59,226] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 05:51:35,736] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 05:52:20,785] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 05:52:23,965] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 06:04:47,566] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 06:05:02,325] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 06:05:05,935] WARNING : Not Found: /server_group_dropdown/
+[2015-07-28 06:11:24,889] WARNING : Not Found: /order_form_dropdown/
+[2015-07-28 06:13:10,438] WARNING : Not Found: /order_form_dropdown/
+[2015-07-28 06:13:30,908] WARNING : Not Found: /order_form_dropdown/
+[2015-07-28 06:13:59,887] WARNING : Not Found: /order_form_dropdown/
+[2015-07-28 06:17:49,104] ERROR : Internal Server Error: /order_form/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 109, in order_form
+    print orm.name
+AttributeError: 'User' object has no attribute 'name'
+[2015-07-28 06:18:40,783] ERROR : Internal Server Error: /order_form/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 108, in order_form
+    print User.first_name
+AttributeError: type object 'User' has no attribute 'first_name'
+[2015-07-28 06:31:05,604] WARNING : Not Found: /order_form_dropdown/
+[2015-07-28 06:37:52,792] WARNING : Not Found: /server_group_save/
+[2015-07-28 06:38:21,182] WARNING : Not Found: /server_group_save/
+[2015-07-28 06:50:50,116] ERROR : Internal Server Error: /order_form_save/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 190, in order_form_save
+    orm = User(username=i,type=type,comment=comment,order_name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/base.py", line 367, in __init__
+    raise TypeError("'%s' is an invalid keyword argument for this function" % kwargs.keys()[0])
+TypeError: 'order_name' is an invalid keyword argument for this function
+[2015-07-28 07:04:35,968] ERROR : Internal Server Error: /server_group_del/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 31, in <module>
+    url(r'^staff/', staff),
+NameError: name 'staff' is not defined
+[2015-07-28 07:04:39,948] ERROR : Internal Server Error: /order_form/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 31, in <module>
+    url(r'^staff/', staff),
+NameError: name 'staff' is not defined
+[2015-07-28 08:17:55,625] ERROR : Internal Server Error: /order_form/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 108, in order_form
+    orm = order.objects.filter(add_time=datetime(2015,7,28))
+TypeError: 'module' object is not callable
+[2015-07-28 08:30:05,415] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 126, in order_form_data
+    orm = order.objects.filter(Q(add_time__gte=datetime.datetime('%d,%d,%d' % (int(begin[0]),int(begin[1]),int(begin[2])))) | \
+TypeError: an integer is required
+[2015-07-28 08:31:22,512] ERROR : Internal Server Error: /order_form/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 4, in <module>
+    from order_form.views import *
+  File "/usr/share/nginx/html/order_form/views.py", line 128
+     for i in  orm:
+                  ^
+ SyntaxError: invalid syntax
+[2015-07-28 08:31:37,381] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 126, in order_form_data
+    orm = order.objects.filter(Q(add_time__gte=datetime.datetime('%d,%d,%d' % (int(begin[0]),int(begin[1]),int(begin[2])))))
+TypeError: an integer is required
+[2015-07-28 08:32:17,157] ERROR : Internal Server Error: /order_form/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 4, in <module>
+    from order_form.views import *
+  File "/usr/share/nginx/html/order_form/views.py", line 128
+     for i in  orm:
+       ^
+ SyntaxError: invalid syntax
+[2015-07-28 08:33:12,793] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 126, in order_form_data
+    orm = order.objects.filter(Q(add_time__gte=datetime.datetime(int(begin[0]),int(begin[1]),int(begin[2]))))
+ValueError: month must be in 1..12
+[2015-07-28 08:34:25,090] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 126, in order_form_data
+    orm = order.objects.filter(Q(add_time__gte=datetime.datetime(int(begin[0]),int(begin[1]),int(begin[2]))))
+ValueError: month must be in 1..12
+[2015-07-28 08:44:56,137] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 128, in order_form_data
+    Q(add_time__lt=datetime.datetime(int(end[0]),int(end[1]),int(end[2])+1)))
+ValueError: day is out of range for month
+[2015-07-28 08:45:46,127] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 128, in order_form_data
+    Q(add_time__lt=datetime.datetime(int(end[0]),int(end[1]),int(end[2])+1)))
+ValueError: day is out of range for month
+[2015-07-28 08:46:09,246] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 128, in order_form_data
+    Q(add_time__lt=datetime.datetime(int(end[0]),int(end[1]),int(end[2])+1)))
+ValueError: day is out of range for month
+[2015-07-28 08:55:02,120] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 140, in order_form_data
+    result_data = order.objects.filter(Q(add_time__gte=datetime.datetime(int(begin[0]),int(begin[1]),int(begin[2]))) | \
+TypeError: 'datetime.datetime' object is unsubscriptable
+[2015-07-28 08:55:38,722] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 140, in order_form_data
+    result_data = order.objects.filter(Q(add_time__gte=datetime.datetime(int(begin[0]),int(begin[1]),int(begin[2]))) | \
+TypeError: 'datetime.datetime' object is unsubscriptable
+[2015-07-28 08:55:48,713] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 140, in order_form_data
+    result_data = order.objects.filter(Q(add_time__gte=datetime.datetime(int(begin[0]),int(begin[1]),int(begin[2]))) | \
+TypeError: 'datetime.datetime' object is unsubscriptable
+[2015-07-28 08:55:55,738] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 128, in order_form_data
+    end = datetime.datetime(int(end[0]),int(end[1]),int(end[2])+1)
+ValueError: day is out of range for month
+[2015-07-28 08:56:05,732] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 140, in order_form_data
+    result_data = order.objects.filter(Q(add_time__gte=datetime.datetime(int(begin[0]),int(begin[1]),int(begin[2]))) | \
+TypeError: 'datetime.datetime' object is unsubscriptable
+[2015-07-28 08:56:15,178] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 128, in order_form_data
+    end = datetime.datetime(int(end[0]),int(end[1]),int(end[2])+1)
+ValueError: day is out of range for month
+[2015-07-28 08:56:19,377] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 128, in order_form_data
+    end = datetime.datetime(int(end[0]),int(end[1]),int(end[2])+1)
+ValueError: day is out of range for month
+[2015-07-28 08:57:31,003] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 143, in order_form_data
+    result_data = order.objects.filter(Q(add_time__gte=datetime.datetime(int(begin[0]),int(begin[1]),int(begin[2]))) | \
+TypeError: 'datetime.datetime' object is unsubscriptable
+[2015-07-28 08:57:35,141] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 143, in order_form_data
+    result_data = order.objects.filter(Q(add_time__gte=datetime.datetime(int(begin[0]),int(begin[1]),int(begin[2]))) | \
+TypeError: 'datetime.datetime' object is unsubscriptable
+[2015-07-28 08:57:48,711] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 143, in order_form_data
+    result_data = order.objects.filter(Q(add_time__gte=datetime.datetime(int(begin[0]),int(begin[1]),int(begin[2]))) | \
+TypeError: 'datetime.datetime' object is unsubscriptable
+[2015-07-28 09:02:08,344] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 143, in filter
+    return self.get_query_set().filter(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:02:08,594] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 143, in filter
+    return self.get_query_set().filter(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:02:08,705] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 143, in filter
+    return self.get_query_set().filter(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:02:13,194] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 143, in filter
+    return self.get_query_set().filter(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:02:13,374] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 143, in filter
+    return self.get_query_set().filter(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:02:13,534] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 143, in filter
+    return self.get_query_set().filter(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:02:18,884] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 143, in filter
+    return self.get_query_set().filter(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:02:20,225] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 143, in filter
+    return self.get_query_set().filter(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:03:18,954] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 143, in filter
+    return self.get_query_set().filter(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:05:01,743] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:05:06,812] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:05:07,622] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:05:09,712] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 145, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:23:02,295] INFO : <yanglin> login in sucess.
+[2015-07-28 09:29:58,234] WARNING : <yanglin> login in fail.
+[2015-07-28 09:30:04,282] WARNING : <yanglin> login in fail.
+[2015-07-28 09:30:09,483] WARNING : <yanglin> login in fail.
+[2015-07-28 09:31:51,272] WARNING : <yanglin> login in fail.
+[2015-07-28 09:32:00,260] WARNING : <yanglin> login in fail.
+[2015-07-28 09:32:05,938] WARNING : <yanglin> login in fail.
+[2015-07-28 09:32:13,058] WARNING : <yanglin> login in fail.
+[2015-07-28 09:32:23,463] WARNING : <yanglin> login in fail.
+[2015-07-28 09:32:29,452] WARNING : <yanglin> login in fail.
+[2015-07-28 09:32:33,747] INFO : <yanglin> login in sucess.
+[2015-07-28 09:33:17,777] WARNING : <yanglin> login in fail.
+[2015-07-28 09:33:21,837] INFO : <yanglin> login in sucess.
+[2015-07-28 09:34:06,998] WARNING : <yanglin> login in fail.
+[2015-07-28 09:34:11,820] WARNING : <yanglin> login in fail.
+[2015-07-28 09:34:15,414] INFO : <yanglin> login in sucess.
+[2015-07-28 09:39:37,465] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 149, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:39:37,745] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 149, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:39:38,135] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 149, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:39:39,786] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 149, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:39:40,055] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 149, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:39:40,225] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 149, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:39:40,595] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 149, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:39:40,765] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 149, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:48:02,939] INFO : <nipeijun> login in sucess.
+[2015-07-28 09:50:15,057] WARNING : <yanglin> login in fail.
+[2015-07-28 09:50:18,870] INFO : <yanglin> login in sucess.
+[2015-07-28 09:50:57,363] INFO : <yanglin> login in sucess.
+[2015-07-28 09:51:59,098] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 151, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:51:59,378] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 151, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:51:59,466] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 151, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:51:59,709] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 151, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:51:59,878] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 151, in order_form_data
+    Q(comment__contains=sSearch)) \
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1122, in add_filter
+    process_extras=process_extras)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'department' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-28 09:59:43,794] WARNING : <yanglin> login in fail.
+[2015-07-28 09:59:46,682] INFO : <yanglin> login in sucess.
+[2015-07-28 10:00:14,161] INFO : <yanglin> login in sucess.
