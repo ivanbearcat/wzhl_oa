@@ -6,7 +6,9 @@ from django.db.models.query_utils import Q
 from django.utils.log import logger
 from libs.get_client_ip import get_ip
 from django.contrib.auth.models import User
+from django.contrib.auth.decorators import login_required
 import simplejson,datetime
+
 
 
 ######################员工花名册#############################
@@ -104,6 +106,7 @@ import simplejson,datetime
 #
 
 ######################订餐#############################
+@login_required
 def order_form(request):
     path = request.path.split('/')[1]
     return render_to_response('order_form/order_form.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
@@ -112,6 +115,7 @@ def order_form(request):
                                                        'page_name1':u'订餐管理',
                                                        'page_name2':u'订餐'})
 
+@login_required
 def order_form_data(request):
     sEcho =  request.POST.get('sEcho') #标志，直接返回
     iDisplayStart = int(request.POST.get('iDisplayStart'))#第几行开始
@@ -183,6 +187,7 @@ def order_form_data(request):
     }
     return HttpResponse(simplejson.dumps(result),content_type="application/json")
 
+@login_required
 def order_form_dropdown(request):
     _id = request.POST.get('id')
     result = {}
@@ -197,6 +202,7 @@ def order_form_dropdown(request):
         pass
     return HttpResponse(simplejson.dumps(result),content_type="application/json")
 
+@login_required
 def order_form_save(request):
     _id = request.POST.get('id')
     name = request.POST.get('name')
@@ -232,6 +238,7 @@ def order_form_save(request):
         logger.error(e,comment)
         return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
 
+@login_required
 def order_form_del(request):
     _id = request.POST.get('id')
     time_now = datetime.datetime.now().time()
