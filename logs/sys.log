@@ -1064,3 +1064,5 @@ FieldError: Cannot resolve keyword 'department' into field. Choices are: add_tim
 [2015-07-29 10:14:57,905] WARNING : <yanglin> login in fail.
 [2015-07-29 10:14:58,148] INFO : <xuezhimin> login in sucess.
 [2015-07-29 10:15:01,390] INFO : <yanglin> login in sucess.
+[2015-07-29 11:16:23,695] WARNING : <yanglin> login in fail.
+[2015-07-29 11:16:27,702] INFO : <yanglin> login in sucess.

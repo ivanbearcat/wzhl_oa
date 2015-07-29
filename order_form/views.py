@@ -206,17 +206,17 @@ def order_form_save(request):
     begin = datetime.datetime.now().date()
     end = datetime.datetime.now() + datetime.timedelta(1)
     end = end.date()
-    check_orm = order.objects.filter(add_time__range=(begin,end)).filter(name=name).filter(type=type)
-    if check_orm:
-        return HttpResponse(simplejson.dumps({'code':1,'msg':u'您已订过餐'}),content_type="application/json")
 
-    if type == u'午餐' and time_now > datetime.time(10,30):
+    if type == u'午餐' and time_now > datetime.time(12,30):
         return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过午餐订餐时间'}),content_type="application/json")
     elif type == u'晚餐' and time_now > datetime.time(16,00):
         return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过晚餐订餐时间'}),content_type="application/json")
     try:
         if _id =='':
             for i in name.split(','):
+                check_orm = order.objects.filter(add_time__range=(begin,end)).filter(name=i).filter(type=type)
+                if check_orm:
+                    return HttpResponse(simplejson.dumps({'code':1,'msg':u'您已订过餐'}),content_type="application/json")
                 orm = order(name=i,type=type,comment=comment,order_name=request.user.first_name)
                 orm.save()
         # else:
