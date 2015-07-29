@@ -1066,3 +1066,1785 @@ FieldError: Cannot resolve keyword 'department' into field. Choices are: add_tim
 [2015-07-29 10:15:01,390] INFO : <yanglin> login in sucess.
 [2015-07-29 11:16:23,695] WARNING : <yanglin> login in fail.
 [2015-07-29 11:16:27,702] INFO : <yanglin> login in sucess.
+[2015-07-29 16:13:42,770] ERROR : Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/lib/python2.6/site-packages/django/middleware/common.py", line 55, in process_request
+    host = request.get_host()
+  File "/usr/lib/python2.6/site-packages/django/http/__init__.py", line 223, in get_host
+    "Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS): %s" % host)
+SuspiciousOperation: Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS): 192.168.100.251:8000
+[2015-07-29 16:15:52,739] ERROR : Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/lib/python2.6/site-packages/django/middleware/common.py", line 55, in process_request
+    host = request.get_host()
+  File "/usr/lib/python2.6/site-packages/django/http/__init__.py", line 223, in get_host
+    "Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS): %s" % host)
+SuspiciousOperation: Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS): 192.168.100.251:8000
+[2015-07-29 16:15:53,826] ERROR : Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/lib/python2.6/site-packages/django/middleware/common.py", line 55, in process_request
+    host = request.get_host()
+  File "/usr/lib/python2.6/site-packages/django/http/__init__.py", line 223, in get_host
+    "Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS): %s" % host)
+SuspiciousOperation: Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS): 192.168.100.251:8000
+[2015-07-29 16:16:54,297] ERROR : Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/lib/python2.6/site-packages/django/middleware/common.py", line 55, in process_request
+    host = request.get_host()
+  File "/usr/lib/python2.6/site-packages/django/http/__init__.py", line 223, in get_host
+    "Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS): %s" % host)
+SuspiciousOperation: Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS): 192.168.100.251:8000
+[2015-07-29 16:16:59,486] ERROR : Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/lib/python2.6/site-packages/django/middleware/common.py", line 55, in process_request
+    host = request.get_host()
+  File "/usr/lib/python2.6/site-packages/django/http/__init__.py", line 223, in get_host
+    "Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS): %s" % host)
+SuspiciousOperation: Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS): 192.168.100.251:8000
+[2015-07-29 16:18:08,311] WARNING : Not Found: /static/assets/plugins/select2/select2.css
+[2015-07-29 16:18:08,321] ERROR : Internal Server Error: /static/assets/plugins/select2/select2.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,318] WARNING : Not Found: /static/assets/plugins/uniform/css/uniform.default.css
+[2015-07-29 16:18:08,326] ERROR : Internal Server Error: /static/assets/plugins/uniform/css/uniform.default.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,323] WARNING : Not Found: /static/assets/plugins/font-awesome/css/font-awesome.min.css
+[2015-07-29 16:18:08,328] ERROR : Internal Server Error: /static/assets/plugins/font-awesome/css/font-awesome.min.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,323] WARNING : Not Found: /static/assets/plugins/bootstrap/css/bootstrap.min.css
+[2015-07-29 16:18:08,316] WARNING : Not Found: /static/assets/plugins/select2/select2-metronic.css
+[2015-07-29 16:18:08,324] WARNING : Not Found: /static/assets/css/style-metronic.css
+[2015-07-29 16:18:08,330] ERROR : Internal Server Error: /static/assets/plugins/bootstrap/css/bootstrap.min.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,332] ERROR : Internal Server Error: /static/assets/plugins/select2/select2-metronic.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,335] ERROR : Internal Server Error: /static/assets/css/style-metronic.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,421] WARNING : Not Found: /static/assets/css/plugins.css
+[2015-07-29 16:18:08,423] WARNING : Not Found: /static/assets/css/style.css
+[2015-07-29 16:18:08,427] WARNING : Not Found: /static/assets/css/pages/login.css
+[2015-07-29 16:18:08,430] ERROR : Internal Server Error: /static/assets/css/pages/login.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,419] WARNING : Not Found: /static/assets/css/themes/default.css
+[2015-07-29 16:18:08,432] ERROR : Internal Server Error: /static/assets/css/themes/default.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,428] WARNING : Not Found: /static/assets/css/style-responsive.css
+[2015-07-29 16:18:08,435] ERROR : Internal Server Error: /static/assets/css/style-responsive.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,422] ERROR : Internal Server Error: /static/assets/css/plugins.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,428] WARNING : Not Found: /static/assets/css/custom.css
+[2015-07-29 16:18:08,429] ERROR : Internal Server Error: /static/assets/css/style.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,441] ERROR : Internal Server Error: /static/assets/css/custom.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,517] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/toastr.min.css
+[2015-07-29 16:18:08,519] WARNING : Not Found: /static/assets/plugins/jquery-1.10.2.min.js
+[2015-07-29 16:18:08,520] ERROR : Internal Server Error: /static/assets/plugins/jquery-1.10.2.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,522] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-toastr/toastr.min.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,530] WARNING : Not Found: /static/assets/plugins/jquery-migrate-1.2.1.min.js
+[2015-07-29 16:18:08,540] WARNING : Not Found: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+[2015-07-29 16:18:08,542] WARNING : Not Found: /static/assets/plugins/bootstrap/js/bootstrap.min.js
+[2015-07-29 16:18:08,544] ERROR : Internal Server Error: /static/assets/plugins/bootstrap/js/bootstrap.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,546] WARNING : Not Found: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+[2015-07-29 16:18:08,548] ERROR : Internal Server Error: /static/assets/plugins/jquery-migrate-1.2.1.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,549] ERROR : Internal Server Error: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,554] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,617] WARNING : Not Found: /static/assets/plugins/jquery.blockui.min.js
+[2015-07-29 16:18:08,619] ERROR : Internal Server Error: /static/assets/plugins/jquery.blockui.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,630] WARNING : Not Found: /static/assets/plugins/uniform/jquery.uniform.min.js
+[2015-07-29 16:18:08,632] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/toastr.min.js
+[2015-07-29 16:18:08,634] WARNING : Not Found: /static/assets/plugins/jquery.cokie.min.js
+[2015-07-29 16:18:08,639] ERROR : Internal Server Error: /static/assets/plugins/jquery.cokie.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,638] WARNING : Not Found: /static/assets/plugins/jquery-validation/dist/jquery.validate.min.js
+[2015-07-29 16:18:08,642] ERROR : Internal Server Error: /static/assets/plugins/jquery-validation/dist/jquery.validate.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,643] ERROR : Internal Server Error: /static/assets/plugins/uniform/jquery.uniform.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,645] WARNING : Not Found: /static/assets/plugins/select2/select2.min.js
+[2015-07-29 16:18:08,647] ERROR : Internal Server Error: /static/assets/plugins/select2/select2.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,633] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-toastr/toastr.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,705] WARNING : Not Found: /static/assets/scripts/core/app.js
+[2015-07-29 16:18:08,706] ERROR : Internal Server Error: /static/assets/scripts/core/app.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,729] WARNING : Not Found: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+[2015-07-29 16:18:08,730] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,727] WARNING : Not Found: /static/assets/scripts/custom/login.js
+[2015-07-29 16:18:08,732] ERROR : Internal Server Error: /static/assets/scripts/custom/login.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,725] WARNING : Not Found: /static/assets/img/logo/logo.png
+[2015-07-29 16:18:08,734] ERROR : Internal Server Error: /static/assets/img/logo/logo.png
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,805] WARNING : Not Found: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+[2015-07-29 16:18:08,806] ERROR : Internal Server Error: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,885] WARNING : Not Found: /static/assets/plugins/jquery.blockui.min.js
+[2015-07-29 16:18:08,886] ERROR : Internal Server Error: /static/assets/plugins/jquery.blockui.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:08,965] WARNING : Not Found: /static/assets/plugins/jquery.cokie.min.js
+[2015-07-29 16:18:08,966] ERROR : Internal Server Error: /static/assets/plugins/jquery.cokie.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:09,036] WARNING : Not Found: /static/assets/plugins/uniform/jquery.uniform.min.js
+[2015-07-29 16:18:09,037] ERROR : Internal Server Error: /static/assets/plugins/uniform/jquery.uniform.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:09,105] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/toastr.min.js
+[2015-07-29 16:18:09,106] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-toastr/toastr.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:09,176] WARNING : Not Found: /static/assets/plugins/jquery-validation/dist/jquery.validate.min.js
+[2015-07-29 16:18:09,177] ERROR : Internal Server Error: /static/assets/plugins/jquery-validation/dist/jquery.validate.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:09,245] WARNING : Not Found: /static/assets/plugins/select2/select2.min.js
+[2015-07-29 16:18:09,246] ERROR : Internal Server Error: /static/assets/plugins/select2/select2.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:09,315] WARNING : Not Found: /static/assets/scripts/core/app.js
+[2015-07-29 16:18:09,316] ERROR : Internal Server Error: /static/assets/scripts/core/app.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:09,385] WARNING : Not Found: /static/assets/scripts/custom/login.js
+[2015-07-29 16:18:09,386] ERROR : Internal Server Error: /static/assets/scripts/custom/login.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,721] WARNING : Not Found: /static/assets/plugins/select2/select2.css
+[2015-07-29 16:18:19,725] ERROR : Internal Server Error: /static/assets/plugins/select2/select2.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,717] WARNING : Not Found: /static/assets/plugins/bootstrap/css/bootstrap.min.css
+[2015-07-29 16:18:19,724] WARNING : Not Found: /static/assets/plugins/font-awesome/css/font-awesome.min.css
+[2015-07-29 16:18:19,719] WARNING : Not Found: /static/assets/plugins/uniform/css/uniform.default.css
+[2015-07-29 16:18:19,732] ERROR : Internal Server Error: /static/assets/plugins/uniform/css/uniform.default.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,723] WARNING : Not Found: /static/assets/plugins/select2/select2-metronic.css
+[2015-07-29 16:18:19,729] ERROR : Internal Server Error: /static/assets/plugins/bootstrap/css/bootstrap.min.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,730] ERROR : Internal Server Error: /static/assets/plugins/font-awesome/css/font-awesome.min.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,736] ERROR : Internal Server Error: /static/assets/plugins/select2/select2-metronic.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,728] WARNING : Not Found: /static/assets/css/style-metronic.css
+[2015-07-29 16:18:19,747] ERROR : Internal Server Error: /static/assets/css/style-metronic.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,816] WARNING : Not Found: /static/assets/css/style.css
+[2015-07-29 16:18:19,820] WARNING : Not Found: /static/assets/css/plugins.css
+[2015-07-29 16:18:19,821] ERROR : Internal Server Error: /static/assets/css/plugins.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,821] WARNING : Not Found: /static/assets/css/style-responsive.css
+[2015-07-29 16:18:19,827] WARNING : Not Found: /static/assets/css/pages/login.css
+[2015-07-29 16:18:19,828] ERROR : Internal Server Error: /static/assets/css/pages/login.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,822] ERROR : Internal Server Error: /static/assets/css/style.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,831] ERROR : Internal Server Error: /static/assets/css/style-responsive.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,831] WARNING : Not Found: /static/assets/css/themes/default.css
+[2015-07-29 16:18:19,840] ERROR : Internal Server Error: /static/assets/css/themes/default.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,843] WARNING : Not Found: /static/assets/css/custom.css
+[2015-07-29 16:18:19,853] ERROR : Internal Server Error: /static/assets/css/custom.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,906] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/toastr.min.css
+[2015-07-29 16:18:19,908] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-toastr/toastr.min.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,916] WARNING : Not Found: /static/assets/plugins/jquery-1.10.2.min.js
+[2015-07-29 16:18:19,917] ERROR : Internal Server Error: /static/assets/plugins/jquery-1.10.2.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,919] WARNING : Not Found: /static/assets/plugins/jquery-migrate-1.2.1.min.js
+[2015-07-29 16:18:19,922] ERROR : Internal Server Error: /static/assets/plugins/jquery-migrate-1.2.1.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,929] WARNING : Not Found: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+[2015-07-29 16:18:19,935] WARNING : Not Found: /static/assets/plugins/bootstrap/js/bootstrap.min.js
+[2015-07-29 16:18:19,936] ERROR : Internal Server Error: /static/assets/plugins/bootstrap/js/bootstrap.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,939] WARNING : Not Found: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+[2015-07-29 16:18:19,941] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,934] ERROR : Internal Server Error: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:19,976] WARNING : Not Found: /static/assets/plugins/jquery.blockui.min.js
+[2015-07-29 16:18:19,977] ERROR : Internal Server Error: /static/assets/plugins/jquery.blockui.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,022] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/toastr.min.js
+[2015-07-29 16:18:20,023] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-toastr/toastr.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,020] WARNING : Not Found: /static/assets/plugins/uniform/jquery.uniform.min.js
+[2015-07-29 16:18:20,028] WARNING : Not Found: /static/assets/plugins/select2/select2.min.js
+[2015-07-29 16:18:20,029] ERROR : Internal Server Error: /static/assets/plugins/select2/select2.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,018] WARNING : Not Found: /static/assets/plugins/jquery.cokie.min.js
+[2015-07-29 16:18:20,035] ERROR : Internal Server Error: /static/assets/plugins/jquery.cokie.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,031] ERROR : Internal Server Error: /static/assets/plugins/uniform/jquery.uniform.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,031] WARNING : Not Found: /static/assets/plugins/jquery-validation/dist/jquery.validate.min.js
+[2015-07-29 16:18:20,040] ERROR : Internal Server Error: /static/assets/plugins/jquery-validation/dist/jquery.validate.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,046] WARNING : Not Found: /static/assets/scripts/core/app.js
+[2015-07-29 16:18:20,055] ERROR : Internal Server Error: /static/assets/scripts/core/app.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,117] WARNING : Not Found: /static/assets/scripts/custom/login.js
+[2015-07-29 16:18:20,118] ERROR : Internal Server Error: /static/assets/scripts/custom/login.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,125] WARNING : Not Found: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+[2015-07-29 16:18:20,126] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,128] WARNING : Not Found: /static/assets/img/logo/logo.png
+[2015-07-29 16:18:20,130] ERROR : Internal Server Error: /static/assets/img/logo/logo.png
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,202] WARNING : Not Found: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+[2015-07-29 16:18:20,203] ERROR : Internal Server Error: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,295] WARNING : Not Found: /static/assets/plugins/jquery.blockui.min.js
+[2015-07-29 16:18:20,297] ERROR : Internal Server Error: /static/assets/plugins/jquery.blockui.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,385] WARNING : Not Found: /static/assets/plugins/jquery.cokie.min.js
+[2015-07-29 16:18:20,386] ERROR : Internal Server Error: /static/assets/plugins/jquery.cokie.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,465] WARNING : Not Found: /static/assets/plugins/uniform/jquery.uniform.min.js
+[2015-07-29 16:18:20,466] ERROR : Internal Server Error: /static/assets/plugins/uniform/jquery.uniform.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,536] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/toastr.min.js
+[2015-07-29 16:18:20,537] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-toastr/toastr.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,610] WARNING : Not Found: /static/assets/plugins/jquery-validation/dist/jquery.validate.min.js
+[2015-07-29 16:18:20,611] ERROR : Internal Server Error: /static/assets/plugins/jquery-validation/dist/jquery.validate.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,676] WARNING : Not Found: /static/assets/plugins/select2/select2.min.js
+[2015-07-29 16:18:20,677] ERROR : Internal Server Error: /static/assets/plugins/select2/select2.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,745] WARNING : Not Found: /static/assets/scripts/core/app.js
+[2015-07-29 16:18:20,746] ERROR : Internal Server Error: /static/assets/scripts/core/app.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:20,815] WARNING : Not Found: /static/assets/scripts/custom/login.js
+[2015-07-29 16:18:20,816] ERROR : Internal Server Error: /static/assets/scripts/custom/login.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,127] WARNING : Not Found: /static/assets/plugins/font-awesome/css/font-awesome.min.css
+[2015-07-29 16:18:56,129] WARNING : Not Found: /static/assets/plugins/bootstrap/css/bootstrap.min.css
+[2015-07-29 16:18:56,131] WARNING : Not Found: /static/assets/plugins/uniform/css/uniform.default.css
+[2015-07-29 16:18:56,132] ERROR : Internal Server Error: /static/assets/plugins/font-awesome/css/font-awesome.min.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,133] ERROR : Internal Server Error: /static/assets/plugins/bootstrap/css/bootstrap.min.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,137] WARNING : Not Found: /static/assets/plugins/select2/select2-metronic.css
+[2015-07-29 16:18:56,144] ERROR : Internal Server Error: /static/assets/plugins/select2/select2-metronic.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,140] WARNING : Not Found: /static/assets/plugins/select2/select2.css
+[2015-07-29 16:18:56,138] ERROR : Internal Server Error: /static/assets/plugins/uniform/css/uniform.default.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,145] ERROR : Internal Server Error: /static/assets/plugins/select2/select2.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,156] WARNING : Not Found: /static/assets/css/style-metronic.css
+[2015-07-29 16:18:56,158] ERROR : Internal Server Error: /static/assets/css/style-metronic.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,228] WARNING : Not Found: /static/assets/css/themes/default.css
+[2015-07-29 16:18:56,230] WARNING : Not Found: /static/assets/css/plugins.css
+[2015-07-29 16:18:56,231] WARNING : Not Found: /static/assets/css/style.css
+[2015-07-29 16:18:56,226] WARNING : Not Found: /static/assets/css/style-responsive.css
+[2015-07-29 16:18:56,237] ERROR : Internal Server Error: /static/assets/css/style-responsive.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,232] ERROR : Internal Server Error: /static/assets/css/themes/default.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,235] WARNING : Not Found: /static/assets/css/pages/login.css
+[2015-07-29 16:18:56,245] ERROR : Internal Server Error: /static/assets/css/pages/login.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,233] ERROR : Internal Server Error: /static/assets/css/plugins.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,236] ERROR : Internal Server Error: /static/assets/css/style.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,251] WARNING : Not Found: /static/assets/css/custom.css
+[2015-07-29 16:18:56,260] ERROR : Internal Server Error: /static/assets/css/custom.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,328] WARNING : Not Found: /static/assets/plugins/jquery-migrate-1.2.1.min.js
+[2015-07-29 16:18:56,330] WARNING : Not Found: /static/assets/plugins/bootstrap/js/bootstrap.min.js
+[2015-07-29 16:18:56,331] ERROR : Internal Server Error: /static/assets/plugins/bootstrap/js/bootstrap.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,332] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/toastr.min.css
+[2015-07-29 16:18:56,326] WARNING : Not Found: /static/assets/plugins/jquery-1.10.2.min.js
+[2015-07-29 16:18:56,340] ERROR : Internal Server Error: /static/assets/plugins/jquery-1.10.2.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,336] WARNING : Not Found: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+[2015-07-29 16:18:56,337] WARNING : Not Found: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+[2015-07-29 16:18:56,348] ERROR : Internal Server Error: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,333] ERROR : Internal Server Error: /static/assets/plugins/jquery-migrate-1.2.1.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,345] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,339] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-toastr/toastr.min.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,427] WARNING : Not Found: /static/assets/plugins/jquery.cokie.min.js
+[2015-07-29 16:18:56,429] WARNING : Not Found: /static/assets/plugins/uniform/jquery.uniform.min.js
+[2015-07-29 16:18:56,429] WARNING : Not Found: /static/assets/plugins/jquery.blockui.min.js
+[2015-07-29 16:18:56,433] ERROR : Internal Server Error: /static/assets/plugins/jquery.blockui.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,431] ERROR : Internal Server Error: /static/assets/plugins/uniform/jquery.uniform.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,440] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/toastr.min.js
+[2015-07-29 16:18:56,437] WARNING : Not Found: /static/assets/plugins/jquery-validation/dist/jquery.validate.min.js
+[2015-07-29 16:18:56,439] ERROR : Internal Server Error: /static/assets/plugins/jquery.cokie.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,439] WARNING : Not Found: /static/assets/plugins/select2/select2.min.js
+[2015-07-29 16:18:56,447] ERROR : Internal Server Error: /static/assets/plugins/jquery-validation/dist/jquery.validate.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,451] ERROR : Internal Server Error: /static/assets/plugins/select2/select2.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,453] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-toastr/toastr.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,525] WARNING : Not Found: /static/assets/scripts/custom/login.js
+[2015-07-29 16:18:56,527] WARNING : Not Found: /static/assets/scripts/core/app.js
+[2015-07-29 16:18:56,530] ERROR : Internal Server Error: /static/assets/scripts/core/app.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,529] WARNING : Not Found: /static/assets/plugins/bootstrap/js/bootstrap.min.js
+[2015-07-29 16:18:56,533] ERROR : Internal Server Error: /static/assets/plugins/bootstrap/js/bootstrap.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,531] ERROR : Internal Server Error: /static/assets/scripts/custom/login.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,535] WARNING : Not Found: /static/assets/img/logo/logo.png
+[2015-07-29 16:18:56,544] ERROR : Internal Server Error: /static/assets/img/logo/logo.png
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,645] WARNING : Not Found: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+[2015-07-29 16:18:56,646] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,715] WARNING : Not Found: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+[2015-07-29 16:18:56,716] ERROR : Internal Server Error: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,795] WARNING : Not Found: /static/assets/plugins/jquery.blockui.min.js
+[2015-07-29 16:18:56,797] ERROR : Internal Server Error: /static/assets/plugins/jquery.blockui.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,865] WARNING : Not Found: /static/assets/plugins/jquery.cokie.min.js
+[2015-07-29 16:18:56,866] ERROR : Internal Server Error: /static/assets/plugins/jquery.cokie.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:56,935] WARNING : Not Found: /static/assets/plugins/uniform/jquery.uniform.min.js
+[2015-07-29 16:18:56,936] ERROR : Internal Server Error: /static/assets/plugins/uniform/jquery.uniform.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:57,006] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/toastr.min.js
+[2015-07-29 16:18:57,007] ERROR : Internal Server Error: /static/assets/plugins/bootstrap-toastr/toastr.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:57,075] WARNING : Not Found: /static/assets/plugins/jquery-validation/dist/jquery.validate.min.js
+[2015-07-29 16:18:57,076] ERROR : Internal Server Error: /static/assets/plugins/jquery-validation/dist/jquery.validate.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:57,145] WARNING : Not Found: /static/assets/plugins/select2/select2.min.js
+[2015-07-29 16:18:57,146] ERROR : Internal Server Error: /static/assets/plugins/select2/select2.min.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:57,224] WARNING : Not Found: /static/assets/scripts/core/app.js
+[2015-07-29 16:18:57,225] ERROR : Internal Server Error: /static/assets/scripts/core/app.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:18:57,295] WARNING : Not Found: /static/assets/scripts/custom/login.js
+[2015-07-29 16:18:57,296] ERROR : Internal Server Error: /static/assets/scripts/custom/login.js
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:19:16,067] WARNING : Not Found: /static/admin/css/base.css
+[2015-07-29 16:19:16,070] ERROR : Internal Server Error: /static/admin/css/base.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:19:16,124] WARNING : Not Found: /static/admin/css/login.css
+[2015-07-29 16:19:16,125] ERROR : Internal Server Error: /static/admin/css/login.css
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:21:30,103] WARNING : Not Found: /asd
+[2015-07-29 16:21:30,105] ERROR : Internal Server Error: /asd
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 148, in get_response
+    response = callback(request, **param_dict)
+  File "/usr/lib/python2.6/site-packages/django/utils/decorators.py", line 91, in _wrapped_view
+    response = view_func(request, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/views/defaults.py", line 20, in page_not_found
+    t = loader.get_template(template_name) # You need to create a 404.html template.
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: 404.html
+[2015-07-29 16:22:14,586] WARNING : Not Found: /asd
+[2015-07-29 16:26:22,479] WARNING : Not Found: /asd
+[2015-07-29 16:26:22,579] WARNING : Not Found: /assets/plugins/font-awesome/css/font-awesome.min.css
+[2015-07-29 16:26:22,582] WARNING : Not Found: /assets/plugins/bootstrap/css/bootstrap.min.css
+[2015-07-29 16:26:22,591] WARNING : Not Found: /assets/plugins/uniform/css/uniform.default.css
+[2015-07-29 16:26:22,601] WARNING : Not Found: /assets/css/style-metronic.css
+[2015-07-29 16:26:22,603] WARNING : Not Found: /assets/css/style-responsive.css
+[2015-07-29 16:26:22,603] WARNING : Not Found: /assets/css/style.css
+[2015-07-29 16:26:22,660] WARNING : Not Found: /assets/css/plugins.css
+[2015-07-29 16:26:22,670] WARNING : Not Found: /assets/css/themes/default.css
+[2015-07-29 16:26:22,681] WARNING : Not Found: /assets/css/custom.css
+[2015-07-29 16:26:22,683] WARNING : Not Found: /assets/plugins/jquery-migrate-1.2.1.min.js
+[2015-07-29 16:26:22,679] WARNING : Not Found: /assets/css/pages/error.css
+[2015-07-29 16:26:22,698] WARNING : Not Found: /assets/plugins/jquery-1.10.2.min.js
+[2015-07-29 16:26:22,729] WARNING : Not Found: /assets/plugins/bootstrap/js/bootstrap.min.js
+[2015-07-29 16:26:22,761] WARNING : Not Found: /assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+[2015-07-29 16:26:22,771] WARNING : Not Found: /assets/plugins/jquery.blockui.min.js
+[2015-07-29 16:26:22,773] WARNING : Not Found: /assets/plugins/uniform/jquery.uniform.min.js
+[2015-07-29 16:26:22,775] WARNING : Not Found: /assets/plugins/jquery.cokie.min.js
+[2015-07-29 16:26:22,776] WARNING : Not Found: /assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+[2015-07-29 16:26:22,799] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:26:22,849] WARNING : Not Found: /assets/plugins/jquery-migrate-1.2.1.min.js
+[2015-07-29 16:26:22,859] WARNING : Not Found: /assets/img/pages/earth.jpg
+[2015-07-29 16:26:22,919] WARNING : Not Found: /assets/plugins/bootstrap/js/bootstrap.min.js
+[2015-07-29 16:26:22,989] WARNING : Not Found: /assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+[2015-07-29 16:26:23,060] WARNING : Not Found: /assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+[2015-07-29 16:26:23,129] WARNING : Not Found: /assets/plugins/jquery.blockui.min.js
+[2015-07-29 16:26:23,209] WARNING : Not Found: /assets/plugins/jquery.cokie.min.js
+[2015-07-29 16:26:23,278] WARNING : Not Found: /assets/plugins/uniform/jquery.uniform.min.js
+[2015-07-29 16:26:23,349] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:27:39,398] WARNING : Not Found: /asd
+[2015-07-29 16:27:39,791] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:30:27,086] WARNING : Not Found: /asd
+[2015-07-29 16:30:27,407] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:28,685] WARNING : Not Found: /asd
+[2015-07-29 16:31:29,002] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:29,945] WARNING : Not Found: /asd
+[2015-07-29 16:31:30,281] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:30,925] WARNING : Not Found: /asd
+[2015-07-29 16:31:31,243] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:31,855] WARNING : Not Found: /asd
+[2015-07-29 16:31:32,165] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:32,775] WARNING : Not Found: /asd
+[2015-07-29 16:31:33,068] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:33,664] WARNING : Not Found: /asd
+[2015-07-29 16:31:33,968] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:34,568] WARNING : Not Found: /asd
+[2015-07-29 16:31:34,865] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:35,305] WARNING : Not Found: /asd
+[2015-07-29 16:31:35,607] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:36,144] WARNING : Not Found: /asd
+[2015-07-29 16:31:36,436] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:36,984] WARNING : Not Found: /asd
+[2015-07-29 16:31:37,298] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:37,865] WARNING : Not Found: /asd
+[2015-07-29 16:31:38,181] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:39,235] WARNING : Not Found: /asd
+[2015-07-29 16:31:39,575] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:31:40,505] WARNING : Not Found: /asd
+[2015-07-29 16:31:40,789] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:32:03,815] WARNING : Not Found: /asd
+[2015-07-29 16:32:04,112] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:37:09,420] WARNING : Not Found: /500.html
+[2015-07-29 16:37:09,580] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:37:43,536] WARNING : Not Found: /500.html
+[2015-07-29 16:37:43,670] WARNING : Not Found: /static/assets/css/style-responsive.css
+[2015-07-29 16:37:43,672] WARNING : Not Found: /static/assets/plugins/uniform/css/uniform.default.css
+[2015-07-29 16:37:43,675] WARNING : Not Found: /static/assets/plugins/bootstrap/css/bootstrap.min.css
+[2015-07-29 16:37:43,676] WARNING : Not Found: /static/assets/css/style-metronic.css
+[2015-07-29 16:37:43,666] WARNING : Not Found: /static/assets/css/style.css
+[2015-07-29 16:37:43,682] WARNING : Not Found: /static/assets/css/plugins.css
+[2015-07-29 16:37:43,760] WARNING : Not Found: /static/assets/css/themes/default.css
+[2015-07-29 16:37:43,775] WARNING : Not Found: /static/assets/plugins/jquery-migrate-1.2.1.min.js
+[2015-07-29 16:37:43,773] WARNING : Not Found: /static/assets/plugins/bootstrap/js/bootstrap.min.js
+[2015-07-29 16:37:43,779] WARNING : Not Found: /static/assets/css/pages/error.css
+[2015-07-29 16:37:43,780] WARNING : Not Found: /static/assets/css/custom.css
+[2015-07-29 16:37:43,800] WARNING : Not Found: /static/assets/plugins/jquery-1.10.2.min.js
+[2015-07-29 16:37:43,833] WARNING : Not Found: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+[2015-07-29 16:37:43,874] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:37:43,876] WARNING : Not Found: /static/assets/plugins/jquery.cokie.min.js
+[2015-07-29 16:37:43,879] WARNING : Not Found: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+[2015-07-29 16:37:43,872] WARNING : Not Found: /static/assets/plugins/jquery.blockui.min.js
+[2015-07-29 16:37:43,884] WARNING : Not Found: /static/assets/plugins/uniform/jquery.uniform.min.js
+[2015-07-29 16:37:43,901] WARNING : Not Found: /static/assets/plugins/jquery-migrate-1.2.1.min.js
+[2015-07-29 16:37:43,970] WARNING : Not Found: /static/assets/img/pages/earth.jpg
+[2015-07-29 16:37:43,976] WARNING : Not Found: /static/assets/plugins/bootstrap/js/bootstrap.min.js
+[2015-07-29 16:37:44,060] WARNING : Not Found: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+[2015-07-29 16:37:44,129] WARNING : Not Found: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+[2015-07-29 16:37:44,199] WARNING : Not Found: /static/assets/plugins/jquery.blockui.min.js
+[2015-07-29 16:37:44,269] WARNING : Not Found: /static/assets/plugins/jquery.cokie.min.js
+[2015-07-29 16:37:44,339] WARNING : Not Found: /static/assets/plugins/uniform/jquery.uniform.min.js
+[2015-07-29 16:37:44,410] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:37:50,742] WARNING : Not Found: /static/assets/plugins/uniform/css/uniform.default.css
+[2015-07-29 16:37:50,744] WARNING : Not Found: /static/assets/plugins/bootstrap/css/bootstrap.min.css
+[2015-07-29 16:37:50,755] WARNING : Not Found: /static/assets/css/style-responsive.css
+[2015-07-29 16:37:50,753] WARNING : Not Found: /static/assets/css/plugins.css
+[2015-07-29 16:37:50,758] WARNING : Not Found: /static/assets/css/style.css
+[2015-07-29 16:37:50,759] WARNING : Not Found: /static/assets/css/style-metronic.css
+[2015-07-29 16:37:50,831] WARNING : Not Found: /static/assets/css/themes/default.css
+[2015-07-29 16:37:50,841] WARNING : Not Found: /static/assets/css/custom.css
+[2015-07-29 16:37:50,856] WARNING : Not Found: /static/assets/plugins/bootstrap/js/bootstrap.min.js
+[2015-07-29 16:37:50,858] WARNING : Not Found: /static/assets/plugins/jquery-1.10.2.min.js
+[2015-07-29 16:37:50,860] WARNING : Not Found: /static/assets/plugins/jquery-migrate-1.2.1.min.js
+[2015-07-29 16:37:50,863] WARNING : Not Found: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+[2015-07-29 16:37:50,902] WARNING : Not Found: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+[2015-07-29 16:37:50,930] WARNING : Not Found: /static/assets/plugins/jquery.blockui.min.js
+[2015-07-29 16:37:50,940] WARNING : Not Found: /static/assets/plugins/jquery.cokie.min.js
+[2015-07-29 16:37:50,944] WARNING : Not Found: /static/assets/plugins/jquery-migrate-1.2.1.min.js
+[2015-07-29 16:37:50,942] WARNING : Not Found: /static/assets/plugins/uniform/jquery.uniform.min.js
+[2015-07-29 16:37:51,020] WARNING : Not Found: /static/assets/plugins/bootstrap/js/bootstrap.min.js
+[2015-07-29 16:37:51,094] WARNING : Not Found: /static/assets/plugins/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js
+[2015-07-29 16:37:51,169] WARNING : Not Found: /static/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js
+[2015-07-29 16:37:51,239] WARNING : Not Found: /static/assets/plugins/jquery.blockui.min.js
+[2015-07-29 16:37:51,309] WARNING : Not Found: /static/assets/plugins/jquery.cokie.min.js
+[2015-07-29 16:37:51,379] WARNING : Not Found: /static/assets/plugins/uniform/jquery.uniform.min.js
+[2015-07-29 16:38:17,100] ERROR : Internal Server Error: /
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 87, in get_response
+    response = middleware_method(request)
+  File "/usr/lib/python2.6/site-packages/django/middleware/common.py", line 55, in process_request
+    host = request.get_host()
+  File "/usr/lib/python2.6/site-packages/django/http/__init__.py", line 223, in get_host
+    "Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS): %s" % host)
+SuspiciousOperation: Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS): 192.168.100.251:8000
+[2015-07-29 16:38:52,123] WARNING : Not Found: /asd
+[2015-07-29 16:38:52,320] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:38:52,499] WARNING : Not Found: /assets/scripts/core/app.js
