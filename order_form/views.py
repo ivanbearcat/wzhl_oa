@@ -207,7 +207,7 @@ def order_form_save(request):
     end = datetime.datetime.now() + datetime.timedelta(1)
     end = end.date()
 
-    if type == u'午餐' and time_now > datetime.time(12,30):
+    if type == u'午餐' and time_now > datetime.time(10,30):
         return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过午餐订餐时间'}),content_type="application/json")
     elif type == u'晚餐' and time_now > datetime.time(16,00):
         return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过晚餐订餐时间'}),content_type="application/json")
@@ -234,8 +234,16 @@ def order_form_save(request):
 
 def order_form_del(request):
     _id = request.POST.get('id')
+    time_now = datetime.datetime.now().time()
+    begin = datetime.datetime.now().date()
+    end = datetime.datetime.now() + datetime.timedelta(1)
+    end = end.date()
     try:
         orm = order.objects.get(id=_id)
+        if orm.type == u'午餐' and time_now > datetime.time(10,30):
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过午餐订餐时间，无法删除'}),content_type="application/json")
+        elif orm.type == u'晚餐' and time_now > datetime.time(16,00):
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过晚餐订餐时间，无法删除'}),content_type="application/json")
         if orm.order_name != request.user.first_name and orm.name != request.user.first_name:
             return HttpResponse(simplejson.dumps({'code':1,'msg':u'您不能删除别人的订餐'}),content_type="application/json")
         orm.delete()
