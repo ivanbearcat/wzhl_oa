@@ -456,7 +456,14 @@ function add() {
 {#}#}
 
 function del_verify() {
-    $("#myModal2").modal('show')
+    var oTT = TableTools.fnGetInstance('datatables');
+    var aData = oTT.fnGetSelectedData();
+    if (aData.length == 1) {
+        $("#myModal2").modal('show')
+    }
+    else {
+        toastr.error('没有选择')
+    }
 }
 
 function del() {

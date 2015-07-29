@@ -203,6 +203,13 @@ def order_form_save(request):
     type = request.POST.get('type')
     comment = request.POST.get('comment')
     time_now = datetime.datetime.now().time()
+    begin = datetime.datetime.now().date()
+    end = datetime.datetime.now() + datetime.timedelta(1)
+    end = end.date()
+    check_orm = order.objects.filter(add_time__range=(begin,end)).filter(name=name).filter(type=type)
+    if check_orm:
+        return HttpResponse(simplejson.dumps({'code':1,'msg':u'您已订过餐'}),content_type="application/json")
+
     if type == u'午餐' and time_now > datetime.time(10,30):
         return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过午餐订餐时间'}),content_type="application/json")
     elif type == u'晚餐' and time_now > datetime.time(16,00):
