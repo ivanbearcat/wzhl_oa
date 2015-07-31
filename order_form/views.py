@@ -213,7 +213,7 @@ def order_form_save(request):
     end = datetime.datetime.now() + datetime.timedelta(1)
     end = end.date()
 
-    if type == u'午餐' and time_now > datetime.time(11,00):
+    if type == u'午餐' and time_now > datetime.time(10,30):
         return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过午餐订餐时间'}),content_type="application/json")
     elif type == u'晚餐' and time_now > datetime.time(16,00):
         return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过晚餐订餐时间'}),content_type="application/json")
@@ -233,7 +233,7 @@ def order_form_save(request):
         #
         #
         # orm.save()
-        return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
+        return HttpResponse(simplejson.dumps({'code':0,'msg':u'订餐成功'}),content_type="application/json")
     except Exception,e:
         logger.error(e,comment)
         return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
