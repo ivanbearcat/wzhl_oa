@@ -2848,3 +2848,310 @@ SuspiciousOperation: Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS
 [2015-07-29 16:38:52,123] WARNING : Not Found: /asd
 [2015-07-29 16:38:52,320] WARNING : Not Found: /assets/scripts/core/app.js
 [2015-07-29 16:38:52,499] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:43:23,176] WARNING : Not Found: /logou1
+[2015-07-29 16:43:23,284] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:43:23,408] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-07-29 16:43:39,992] INFO : <xuezhimin> login in sucess.
+[2015-07-29 16:45:25,598] INFO : <luxiaofeng> login in sucess.
+[2015-07-29 16:46:12,293] INFO : <xujianfeng> login in sucess.
+[2015-07-29 16:47:39,129] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:01:38,854] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:02:45,864] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:03:17,615] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:07:43,864] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:10:13,675] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:11:04,187] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:11:47,347] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:14:37,177] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:17:07,088] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:25:04,745] INFO : <caojin> login in sucess.
+[2015-07-29 17:33:16,938] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:34:26,466] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:35:42,583] INFO : <gaoru> login in sucess.
+[2015-07-29 17:36:02,397] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:38:00,727] INFO : <yanglin> login in sucess.
+[2015-07-29 17:41:28,363] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:42:07,676] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:44:38,613] INFO : <xujianfeng> login in sucess.
+[2015-07-29 17:47:53,501] INFO : <yanglin> login in sucess.
+[2015-07-29 17:51:18,202] WARNING : Not Found: /login/
+[2015-07-29 17:51:18,203] WARNING : Forbidden (CSRF cookie not set.): /login/
+[2015-07-29 17:51:38,711] WARNING : Not Found: /login/
+[2015-07-29 17:51:38,823] WARNING : Not Found: /login/assets/scripts/core/app.js
+[2015-07-29 17:51:38,888] WARNING : Not Found: /login/assets/scripts/core/app.js
+[2015-07-29 17:52:42,956] INFO : <yanglin> login in sucess.
+[2015-07-29 17:52:47,699] INFO : <yanglin> login in sucess.
+[2015-07-29 17:58:38,203] WARNING : <None> login in fail.
+[2015-07-29 17:59:19,272] WARNING : <None> login in fail.
+[2015-07-29 17:59:46,332] INFO : <xujianfeng> login in sucess.
+[2015-07-29 18:00:07,757] INFO : <xuezhimin> login in sucess.
+[2015-07-29 18:05:48,354] WARNING : <None> login in fail.
+[2015-07-29 18:18:30,423] INFO : <xuezhimin> login in sucess.
+[2015-07-29 18:23:27,245] INFO : <xuezhimin> login in sucess.
+[2015-07-29 18:25:35,829] INFO : <xuezhimin> login in sucess.
+[2015-07-29 18:25:53,141] INFO : <xuezhimin> login in sucess.
+[2015-07-29 18:32:34,658] INFO : <xuezhimin> login in sucess.
+[2015-07-29 18:41:25,394] WARNING : Not Found: /favicon.ico
+[2015-07-29 18:43:30,140] INFO : <xuezhimin> login in sucess.
+[2015-07-29 18:47:00,402] INFO : <xuezhimin> login in sucess.
+[2015-07-29 18:54:55,031] INFO : <xuezhimin> login in sucess.
+[2015-07-29 18:55:21,424] INFO : <xuezhimin> login in sucess.
+[2015-07-29 19:32:35,679] INFO : <xuezhimin> login in sucess.
+[2015-07-29 19:42:07,558] INFO : <xuezhimin> login in sucess.
+[2015-07-29 19:43:10,087] INFO : <xuezhimin> login in sucess.
+[2015-07-29 19:45:04,043] INFO : <xuezhimin> login in sucess.
+[2015-07-29 19:45:34,641] INFO : <xuezhimin> login in sucess.
+[2015-07-29 19:50:10,011] INFO : <xuezhimin> login in sucess.
+[2015-07-29 20:00:04,940] WARNING : <'xuezhimin'> login in fail.
+[2015-07-29 20:00:31,898] WARNING : <'xuezhimin'> login in fail.
+[2015-07-29 20:01:07,557] WARNING : <'xuezhimin'> login in fail.
+[2015-07-29 20:02:29,621] WARNING : <'xuezhimin'> login in fail.
+[2015-07-29 20:03:22,434] WARNING : <'xuezhimin'> login in fail.
+[2015-07-29 20:04:27,989] WARNING : <'xuezhimin'> login in fail.
+[2015-07-29 20:04:46,196] WARNING : <'xuezhimin'> login in fail.
+[2015-07-29 20:05:10,691] INFO : <xuezhimin> login in sucess.
+[2015-07-29 20:06:09,800] INFO : <xuezhimin> login in sucess.
+[2015-07-29 20:06:22,654] INFO : <xuezhimin> login in sucess.
+[2015-07-29 20:15:25,451] WARNING : <'xuezhimin'> login in fail.
+[2015-07-29 20:15:35,794] WARNING : <'xuezhimin'> login in fail.
+[2015-07-29 20:15:54,262] WARNING : <'xuezhimin'> login in fail.
+[2015-07-29 20:15:55,203] WARNING : <'xuezhimin'> login in fail.
+[2015-07-30 09:43:32,310] INFO : <xujianfeng> login in sucess.
+[2015-07-30 09:47:02,366] INFO : <xujianfeng> login in sucess.
+[2015-07-30 09:47:16,783] INFO : <xujianfeng> login in sucess.
+[2015-07-30 09:47:16,947] WARNING : Not Found: /favicon.ico
+[2015-07-30 09:47:23,927] INFO : <xujianfeng> login in sucess.
+[2015-07-30 09:47:49,261] INFO : <xujianfeng> login in sucess.
+[2015-07-30 09:50:42,754] INFO : <xujianfeng> login in sucess.
+[2015-07-30 09:53:44,547] INFO : <xujianfeng> login in sucess.
+[2015-07-30 10:01:16,868] INFO : <xujianfeng> login in sucess.
+[2015-07-30 10:12:42,171] INFO : <yanglin> login in sucess.
+[2015-07-30 10:12:42,213] WARNING : Not Found: /favicon.ico
+[2015-07-30 10:12:50,385] INFO : <yanglin> login in sucess.
+[2015-07-30 10:13:16,990] INFO : <yanglin> login in sucess.
+[2015-07-30 10:13:21,830] INFO : <yanglin> login in sucess.
+[2015-07-30 10:13:28,993] WARNING : Not Found: /favicon.ico
+[2015-07-30 10:13:39,115] INFO : <xuezhimin> login in sucess.
+[2015-07-30 10:13:40,879] INFO : <gaoru> login in sucess.
+[2015-07-30 10:13:40,946] WARNING : Not Found: /favicon.ico
+[2015-07-30 10:13:52,434] INFO : <wuchunyan> login in sucess.
+[2015-07-30 10:13:56,544] WARNING : <guyingminyu> login in fail.
+[2015-07-30 10:14:01,620] INFO : <guyingminyu> login in sucess.
+[2015-07-30 10:14:01,713] WARNING : Not Found: /favicon.ico
+[2015-07-30 10:14:01,721] WARNING : Not Found: /favicon.ico
+[2015-07-30 10:14:02,262] INFO : <wuchunyan> login in sucess.
+[2015-07-30 10:14:22,033] INFO : <wuchunyan> login in sucess.
+[2015-07-30 10:16:38,518] INFO : <xuezhimin> login in sucess.
+[2015-07-30 10:16:46,098] INFO : <guyingminyu> login in sucess.
+[2015-07-30 10:16:47,665] INFO : <yanglin> login in sucess.
+[2015-07-30 10:16:57,494] INFO : <gaoru> login in sucess.
+[2015-07-30 10:16:59,359] WARNING : Not Found: /favicon.ico
+[2015-07-30 10:17:11,517] INFO : <wuchunyan> login in sucess.
+[2015-07-30 10:18:07,210] INFO : <wuchunyan> login in sucess.
+[2015-07-30 10:20:27,932] INFO : <huangsen> login in sucess.
+[2015-07-30 10:22:09,535] INFO : <yangli> login in sucess.
+[2015-07-30 10:22:13,212] WARNING : <guchao> login in fail.
+[2015-07-30 10:22:18,154] INFO : <guchao> login in sucess.
+[2015-07-30 10:22:21,616] INFO : <xuchi> login in sucess.
+[2015-07-30 10:22:49,220] INFO : <zhangyongdong> login in sucess.
+[2015-07-30 10:22:51,795] INFO : <luxiaofeng> login in sucess.
+[2015-07-30 10:24:15,163] INFO : <nipeijun> login in sucess.
+[2015-07-30 10:26:33,125] INFO : <xufukang> login in sucess.
+[2015-07-30 10:28:28,856] WARNING : Not Found: /favicon.ico
+[2015-07-30 10:28:28,866] WARNING : Not Found: /favicon.ico
+[2015-07-30 10:28:43,517] INFO : <sunge> login in sucess.
+[2015-07-30 10:33:46,283] INFO : <gaoru> login in sucess.
+[2015-07-30 10:39:59,082] INFO : <xujianfeng> login in sucess.
+[2015-07-30 10:40:32,786] INFO : <sunge > login in sucess.
+[2015-07-30 10:40:39,034] INFO : <xujianfeng> login in sucess.
+[2015-07-30 10:49:58,240] INFO : <wuzhifeng> login in sucess.
+[2015-07-30 10:50:19,831] WARNING : Not Found: /browserconfig.xml
+[2015-07-30 12:11:39,046] INFO : <zhangyongdong> login in sucess.
+[2015-07-30 12:14:57,550] INFO : <zhangyongdong> login in sucess.
+[2015-07-30 12:16:25,311] INFO : <luxiaofeng> login in sucess.
+[2015-07-30 13:21:03,271] INFO : <yanglin> login in sucess.
+[2015-07-30 15:11:53,217] INFO : <sunge> login in sucess.
+[2015-07-30 15:14:21,624] INFO : <yanglin> login in sucess.
+[2015-07-30 16:26:42,851] INFO : <daiwei> login in sucess.
+[2015-07-30 16:36:07,354] INFO : <yanglin> login in sucess.
+[2015-07-30 16:50:52,069] INFO : <yanglin> login in sucess.
+[2015-07-30 16:58:43,019] INFO : <yanglin> login in sucess.
+[2015-07-31 09:42:03,507] INFO : <xujianfeng> login in sucess.
+[2015-07-31 09:44:35,976] INFO : <yanglin> login in sucess.
+[2015-07-31 09:48:56,545] INFO : <xujianfeng> login in sucess.
+[2015-07-31 10:01:06,469] WARNING : Not Found: /favicon.ico
+[2015-07-31 10:03:56,229] INFO : <xuezhimin> login in sucess.
+[2015-07-31 10:05:27,999] INFO : <guyingminyu> login in sucess.
+[2015-07-31 10:08:38,253] INFO : <yangli> login in sucess.
+[2015-07-31 10:20:34,837] INFO : <xuchi> login in sucess.
+[2015-07-31 10:21:49,607] INFO : <xuchi> login in sucess.
+[2015-07-31 10:23:05,196] INFO : <luxiaofeng> login in sucess.
+[2015-07-31 10:24:23,010] INFO : <guchao> login in sucess.
+[2015-07-31 10:24:39,123] INFO : <luxiaofeng> login in sucess.
+[2015-07-31 10:24:42,276] INFO : <zhangyongdong> login in sucess.
+[2015-07-31 10:24:43,266] INFO : <yanglin> login in sucess.
+[2015-07-31 10:25:10,663] INFO : <daiwei> login in sucess.
+[2015-07-31 10:25:55,409] WARNING : <wuchunyan> login in fail.
+[2015-07-31 10:26:14,914] WARNING : <wuchunyan> login in fail.
+[2015-07-31 10:26:58,287] WARNING : <wuchunyan> login in fail.
+[2015-07-31 10:28:05,035] INFO : <wuchunyan> login in sucess.
+[2015-07-31 10:29:48,822] WARNING : Not Found: /favicon.ico
+[2015-07-31 10:30:19,983] INFO : <qianyang> login in sucess.
+[2015-07-31 10:41:09,192] INFO : <huangsen> login in sucess.
+[2015-07-31 10:42:06,513] WARNING : <程骏> login in fail.
+[2015-07-31 10:42:35,369] INFO : <chengjun> login in sucess.
+[2015-07-31 10:43:47,037] WARNING : Not Found: /favicon.ico
+[2015-07-31 10:44:09,536] WARNING : <liuyu> login in fail.
+[2015-07-31 10:44:31,655] WARNING : <zhangsan> login in fail.
+[2015-07-31 10:44:40,427] WARNING : <zhangsan> login in fail.
+[2015-07-31 10:45:10,461] INFO : <liuyu> login in sucess.
+[2015-07-31 10:45:23,711] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/wzhl_oa/order_form/views.py", line 173, in order_form_data
+    for i in  result_data:
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 118, in _result_iter
+    self._fill_cache()
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 892, in _fill_cache
+    self._result_cache.append(self._iter.next())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 808, in execute_sql
+    sql, params = self.as_sql()
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 72, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 401, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 427, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 460, in _setup_joins
+    opts, alias, False)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'None' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-31 10:45:23,718] WARNING : Forbidden (CSRF token missing or incorrect.): /order_form_data/
+[2015-07-31 10:45:24,214] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/wzhl_oa/order_form/views.py", line 173, in order_form_data
+    for i in  result_data:
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 118, in _result_iter
+    self._fill_cache()
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 892, in _fill_cache
+    self._result_cache.append(self._iter.next())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 808, in execute_sql
+    sql, params = self.as_sql()
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 72, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 401, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 427, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 460, in _setup_joins
+    opts, alias, False)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'None' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-31 10:45:24,220] WARNING : Forbidden (CSRF token missing or incorrect.): /order_form_data/
+[2015-07-31 10:45:25,398] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/wzhl_oa/order_form/views.py", line 173, in order_form_data
+    for i in  result_data:
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 118, in _result_iter
+    self._fill_cache()
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 892, in _fill_cache
+    self._result_cache.append(self._iter.next())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 808, in execute_sql
+    sql, params = self.as_sql()
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 72, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 401, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 427, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 460, in _setup_joins
+    opts, alias, False)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'None' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-31 10:45:25,400] WARNING : Forbidden (CSRF token missing or incorrect.): /order_form_data/
+[2015-07-31 10:45:28,668] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/wzhl_oa/order_form/views.py", line 173, in order_form_data
+    for i in  result_data:
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 118, in _result_iter
+    self._fill_cache()
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 892, in _fill_cache
+    self._result_cache.append(self._iter.next())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 808, in execute_sql
+    sql, params = self.as_sql()
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 72, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 401, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 427, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 460, in _setup_joins
+    opts, alias, False)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'None' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-31 10:45:28,670] WARNING : Forbidden (CSRF token missing or incorrect.): /order_form_data/
+[2015-07-31 10:45:29,604] ERROR : Internal Server Error: /order_form_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/wzhl_oa/order_form/views.py", line 173, in order_form_data
+    for i in  result_data:
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 118, in _result_iter
+    self._fill_cache()
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 892, in _fill_cache
+    self._result_cache.append(self._iter.next())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 808, in execute_sql
+    sql, params = self.as_sql()
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 72, in as_sql
+    ordering, ordering_group_by = self.get_ordering()
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 401, in get_ordering
+    self.query.model._meta, default_order=asc):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 427, in find_ordering_name
+    field, col, alias, joins, opts = self._setup_joins(pieces, opts, alias)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 460, in _setup_joins
+    opts, alias, False)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1316, in setup_joins
+    "Choices are: %s" % (name, ", ".join(names)))
+FieldError: Cannot resolve keyword 'None' into field. Choices are: add_time, comment, id, name, order_name, type
+[2015-07-31 10:45:29,605] WARNING : Forbidden (CSRF token missing or incorrect.): /order_form_data/

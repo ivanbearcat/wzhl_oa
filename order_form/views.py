@@ -132,10 +132,10 @@ def order_form_data(request):
     try:
         end = datetime.datetime(int(end[0]),int(end[1]),int(end[2])+1)
     except ValueError:
-        end = datetime.datetime(int(end[0]),int(end[1]),int(end[2]))
+        end = datetime.datetime(int(end[0]),int(end[1]),int(end[2]),23,59)
 
     aaData = []
-    sort = ['name','type','add_time','order_name','comment','id']
+    sort = ['name','type','None','add_time','order_name','comment','id']
 
     if  sSortDir_0 == 'asc':
         if sSearch == '':
@@ -213,7 +213,7 @@ def order_form_save(request):
     end = datetime.datetime.now() + datetime.timedelta(1)
     end = end.date()
 
-    if type == u'午餐' and time_now > datetime.time(10,30):
+    if type == u'午餐' and time_now > datetime.time(11,00):
         return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过午餐订餐时间'}),content_type="application/json")
     elif type == u'晚餐' and time_now > datetime.time(16,00):
         return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过晚餐订餐时间'}),content_type="application/json")
