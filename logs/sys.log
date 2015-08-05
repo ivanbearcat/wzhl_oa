@@ -3155,3 +3155,564 @@ Traceback (most recent call last):
     "Choices are: %s" % (name, ", ".join(names)))
 FieldError: Cannot resolve keyword 'None' into field. Choices are: add_time, comment, id, name, order_name, type
 [2015-07-31 10:45:29,605] WARNING : Forbidden (CSRF token missing or incorrect.): /order_form_data/
+[2015-07-31 17:49:24,286] INFO : <zhangyongdong> login in sucess.
+[2015-08-03 02:10:49,492] ERROR : Internal Server Error: /order_form/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 19, in _wrapped_view
+    if test_func(request.user):
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 42, in <lambda>
+    lambda u: u.is_authenticated(),
+  File "/usr/lib/python2.6/site-packages/django/utils/functional.py", line 184, in inner
+    self._setup()
+  File "/usr/lib/python2.6/site-packages/django/utils/functional.py", line 248, in _setup
+    self._wrapped = self._setupfunc()
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/middleware.py", line 17, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/middleware.py", line 9, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/__init__.py", line 98, in get_user
+    user_id = request.session[SESSION_KEY]
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/base.py", line 39, in __getitem__
+    return self._session[key]
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/base.py", line 165, in _get_session
+    self._session_cache = self.load()
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/db.py", line 19, in load
+    expire_date__gt=timezone.now()
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 817, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/lib/python2.6/site-packages/django/db/backends/__init__.py", line 319, in cursor
+    cursor = util.CursorWrapper(self._cursor(), self)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 387, in _cursor
+    self.connection = Database.connect(**kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/__init__.py", line 81, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 187, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+[2015-08-03 02:11:22,184] ERROR : Internal Server Error: /login_auth/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/wzhl_oa/login/views.py", line 15, in login_auth
+    authed = auth.authenticate(username=user_auth,password=passwd_auth)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/__init__.py", line 45, in authenticate
+    user = backend.authenticate(**credentials)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/backends.py", line 14, in authenticate
+    user = User.objects.get(username=username)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 817, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/lib/python2.6/site-packages/django/db/backends/__init__.py", line 319, in cursor
+    cursor = util.CursorWrapper(self._cursor(), self)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 387, in _cursor
+    self.connection = Database.connect(**kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/__init__.py", line 81, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 187, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+[2015-08-03 02:11:22,204] WARNING : Forbidden (CSRF cookie not set.): /login_auth/
+[2015-08-03 02:11:26,170] ERROR : Internal Server Error: /main/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 19, in _wrapped_view
+    if test_func(request.user):
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 42, in <lambda>
+    lambda u: u.is_authenticated(),
+  File "/usr/lib/python2.6/site-packages/django/utils/functional.py", line 184, in inner
+    self._setup()
+  File "/usr/lib/python2.6/site-packages/django/utils/functional.py", line 248, in _setup
+    self._wrapped = self._setupfunc()
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/middleware.py", line 17, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/middleware.py", line 9, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/__init__.py", line 98, in get_user
+    user_id = request.session[SESSION_KEY]
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/base.py", line 39, in __getitem__
+    return self._session[key]
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/base.py", line 165, in _get_session
+    self._session_cache = self.load()
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/db.py", line 19, in load
+    expire_date__gt=timezone.now()
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 817, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/lib/python2.6/site-packages/django/db/backends/__init__.py", line 319, in cursor
+    cursor = util.CursorWrapper(self._cursor(), self)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 387, in _cursor
+    self.connection = Database.connect(**kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/__init__.py", line 81, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 187, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+[2015-08-03 02:11:26,822] ERROR : Internal Server Error: /login_auth/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/wzhl_oa/login/views.py", line 15, in login_auth
+    authed = auth.authenticate(username=user_auth,password=passwd_auth)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/__init__.py", line 45, in authenticate
+    user = backend.authenticate(**credentials)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/backends.py", line 14, in authenticate
+    user = User.objects.get(username=username)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 817, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/lib/python2.6/site-packages/django/db/backends/__init__.py", line 319, in cursor
+    cursor = util.CursorWrapper(self._cursor(), self)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 387, in _cursor
+    self.connection = Database.connect(**kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/__init__.py", line 81, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 187, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+[2015-08-03 02:11:26,827] WARNING : Forbidden (CSRF cookie not set.): /login_auth/
+[2015-08-03 02:11:31,397] ERROR : Internal Server Error: /login_auth/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/wzhl_oa/login/views.py", line 15, in login_auth
+    authed = auth.authenticate(username=user_auth,password=passwd_auth)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/__init__.py", line 45, in authenticate
+    user = backend.authenticate(**credentials)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/backends.py", line 14, in authenticate
+    user = User.objects.get(username=username)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 817, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/lib/python2.6/site-packages/django/db/backends/__init__.py", line 319, in cursor
+    cursor = util.CursorWrapper(self._cursor(), self)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 387, in _cursor
+    self.connection = Database.connect(**kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/__init__.py", line 81, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 187, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+[2015-08-03 02:11:31,400] WARNING : Forbidden (CSRF cookie not set.): /login_auth/
+[2015-08-03 02:11:42,998] ERROR : Internal Server Error: /login_auth/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/wzhl_oa/login/views.py", line 15, in login_auth
+    authed = auth.authenticate(username=user_auth,password=passwd_auth)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/__init__.py", line 45, in authenticate
+    user = backend.authenticate(**credentials)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/backends.py", line 14, in authenticate
+    user = User.objects.get(username=username)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 817, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/lib/python2.6/site-packages/django/db/backends/__init__.py", line 319, in cursor
+    cursor = util.CursorWrapper(self._cursor(), self)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 387, in _cursor
+    self.connection = Database.connect(**kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/__init__.py", line 81, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 187, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+[2015-08-03 02:11:43,000] WARNING : Forbidden (CSRF cookie not set.): /login_auth/
+[2015-08-03 02:11:48,546] ERROR : Internal Server Error: /login_auth/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/wzhl_oa/login/views.py", line 15, in login_auth
+    authed = auth.authenticate(username=user_auth,password=passwd_auth)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/__init__.py", line 45, in authenticate
+    user = backend.authenticate(**credentials)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/backends.py", line 14, in authenticate
+    user = User.objects.get(username=username)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 817, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/lib/python2.6/site-packages/django/db/backends/__init__.py", line 319, in cursor
+    cursor = util.CursorWrapper(self._cursor(), self)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 387, in _cursor
+    self.connection = Database.connect(**kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/__init__.py", line 81, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 187, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+[2015-08-03 02:11:48,549] WARNING : Forbidden (CSRF cookie not set.): /login_auth/
+[2015-08-03 02:11:51,748] ERROR : Internal Server Error: /order_form/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 19, in _wrapped_view
+    if test_func(request.user):
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 42, in <lambda>
+    lambda u: u.is_authenticated(),
+  File "/usr/lib/python2.6/site-packages/django/utils/functional.py", line 184, in inner
+    self._setup()
+  File "/usr/lib/python2.6/site-packages/django/utils/functional.py", line 248, in _setup
+    self._wrapped = self._setupfunc()
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/middleware.py", line 17, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/middleware.py", line 9, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/__init__.py", line 98, in get_user
+    user_id = request.session[SESSION_KEY]
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/base.py", line 39, in __getitem__
+    return self._session[key]
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/base.py", line 165, in _get_session
+    self._session_cache = self.load()
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/db.py", line 19, in load
+    expire_date__gt=timezone.now()
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 817, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/lib/python2.6/site-packages/django/db/backends/__init__.py", line 319, in cursor
+    cursor = util.CursorWrapper(self._cursor(), self)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 387, in _cursor
+    self.connection = Database.connect(**kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/__init__.py", line 81, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 187, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+[2015-08-03 02:11:53,087] WARNING : Not Found: /favicon.ico
+[2015-08-03 02:11:53,122] WARNING : Not Found: /favicon.ico
+[2015-08-03 02:11:53,923] ERROR : Internal Server Error: /login_auth/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/wzhl_oa/login/views.py", line 15, in login_auth
+    authed = auth.authenticate(username=user_auth,password=passwd_auth)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/__init__.py", line 45, in authenticate
+    user = backend.authenticate(**credentials)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/backends.py", line 14, in authenticate
+    user = User.objects.get(username=username)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 817, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/lib/python2.6/site-packages/django/db/backends/__init__.py", line 319, in cursor
+    cursor = util.CursorWrapper(self._cursor(), self)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 387, in _cursor
+    self.connection = Database.connect(**kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/__init__.py", line 81, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 187, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+[2015-08-03 02:11:53,925] WARNING : Forbidden (CSRF cookie not set.): /login_auth/
+[2015-08-03 02:11:53,992] ERROR : Internal Server Error: /order_form/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 19, in _wrapped_view
+    if test_func(request.user):
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 42, in <lambda>
+    lambda u: u.is_authenticated(),
+  File "/usr/lib/python2.6/site-packages/django/utils/functional.py", line 184, in inner
+    self._setup()
+  File "/usr/lib/python2.6/site-packages/django/utils/functional.py", line 248, in _setup
+    self._wrapped = self._setupfunc()
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/middleware.py", line 17, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/middleware.py", line 9, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/__init__.py", line 98, in get_user
+    user_id = request.session[SESSION_KEY]
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/base.py", line 39, in __getitem__
+    return self._session[key]
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/base.py", line 165, in _get_session
+    self._session_cache = self.load()
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/db.py", line 19, in load
+    expire_date__gt=timezone.now()
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 817, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/lib/python2.6/site-packages/django/db/backends/__init__.py", line 319, in cursor
+    cursor = util.CursorWrapper(self._cursor(), self)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 387, in _cursor
+    self.connection = Database.connect(**kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/__init__.py", line 81, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 187, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+[2015-08-03 02:11:54,211] ERROR : Internal Server Error: /order_form/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 19, in _wrapped_view
+    if test_func(request.user):
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 42, in <lambda>
+    lambda u: u.is_authenticated(),
+  File "/usr/lib/python2.6/site-packages/django/utils/functional.py", line 184, in inner
+    self._setup()
+  File "/usr/lib/python2.6/site-packages/django/utils/functional.py", line 248, in _setup
+    self._wrapped = self._setupfunc()
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/middleware.py", line 17, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/middleware.py", line 9, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/__init__.py", line 98, in get_user
+    user_id = request.session[SESSION_KEY]
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/base.py", line 39, in __getitem__
+    return self._session[key]
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/base.py", line 165, in _get_session
+    self._session_cache = self.load()
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/db.py", line 19, in load
+    expire_date__gt=timezone.now()
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 817, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/lib/python2.6/site-packages/django/db/backends/__init__.py", line 319, in cursor
+    cursor = util.CursorWrapper(self._cursor(), self)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 387, in _cursor
+    self.connection = Database.connect(**kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/__init__.py", line 81, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 187, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+[2015-08-03 02:12:06,780] ERROR : Internal Server Error: /order_form/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 19, in _wrapped_view
+    if test_func(request.user):
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 42, in <lambda>
+    lambda u: u.is_authenticated(),
+  File "/usr/lib/python2.6/site-packages/django/utils/functional.py", line 184, in inner
+    self._setup()
+  File "/usr/lib/python2.6/site-packages/django/utils/functional.py", line 248, in _setup
+    self._wrapped = self._setupfunc()
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/middleware.py", line 17, in <lambda>
+    request.user = SimpleLazyObject(lambda: get_user(request))
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/middleware.py", line 9, in get_user
+    request._cached_user = auth.get_user(request)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/__init__.py", line 98, in get_user
+    user_id = request.session[SESSION_KEY]
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/base.py", line 39, in __getitem__
+    return self._session[key]
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/base.py", line 165, in _get_session
+    self._session_cache = self.load()
+  File "/usr/lib/python2.6/site-packages/django/contrib/sessions/backends/db.py", line 19, in load
+    expire_date__gt=timezone.now()
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 817, in execute_sql
+    cursor = self.connection.cursor()
+  File "/usr/lib/python2.6/site-packages/django/db/backends/__init__.py", line 319, in cursor
+    cursor = util.CursorWrapper(self._cursor(), self)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 387, in _cursor
+    self.connection = Database.connect(**kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/__init__.py", line 81, in Connect
+    return Connection(*args, **kwargs)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 187, in __init__
+    super(Connection, self).__init__(*args, **kwargs2)
+OperationalError: (2003, "Can't connect to MySQL server on '127.0.0.1' (111)")
+[2015-08-03 02:12:37,557] INFO : <zhangyongdong> login in sucess.
+[2015-08-03 02:12:44,548] INFO : <xujianfeng> login in sucess.
+[2015-08-03 02:13:00,282] INFO : <guyingminyu> login in sucess.
+[2015-08-03 02:13:02,605] INFO : <yanglin> login in sucess.
+[2015-08-03 02:13:31,076] WARNING : Not Found: /favicon.ico
+[2015-08-03 02:13:31,085] WARNING : Not Found: /favicon.ico
+[2015-08-03 02:13:38,007] WARNING : Not Found: /favicon.ico
+[2015-08-03 02:13:40,740] INFO : <guchao> login in sucess.
+[2015-08-03 10:15:01,061] INFO : <xuchi> login in sucess.
+[2015-08-03 10:22:59,146] INFO : <yangli> login in sucess.
+[2015-08-03 10:22:59,996] INFO : <luxiaofeng> login in sucess.
+[2015-08-03 10:26:31,870] INFO : <gaoru> login in sucess.
+[2015-08-03 10:30:52,173] INFO : <huangsen> login in sucess.
+[2015-08-03 10:35:56,859] WARNING : Not Found: /favicon.ico
+[2015-08-03 10:45:31,076] INFO : <yanglin> login in sucess.
+[2015-08-03 10:55:05,455] INFO : <yuanjiaming> login in sucess.
+[2015-08-03 11:00:51,071] INFO : <yanglin> login in sucess.
+[2015-08-03 12:08:37,575] INFO : <xuezhimin> login in sucess.
+[2015-08-03 12:09:55,881] INFO : <xuezhimin> login in sucess.
+[2015-08-03 12:11:25,862] INFO : <xuezhimin> login in sucess.
+[2015-08-03 12:11:39,089] WARNING : Not Found: /favicon.ico
+[2015-08-03 12:11:39,112] WARNING : Not Found: /favicon.ico
+[2015-08-03 12:15:45,451] INFO : <xuezhimin> login in sucess.
+[2015-08-03 12:33:45,382] INFO : <xuezhimin> login in sucess.
+[2015-08-03 14:04:25,030] WARNING : Not Found: /favicon.ico
+[2015-08-03 14:06:41,928] INFO : <xuezhimin> login in sucess.
+[2015-08-03 14:13:32,537] WARNING : <None> login in fail.
+[2015-08-03 14:13:49,785] WARNING : <None> login in fail.
+[2015-08-03 14:14:17,309] WARNING : <None> login in fail.
+[2015-08-03 15:21:05,936] INFO : <huangsen> login in sucess.
+[2015-08-03 16:33:20,348] WARNING : <孙格> login in fail.
+[2015-08-03 16:33:33,367] INFO : <sunge > login in sucess.
+[2015-08-03 17:03:37,263] INFO : <chengjun> login in sucess.
+[2015-08-03 18:08:03,294] INFO : <yanglin> login in sucess.
+[2015-08-04 09:26:07,771] INFO : <caoyu> login in sucess.
+[2015-08-04 09:28:20,230] WARNING : Not Found: /apple-touch-icon-precomposed.png
+[2015-08-04 09:28:20,251] WARNING : Not Found: /apple-touch-icon.png
+[2015-08-04 10:03:51,093] INFO : <xujianfeng> login in sucess.
+[2015-08-04 10:06:16,825] INFO : <zhangyongdong> login in sucess.
+[2015-08-04 10:07:21,061] INFO : <luxiaofeng> login in sucess.
+[2015-08-04 10:07:58,412] INFO : <chengjun> login in sucess.
+[2015-08-04 10:10:44,050] INFO : <wuchunyan> login in sucess.
+[2015-08-04 10:13:07,597] INFO : <yanglin> login in sucess.
+[2015-08-04 10:14:15,120] INFO : <xuchi> login in sucess.
+[2015-08-04 10:16:27,685] INFO : <gaoru> login in sucess.
+[2015-08-04 10:16:49,554] WARNING : Not Found: /favicon.ico
+[2015-08-04 10:17:03,857] INFO : <chensi> login in sucess.
+[2015-08-04 10:17:05,866] WARNING : Not Found: /favicon.ico
+[2015-08-04 10:17:55,352] INFO : <chengjun> login in sucess.
+[2015-08-04 10:19:09,547] INFO : <yangli> login in sucess.
+[2015-08-04 10:20:03,293] INFO : <yanglin> login in sucess.
+[2015-08-04 10:23:03,488] WARNING : Not Found: /favicon.ico
+[2015-08-04 10:44:05,369] INFO : <luxiaofeng> login in sucess.
+[2015-08-04 11:19:55,628] INFO : <guchao> login in sucess.
+[2015-08-04 11:28:08,399] INFO : <gaoru> login in sucess.
+[2015-08-04 11:53:46,867] WARNING : Not Found: /favicon.ico
+[2015-08-04 11:53:46,910] WARNING : Not Found: /favicon.ico
+[2015-08-04 11:56:58,670] INFO : <sunge> login in sucess.
+[2015-08-04 11:57:15,859] WARNING : <mingweizhang> login in fail.
+[2015-08-04 11:57:35,062] WARNING : <mingweizhang@hub520.com> login in fail.
+[2015-08-04 11:58:06,621] WARNING : <mingweizhang> login in fail.
+[2015-08-04 11:58:47,693] INFO : <zhangmingwei> login in sucess.
+[2015-08-04 12:27:00,870] INFO : <liyong> login in sucess.
+[2015-08-04 12:27:03,723] WARNING : Not Found: /favicon.ico
+[2015-08-04 12:35:21,189] WARNING : Not Found: /favicon.ico
+[2015-08-04 13:37:30,725] WARNING : Not Found: /ADMIN
+[2015-08-04 13:37:30,798] WARNING : Not Found: /assets/scripts/core/app.js
+[2015-08-04 13:37:38,396] WARNING : Not Found: /favicon.ico
+[2015-08-04 13:55:50,369] WARNING : <yuanjiaming> login in fail.
+[2015-08-04 13:55:54,799] INFO : <yuanjiaming> login in sucess.
+[2015-08-04 14:00:46,583] INFO : <yanglin> login in sucess.
+[2015-08-04 15:12:02,952] INFO : <yanglin> login in sucess.
+[2015-08-04 15:19:20,405] INFO : <daiwei> login in sucess.
+[2015-08-04 18:03:38,460] INFO : <yanglin> login in sucess.
+[2015-08-04 18:05:44,756] WARNING : <gaoru> login in fail.
+[2015-08-04 18:05:54,118] INFO : <gaoru> login in sucess.
+[2015-08-04 18:24:49,495] INFO : <zhangyongdong> login in sucess.
+[2015-08-05 09:59:18,777] INFO : <xujianfeng> login in sucess.
+[2015-08-05 10:02:26,967] INFO : <gaoru> login in sucess.
+[2015-08-05 10:02:46,890] WARNING : <zhuweigang> login in fail.
+[2015-08-05 10:03:01,521] INFO : <zhuweigang> login in sucess.
+[2015-08-05 10:08:22,009] INFO : <yanglin> login in sucess.
+[2015-08-05 10:08:43,979] INFO : <yangli> login in sucess.
+[2015-08-05 10:10:44,133] INFO : <luxiaofeng> login in sucess.
+[2015-08-05 10:19:56,005] INFO : <sunge> login in sucess.
+[2015-08-05 10:20:39,402] INFO : <guchao> login in sucess.
+[2015-08-05 10:22:35,024] INFO : <zhangyongdong> login in sucess.
+[2015-08-05 10:35:38,995] INFO : <zhutao> login in sucess.
+[2015-08-05 10:37:42,560] INFO : <zhutao> login in sucess.
+[2015-08-05 10:38:35,449] WARNING : <hutianyu> login in fail.
+[2015-08-05 10:38:42,627] WARNING : <hutianyu> login in fail.
+[2015-08-05 10:38:48,090] WARNING : <tianyuhu> login in fail.
+[2015-08-05 10:38:49,384] INFO : <xuezhimin> login in sucess.
+[2015-08-05 10:39:40,706] WARNING : <hutianyu> login in fail.
+[2015-08-05 10:39:47,231] WARNING : <hutianyu> login in fail.
+[2015-08-05 11:01:37,800] INFO : <zhutao> login in sucess.
