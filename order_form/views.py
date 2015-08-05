@@ -124,10 +124,13 @@ def order_form_data(request):
     sSortDir_0 = request.POST.get('sSortDir_0')#asc/desc
     sSearch = request.POST.get('sSearch')#高级搜索
 
+    type = request.POST.get('type')
     begin = request.POST.get('begin')
     end = request.POST.get('end')
+
     begin = begin.split('-')
     end = end.split('-')
+
     begin = datetime.datetime(int(begin[0]),int(begin[1]),int(begin[2]))
     try:
         end = datetime.datetime(int(end[0]),int(end[1]),int(end[2])+1)
@@ -139,33 +142,33 @@ def order_form_data(request):
 
     if  sSortDir_0 == 'asc':
         if sSearch == '':
-            result_data = order.objects.filter(add_time__range=(begin,end)) \
+            result_data = order.objects.filter(add_time__range=(begin,end)).filter(type=type) \
                                                 .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = order.objects.filter(add_time__range=(begin,end)).count()
+            iTotalRecords = order.objects.filter(add_time__range=(begin,end)).filter(type=type).count()
         else:
-            result_data = order.objects.filter(add_time__range=(begin,end)).filter( \
+            result_data = order.objects.filter(add_time__range=(begin,end)).filter(type=type).filter( \
                                                Q(name__contains=sSearch) | \
                                                Q(type__contains=sSearch) | \
                                                Q(order_name__contains=sSearch) | \
                                                Q(comment__contains=sSearch)) \
                                             .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = order.objects.filter(add_time__range=(begin,end)).filter( \
+            iTotalRecords = order.objects.filter(add_time__range=(begin,end)).filter(type=type).filter( \
                                                Q(name__contains=sSearch) | \
                                                Q(type__contains=sSearch) | \
                                                Q(order_name__contains=sSearch) | \
                                                Q(comment__contains=sSearch)).count()
     else:
         if sSearch == '':
-            result_data = order.objects.filter(add_time__range=(begin,end)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = order.objects.filter(add_time__range=(begin,end)).count()
+            result_data = order.objects.filter(add_time__range=(begin,end)).filter(type=type).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = order.objects.filter(add_time__range=(begin,end)).filter(type=type).count()
         else:
-            result_data = order.objects.filter(add_time__range=(begin,end)).filter( \
+            result_data = order.objects.filter(add_time__range=(begin,end)).filter(type=type).filter( \
                                                Q(name__contains=sSearch) | \
                                                Q(type__contains=sSearch) | \
                                                Q(order_name__contains=sSearch) | \
                                                Q(comment__contains=sSearch)) \
                                             .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = order.objects.filter(add_time__range=(begin,end)).filter( \
+            iTotalRecords = order.objects.filter(add_time__range=(begin,end)).filter(type=type).filter( \
                                                Q(name__contains=sSearch) | \
                                                Q(type__contains=sSearch) | \
                                                Q(order_name__contains=sSearch) | \
