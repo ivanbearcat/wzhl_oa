@@ -216,10 +216,11 @@ def order_form_save(request):
     end = datetime.datetime.now() + datetime.timedelta(1)
     end = end.date()
 
-    if type == u'午餐' and time_now > datetime.time(11,00):
-        return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过午餐订餐时间'}),content_type="application/json")
-    elif type == u'晚餐' and time_now > datetime.time(16,30):
-        return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过晚餐订餐时间'}),content_type="application/json")
+    if not request.user.is_staff:
+        if type == u'午餐' and time_now > datetime.time(11,00):
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过午餐订餐时间'}),content_type="application/json")
+        elif type == u'晚餐' and time_now > datetime.time(16,30):
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过晚餐订餐时间'}),content_type="application/json")
     try:
         if _id =='':
             for i in name.split(','):
