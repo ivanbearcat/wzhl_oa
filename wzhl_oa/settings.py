@@ -20,7 +20,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'wzhl',
 	    'USER': 'admin',
-	    'PASSWORD': 'rp1qaz@WSX',
+	    'PASSWORD': '!@#rp1qaz@WSX',
 	    'HOST': '127.0.0.1',
     }
 }
