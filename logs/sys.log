@@ -6018,3 +6018,53 @@ TypeError: int() argument must be a string or a number, not 'NoneType'
 [2015-10-27 15:23:36,959] INFO : <xuezhimin> login in sucess.
 [2015-10-27 15:24:36,544] INFO : <xuezhimin> login in sucess.
 [2015-10-27 15:24:56,271] INFO : <xuezhimin> login in sucess.
+[2015-10-27 16:43:49,850] WARNING : Not Found: /favicon.ico
+[2015-10-27 16:44:48,482] ERROR : Internal Server Error: /summary/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 267, in summary
+    lunch = order.objects.filter(add_time__range=(begin,end)).filter(type=type).count()
+NameError: global name 'begin' is not defined
+[2015-10-27 16:44:54,481] ERROR : Internal Server Error: /summary/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 267, in summary
+    lunch = order.objects.filter(add_time__range=(begin,end)).filter(type=type).count()
+NameError: global name 'begin' is not defined
+[2015-10-27 16:47:49,108] ERROR : Internal Server Error: /summary/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 267, in summary
+    lunch_int = order.objects.filter(add_time__range=(begin,end)).filter(type=type).count()
+NameError: global name 'begin' is not defined
+[2015-10-27 16:47:51,731] ERROR : Internal Server Error: /summary/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 267, in summary
+    lunch_int = order.objects.filter(add_time__range=(begin,end)).filter(type=type).count()
+NameError: global name 'begin' is not defined
+[2015-10-27 16:48:45,328] ERROR : Internal Server Error: /summary/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 267, in summary
+    lunch_int = order.objects.filter(add_time__range=(begin,end)).filter(type=type).count()
+NameError: global name 'begin' is not defined
+[2015-10-27 16:50:27,833] ERROR : Internal Server Error: /summary/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 268, in summary
+    lunch_int = order.objects.filter(add_time__range=(begin,end)).filter(type=type).count()
+NameError: global name 'begin' is not defined
+[2015-10-27 16:50:33,143] ERROR : Internal Server Error: /summary/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/share/nginx/html/order_form/views.py", line 269, in summary
+    lunch_int = order.objects.filter(add_time__range=(begin,end)).filter(type=type).count()
+NameError: global name 'begin' is not defined

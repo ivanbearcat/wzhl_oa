@@ -29,4 +29,5 @@ urlpatterns = patterns('',
     url(r'^order_form_dropdown/', order_form_dropdown),
     url(r'^order_form_save/', order_form_save),
     url(r'^order_form_del/', order_form_del),
+    url(r'^summary/', summary),
 )

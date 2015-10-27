@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response,render
 from django.http import HttpResponseRedirect,HttpResponse
 from order_form.models import user,order
 from django.db.models.query_utils import Q
@@ -219,7 +219,7 @@ def order_form_save(request):
     if not request.user.is_staff:
         if type == u'午餐' and time_now > datetime.time(11,00):
             return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过午餐订餐时间'}),content_type="application/json")
-        elif type == u'晚餐' and time_now > datetime.time(16,30):
+        elif type == u'晚餐' and time_now > datetime.time(16,00):
             return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过晚餐订餐时间'}),content_type="application/json")
     try:
         if _id =='':
@@ -254,7 +254,7 @@ def order_form_del(request):
         if not request.user.is_staff:
             if orm.type == u'午餐' and time_now > datetime.time(11,00):
                 return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过午餐订餐时间，无法删除'}),content_type="application/json")
-            elif orm.type == u'晚餐' and time_now > datetime.time(16,30):
+            elif orm.type == u'晚餐' and time_now > datetime.time(16,00):
                 return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过晚餐订餐时间，无法删除'}),content_type="application/json")
             if orm.order_name != request.user.first_name and orm.name != request.user.first_name:
                 return HttpResponse(simplejson.dumps({'code':1,'msg':u'您不能删除别人的订餐'}),content_type="application/json")
@@ -262,3 +262,11 @@ def order_form_del(request):
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'删除成功'}),content_type="application/json")
     except Exception,e:
         return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+def summary(request):
+    today_date = datetime.datetime.today().date()
+    begin = datetime.datetime(today_date.year,today_date.month,today_date.day)
+    end = datetime.datetime(today_date.year,today_date.month,today_date.day,23,59)
+    lunch_int = order.objects.filter(add_time__range=(begin,end)).filter(type='午餐').count()
+    dinner_int = order.objects.filter(add_time__range=(begin,end)).filter(type='晚餐').count()
+    return render(request,'order_form/summary.html',{'lunch':lunch_int,'dinner':dinner_int})

@@ -130,9 +130,27 @@ License: You must have a valid license purchased only from themeforest(the above
 <script src="/static/assets/scripts/custom/login.js" tppabs="http://www.keenthemes.com/preview/metronic_admin/assets/scripts/custom/login.js" type="text/javascript"></script>
 <!-- END PAGE LEVEL SCRIPTS -->
 <script>
-		jQuery(document).ready(function() {     
+		jQuery(document).ready(function() {
+            function IsPC() {
+                var userAgentInfo = navigator.userAgent;
+                var Agents = ["Android", "iPhone",
+                    "SymbianOS", "Windows Phone",
+                    "iPad", "iPod"];
+                var flag = true;
+                for (var v = 0; v < Agents.length; v++) {
+                    if (userAgentInfo.indexOf(Agents[v]) > 0) {
+                        flag = false;
+                        break;
+                    }
+                }
+                return flag;
+            }
+            if (!IsPC()){
+                window.location.href="/summary/"
+            }
 			App.init();
 			Login.init();
+
 		});
 </script>
 <!-- END JAVASCRIPTS -->
