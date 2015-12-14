@@ -133,10 +133,8 @@ INSTALLED_APPS = (
     # 'django.contrib.admindocs',
     # 'debugtools',
     'user_manage',
-    #'assets',
-    #'audit',
-    #'operation',
     'order_form',
+    'vacation',
 )
 
 # A sample logging configuration. The only tangible logging

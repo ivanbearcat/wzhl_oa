@@ -6683,3 +6683,376 @@ SuspiciousOperation: Invalid HTTP_HOST header (you may need to set ALLOWED_HOSTS
 [2015-12-11 10:32:12,208] WARNING : Not Found: /apple-touch-icon.png
 [2015-12-11 10:32:22,552] WARNING : Not Found: /apple-touch-icon-precomposed.png
 [2015-12-11 10:32:22,561] WARNING : Not Found: /apple-touch-icon.png
+[2015-12-11 15:43:13,477] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:13,580] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:13,649] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:13,659] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:13,669] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:13,679] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:13,688] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:18,704] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:18,722] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:18,734] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:18,747] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:28,765] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:28,790] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:28,810] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:28,834] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:28,854] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:28,868] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:33,888] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:33,917] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:33,941] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:33,967] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:33,992] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:34,021] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:34,037] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:34,054] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:34,071] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:34,089] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:34,106] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:34,124] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:34,141] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:34,163] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:34,184] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,209] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,237] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,259] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,273] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,287] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,301] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,315] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,336] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,352] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,365] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,380] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,394] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,408] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,420] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,434] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,447] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,463] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,477] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,492] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:39,505] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:44,525] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:44,541] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:44,620] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:44,635] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:44,650] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:44,664] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:49,685] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:49,707] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:54,778] WARNING : Not Found: /static/assets/img/
+[2015-12-11 15:43:54,793] WARNING : Not Found: /static/assets/img/
+[2015-12-11 16:25:25,018] WARNING : Not Found: /favicon.ico
+[2015-12-11 16:25:25,035] WARNING : Not Found: /favicon.ico
+[2015-12-11 16:45:10,877] WARNING : Not Found: /vacation_table/
+[2015-12-11 16:45:11,095] WARNING : Not Found: /vacation_table/assets/scripts/core/app.js
+[2015-12-11 16:45:11,273] WARNING : Not Found: /vacation_table/assets/scripts/core/app.js
+[2015-12-11 16:46:12,493] ERROR : Internal Server Error: /vacation_table/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 18, in vacation_table
+    'page_name2':u'总览表'})
+  File "/usr/lib/python2.6/site-packages/django/shortcuts/__init__.py", line 44, in render
+    return HttpResponse(loader.render_to_string(*args, **kwargs),
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 169, in render_to_string
+    t = get_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: vacation/vacation_table.html
+[2015-12-11 16:46:35,723] ERROR : Internal Server Error: /vacation_table/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 18, in vacation_table
+    'page_name2':u'总览表'})
+  File "/usr/lib/python2.6/site-packages/django/shortcuts/__init__.py", line 44, in render
+    return HttpResponse(loader.render_to_string(*args, **kwargs),
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 169, in render_to_string
+    t = get_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 145, in get_template
+    template, origin = find_template(template_name)
+  File "/usr/lib/python2.6/site-packages/django/template/loader.py", line 138, in find_template
+    raise TemplateDoesNotExist(name)
+TemplateDoesNotExist: vacation/vacation_table.html
+[2015-12-11 16:57:19,283] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 16:57:19,292] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:01:47,673] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:01:47,677] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:04:26,977] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:04:26,980] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:05:46,246] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:05:46,251] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:10:41,083] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:10:41,086] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:12:01,434] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:12:01,440] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:21:15,318] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:21:15,325] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:22:07,917] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:22:07,931] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:34:51,685] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:34:51,691] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:37:24,716] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:37:24,728] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:41:44,339] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:41:44,342] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:42:10,586] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:42:10,596] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:45:23,312] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:45:23,316] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:48:21,898] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:48:21,902] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 17:48:55,032] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 17:48:55,045] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:08:18,629] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:08:18,632] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:09:13,471] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:09:13,474] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:09:54,282] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:09:54,285] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:14:17,349] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:14:17,352] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:14:53,867] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:14:53,870] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:17:45,892] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:17:45,897] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:21:18,877] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:21:18,882] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:32:05,882] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:32:05,889] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:38:12,784] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:38:12,788] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:39:28,432] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:39:28,443] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:42:43,894] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:42:43,900] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:44:35,765] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:44:35,771] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:47:03,218] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:47:03,227] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:48:16,446] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:48:16,450] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:48:59,445] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:48:59,450] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:49:29,875] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:49:29,893] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:51:47,067] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:51:47,074] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:53:29,453] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:53:29,466] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:54:33,162] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:54:33,168] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:55:12,785] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:55:12,796] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:58:43,860] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:58:43,867] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 18:59:15,916] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 18:59:15,921] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 19:00:07,744] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 19:00:07,747] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 19:04:50,203] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 19:04:50,205] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 19:05:20,242] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 19:05:20,251] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 19:07:42,227] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 19:07:42,230] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 19:09:15,003] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 19:09:15,008] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 19:10:29,944] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 19:10:29,952] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 19:10:56,140] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 19:10:56,143] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 19:11:45,054] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 19:11:45,059] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 19:18:05,794] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 19:18:05,798] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 19:20:49,311] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 19:20:49,321] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-11 19:22:30,298] WARNING : Not Found: /assets_asset_data/
+[2015-12-11 19:22:30,307] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-12 03:18:27,911] WARNING : Not Found: /robots.txt
+[2015-12-12 03:18:33,254] WARNING : Not Found: /sitemap.xml
+[2015-12-14 08:47:37,150] WARNING : Not Found: www.google.co.uk:443
+[2015-12-14 08:47:37,153] WARNING : Forbidden (CSRF cookie not set.): www.google.co.uk:443
+[2015-12-14 08:47:37,180] WARNING : Not Found: www.google.co.uk:443
+[2015-12-14 08:47:37,182] WARNING : Forbidden (CSRF cookie not set.): www.google.co.uk:443
+[2015-12-14 08:47:37,231] WARNING : Not Found: www.google.co.uk:443
+[2015-12-14 08:47:37,233] WARNING : Forbidden (CSRF cookie not set.): www.google.co.uk:443
+[2015-12-14 08:47:37,435] WARNING : Not Found: www.google.co.uk:443
+[2015-12-14 08:47:37,436] WARNING : Forbidden (CSRF cookie not set.): www.google.co.uk:443
+[2015-12-14 08:47:37,481] WARNING : Not Found: www.google.co.uk:443
+[2015-12-14 08:47:37,483] WARNING : Forbidden (CSRF cookie not set.): www.google.co.uk:443
+[2015-12-14 08:47:37,589] WARNING : Not Found: www.google.co.uk:443
+[2015-12-14 08:47:37,591] WARNING : Forbidden (CSRF cookie not set.): www.google.co.uk:443
+[2015-12-14 08:47:37,637] WARNING : Not Found: www.google.co.uk:443
+[2015-12-14 08:47:37,639] WARNING : Forbidden (CSRF cookie not set.): www.google.co.uk:443
+[2015-12-14 10:15:28,466] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:15:28,477] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:17:52,657] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:17:52,669] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:19:26,004] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:19:26,017] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:21:03,680] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:21:03,689] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:22:28,333] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:22:28,344] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:24:44,806] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:24:44,815] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:26:15,687] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:26:15,693] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:37:24,885] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:37:24,906] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:43:21,721] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:43:21,735] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:44:40,357] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:44:40,367] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:44:57,011] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:44:57,014] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:45:29,041] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:45:29,052] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:50:47,644] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:50:47,652] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:51:55,282] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:51:55,294] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 10:52:47,078] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 10:52:47,084] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 11:03:04,068] WARNING : Not Found: /assets_asset_data/
+[2015-12-14 11:03:04,076] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-14 11:32:47,170] WARNING : Not Found: /favicon.ico
+[2015-12-14 11:32:47,181] WARNING : Not Found: /favicon.ico
+[2015-12-14 11:50:05,166] WARNING : Not Found: /vacation_table_save/
+[2015-12-14 11:50:05,167] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_table_save/
+[2015-12-14 11:51:14,603] ERROR : (1048, "Column 'Statutory_annual_leave_available' cannot be null")
+[2015-12-14 11:52:21,175] ERROR : (1048, "Column 'Statutory_annual_leave_available' cannot be null")
+[2015-12-14 14:03:24,840] ERROR : Internal Server Error: /vacation_table_save/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 104, in vacation_table_save
+    graduate_year_datetime = datetime.date(int(graduate_year_date_list[0]),int(graduate_year_date_list[1]),int(graduate_year_date_list)[2])
+TypeError: int() argument must be a string or a number, not 'list'
+[2015-12-14 14:03:24,844] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_table_save/
+[2015-12-14 14:05:57,629] ERROR : Internal Server Error: /vacation_table_save/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 104, in vacation_table_save
+    graduate_year_datetime = datetime.date(int(graduate_year_date_list[0]),int(graduate_year_date_list[1]),int(graduate_year_date_list)[2])
+TypeError: int() argument must be a string or a number, not 'list'
+[2015-12-14 14:05:57,633] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_table_save/
+[2015-12-14 14:48:27,297] ERROR : (1062, "Duplicate entry '\xe8\x96\x9b\xe6\x99\xba\xe6\x95\x8f' for key 'name'")
+[2015-12-14 14:54:08,616] ERROR : Internal Server Error: /vacation_table_del/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 141, in vacation_table_del
+    orm = user_table.get(id=_id)
+AttributeError: type object 'user_table' has no attribute 'get'
+[2015-12-14 14:54:08,619] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_table_del/
+[2015-12-14 16:02:27,793] ERROR : Internal Server Error: /vacation_table/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 6, in <module>
+    from vacation.views import *
+  File "/usr/share/nginx/html/vacation/views.py", line 4, in <module>
+    from vacation.models import user_table,vacation_operation_log
+ImportError: cannot import name vacation_operation_log
+[2015-12-14 16:20:26,355] ERROR : Internal Server Error: /vacation_table_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 72, in vacation_table_data
+    '6':i.Statutory_annual_leave_available,
+AttributeError: 'user_table' object has no attribute 'Statutory_annual_leave_available'
+[2015-12-14 16:20:26,358] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_table_data/
+[2015-12-14 16:23:38,264] WARNING : Not Found: /vacation_refresh/
+[2015-12-14 16:23:38,364] WARNING : Not Found: /vacation_refresh/assets/scripts/core/app.js
+[2015-12-14 16:23:38,534] WARNING : Not Found: /vacation_refresh/assets/scripts/core/app.js
+[2015-12-14 16:24:19,226] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 159, in vacation_refresh
+    graduate_year_date_list = graduate_year.split('-')
+AttributeError: 'datetime.date' object has no attribute 'split'
+[2015-12-14 16:26:37,384] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 127, in get_response
+    raise ValueError("The view %s.%s didn't return an HttpResponse object." % (callback.__module__, view_name))
+ValueError: The view vacation.views.vacation_refresh didn't return an HttpResponse object.
+[2015-12-14 16:27:30,866] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 158, in vacation_refresh
+    print '11    ' + graduate_year + '     1111'
+TypeError: cannot concatenate 'str' and 'datetime.date' objects
+[2015-12-14 16:27:59,456] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 127, in get_response
+    raise ValueError("The view %s.%s didn't return an HttpResponse object." % (callback.__module__, view_name))
+ValueError: The view vacation.views.vacation_refresh didn't return an HttpResponse object.
+[2015-12-14 16:28:31,856] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 127, in get_response
+    raise ValueError("The view %s.%s didn't return an HttpResponse object." % (callback.__module__, view_name))
+ValueError: The view vacation.views.vacation_refresh didn't return an HttpResponse object.
+[2015-12-14 16:29:01,992] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 158, in vacation_refresh
+    print graduate_year.day - datetime.timedelta(-1)
+TypeError: unsupported operand type(s) for -: 'int' and 'datetime.timedelta'
+[2015-12-14 16:29:24,187] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 158, in vacation_refresh
+    print graduate_year.day - datetime.timedelta(1)
+TypeError: unsupported operand type(s) for -: 'int' and 'datetime.timedelta'
+[2015-12-14 16:30:28,802] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 127, in get_response
+    raise ValueError("The view %s.%s didn't return an HttpResponse object." % (callback.__module__, view_name))
+ValueError: The view vacation.views.vacation_refresh didn't return an HttpResponse object.
+[2015-12-14 16:32:34,891] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 127, in get_response
+    raise ValueError("The view %s.%s didn't return an HttpResponse object." % (callback.__module__, view_name))
+ValueError: The view vacation.views.vacation_refresh didn't return an HttpResponse object.

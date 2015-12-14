@@ -3,6 +3,7 @@ from main.views import *
 from login.views import *
 from order_form.views import *
 from user_manage.views import *
+from vacation.views import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -30,4 +31,9 @@ urlpatterns = patterns('',
     url(r'^order_form_save/', order_form_save),
     url(r'^order_form_del/', order_form_del),
     url(r'^summary/', summary),
+    url(r'^vacation_table/', vacation_table),
+    url(r'^vacation_table_data/', vacation_table_data),
+    url(r'^vacation_table_save/', vacation_table_save),
+    url(r'^vacation_table_del/', vacation_table_del),
+    url(r'^vacation_refresh/', vacation_refresh),
 )

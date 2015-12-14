@@ -10,6 +10,7 @@
 <link rel="stylesheet" type="text/css" href="/static/assets/plugins/bootstrap-select/bootstrap-select.min.css"/>
 <link rel="stylesheet" type="text/css" href="/static/assets/plugins/jquery-multi-select/css/multi-select.css"/>
 <link rel="stylesheet" type="text/css" href="/static/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+<link rel="stylesheet" type="text/css" href="/static/assets/plugins/bootstrap-datepicker/css/datepicker.css"/>
 {% endblock %}
 {% block body %}
 <div class="row">
@@ -214,7 +215,7 @@ $(document).ready(function () {
     //    startDate: moment().subtract('days', 29),
     //    endDate: moment(),
         minDate: '2012/01/01',
-        maxDate: '2016/12/31',
+        maxDate: '2028/12/31',
         dateLimit: {
             days: 800
         },
@@ -456,7 +457,6 @@ function add() {
             allowClear: true,
             data: d['list']
         });
-
     })
     $('#type').select2("data", "")
     $('#type').select2({
