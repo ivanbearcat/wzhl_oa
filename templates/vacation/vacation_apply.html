@@ -20,10 +20,66 @@
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="container">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat blue">
+                    <div class="visual">
+                        <i class="fa fa-coffee"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                             {{ statutory_annual_leave_available }}
+                        </div>
+                        <div class="desc">
+                             法定年假剩余天数
+                        </div>
+                    </div>
+            {#        <a class="more" href="#">#}
+            {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
+            {#        </a>#}
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat purple">
+                    <div class="visual">
+                        <i class="fa fa-coffee"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                             {{ company_annual_leave_available }}
+                        </div>
+                        <div class="desc">
+                             公司年假剩余天数
+                        </div>
+                    </div>
+            {#        <a class="more" href="#">#}
+            {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
+            {#        </a>#}
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat yellow">
+                    <div class="visual">
+                        <i class="fa fa-coffee"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                             {{ seasons_leave_available }}
+                        </div>
+                        <div class="desc">
+                             季度假剩余天数
+                        </div>
+                    </div>
+            {#        <a class="more" href="#">#}
+            {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
+            {#        </a>#}
+                </div>
+            </div>
+        </div>
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-globe"></i>总览表
+                    <i class="fa fa-globe"></i>请假申请
                 </div>
             </div>
             <div class="portlet-body">
@@ -38,13 +94,13 @@
                         <th>毕业日期</th>
                         <th>可用法定年假</th>
                         <th>已用法定年假</th>
-                        <th>总法定年假</th>
+                        <th>总共法定年假</th>
                         <th>可用公司年假</th>
                         <th>已用公司年假</th>
-                        <th>总公司年假</th>
+                        <th>总共公司年假</th>
                         <th>可用季度假</th>
                         <th>已用季度假</th>
-                        <th>总季度假</th>
+                        <th>总共季度假</th>
                         <th>ID</th>
                     </tr>
                     </thead>
@@ -267,7 +323,7 @@ $(document).ready(function () {
             {
                 "sExtends": 'text',
 
-                "sButtonText": '<font color="white">增加员工</font><i class="fa fa-plus"></i>',
+                "sButtonText": '<font color="white">申请</font><i class="fa fa-plus"></i>',
                 "sButtonClass": "btn green ",
                 "fnComplete": function (nButton, oConfig, nRow) {
                     add()
@@ -276,7 +332,7 @@ $(document).ready(function () {
             },
             {
                 "sExtends": 'select',
-                "sButtonText": '<font color="white">删除</font><i class="fa fa-times"></i>',
+                "sButtonText": '<font color="white">撤销</font><i class="fa fa-times"></i>',
                 "sButtonClass": "btn btn-danger",
                 "fnComplete": function (nButton, oConfig, nRow) {
                     del_verify()
@@ -301,10 +357,10 @@ function loaddata() {
         "bSort": true, //是否使用排序
         "bAutoWidth": true, //列的宽度会根据table的宽度自适应
         "sPaginationType": "bootstrap",
-        "aLengthMenu": [
-                    [50, 100, 200, 100000],
-                    [50, 100, 200, "All"]
-                ],
+//        "aLengthMenu": [
+//                    [5, 15, 20, -1],
+//                    [5, 15, 20, "All"] // change per page values here
+//                ],
         "oTableTools": {
             "sRowSelect": "single",
             'aButtons': aButtons

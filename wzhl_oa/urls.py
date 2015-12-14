@@ -36,4 +36,5 @@ urlpatterns = patterns('',
     url(r'^vacation_table_save/', vacation_table_save),
     url(r'^vacation_table_del/', vacation_table_del),
     url(r'^vacation_refresh/', vacation_refresh),
+    url(r'^vacation_apply/', vacation_apply),
 )

@@ -28,7 +28,7 @@ def vacation_table_data(request):
 
     aaData = []
     sort = ['name','department','supervisor','principal','join_date','graduate_year','statutory_annual_leave_available',
-            'Statutory_annual_leave_used','Statutory_annual_leave_total','company_annual_leave_available',
+            'statutory_annual_leave_used','statutory_annual_leave_total','company_annual_leave_available',
             'company_annual_leave_used','company_annual_leave_total','seasons_leave_available','seasons_leave_used',
             'seasons_leave_total','id']
 
@@ -184,3 +184,16 @@ def vacation_refresh(request):
             print e
             return HttpResponse('ERROR')
     return HttpResponse('OK')
+
+@login_required
+def vacation_apply(request):
+    path = request.path.split('/')[1]
+    orm = user_table.objects.get(name=request.user.first_name)
+    return render(request, 'vacation/vacation_apply.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
+                                                       'path1':'vacation',
+                                                       'path2':path,
+                                                       'page_name1':u'请假管理',
+                                                       'page_name2':u'请假申请',
+                                                       'statutory_annual_leave_available':orm.statutory_annual_leave_available,
+                                                       'company_annual_leave_available':orm.company_annual_leave_available,
+                                                       'seasons_leave_available':orm.seasons_leave_available})
