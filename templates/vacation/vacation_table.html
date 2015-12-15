@@ -45,6 +45,7 @@
                         <th>可用季度假</th>
                         <th>已用季度假</th>
                         <th>总季度假</th>
+                        <th>邮箱地址</th>
                         <th>ID</th>
                     </tr>
                     </thead>
@@ -187,6 +188,29 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">邮箱地址</label>
+
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <span class="twitter-typeahead"
+                                          style="position: relative; display: inline-block;">
+                                        <input type="text" class="form-control tt-hint"
+                                               disabled="" autocomplete="off" spellcheck="false"
+                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                        <input type="text" id="email"
+                                               name="typeahead_example_modal_1"
+                                               class="form-control tt-input" autocomplete="off"
+                                               spellcheck="false" dir="auto"
+                                               style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
+                                            aria-hidden="true"
+                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
+                                            class="tt-dropdown-menu"
+                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
+                                            class="tt-dataset-1"></div></span></span>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div id="id" style="display: none"></div>
@@ -276,6 +300,15 @@ $(document).ready(function () {
             },
             {
                 "sExtends": 'select',
+                "sButtonText": '<font color="white">编辑</font><i class="fa fa-edit"></i>',
+                "sButtonClass": "btn blue",
+                "fnComplete": function (nButton, oConfig, nRow) {
+                    edit()
+                }
+
+            },
+            {
+                "sExtends": 'select',
                 "sButtonText": '<font color="white">删除</font><i class="fa fa-times"></i>',
                 "sButtonClass": "btn btn-danger",
                 "fnComplete": function (nButton, oConfig, nRow) {
@@ -325,6 +358,7 @@ function loaddata() {
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
+            { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%", 'bVisible': false}
 
 
@@ -388,13 +422,15 @@ function rule_save() {
     }
     var join_date = $('#join_date').val();
     var graduate_year = $('#graduate_year').val();
-    if (name == '' || department == '' || supervisor == '' || principal == '' || join_date == '' || graduate_year == '') {
-        toastr.error('不能有空白')
+    var email = $('#email').val();
+    var id = $('#id').val();
+    if (name == '' || department == '' || supervisor == '' || principal == '' || join_date == '' || graduate_year == '' || email == '') {
+        toastr.error('不能有空白');
         return;
     }
 {#    console.info(name_list[0],department,supervisor_list[0],principal_list[0],join_date,graduate_year)#}
 
-    showAjaxLoad()
+    showAjaxLoad();
     $(self).button('loading');//正在登陆中，显示data-loading-text 标记内容
 
 
@@ -407,7 +443,9 @@ function rule_save() {
             supervisor: supervisor_list[0],
             principal: principal_list[0],
             join_date: join_date,
-            graduate_year: graduate_year
+            graduate_year: graduate_year,
+            email: email,
+            id:id
         },
         success: function (d) {
             hideAjaxLoad()
@@ -435,6 +473,8 @@ function add() {
     $('#principal').select2("data", "")
     $('#join_date').val("")
     $('#graduate_year').val("")
+    $('#email').val("")
+    $('#id').val("")
     $.post('/order_form_dropdown/', {}, function (d) {
         $('#name').select2({
             multiple: true,
@@ -458,6 +498,54 @@ function add() {
     $("#myModal").modal('show')
 }
 
+function edit() {
+    var oTT = TableTools.fnGetInstance('datatables');
+    var aData = oTT.fnGetSelectedData();
+    if (aData.length == 1) {
+        var name = aData[0][0];
+        var department = aData[0][1];
+        var supervisor = aData[0][2];
+        var principal = aData[0][3];
+        var join_date = aData[0][4];
+        var graduate_year = aData[0][5];
+        var email = aData[0][15];
+        var id = aData[0][16];
+        $.post('/order_form_dropdown/', {id:id,name:name}, function (d) {
+            $('#name').select2({
+                multiple: true,
+                placeholder: '请选择员工',
+                allowClear: true,
+                data: d['list']
+            });
+            $('#name').select2("data",d['edit'])
+        })
+        $.post('/order_form_dropdown/', {id:id,name:supervisor}, function (d) {
+            $('#supervisor').select2({
+                multiple: true,
+                placeholder: '请选择直属主管',
+                allowClear: true,
+                data: d['list']
+            });
+            $('#supervisor').select2("data",d['edit'])
+        })
+        $.post('/order_form_dropdown/', {id:id,name:principal}, function (d) {
+            $('#principal').select2({
+                multiple: true,
+                placeholder: '请选择部门负责人',
+                allowClear: true,
+                data: d['list']
+            });
+            $('#principal').select2("data",d['edit'])
+        })
+        $('#department').val(department)
+        $('#join_date').val(join_date)
+        $('#graduate_year').val(graduate_year)
+        $('#email').val(email)
+        $('#id').val(id)
+        $("#myModal").modal('show')
+    }
+}
+
 function del_verify() {
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
@@ -474,7 +562,7 @@ function del() {
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
         showAjaxLoad()
-        $.post('/vacation_table_del/', {id: aData[0][15]}, function (d) {
+        $.post('/vacation_table_del/', {id: aData[0][16]}, function (d) {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)

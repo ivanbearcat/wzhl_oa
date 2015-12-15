@@ -235,6 +235,11 @@ jQuery(document).ready(function() {
    $('#{{path1}}').attr('class','active');
    $('#{{path2}}').attr('class','active');
 
+    $.post('/vacation_approve_alert/', {}, function (d) {
+        if (d.code == 0) {
+            toastr.warning(d.msg)
+        } else {}
+    })
 });
 
 

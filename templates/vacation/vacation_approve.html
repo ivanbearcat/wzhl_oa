@@ -16,66 +16,66 @@
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
-        <div class="container">
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat blue">
-                    <div class="visual">
-                        <i class="fa fa-coffee"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                             {{ statutory_annual_leave_available }}
-                        </div>
-                        <div class="desc">
-                             法定年假剩余天数
-                        </div>
-                    </div>
+{#        <div class="container">#}
+{#            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">#}
+{#                <div class="dashboard-stat blue">#}
+{#                    <div class="visual">#}
+{#                        <i class="fa fa-coffee"></i>#}
+{#                    </div>#}
+{#                    <div class="details">#}
+{#                        <div class="number">#}
+{#                             {{ statutory_annual_leave_available }}#}
+{#                        </div>#}
+{#                        <div class="desc">#}
+{#                             法定年假剩余天数#}
+{#                        </div>#}
+{#                    </div>#}
             {#        <a class="more" href="#">#}
             {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
             {#        </a>#}
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat purple">
-                    <div class="visual">
-                        <i class="fa fa-coffee"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                             {{ company_annual_leave_available }}
-                        </div>
-                        <div class="desc">
-                             公司年假剩余天数
-                        </div>
-                    </div>
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">#}
+{#                <div class="dashboard-stat purple">#}
+{#                    <div class="visual">#}
+{#                        <i class="fa fa-coffee"></i>#}
+{#                    </div>#}
+{#                    <div class="details">#}
+{#                        <div class="number">#}
+{#                             {{ company_annual_leave_available }}#}
+{#                        </div>#}
+{#                        <div class="desc">#}
+{#                             公司年假剩余天数#}
+{#                        </div>#}
+{#                    </div>#}
             {#        <a class="more" href="#">#}
             {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
             {#        </a>#}
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat yellow">
-                    <div class="visual">
-                        <i class="fa fa-coffee"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                             {{ seasons_leave_available }}
-                        </div>
-                        <div class="desc">
-                             季度假剩余天数
-                        </div>
-                    </div>
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">#}
+{#                <div class="dashboard-stat yellow">#}
+{#                    <div class="visual">#}
+{#                        <i class="fa fa-coffee"></i>#}
+{#                    </div>#}
+{#                    <div class="details">#}
+{#                        <div class="number">#}
+{#                             {{ seasons_leave_available }}#}
+{#                        </div>#}
+{#                        <div class="desc">#}
+{#                             季度假剩余天数#}
+{#                        </div>#}
+{#                    </div>#}
             {#        <a class="more" href="#">#}
             {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
             {#        </a>#}
-                </div>
-            </div>
-        </div>
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-globe"></i>请假申请
+                    <i class="fa fa-globe"></i>待审批列表
                 </div>
             </div>
             <div class="portlet-body">
@@ -101,91 +101,91 @@
         <!-- END EXAMPLE TABLE PORTLET-->
     </div>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">请假申请</h4>
-                </div>
-                <div class="modal-body form">
-                    <form action="#" class="form-horizontal form-row-seperated">
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">请假类型</label>
-
-                            <div class="col-sm-8">
-                                <div class="input-group">
-                                    <span class="twitter-typeahead"
-                                          style="position: relative; display: inline-block;">
-                                        <input type="text" class="form-control tt-hint"
-                                               disabled="" autocomplete="off" spellcheck="false"
-                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                        <div type="text" id="type"
-                                             name="typeahead_example_modal_1"
-                                             class="form-control tt-input" autocomplete="off"
-                                             spellcheck="false" dir="auto"
-                                             style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
-                                            aria-hidden="true"
-                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                                            class="tt-dropdown-menu"
-                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
-                                            class="tt-dataset-1"></div></span></span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">请假原由</label>
-                            <div class="col-sm-6">
-                                <textarea class="form-control" id='reason' style="width: 290px" rows="3"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">请假日期</label>
-                            <div class="col-sm-8">
-                                <div class="col-md-2" style="margin-left:-15px; float: left">
-                                    <div id="reportrange" class="btn default">
-                                        <i class="fa fa-calendar"></i>
-                                        <span>
-                                        </span>
-                                        <b class="fa fa-angle-down"></b>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                        <label class="col-sm-4 control-label">半天(选填)</label>
-
-                        <div class="col-sm-8">
-                            <div class="input-group">
-                                <span class="twitter-typeahead"
-                                      style="position: relative; display: inline-block;">
-                                    <input type="text" class="form-control tt-hint"
-                                           disabled="" autocomplete="off" spellcheck="false"
-                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                    <div type="text" id="half_day"
-                                         name="typeahead_example_modal_1"
-                                         class="form-control tt-input" autocomplete="off"
-                                         spellcheck="false" dir="auto"
-                                         style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
-                                        aria-hidden="true"
-                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                                        class="tt-dropdown-menu"
-                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
-                                        class="tt-dataset-1"></div></span></span>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                </div>
-                <div id="id" style="display: none"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" onclick="rule_save()"><i class="fa fa-check"></i>保存
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
+{#    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">#}
+{#        <div class="modal-dialog">#}
+{#            <div class="modal-content">#}
+{#                <div class="modal-header">#}
+{#                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>#}
+{#                    <h4 class="modal-title">请假申请</h4>#}
+{#                </div>#}
+{#                <div class="modal-body form">#}
+{#                    <form action="#" class="form-horizontal form-row-seperated">#}
+{#                        <div class="form-group">#}
+{#                            <label class="col-sm-4 control-label">请假类型</label>#}
+{##}
+{#                            <div class="col-sm-8">#}
+{#                                <div class="input-group">#}
+{#                                    <span class="twitter-typeahead"#}
+{#                                          style="position: relative; display: inline-block;">#}
+{#                                        <input type="text" class="form-control tt-hint"#}
+{#                                               disabled="" autocomplete="off" spellcheck="false"#}
+{#                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">#}
+{#                                        <div type="text" id="type"#}
+{#                                             name="typeahead_example_modal_1"#}
+{#                                             class="form-control tt-input" autocomplete="off"#}
+{#                                             spellcheck="false" dir="auto"#}
+{#                                             style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre#}
+{#                                            aria-hidden="true"#}
+{#                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span#}
+{#                                            class="tt-dropdown-menu"#}
+{#                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div#}
+{#                                            class="tt-dataset-1"></div></span></span>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label class="col-sm-4 control-label">请假原由</label>#}
+{#                            <div class="col-sm-6">#}
+{#                                <textarea class="form-control" id='reason' style="width: 290px" rows="3"></textarea>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                            <label class="col-sm-4 control-label">请假日期</label>#}
+{#                            <div class="col-sm-8">#}
+{#                                <div class="col-md-2" style="margin-left:-15px; float: left">#}
+{#                                    <div id="reportrange" class="btn default">#}
+{#                                        <i class="fa fa-calendar"></i>#}
+{#                                        <span>#}
+{#                                        </span>#}
+{#                                        <b class="fa fa-angle-down"></b>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                        <div class="form-group">#}
+{#                        <label class="col-sm-4 control-label">半天(选填)</label>#}
+{##}
+{#                        <div class="col-sm-8">#}
+{#                            <div class="input-group">#}
+{#                                <span class="twitter-typeahead"#}
+{#                                      style="position: relative; display: inline-block;">#}
+{#                                    <input type="text" class="form-control tt-hint"#}
+{#                                           disabled="" autocomplete="off" spellcheck="false"#}
+{#                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">#}
+{#                                    <div type="text" id="half_day"#}
+{#                                         name="typeahead_example_modal_1"#}
+{#                                         class="form-control tt-input" autocomplete="off"#}
+{#                                         spellcheck="false" dir="auto"#}
+{#                                         style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre#}
+{#                                        aria-hidden="true"#}
+{#                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span#}
+{#                                        class="tt-dropdown-menu"#}
+{#                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div#}
+{#                                        class="tt-dataset-1"></div></span></span>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </form>#}
+{#                </div>#}
+{#                <div id="id" style="display: none"></div>#}
+{#                <div class="modal-footer">#}
+{#                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>#}
+{#                    <button type="button" class="btn btn-primary" onclick="rule_save()"><i class="fa fa-check"></i>保存#}
+{#                    </button>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
 </div>
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
@@ -197,7 +197,7 @@
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>您确定要删除吗</h4></label>
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>您确定要批准吗</h4></label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="twitter-typeahead"
@@ -207,7 +207,34 @@
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-                        <button type="button" class="btn btn-primary" onclick="del()"><i class="fa fa-check"></i>确定</button>
+                        <button type="button" class="btn btn-primary" onclick="agree()"><i class="fa fa-check"></i>确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>您确定要不批准吗</h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" onclick="disagree()"><i class="fa fa-check"></i>确定</button>
                     </div>
                 </form>
             </div>
@@ -320,19 +347,19 @@ $(document).ready(function () {
             {
                 "sExtends": 'text',
 
-                "sButtonText": '<font color="white">申请</font><i class="fa fa-plus"></i>',
+                "sButtonText": '<font color="white">批准</font><i class="fa fa-check"></i>',
                 "sButtonClass": "btn green ",
                 "fnComplete": function (nButton, oConfig, nRow) {
-                    add()
+                    agree_verify()
                 }
 
             },
             {
                 "sExtends": 'select',
-                "sButtonText": '<font color="white">删除</font><i class="fa fa-times"></i>',
+                "sButtonText": '<font color="white">不批准</font><i class="fa fa-times"></i>',
                 "sButtonClass": "btn btn-danger",
                 "fnComplete": function (nButton, oConfig, nRow) {
-                    del_verify()
+                    disagree_verify()
                 }
             }
         ]
@@ -342,7 +369,7 @@ $(document).ready(function () {
 });
 function loaddata() {
     oTable = $('#datatables').dataTable({
-        "sAjaxSource": "/vacation_apply_data/?rand=" + Math.random(),
+        "sAjaxSource": "/vacation_approve_data/?rand=" + Math.random(),
         "sDom": "<'row-fluid'<'span6'T><'span6'f>r><'table-scrollable't><'fluid'<'span3'l><'span4'i><'span5'p>>",
         "bServerSide": true,
         "bPaginate": true, // 是否使用分页
@@ -477,15 +504,8 @@ function contain(Array, s) {
             return true;
     return false;
 }
-function add() {
-    $('#type').select2("data", "")
-    $('#reason').val("")
-    $('#reportrange span').html(moment().format('YYYY-MM-DD') + '  ->  ' + moment().format('YYYY-MM-DD'))
-    $('#half_day').select2("data", "")
-    $("#myModal").modal('show')
-}
 
-function del_verify() {
+function agree_verify() {
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
@@ -496,12 +516,21 @@ function del_verify() {
     }
 }
 
-function del() {
+function agree() {
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
-        showAjaxLoad()
-        $.post('/vacation_apply_del/', {id: aData[0][8]}, function (d) {
+        var dst_id = aData[0][8]
+    }
+    showAjaxLoad()
+    $.ajax({
+        url: '/vacation_approve_process/',
+        type: "POST",
+        data: {
+            flag: 1,
+            dst_id:dst_id
+        },
+        success: function (d) {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
@@ -509,9 +538,45 @@ function del() {
             } else {
                 toastr.error(d.msg)
             }
-        })
+        }
+    });
+}
+
+function disagree_verify() {
+    var oTT = TableTools.fnGetInstance('datatables');
+    var aData = oTT.fnGetSelectedData();
+    if (aData.length == 1) {
+        $("#myModal3").modal('show')
     }
-    $('#myModal2').modal('hide')
+    else {
+        toastr.error('没有选择')
+    }
+}
+
+function disagree() {
+    var oTT = TableTools.fnGetInstance('datatables');
+    var aData = oTT.fnGetSelectedData();
+    if (aData.length == 1) {
+        var dst_id = aData[0][8]
+    }
+    showAjaxLoad()
+    $.ajax({
+        url: '/vacation_approve_process/',
+        type: "POST",
+        data: {
+            flag: 0,
+            dst_id:dst_id
+        },
+        success: function (d) {
+            hideAjaxLoad()
+            if (d.code == 0) {
+                toastr.success(d.msg)
+                $('#datatables').dataTable().fnDraw()
+            } else {
+                toastr.error(d.msg)
+            }
+        }
+    });
 }
 </script>
 {% endblock %}

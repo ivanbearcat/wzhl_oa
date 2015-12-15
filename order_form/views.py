@@ -196,13 +196,15 @@ def order_form_dropdown(request):
     result = {}
     result['list'] = []
     result['edit'] = []
-    if _id == None:
-        orm = User.objects.all()
-        for i in orm:
-            if not i.first_name:continue
-            result['list'].append({'text':i.first_name,'id':i.id})
-    else:
-        pass
+    if not _id == None:
+        name = request.POST.get('name')
+        orm_edit = User.objects.filter(first_name=name)
+        for i in orm_edit:
+            result['edit'].append({'text':i.first_name,'id':i.id})
+    orm = User.objects.all()
+    for i in orm:
+        if not i.first_name:continue
+        result['list'].append({'text':i.first_name,'id':i.id})
     return HttpResponse(simplejson.dumps(result),content_type="application/json")
 
 @login_required
