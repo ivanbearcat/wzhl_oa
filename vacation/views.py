@@ -16,6 +16,8 @@ sys.setdefaultencoding('utf-8')
 @login_required
 def vacation_table(request):
     path = request.path.split('/')[1]
+    if not request.user.has_perm('vacation.can_view'):
+        return render(request,'public/no_passing.html')
     return render(request, 'vacation/vacation_table.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                        'path1':'vacation',
                                                        'path2':path,
@@ -171,7 +173,7 @@ def vacation_table_del(request):
 
 @login_required
 def vacation_refresh(request):
-    #每天0点5分刷新每个人各种假的天数
+    #每天0点5分刷新每个人各种假的天数，以及申请过期检查
     today = datetime.datetime.now().date()
 
     orm = user_table.objects.all()
@@ -201,6 +203,18 @@ def vacation_refresh(request):
         i.company_annual_leave_available = company_annual_leave_total - i.company_annual_leave_used
         i.statutory_annual_leave_total = statutory_annual_leave_total
         i.statutory_annual_leave_available = statutory_annual_leave_total - i.statutory_annual_leave_used
+
+        orm_state = state.objects.filter(name=i.name)
+        for j in orm_state:
+            if (datetime.datetime.now() - j.apply_time).days > 7 and j.state == 1 or j.state == 2:
+                j.state = 9
+                j.state_interface = '已过期'
+                j.approve_now = ''
+                try:
+                    j.save()
+                except Exception,e:
+                    print e
+                    return HttpResponse('ERROR')
 
         try:
             i.save()
@@ -311,17 +325,27 @@ def vacation_apply_save(request):
         days = (end_datetime - begin_datetime).days + 1
         vacation_date = begin + '&nbsp->&nbsp' + end
 
-    orm_fetch_supervisor = user_table.objects.filter(name=request.user.first_name)
-    for i in orm_fetch_supervisor:
-        approve_now = i.supervisor
-        state_interface = u'等待 ' + i.supervisor + u' 审批'
-        orm_supervisor = user_table.objects.get(name=approve_now)
-        supervisor_email = orm_supervisor.email
+    orm_fetch_supervisor = user_table.objects.get(name=request.user.first_name)
+
+    if type == '法定年假':
+        if days > orm_fetch_supervisor.statutory_annual_leave_available:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的法定年假剩余不足'}),content_type="application/json")
+    if type == '公司年假':
+        if days > orm_fetch_supervisor.company_annual_leave_available:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的公司年假剩余不足'}),content_type="application/json")
+    if type == '季度假':
+        if days > orm_fetch_supervisor.seasons_leave_available:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的季度假剩余不足'}),content_type="application/json")
+
+    approve_now = orm_fetch_supervisor.supervisor
+    state_interface = u'等待 ' + orm_fetch_supervisor.supervisor + u' 审批'
+    orm_supervisor = user_table.objects.get(name=approve_now)
+    supervisor_email = orm_supervisor.email
 
     orm = state(name=request.user.first_name,type=type,reason=reason,vacation_date=vacation_date,days=days,
                 state_interface=state_interface,state=1,approve_now=approve_now)
 
-    log_info = '%s 申请了 %s，日期为 %s，%s' % (request.user.first_name,type,vacation_date,state_interface)
+    log_info = '<b>%s</b> 申请了 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,type,vacation_date,state_interface)
     orm_log = operation_log(name=request.user.first_name,operation=log_info)
 
     orm_alert = user_table.objects.get(name=approve_now)
@@ -342,7 +366,9 @@ def vacation_apply_save(request):
 def vacation_apply_del(request):
     _id = request.POST.get('id')
     orm = state.objects.get(id=_id)
-    log_info = '%s 取消了 %s 的申请，日期为 %s' % (request.user.first_name,orm.type,orm.vacation_date)
+    if orm.state_interface == '已批准' or orm.state_interface == '不批准':
+        return HttpResponse(simplejson.dumps({'code':1,'msg':u'已审批完成无法删除'}),content_type="application/json")
+    log_info = '<b>%s</b> 取消了 <b>%s</b> 的申请，日期为 <b>%s</b>' % (request.user.first_name,orm.type,orm.vacation_date)
     orm_log = operation_log(name=request.user.first_name,operation=log_info)
     try:
         orm_log.save()
@@ -350,7 +376,7 @@ def vacation_apply_del(request):
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'删除成功'}),content_type="application/json")
     except Exception,e:
         print e
-        return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
+        return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
 
 @login_required
 def vacation_approve_alert(request):
@@ -444,10 +470,11 @@ def vacation_approve_process(request):
     flag = request.POST.get('flag')
     dst_id = request.POST.get('dst_id')
     orm = state.objects.get(id=dst_id)
-    if flag:
+
+    if int(flag) == 1:
         if orm.state == 1:
             orm_fetch_principal = user_table.objects.get(name=orm.name)
-            if orm_fetch_principal.supervisor != orm_fetch_principal.principal:
+            if orm_fetch_principal.supervisor != orm_fetch_principal.principal and orm.days >= 3:
                 approve_now = orm_fetch_principal.principal
                 state_interface = u'等待 ' + orm_fetch_principal.principal + u' 审批'
                 orm_principal = user_table.objects.get(name=approve_now)
@@ -457,23 +484,219 @@ def vacation_approve_process(request):
                 orm.approve_now = approve_now
                 orm.state = 2
 
-                log_info = '%s 批准了 %s 申请的 %s，日期为 %s，%s' % (request.user.first_name,orm.name,orm.type,orm.vacation_date,state_interface)
+                log_info = '<b>%s</b> 批准了 <b>%s</b> 申请的 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,orm.name,orm.type,orm.vacation_date,state_interface)
                 orm_log = operation_log(name=request.user.first_name,operation=log_info)
 
                 orm_alert = user_table.objects.get(name=approve_now)
                 orm_alert.has_approve += 1
 
-                orm_alert_2 = user_table.objects.get(name=request.user.first_name)
-                orm_alert_2.has_approve -= 1
+                orm_alert_my = user_table.objects.get(name=request.user.first_name)
+                orm_alert_my.has_approve -= 1
 
                 try:
                     orm_log.save()
                     orm_alert.save()
-                    orm_alert_2.save()
+                    orm_alert_my.save()
                     orm.save()
 
                     send_mail(to_addr=principal_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>此邮件为自动发送的提醒邮件，请勿回复。')
-                    return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
+                    return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
                 except Exception,e:
                     print e
                     return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+            else:
+                orm.state_interface = '已批准'
+                orm.state = 3
+                orm.approve_now = ''
+
+                log_info = '<b>%s</b> 批准了 <b>%s</b> 申请的 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,orm.name,orm.type,orm.vacation_date,orm.state_interface)
+                orm_log = operation_log(name=request.user.first_name,operation=log_info)
+
+                if orm.type == u'法定年假':
+                    orm_fetch_principal.statutory_annual_leave_used += orm.days
+                    orm_fetch_principal.statutory_annual_leave_available -= orm.days
+                if orm.type == u'公司年假':
+                    orm_fetch_principal.company_annual_leave_used += orm.days
+                    orm_fetch_principal.company_annual_leave_available -= orm.days
+                if orm.type == u'季度假':
+                    orm_fetch_principal.seasons_leave_used += orm.days
+                    orm_fetch_principal.seasons_leave_available -= orm.days
+
+                try:
+                    orm_log.save()
+                    orm_fetch_principal.save()
+                    orm_alert_my = user_table.objects.get(name=request.user.first_name)
+                    orm_alert_my.has_approve -= 1
+                    orm_alert_my.save()
+                    orm.save()
+
+                    return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
+                except Exception,e:
+                    print e
+                    return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+        if orm.state == 2:
+            orm.state_interface = '已批准'
+            orm.state = 3
+            orm.approve_now = ''
+
+            log_info = '<b>%s</b> 批准了 <b>%s</b> 申请的 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,orm.name,orm.type,orm.vacation_date,orm.state_interface)
+            orm_log = operation_log(name=request.user.first_name,operation=log_info)
+
+            orm_fetch_principal = user_table.objects.get(name=orm.name)
+            if orm.type == '法定年假':
+                orm_fetch_principal.statutory_annual_leave_used += orm.days
+                orm_fetch_principal.statutory_annual_leave_available -= orm.days
+            if orm.type == '公司年假':
+                orm_fetch_principal.company_annual_leave_used += orm.days
+                orm_fetch_principal.company_annual_leave_available -= orm.days
+            if orm.type == '季度假':
+                orm_fetch_principal.seasons_leave_used += orm.days
+                orm_fetch_principal.seasons_leave_available -= orm.days
+
+            try:
+                orm_log.save()
+                orm_fetch_principal.save()
+                orm_alert_my = user_table.objects.get(name=request.user.first_name)
+                orm_alert_my.has_approve -= 1
+                orm_alert_my.save()
+                orm.save()
+
+                return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
+            except Exception,e:
+                print e
+                return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+    if int(flag) == 0:
+        orm.state_interface = '不批准'
+        orm.state = 0
+        orm.approve_now = ''
+
+        log_info = '<b>%s</b> 没有批准 <b>%s</b> 申请的 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,orm.name,orm.type,orm.vacation_date,orm.state_interface)
+        orm_log = operation_log(name=request.user.first_name,operation=log_info)
+
+        orm_alert = user_table.objects.get(name=request.user.first_name)
+        orm_alert.has_approve -= 1
+
+        try:
+            orm_log.save()
+            orm_alert.save()
+            orm.save()
+
+            return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
+        except Exception,e:
+            print e
+            return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+@login_required
+def vacation_log(request):
+    path = request.path.split('/')[1]
+    if not request.user.has_perm('vacation.can_view'):
+        return render(request,'public/no_passing.html')
+    return render(request, 'vacation/vacation_log.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
+                                                       'path1':'vacation',
+                                                       'path2':path,
+                                                       'page_name1':u'请假管理',
+                                                       'page_name2':u'日志记录'})
+
+@login_required
+def vacation_log_data(request):
+    sEcho =  request.POST.get('sEcho') #标志，直接返回
+    iDisplayStart = int(request.POST.get('iDisplayStart'))#第几行开始
+    iDisplayLength = int(request.POST.get('iDisplayLength'))#显示多少行
+    iSortCol_0 = int(request.POST.get("iSortCol_0"))#排序行号
+    sSortDir_0 = request.POST.get('sSortDir_0')#asc/desc
+    sSearch = request.POST.get('sSearch')#高级搜索
+
+    type = request.POST.get('type')
+    begin = request.POST.get('begin')
+    end = request.POST.get('end')
+
+    if not begin:
+        aaData = []
+        sort = ['name','operation','operation_time']
+
+        if  sSortDir_0 == 'asc':
+            if sSearch == '':
+                result_data = operation_log.objects.all().order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = operation_log.objects.all().count()
+            else:
+                result_data = operation_log.objects.filter(Q(name__contains=sSearch) | \
+                                                        Q(operation__contains=sSearch)) \
+                                                        .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = operation_log.objects.filter(Q(name__contains=sSearch) | \
+                                                        Q(operation__contains=sSearch)).count()
+        else:
+            if sSearch == '':
+                result_data = operation_log.objects.all().order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = operation_log.objects.all().count()
+            else:
+                result_data = operation_log.objects.filter(Q(name__contains=sSearch) | \
+                                                        Q(operation__contains=sSearch)) \
+                                                        .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = operation_log.objects.filter(Q(name__contains=sSearch) | \
+                                                        Q(operation__contains=sSearch)).count()
+
+        for i in  result_data:
+            aaData.append({
+                           '0':i.name,
+                           '1':i.operation,
+                           '2':str(i.operation_time).split('+')[0],
+                           '3':i.id
+                          })
+        result = {'sEcho':sEcho,
+                   'iTotalRecords':iTotalRecords,
+                   'iTotalDisplayRecords':iTotalRecords,
+                   'aaData':aaData
+        }
+        return HttpResponse(simplejson.dumps(result),content_type="application/json")
+
+    else:
+        begin = begin.split('-')
+        end = end.split('-')
+
+        begin = datetime.datetime(int(begin[0]),int(begin[1]),int(begin[2]))
+        try:
+            end = datetime.datetime(int(end[0]),int(end[1]),int(end[2])+1)
+        except ValueError:
+            end = datetime.datetime(int(end[0]),int(end[1]),int(end[2]),23,59)
+
+        aaData = []
+        sort = ['name','operation','operation_time']
+
+        if  sSortDir_0 == 'asc':
+            if sSearch == '':
+                result_data = operation_log.objects.filter(operation_time__range=(begin,end)) \
+                                                    .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = operation_log.objects.filter(operation_time__range=(begin,end)).count()
+            else:
+                result_data = operation_log.objects.filter(operation_time__range=(begin,end)).filter( \
+                                                        Q(name__contains=sSearch) | \
+                                                        Q(operation__contains=sSearch)) \
+                                                .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = operation_log.objects.filter(operation_time__range=(begin,end)).filter( \
+                                                        Q(name__contains=sSearch) | \
+                                                        Q(operation__contains=sSearch)).count()
+        else:
+            if sSearch == '':
+                result_data = operation_log.objects.filter(operation_time__range=(begin,end)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = operation_log.objects.filter(operation_time__range=(begin,end)).count()
+            else:
+                result_data = operation_log.objects.filter(operation_time__range=(begin,end)).filter( \
+                                                        Q(name__contains=sSearch) | \
+                                                        Q(operation__contains=sSearch)) \
+                                                .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = operation_log.objects.filter(operation_time__range=(begin,end)).filter( \
+                                                        Q(name__contains=sSearch) | \
+                                                        Q(operation__contains=sSearch)).count()
+        for i in  result_data:
+            aaData.append({
+                           '0':i.name,
+                           '1':i.operation,
+                           '2':str(i.operation_time).split('+')[0],
+                           '3':i.id
+                          })
+        result = {'sEcho':sEcho,
+                   'iTotalRecords':iTotalRecords,
+                   'iTotalDisplayRecords':iTotalRecords,
+                   'aaData':aaData
+        }
+        return HttpResponse(simplejson.dumps(result),content_type="application/json")

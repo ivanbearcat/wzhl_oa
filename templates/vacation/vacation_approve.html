@@ -517,6 +517,7 @@ function agree_verify() {
 }
 
 function agree() {
+    $('#myModal2').modal('hide')
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
@@ -554,6 +555,7 @@ function disagree_verify() {
 }
 
 function disagree() {
+    $('#myModal3').modal('hide')
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {

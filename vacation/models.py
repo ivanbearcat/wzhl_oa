@@ -2,6 +2,10 @@
 from django.db import models
 
 class user_table(models.Model):
+    class Meta:
+        permissions = (
+            ("can_view", "Can view the page"),
+        )
     name = models.CharField(verbose_name='员工名', max_length=30, blank=False, unique=True)
     department = models.CharField(verbose_name='部门', max_length=30, blank=False)
     supervisor = models.CharField(verbose_name='上级主管', max_length=30)
@@ -9,15 +13,15 @@ class user_table(models.Model):
     join_date = models.DateField(verbose_name='入职日期', auto_now_add=False)
     graduate_year = models.DateField(verbose_name='毕业日期', auto_now_add=False)
     email = models.CharField(verbose_name='邮箱', max_length=128, blank=False)
-    statutory_annual_leave_available = models.PositiveSmallIntegerField(verbose_name='可用法定年假', max_length=10)
-    statutory_annual_leave_used = models.PositiveSmallIntegerField(verbose_name='已用法定年假', max_length=10)
-    statutory_annual_leave_total = models.PositiveSmallIntegerField(verbose_name='总共法定年假', max_length=10)
-    company_annual_leave_available = models.PositiveSmallIntegerField(verbose_name='可用公司年假', max_length=10)
-    company_annual_leave_used = models.PositiveSmallIntegerField(verbose_name='已用公司年假', max_length=10)
-    company_annual_leave_total = models.PositiveSmallIntegerField(verbose_name='总共公司年假', max_length=10)
-    seasons_leave_available = models.PositiveSmallIntegerField(verbose_name='可用季度假', max_length=10)
-    seasons_leave_used = models.PositiveSmallIntegerField(verbose_name='已用季度假', max_length=10)
-    seasons_leave_total = models.PositiveSmallIntegerField(verbose_name='总共季度假', max_length=10)
+    statutory_annual_leave_available = models.FloatField(verbose_name='可用法定年假', max_length=10)
+    statutory_annual_leave_used = models.FloatField(verbose_name='已用法定年假', max_length=10)
+    statutory_annual_leave_total = models.FloatField(verbose_name='总共法定年假', max_length=10)
+    company_annual_leave_available = models.FloatField(verbose_name='可用公司年假', max_length=10)
+    company_annual_leave_used = models.FloatField(verbose_name='已用公司年假', max_length=10)
+    company_annual_leave_total = models.FloatField(verbose_name='总共公司年假', max_length=10)
+    seasons_leave_available = models.FloatField(verbose_name='可用季度假', max_length=10)
+    seasons_leave_used = models.FloatField(verbose_name='已用季度假', max_length=10)
+    seasons_leave_total = models.FloatField(verbose_name='总共季度假', max_length=10)
     has_approve = models.PositiveSmallIntegerField(verbose_name='有审批', max_length=10)
 
 class state(models.Model):

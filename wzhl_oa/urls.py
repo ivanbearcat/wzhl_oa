@@ -44,4 +44,6 @@ urlpatterns = patterns('',
     url(r'^vacation_approve/', vacation_approve),
     url(r'^vacation_approve_data/', vacation_approve_data),
     url(r'^vacation_approve_process/', vacation_approve_process),
+    url(r'^vacation_log/', vacation_log),
+    url(r'^vacation_log_data/', vacation_log_data),
 )
