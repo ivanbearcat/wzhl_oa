@@ -16,7 +16,33 @@
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
+{#        <div style="width: 9%;float:left">#}
+{#            <a href="/static/files/auto_alert.exe">#}
+{#                <h3>#}
+{#                    <span class="label label-danger">请假政策文件下载</span>#}
+{#                </h3>#}
+{#            </a>#}
+{#        </div>#}
         <div class="container">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <div class="dashboard-stat red">
+                    <div class="visual">
+                        <i class="fa fa-download"></i>
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                        </div>
+                        <a href="/static/files/auto_alert.exe">
+                            <div class="desc">
+                                 请假政策文件下载
+                            </div>
+                        </a>
+                    </div>
+            {#        <a class="more" href="#">#}
+            {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
+            {#        </a>#}
+                </div>
+            </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="dashboard-stat blue">
                     <div class="visual">
@@ -139,7 +165,7 @@
                                 <textarea class="form-control" id='reason' style="width: 290px" rows="3"></textarea>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div id="reportrange_div" class="form-group">
                             <label class="col-sm-4 control-label">请假日期</label>
                             <div class="col-sm-8">
                                 <div class="col-md-2" style="margin-left:-15px; float: left">
@@ -152,26 +178,26 @@
                                 </div>
                             </div>
                         </div>
+                        <div id="days"></div>
                         <div class="form-group">
                         <label class="col-sm-4 control-label">半天(选填)</label>
-
-                        <div class="col-sm-8">
-                            <div class="input-group">
-                                <span class="twitter-typeahead"
-                                      style="position: relative; display: inline-block;">
-                                    <input type="text" class="form-control tt-hint"
-                                           disabled="" autocomplete="off" spellcheck="false"
-                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                    <div type="text" id="half_day"
-                                         name="typeahead_example_modal_1"
-                                         class="form-control tt-input" autocomplete="off"
-                                         spellcheck="false" dir="auto"
-                                         style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
-                                        aria-hidden="true"
-                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                                        class="tt-dropdown-menu"
-                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
-                                        class="tt-dataset-1"></div></span></span>
+                            <div  class="col-sm-8">
+                                <div class="input-group">
+                                    <span class="twitter-typeahead"
+                                          style="position: relative; display: inline-block;">
+                                        <input id="half_day_disable" type="text" class="form-control tt-hint"
+                                               disabled="" autocomplete="off" spellcheck="false"
+                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                        <div type="text" id="half_day"
+                                             name="typeahead_example_modal_1"
+                                             class="form-control tt-input" autocomplete="off"
+                                             spellcheck="false" dir="auto"
+                                             style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
+                                            aria-hidden="true"
+                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
+                                            class="tt-dropdown-menu"
+                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
+                                            class="tt-dataset-1"></div></span></span>
                                 </div>
                             </div>
                         </div>
@@ -214,6 +240,60 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>根据公司休假政策的规定，2天及以上的病假，需要医院开据的病假单交至HR处。</h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+{#                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>#}
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"></i>同意</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>申请调休时，请将加班日期填写在调休的请假原由中。</h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+{#                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>#}
+                        <button type="button" class="btn btn-primary" data-dismiss="modal"></i>同意</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!--/datatables-->
 {% endblock %}
 
@@ -245,10 +325,19 @@ $(document).ready(function () {
         multiple: false,
         placeholder: '选择请假类型',
         allowClear: true,
-        data: [{'text':'季度假','id':1},{'text':'法定年假','id':2},{'text':'公司年假','id':3},{'text':'调休假','id':4},
-            {'text':'事假','id':5},{'text':'病假','id':6},{'text':'产假','id':7},{'text':'陪产假','id':8},
-            {'text':'婚假','id':9},{'text':'丧假','id':10}]
+        data: [{'text':'法定年假','id':1},{'text':'公司年假','id':2},{'text':'季度假','id':3},{'text':'病假','id':4},
+            {'text':'调休','id':5},{'text':'事假','id':6},{'text':'婚假','id':7},{'text':'产假','id':8},
+            {'text':'陪产假','id':9},{'text':'丧假','id':10}]
     });
+
+    $('#type').on("click", function () {
+        if ($('#type').select2('data')['text'] == '病假'){
+            $("#myModal3").modal('show')
+        }
+        if ($('#type').select2('data')['text'] == '调休'){
+            $("#myModal4").modal('show')
+        }
+    })
 
     $('#reportrange').daterangepicker({
         opens: (App.isRTL() ? 'left' : 'right'),
@@ -256,7 +345,7 @@ $(document).ready(function () {
     //    startDate: moment().subtract('days', 29),
     //    endDate: moment(),
         minDate: '2012/01/01',
-        maxDate: '2028/12/31',
+        maxDate: moment().add(120,'days'),
         dateLimit: {
             days: 2800
         },
@@ -289,6 +378,15 @@ $(document).ready(function () {
         },
         function (start, end) {
             $('#reportrange span').html(start.format('YYYY-MM-DD') + '  ->  ' + end.format('YYYY-MM-DD'));
+            var date1 = new Date(start.format('YYYY/MM/DD'));
+            var date2 = new Date(end.format('YYYY/MM/DD'));
+            var days = (date2 - date1) / 86400000 + 1
+            $('#days').html('<div class="form-group"><label class="col-sm-4 control-label">已选天数</label><div class="col-sm-8"><h5>'+days+'天</h5></div></div></div>')
+            if (days > 1) {
+                $("#half_day").attr('disabled',true)
+            }else{
+                $("#half_day").attr('disabled',false)
+            }
 {#            var begin = start.format('YYYY-MM-DD')#}
 {#            var end = end.format('YYYY-MM-DD')#}
 {#            $('#begin_time').val(begin)#}
@@ -315,6 +413,9 @@ $(document).ready(function () {
         allowClear: true,
         data: [{'text':'上午','id':1},{'text':'下午','id':2}]
     });
+    $('#half_day').on("click", function () {
+        $('#days').html('<div class="form-group"><label class="col-sm-4 control-label">已选天数</label><div class="col-sm-8"><h5>0.5天</h5></div></div></div>')
+    })
 
     aButtons = [
             {
@@ -329,7 +430,7 @@ $(document).ready(function () {
             },
             {
                 "sExtends": 'select',
-                "sButtonText": '<font color="white">删除</font><i class="fa fa-times"></i>',
+                "sButtonText": '<font color="white">撤回</font><i class="fa fa-times"></i>',
                 "sButtonClass": "btn btn-danger",
                 "fnComplete": function (nButton, oConfig, nRow) {
                     del_verify()
@@ -430,7 +531,7 @@ function rule_save() {
     var end = vacation_date[1]
     var half_day = $('#half_day').select2('data');
 
-    if (type == null || reason == '') {
+    if (type == null) {
         toastr.error('请填写完整')
         return;
     }

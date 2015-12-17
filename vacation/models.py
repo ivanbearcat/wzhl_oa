@@ -13,6 +13,7 @@ class user_table(models.Model):
     join_date = models.DateField(verbose_name='入职日期', auto_now_add=False)
     graduate_year = models.DateField(verbose_name='毕业日期', auto_now_add=False)
     email = models.CharField(verbose_name='邮箱', max_length=128, blank=False)
+    sick_leave_num = models.PositiveSmallIntegerField(verbose_name='已请病假数', max_length=10)
     statutory_annual_leave_available = models.FloatField(verbose_name='可用法定年假', max_length=10)
     statutory_annual_leave_used = models.FloatField(verbose_name='已用法定年假', max_length=10)
     statutory_annual_leave_total = models.FloatField(verbose_name='总共法定年假', max_length=10)

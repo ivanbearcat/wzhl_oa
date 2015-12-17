@@ -36,6 +36,7 @@
                         <th>部门负责人</th>
                         <th>入职日期</th>
                         <th>毕业日期</th>
+                        <th>已请病假数</th>
                         <th>可用法定年假</th>
                         <th>已用法定年假</th>
                         <th>总法定年假</th>
@@ -358,6 +359,7 @@ function loaddata() {
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
+            { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%", 'bVisible': false}
 
@@ -389,6 +391,15 @@ function loaddata() {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
+            $('td:eq(7)',nRow).attr('class','success')
+            $('td:eq(8)',nRow).attr('class','success')
+            $('td:eq(9)',nRow).attr('class','success')
+            $('td:eq(10)',nRow).attr('class','warning')
+            $('td:eq(11)',nRow).attr('class','warning')
+            $('td:eq(12)',nRow).attr('class','warning')
+            $('td:eq(13)',nRow).attr('class','danger')
+            $('td:eq(14)',nRow).attr('class','danger')
+            $('td:eq(15)',nRow).attr('class','danger')
         },
         "fnServerData": function (sSource, aoData, fnCallback) {
 {#            aoData.push({csrfmiddlewaretoken: '{{ csrf_token }}'})#}
@@ -508,8 +519,8 @@ function edit() {
         var principal = aData[0][3];
         var join_date = aData[0][4];
         var graduate_year = aData[0][5];
-        var email = aData[0][15];
-        var id = aData[0][16];
+        var email = aData[0][16];
+        var id = aData[0][17];
         $.post('/order_form_dropdown/', {id:id,name:name}, function (d) {
             $('#name').select2({
                 multiple: true,
@@ -562,7 +573,7 @@ function del() {
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
         showAjaxLoad()
-        $.post('/vacation_table_del/', {id: aData[0][16]}, function (d) {
+        $.post('/vacation_table_del/', {id: aData[0][17]}, function (d) {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)

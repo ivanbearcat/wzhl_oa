@@ -7,6 +7,7 @@ from django.utils.log import logger
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from libs.sendmail import send_mail
+from wzhl_oa.settings import HR
 import simplejson,datetime
 
 import sys
@@ -34,7 +35,7 @@ def vacation_table_data(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['name','department','supervisor','principal','join_date','graduate_year','statutory_annual_leave_available',
+    sort = ['name','department','supervisor','principal','join_date','graduate_year','sick_leave_num','statutory_annual_leave_available',
             'statutory_annual_leave_used','statutory_annual_leave_total','company_annual_leave_available',
             'company_annual_leave_used','company_annual_leave_total','seasons_leave_available','seasons_leave_used',
             'seasons_leave_total','email','id']
@@ -76,17 +77,18 @@ def vacation_table_data(request):
                        '3':i.principal,
                        '4':str(i.join_date).split('+')[0],
                        '5':str(i.graduate_year).split('+')[0],
-                       '6':i.statutory_annual_leave_available,
-                       '7':i.statutory_annual_leave_used,
-                       '8':i.statutory_annual_leave_total,
-                       '9':i.company_annual_leave_available,
-                       '10':i.company_annual_leave_used,
-                       '11':i.company_annual_leave_total,
-                       '12':i.seasons_leave_available,
-                       '13':i.seasons_leave_used,
-                       '14':i.seasons_leave_total,
-                       '15':i.email,
-                       '16':i.id
+                       '6':i.sick_leave_num,
+                       '7':i.statutory_annual_leave_available,
+                       '8':i.statutory_annual_leave_used,
+                       '9':i.statutory_annual_leave_total,
+                       '10':i.company_annual_leave_available,
+                       '11':i.company_annual_leave_used,
+                       '12':i.company_annual_leave_total,
+                       '13':i.seasons_leave_available,
+                       '14':i.seasons_leave_used,
+                       '15':i.seasons_leave_total,
+                       '16':i.email,
+                       '17':i.id
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
@@ -133,7 +135,7 @@ def vacation_table_save(request):
 
 
         orm = user_table(name=name,department=department,supervisor=supervisor,principal=principal,join_date=join_date,graduate_year=graduate_year,
-                         email=email,statutory_annual_leave_available=statutory_annual_leave_available,statutory_annual_leave_used=0,
+                         email=email,sick_leave_num=0,statutory_annual_leave_available=statutory_annual_leave_available,statutory_annual_leave_used=0,
                          statutory_annual_leave_total=statutory_annual_leave_total,company_annual_leave_available=company_annual_leave_available,
                          company_annual_leave_used=0,company_annual_leave_total=company_annual_leave_total,seasons_leave_available=1,
                          seasons_leave_used=0,seasons_leave_total=1,has_approve=0)
@@ -206,6 +208,11 @@ def vacation_refresh(request):
 
         orm_state = state.objects.filter(name=i.name)
         for j in orm_state:
+            if 6 < (datetime.datetime.now() - j.apply_time).days and j.state == 1 or j.state == 2:
+                orm_fetch_email = user_table.objects.get(name=j.approve_now)
+                send_mail(to_addr='huahuining@xiaoquan.com,%s' % orm_fetch_email.email,subject='请假审批过期提醒',
+                          body='<h3>有一个请假事件等待您的审批，还有1天就将过期，请在尽快在OA系统中审批。</h3><br>OA链接：http://192.168.100.251:8000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+
             if (datetime.datetime.now() - j.apply_time).days > 7 and j.state == 1 or j.state == 2:
                 j.state = 9
                 j.state_interface = '已过期'
@@ -356,7 +363,7 @@ def vacation_apply_save(request):
         orm_alert.save()
         orm.save()
 
-        send_mail(to_addr=supervisor_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>此邮件为自动发送的提醒邮件，请勿回复。')
+        send_mail(to_addr=supervisor_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://192.168.100.251:8000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
     except Exception,e:
         print e
@@ -499,19 +506,50 @@ def vacation_approve_process(request):
                     orm_alert_my.save()
                     orm.save()
 
-                    send_mail(to_addr=principal_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    send_mail(to_addr=principal_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://192.168.100.251:8000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                     return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
                 except Exception,e:
                     print e
                     return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
             else:
+                if orm.type == '病假' and orm.days >= 2 or orm.type == '产假' or orm.type == '婚假':
+                    state_interface = u'等待 ' + HR['name'] + u' 审批'
+                    HR_email = HR['email']
+
+                    orm.state_interface = state_interface
+                    orm.approve_now = HR['name']
+                    orm.state = 3
+
+                    log_info = '<b>%s</b> 批准了 <b>%s</b> 申请的 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,orm.name,orm.type,orm.vacation_date,state_interface)
+                    orm_log = operation_log(name=request.user.first_name,operation=log_info)
+
+                    orm_alert = user_table.objects.get(name=HR['name'])
+                    orm_alert.has_approve += 1
+
+                    orm_alert_my = user_table.objects.get(name=request.user.first_name)
+                    orm_alert_my.has_approve -= 1
+
+                    try:
+                        orm_log.save()
+                        orm_alert.save()
+                        orm_alert_my.save()
+                        orm.save()
+
+                        send_mail(to_addr=HR_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://192.168.100.251:8000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                        return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
+                    except Exception,e:
+                        print e
+                        return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+                apply_email = orm_fetch_principal.email
                 orm.state_interface = '已批准'
-                orm.state = 3
+                orm.state = 8
                 orm.approve_now = ''
 
                 log_info = '<b>%s</b> 批准了 <b>%s</b> 申请的 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,orm.name,orm.type,orm.vacation_date,orm.state_interface)
                 orm_log = operation_log(name=request.user.first_name,operation=log_info)
 
+                if orm.type == u'病假':
+                    orm_fetch_principal.sick_leave_num += 1
                 if orm.type == u'法定年假':
                     orm_fetch_principal.statutory_annual_leave_used += orm.days
                     orm_fetch_principal.statutory_annual_leave_available -= orm.days
@@ -530,19 +568,53 @@ def vacation_approve_process(request):
                     orm_alert_my.save()
                     orm.save()
 
+                    send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://192.168.100.251:8000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+
                     return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
                 except Exception,e:
                     print e
                     return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
         if orm.state == 2:
+            if orm.type == '病假' and orm.days >= 2 or orm.type == '产假' or orm.type == '婚假':
+                state_interface = u'等待 ' + HR['name'] + u' 审批'
+                HR_email = HR['email']
+
+                orm.state_interface = state_interface
+                orm.approve_now = HR['name']
+                orm.state = 3
+
+                log_info = '<b>%s</b> 批准了 <b>%s</b> 申请的 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,orm.name,orm.type,orm.vacation_date,state_interface)
+                orm_log = operation_log(name=request.user.first_name,operation=log_info)
+
+                orm_alert = user_table.objects.get(name=HR['name'])
+                orm_alert.has_approve += 1
+
+                orm_alert_my = user_table.objects.get(name=request.user.first_name)
+                orm_alert_my.has_approve -= 1
+
+                try:
+                    orm_log.save()
+                    orm_alert.save()
+                    orm_alert_my.save()
+                    orm.save()
+
+                    send_mail(to_addr=HR_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://192.168.100.251:8000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
+                except Exception,e:
+                    print e
+                    return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
             orm.state_interface = '已批准'
-            orm.state = 3
+            orm.state = 8
             orm.approve_now = ''
 
             log_info = '<b>%s</b> 批准了 <b>%s</b> 申请的 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,orm.name,orm.type,orm.vacation_date,orm.state_interface)
             orm_log = operation_log(name=request.user.first_name,operation=log_info)
 
             orm_fetch_principal = user_table.objects.get(name=orm.name)
+            apply_email = orm_fetch_principal.email
+
+            if orm.type == u'病假':
+                orm_fetch_principal.sick_leave_num += 1
             if orm.type == '法定年假':
                 orm_fetch_principal.statutory_annual_leave_used += orm.days
                 orm_fetch_principal.statutory_annual_leave_available -= orm.days
@@ -561,6 +633,45 @@ def vacation_approve_process(request):
                 orm_alert_my.save()
                 orm.save()
 
+                send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://192.168.100.251:8000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+
+                return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
+            except Exception,e:
+                print e
+                return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+        if orm.state == 3:
+            orm.state_interface = '已批准'
+            orm.state = 8
+            orm.approve_now = ''
+
+            log_info = '<b>%s</b> 批准了 <b>%s</b> 申请的 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,orm.name,orm.type,orm.vacation_date,orm.state_interface)
+            orm_log = operation_log(name=request.user.first_name,operation=log_info)
+
+            orm_fetch_principal = user_table.objects.get(name=orm.name)
+            apply_email = orm_fetch_principal.email
+
+            if orm.type == u'病假':
+                orm_fetch_principal.sick_leave_num += 1
+            if orm.type == '法定年假':
+                orm_fetch_principal.statutory_annual_leave_used += orm.days
+                orm_fetch_principal.statutory_annual_leave_available -= orm.days
+            if orm.type == '公司年假':
+                orm_fetch_principal.company_annual_leave_used += orm.days
+                orm_fetch_principal.company_annual_leave_available -= orm.days
+            if orm.type == '季度假':
+                orm_fetch_principal.seasons_leave_used += orm.days
+                orm_fetch_principal.seasons_leave_available -= orm.days
+
+            try:
+                orm_log.save()
+                orm_fetch_principal.save()
+                orm_alert_my = user_table.objects.get(name=request.user.first_name)
+                orm_alert_my.has_approve -= 1
+                orm_alert_my.save()
+                orm.save()
+
+                send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://192.168.100.251:8000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+
                 return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
             except Exception,e:
                 print e
@@ -573,6 +684,10 @@ def vacation_approve_process(request):
         log_info = '<b>%s</b> 没有批准 <b>%s</b> 申请的 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,orm.name,orm.type,orm.vacation_date,orm.state_interface)
         orm_log = operation_log(name=request.user.first_name,operation=log_info)
 
+        fetch_email = user_table.objects.get(name=orm.name)
+        email = fetch_email.email
+
+        send_mail(to_addr=email,subject='请假申请被拒绝',body='<h3>您的请假申请被拒绝，请在OA系统中查看。</h3><br>OA链接：http://192.168.100.251:8000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
         orm_alert = user_table.objects.get(name=request.user.first_name)
         orm_alert.has_approve -= 1
 

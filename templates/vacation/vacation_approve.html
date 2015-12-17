@@ -268,54 +268,54 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
-    $('#type').select2({
-        multiple: false,
-        placeholder: '选择请假类型',
-        allowClear: true,
-        data: [{'text':'季度假','id':1},{'text':'法定年假','id':2},{'text':'公司年假','id':3},{'text':'调休假','id':4},
-            {'text':'事假','id':5},{'text':'病假','id':6},{'text':'产假','id':7},{'text':'陪产假','id':8},
-            {'text':'婚假','id':9},{'text':'丧假','id':10}]
-    });
-
-    $('#reportrange').daterangepicker({
-        opens: (App.isRTL() ? 'left' : 'right'),
-
-    //    startDate: moment().subtract('days', 29),
-    //    endDate: moment(),
-        minDate: '2012/01/01',
-        maxDate: '2028/12/31',
-        dateLimit: {
-            days: 2800
-        },
-        showDropdowns: true,
-        showWeekNumbers: false,
-        timePicker: false,
-        timePickerIncrement: 0,
-        timePicker12Hour: false,
-        ranges: {
-           'Today': [moment(), moment()],
+{#    $('#type').select2({#}
+{#        multiple: false,#}
+{#        placeholder: '选择请假类型',#}
+{#        allowClear: true,#}
+{#        data: [{'text':'季度假','id':1},{'text':'法定年假','id':2},{'text':'公司年假','id':3},{'text':'调休假','id':4},#}
+{#            {'text':'事假','id':5},{'text':'病假','id':6},{'text':'产假','id':7},{'text':'陪产假','id':8},#}
+{#            {'text':'婚假','id':9},{'text':'丧假','id':10}]#}
+{#    });#}
+{##}
+{#    $('#reportrange').daterangepicker({#}
+{#        opens: (App.isRTL() ? 'left' : 'right'),#}
+{##}
+{#    //    startDate: moment().subtract('days', 29),#}
+{#    //    endDate: moment(),#}
+{#        minDate: '2012/01/01',#}
+{#        maxDate: '2028/12/31',#}
+{#        dateLimit: {#}
+{#            days: 2800#}
+{#        },#}
+{#        showDropdowns: true,#}
+{#        showWeekNumbers: false,#}
+{#        timePicker: false,#}
+{#        timePickerIncrement: 0,#}
+{#        timePicker12Hour: false,#}
+{#        ranges: {#}
+{#           'Today': [moment(), moment()],#}
 {#           'Yesterday': [moment().subtract(1, 'days'), moment().subtract(1, 'days')],#}
 {#           'Last 7 Days': [moment().subtract(6, 'days'), moment()],#}
 {#           'This Month': [moment().startOf('month'), moment().endOf('month')],#}
 {#           'Last Month': [moment().subtract(1, 'month').startOf('month'), moment().subtract(1, 'month').endOf('month')]#}
-        },
-        buttonClasses: ['btn'],
-        applyClass: 'green',
-        cancelClass: 'default',
-        format: 'YYYY/MM/DD',
-        separator: ' to ',
-        locale: {
-            applyLabel: 'Apply',
-            fromLabel: 'From',
-            toLabel: 'To',
-            customRangeLabel: '自定义',
-            daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],
-            monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],
-            firstDay: 1
-        }
-        },
-        function (start, end) {
-            $('#reportrange span').html(start.format('YYYY-MM-DD') + '  ->  ' + end.format('YYYY-MM-DD'));
+{#        },#}
+{#        buttonClasses: ['btn'],#}
+{#        applyClass: 'green',#}
+{#        cancelClass: 'default',#}
+{#        format: 'YYYY/MM/DD',#}
+{#        separator: ' to ',#}
+{#        locale: {#}
+{#            applyLabel: 'Apply',#}
+{#            fromLabel: 'From',#}
+{#            toLabel: 'To',#}
+{#            customRangeLabel: '自定义',#}
+{#            daysOfWeek: ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'],#}
+{#            monthNamesShort: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12'],#}
+{#            firstDay: 1#}
+{#        }#}
+{#        },#}
+{#        function (start, end) {#}
+{#            $('#reportrange span').html(start.format('YYYY-MM-DD') + '  ->  ' + end.format('YYYY-MM-DD'));#}
 {#            var begin = start.format('YYYY-MM-DD')#}
 {#            var end = end.format('YYYY-MM-DD')#}
 {#            $('#begin_time').val(begin)#}
@@ -327,21 +327,21 @@ $(document).ready(function () {
 {#                loaddata(begin, end,'晚餐')#}
 {#            }#}
 {#            $('#datatables').dataTable().fnDraw()#}
-        }
-    );
-
-
-
+{#        }#}
+{#    );#}
+{##}
+{##}
+{##}
 {#    var time = $('#reportrange span').html().split('  ')#}
 {#    var begin = time[0]#}
 {#    var end = time[2]#}
-
-    $('#half_day').select2({
-        multiple: false,
-        placeholder: '选择上午/下午',
-        allowClear: true,
-        data: [{'text':'上午','id':1},{'text':'下午','id':2}]
-    });
+{##}
+{#    $('#half_day').select2({#}
+{#        multiple: false,#}
+{#        placeholder: '选择上午/下午',#}
+{#        allowClear: true,#}
+{#        data: [{'text':'上午','id':1},{'text':'下午','id':2}]#}
+{#    });#}
 
     aButtons = [
             {
@@ -356,7 +356,7 @@ $(document).ready(function () {
             },
             {
                 "sExtends": 'select',
-                "sButtonText": '<font color="white">不批准</font><i class="fa fa-times"></i>',
+                "sButtonText": '<font color="white">拒绝</font><i class="fa fa-times"></i>',
                 "sButtonClass": "btn btn-danger",
                 "fnComplete": function (nButton, oConfig, nRow) {
                     disagree_verify()

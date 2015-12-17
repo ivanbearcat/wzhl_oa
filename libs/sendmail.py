@@ -9,6 +9,7 @@ from email.header import Header
 # body = sys.argv[3]
 
 def send_mail(to_addr,subject,body):
+    to_addr_list = to_addr.split(',')
     from_addr = 'oa@xiaoquan.com'
     password = 'RPvg8DD62i3U8o8F'
     smtp_server = 'smtp.qiye.163.com'
@@ -19,5 +20,5 @@ def send_mail(to_addr,subject,body):
     smtp = smtplib.SMTP()
     smtp.connect(smtp_server)
     smtp.login(from_addr,password)
-    smtp.sendmail(from_addr, to_addr, msg.as_string())
+    smtp.sendmail(from_addr, to_addr_list, msg.as_string())
     smtp.quit()

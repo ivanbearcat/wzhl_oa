@@ -1,5 +1,5 @@
 # Django settings for wzhl_oa project.
-
+# -*- coding: utf-8 -*-
 import os
 
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -186,3 +186,4 @@ LOGGING = {
 #FILE_UPLOAD_TEMP_DIR = 'tmp'
 
 #custom
+HR = {'name':'华慧宁','email':'huahuining@xiaoquan.com'}

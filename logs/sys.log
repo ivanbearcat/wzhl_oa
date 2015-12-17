@@ -7989,3 +7989,619 @@ Traceback (most recent call last):
     "Choices are: %s" % (name, ", ".join(names)))
 FieldError: Cannot resolve keyword 'add_time' into field. Choices are: id, name, operation, operation_time
 [2015-12-16 15:25:07,841] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_log_data/
+[2015-12-16 15:32:49,903] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:32:49,910] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-16 15:35:15,387] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:35:15,392] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 15:35:23,211] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:35:23,213] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 15:35:27,122] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:35:27,124] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 15:35:28,273] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:35:28,276] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 15:35:29,366] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:35:29,368] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 15:35:38,928] WARNING : Not Found: /favicon.ico
+[2015-12-16 15:37:07,198] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:37:07,199] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-16 15:37:16,841] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:37:16,842] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-16 15:42:32,552] WARNING : Not Found: /sitemap.xml
+[2015-12-16 15:44:57,594] WARNING : <gaoru> login in fail.
+[2015-12-16 15:46:21,011] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:46:21,013] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 15:46:24,491] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:46:24,493] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 15:46:25,788] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:46:25,790] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 15:46:36,906] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:46:36,908] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 15:46:38,677] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 383, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 15:46:38,679] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 17:15:24,010] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 210, in vacation_refresh
+    orm_fetch_email = user_table.objects.get(name=orm_state.approve_now)
+AttributeError: 'QuerySet' object has no attribute 'approve_now'
+[2015-12-16 17:15:56,636] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 210, in vacation_refresh
+    orm_fetch_email = user_table.objects.get(name=j.approve_now)
+AttributeError: 'QuerySet' object has no attribute 'approve_now'
+[2015-12-16 17:21:47,395] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 210, in vacation_refresh
+    orm_fetch_email = user_table.objects.get(name=j.approve_now)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:22:13,132] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 210, in vacation_refresh
+    orm_fetch_email = user_table.objects.get(name=j.approve_now)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:22:19,180] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 210, in vacation_refresh
+    orm_fetch_email = user_table.objects.get(name=j.approve_now)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:22:30,103] ERROR : Internal Server Error: /vacation_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 210, in vacation_refresh
+    orm_fetch_email = user_table.objects.get(name=j.approve_now)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:41:02,774] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 388, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:41:02,779] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 17:41:05,330] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 388, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:41:05,332] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 17:41:06,674] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 388, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:41:06,677] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 17:41:12,338] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 388, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:41:12,340] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 17:41:18,695] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 388, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:41:18,698] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 17:41:20,415] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 388, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:41:20,420] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 17:41:32,136] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 388, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:41:32,138] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 17:41:33,629] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 388, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:41:33,631] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 17:41:36,132] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 388, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-16 17:41:36,135] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-16 18:05:58,450] WARNING : Not Found: /static/assets/plugins/font-awesome/css/
+[2015-12-16 18:05:58,521] WARNING : Not Found: /static/assets/plugins/font-awesome/css/
+[2015-12-16 18:05:58,564] WARNING : Not Found: /static/assets/plugins/bootstrap/css/
+[2015-12-16 18:05:59,086] WARNING : Not Found: /static/assets/plugins/bootstrap/css/
+[2015-12-16 18:05:59,191] WARNING : Not Found: /static/assets/plugins/uniform/css/
+[2015-12-16 18:05:59,213] WARNING : Not Found: /static/assets/plugins/uniform/css/
+[2015-12-16 18:05:59,253] WARNING : Not Found: /static/assets/plugins/gritter/css/
+[2015-12-16 18:05:59,681] WARNING : Not Found: /static/assets/plugins/gritter/css/
+[2015-12-16 18:05:59,735] WARNING : Not Found: /static/assets/plugins/bootstrap-daterangepicker/
+[2015-12-16 18:05:59,755] WARNING : Not Found: /static/assets/plugins/bootstrap-daterangepicker/
+[2015-12-16 18:05:59,799] WARNING : Not Found: /static/assets/plugins/fullcalendar/fullcalendar/
+[2015-12-16 18:05:59,820] WARNING : Not Found: /static/assets/plugins/fullcalendar/fullcalendar/
+[2015-12-16 18:05:59,859] WARNING : Not Found: /static/assets/plugins/jquery-easy-pie-chart/
+[2015-12-16 18:05:59,881] WARNING : Not Found: /static/assets/plugins/jquery-easy-pie-chart/
+[2015-12-16 18:06:04,922] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:06:04,944] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:06:04,997] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:06:05,016] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:06:10,188] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:06:10,208] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:06:10,262] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:06:10,283] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:06:10,323] WARNING : Not Found: /static/assets/css/pages/
+[2015-12-16 18:06:10,340] WARNING : Not Found: /static/assets/css/pages/
+[2015-12-16 18:06:10,378] WARNING : Not Found: /static/assets/css/themes/
+[2015-12-16 18:06:10,398] WARNING : Not Found: /static/assets/css/themes/
+[2015-12-16 18:06:15,442] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:06:15,463] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:06:15,547] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/
+[2015-12-16 18:06:20,568] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/
+[2015-12-16 18:06:20,674] WARNING : Not Found: /static/assets/theme/default/
+[2015-12-16 18:06:20,693] WARNING : Not Found: /static/assets/theme/default/
+[2015-12-16 18:06:20,735] WARNING : Not Found: /static/assets/plugins/select2/
+[2015-12-16 18:06:20,756] WARNING : Not Found: /static/assets/plugins/select2/
+[2015-12-16 18:06:20,802] WARNING : Not Found: /static/assets/plugins/select2/
+[2015-12-16 18:06:20,822] WARNING : Not Found: /static/assets/plugins/select2/
+[2015-12-16 18:06:20,867] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:06:20,887] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:06:20,938] WARNING : Not Found: /static/assets/plugins/bootstrap-select/
+[2015-12-16 18:06:21,324] WARNING : Not Found: /static/assets/plugins/bootstrap-select/
+[2015-12-16 18:06:21,375] WARNING : Not Found: /static/assets/plugins/jquery-multi-select/css/
+[2015-12-16 18:06:21,394] WARNING : Not Found: /static/assets/plugins/jquery-multi-select/css/
+[2015-12-16 18:06:21,423] WARNING : Not Found: /static/assets/plugins/clockface/css/
+[2015-12-16 18:06:26,446] WARNING : Not Found: /static/assets/plugins/clockface/css/
+[2015-12-16 18:06:26,484] WARNING : Not Found: /static/assets/plugins/bootstrap-datepicker/css/
+[2015-12-16 18:06:26,504] WARNING : Not Found: /static/assets/plugins/bootstrap-datepicker/css/
+[2015-12-16 18:06:26,550] WARNING : Not Found: /static/assets/plugins/bootstrap-timepicker/css/
+[2015-12-16 18:06:27,173] WARNING : Not Found: /static/assets/plugins/bootstrap-timepicker/css/
+[2015-12-16 18:06:32,214] WARNING : Not Found: /static/assets/plugins/bootstrap-colorpicker/css/
+[2015-12-16 18:06:32,237] WARNING : Not Found: /static/assets/plugins/bootstrap-colorpicker/css/
+[2015-12-16 18:06:32,288] WARNING : Not Found: /static/assets/plugins/bootstrap-daterangepicker/
+[2015-12-16 18:06:32,308] WARNING : Not Found: /static/assets/plugins/bootstrap-daterangepicker/
+[2015-12-16 18:06:34,956] WARNING : Not Found: /static/assets/plugins/font-awesome/css/
+[2015-12-16 18:06:34,971] WARNING : Not Found: /static/assets/plugins/font-awesome/css/
+[2015-12-16 18:06:35,001] WARNING : Not Found: /static/assets/plugins/bootstrap/css/
+[2015-12-16 18:06:35,018] WARNING : Not Found: /static/assets/plugins/bootstrap/css/
+[2015-12-16 18:06:35,073] WARNING : Not Found: /static/assets/plugins/uniform/css/
+[2015-12-16 18:06:35,123] WARNING : Not Found: /static/assets/plugins/uniform/css/
+[2015-12-16 18:06:45,166] WARNING : Not Found: /static/assets/plugins/gritter/css/
+[2015-12-16 18:07:40,269] WARNING : Not Found: /static/assets/plugins/font-awesome/css/
+[2015-12-16 18:07:40,286] WARNING : Not Found: /static/assets/plugins/font-awesome/css/
+[2015-12-16 18:07:40,315] WARNING : Not Found: /static/assets/plugins/bootstrap/css/
+[2015-12-16 18:07:40,331] WARNING : Not Found: /static/assets/plugins/bootstrap/css/
+[2015-12-16 18:07:40,376] WARNING : Not Found: /static/assets/plugins/uniform/css/
+[2015-12-16 18:07:40,392] WARNING : Not Found: /static/assets/plugins/uniform/css/
+[2015-12-16 18:07:40,422] WARNING : Not Found: /static/assets/plugins/gritter/css/
+[2015-12-16 18:07:40,438] WARNING : Not Found: /static/assets/plugins/gritter/css/
+[2015-12-16 18:07:40,474] WARNING : Not Found: /static/assets/plugins/bootstrap-daterangepicker/
+[2015-12-16 18:07:40,488] WARNING : Not Found: /static/assets/plugins/bootstrap-daterangepicker/
+[2015-12-16 18:07:40,518] WARNING : Not Found: /static/assets/plugins/fullcalendar/fullcalendar/
+[2015-12-16 18:07:40,537] WARNING : Not Found: /static/assets/plugins/fullcalendar/fullcalendar/
+[2015-12-16 18:07:40,615] WARNING : Not Found: /static/assets/plugins/jquery-easy-pie-chart/
+[2015-12-16 18:07:45,641] WARNING : Not Found: /static/assets/plugins/jquery-easy-pie-chart/
+[2015-12-16 18:07:45,681] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:07:45,702] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:07:45,781] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:07:55,810] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:07:55,855] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:00,877] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:05,914] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:05,930] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:06,004] WARNING : Not Found: /static/assets/css/pages/
+[2015-12-16 18:08:06,020] WARNING : Not Found: /static/assets/css/pages/
+[2015-12-16 18:08:06,048] WARNING : Not Found: /static/assets/css/themes/
+[2015-12-16 18:08:06,062] WARNING : Not Found: /static/assets/css/themes/
+[2015-12-16 18:08:11,107] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:11,127] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:11,164] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/
+[2015-12-16 18:08:11,185] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/
+[2015-12-16 18:08:11,222] WARNING : Not Found: /static/assets/theme/default/
+[2015-12-16 18:08:11,242] WARNING : Not Found: /static/assets/theme/default/
+[2015-12-16 18:08:11,285] WARNING : Not Found: /static/assets/plugins/select2/
+[2015-12-16 18:08:11,308] WARNING : Not Found: /static/assets/plugins/select2/
+[2015-12-16 18:08:11,351] WARNING : Not Found: /static/assets/plugins/select2/
+[2015-12-16 18:08:11,370] WARNING : Not Found: /static/assets/plugins/select2/
+[2015-12-16 18:08:11,410] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:11,430] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:11,468] WARNING : Not Found: /static/assets/plugins/bootstrap-select/
+[2015-12-16 18:08:11,489] WARNING : Not Found: /static/assets/plugins/bootstrap-select/
+[2015-12-16 18:08:11,521] WARNING : Not Found: /static/assets/plugins/jquery-multi-select/css/
+[2015-12-16 18:08:11,538] WARNING : Not Found: /static/assets/plugins/jquery-multi-select/css/
+[2015-12-16 18:08:16,624] WARNING : Not Found: /static/assets/plugins/clockface/css/
+[2015-12-16 18:08:16,644] WARNING : Not Found: /static/assets/plugins/clockface/css/
+[2015-12-16 18:08:21,688] WARNING : Not Found: /static/assets/plugins/bootstrap-datepicker/css/
+[2015-12-16 18:08:21,710] WARNING : Not Found: /static/assets/plugins/bootstrap-datepicker/css/
+[2015-12-16 18:08:21,741] WARNING : Not Found: /static/assets/plugins/bootstrap-timepicker/css/
+[2015-12-16 18:08:21,756] WARNING : Not Found: /static/assets/plugins/bootstrap-timepicker/css/
+[2015-12-16 18:08:26,791] WARNING : Not Found: /static/assets/plugins/bootstrap-colorpicker/css/
+[2015-12-16 18:08:26,815] WARNING : Not Found: /static/assets/plugins/bootstrap-colorpicker/css/
+[2015-12-16 18:08:26,853] WARNING : Not Found: /static/assets/plugins/bootstrap-daterangepicker/
+[2015-12-16 18:08:26,875] WARNING : Not Found: /static/assets/plugins/bootstrap-daterangepicker/
+[2015-12-16 18:08:27,199] WARNING : Not Found: /static/assets/plugins/font-awesome/css/
+[2015-12-16 18:08:32,220] WARNING : Not Found: /static/assets/plugins/font-awesome/css/
+[2015-12-16 18:08:37,270] WARNING : Not Found: /static/assets/plugins/bootstrap/css/
+[2015-12-16 18:08:37,291] WARNING : Not Found: /static/assets/plugins/bootstrap/css/
+[2015-12-16 18:08:42,364] WARNING : Not Found: /static/assets/plugins/uniform/css/
+[2015-12-16 18:08:42,380] WARNING : Not Found: /static/assets/plugins/uniform/css/
+[2015-12-16 18:08:42,408] WARNING : Not Found: /static/assets/plugins/gritter/css/
+[2015-12-16 18:08:42,427] WARNING : Not Found: /static/assets/plugins/gritter/css/
+[2015-12-16 18:08:42,463] WARNING : Not Found: /static/assets/plugins/bootstrap-daterangepicker/
+[2015-12-16 18:08:42,484] WARNING : Not Found: /static/assets/plugins/bootstrap-daterangepicker/
+[2015-12-16 18:08:42,521] WARNING : Not Found: /static/assets/plugins/fullcalendar/fullcalendar/
+[2015-12-16 18:08:42,540] WARNING : Not Found: /static/assets/plugins/fullcalendar/fullcalendar/
+[2015-12-16 18:08:42,580] WARNING : Not Found: /static/assets/plugins/jquery-easy-pie-chart/
+[2015-12-16 18:08:42,602] WARNING : Not Found: /static/assets/plugins/jquery-easy-pie-chart/
+[2015-12-16 18:08:42,632] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:42,648] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:42,683] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:42,699] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:42,796] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:47,824] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:47,867] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:57,895] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:08:57,942] WARNING : Not Found: /static/assets/css/pages/
+[2015-12-16 18:09:02,978] WARNING : Not Found: /static/assets/css/pages/
+[2015-12-16 18:09:08,027] WARNING : Not Found: /static/assets/css/themes/
+[2015-12-16 18:09:08,046] WARNING : Not Found: /static/assets/css/themes/
+[2015-12-16 18:09:08,073] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:09:08,089] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:09:08,115] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/
+[2015-12-16 18:09:08,131] WARNING : Not Found: /static/assets/plugins/bootstrap-toastr/
+[2015-12-16 18:09:08,157] WARNING : Not Found: /static/assets/theme/default/
+[2015-12-16 18:09:08,171] WARNING : Not Found: /static/assets/theme/default/
+[2015-12-16 18:09:08,199] WARNING : Not Found: /static/assets/plugins/select2/
+[2015-12-16 18:09:08,215] WARNING : Not Found: /static/assets/plugins/select2/
+[2015-12-16 18:09:13,250] WARNING : Not Found: /static/assets/plugins/select2/
+[2015-12-16 18:09:13,264] WARNING : Not Found: /static/assets/plugins/select2/
+[2015-12-16 18:09:23,309] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:09:23,338] WARNING : Not Found: /static/assets/css/
+[2015-12-16 18:09:23,388] WARNING : Not Found: /static/assets/plugins/bootstrap-select/
+[2015-12-16 18:09:33,417] WARNING : Not Found: /static/assets/plugins/bootstrap-select/
+[2015-12-16 18:09:33,455] WARNING : Not Found: /static/assets/plugins/jquery-multi-select/css/
+[2015-12-16 18:09:33,475] WARNING : Not Found: /static/assets/plugins/jquery-multi-select/css/
+[2015-12-16 18:09:33,573] WARNING : Not Found: /static/assets/plugins/clockface/css/
+[2015-12-16 18:09:38,598] WARNING : Not Found: /static/assets/plugins/clockface/css/
+[2015-12-16 18:09:38,635] WARNING : Not Found: /static/assets/plugins/bootstrap-datepicker/css/
+[2015-12-16 18:09:38,656] WARNING : Not Found: /static/assets/plugins/bootstrap-datepicker/css/
+[2015-12-16 18:09:38,694] WARNING : Not Found: /static/assets/plugins/bootstrap-timepicker/css/
+[2015-12-16 18:09:38,717] WARNING : Not Found: /static/assets/plugins/bootstrap-timepicker/css/
+[2015-12-16 18:09:38,755] WARNING : Not Found: /static/assets/plugins/bootstrap-colorpicker/css/
+[2015-12-16 18:09:38,774] WARNING : Not Found: /static/assets/plugins/bootstrap-colorpicker/css/
+[2015-12-16 18:09:38,815] WARNING : Not Found: /static/assets/plugins/bootstrap-daterangepicker/
+[2015-12-16 18:09:39,111] WARNING : Not Found: /static/assets/plugins/bootstrap-daterangepicker/
+[2015-12-16 18:47:19,805] WARNING : Not Found: /static/assets/img/download.png.png
+[2015-12-17 12:49:11,854] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 388, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1054, "Unknown column 'vacation_user_table.sick_leave_num' in 'field list'")
+[2015-12-17 12:49:11,863] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-17 12:59:40,720] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 388, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-17 12:59:40,722] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-17 12:59:45,045] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 388, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-17 12:59:45,047] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-17 13:00:15,769] ERROR : (1048, "Column 'sick_leave_num' cannot be null")
+[2015-12-17 13:40:42,067] ERROR : Internal Server Error: /vacation_approve_process/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 526, in vacation_approve_process
+    orm_alert = user_table.objects.get(name=HR['name'])
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-17 13:40:42,071] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_process/
