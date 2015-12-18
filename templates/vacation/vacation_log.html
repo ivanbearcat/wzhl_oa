@@ -48,7 +48,32 @@
         <!-- END EXAMPLE TABLE PORTLET-->
     </div>
 </div>
-
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/vacation_log.xlsx">下载Excel文件</a></h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!--/datatables-->
 {% endblock %}
 
@@ -137,7 +162,7 @@ $(document).ready(function () {
 function loaddata(begin,end) {
     oTable = $('#datatables').dataTable({
         "sAjaxSource": "/vacation_log_data/?rand=" + Math.random(),
-        //"sDom": "<'row-fluid'<'span6'T><'span6'f>r><'table-scrollable't><'fluid'<'span3'l><'span4'i><'span5'p>>",
+        "sDom": "<'row-fluid'<'span6'T><'span6'f>r><'table-scrollable't><'fluid'<'span3'l><'span4'i><'span5'p>>",
         "bServerSide": true,
         "bPaginate": true, // 是否使用分页
         "bProcessing": false, //是否显示正在处理的提示
@@ -154,7 +179,15 @@ function loaddata(begin,end) {
 //                ],
         "oTableTools": {
             "sRowSelect": "single",
-            'aButtons': []
+            'aButtons': [{
+                "sExtends": 'text',
+                "sButtonText": '<font color="white">导出Excel文件 </font><i class="fa fa-level-down"></i>',
+                "sButtonClass": "btn green",
+                "fnComplete": function (nButton, oConfig, nRow) {
+                    export_excel_file()
+                }
+
+            }]
         },
         "aoColumns": [
             { "sClass": "center", 'sWidth': "10%"},
@@ -202,7 +235,18 @@ function loaddata(begin,end) {
         }
     });
 }
-
+function export_excel_file(){
+    showAjaxLoad()
+    $.post('/vacation_export_excel/', {}, function (d) {
+            hideAjaxLoad()
+            if (d.code == 0) {
+                toastr.success(d.msg)
+                $("#myModal").modal('show')
+            } else {
+                toastr.error(d.msg)
+            }
+    })
+}
 
 </script>
 {% endblock %}

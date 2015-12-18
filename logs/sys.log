@@ -8605,3 +8605,29 @@ Traceback (most recent call last):
     % self.model._meta.object_name)
 DoesNotExist: user_table matching query does not exist.
 [2015-12-17 13:40:42,071] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_process/
+[2015-12-17 13:56:56,627] ERROR : (1062, "Duplicate entry '\xe9\x92\xb1\xe9\x98\xb3' for key 'name'")
+[2015-12-17 16:29:13,737] WARNING : Not Found: /favicon.ico
+[2015-12-17 16:29:13,751] WARNING : Not Found: /favicon.ico
+[2015-12-18 12:00:49,070] WARNING : Not Found: /robots.txt
+[2015-12-18 12:01:15,263] WARNING : Not Found: /sitemap.xml
+[2015-12-18 12:01:23,267] WARNING : Not Found: /robots.txt
+[2015-12-18 16:42:43,059] ERROR : Internal Server Error: /vacation_export_excel/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 127, in get_response
+    raise ValueError("The view %s.%s didn't return an HttpResponse object." % (callback.__module__, view_name))
+ValueError: The view vacation.views.vacation_export_excel didn't return an HttpResponse object.
+[2015-12-18 16:45:19,134] ERROR : Internal Server Error: /vacation_export_excel/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 127, in get_response
+    raise ValueError("The view %s.%s didn't return an HttpResponse object." % (callback.__module__, view_name))
+ValueError: The view vacation.views.vacation_export_excel didn't return an HttpResponse object.
+[2015-12-18 16:47:33,286] ERROR : Internal Server Error: /vacation_export_excel/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 127, in get_response
+    raise ValueError("The view %s.%s didn't return an HttpResponse object." % (callback.__module__, view_name))
+ValueError: The view vacation.views.vacation_export_excel didn't return an HttpResponse object.
+[2015-12-18 16:48:36,469] ERROR : Internal Server Error: /vacation_export_excel/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 127, in get_response
+    raise ValueError("The view %s.%s didn't return an HttpResponse object." % (callback.__module__, view_name))
+ValueError: The view vacation.views.vacation_export_excel didn't return an HttpResponse object.

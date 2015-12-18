@@ -8,7 +8,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from libs.sendmail import send_mail
 from wzhl_oa.settings import HR
-import simplejson,datetime
+import simplejson,datetime,xlsxwriter
 
 import sys
 reload(sys)
@@ -130,8 +130,12 @@ def vacation_table_save(request):
         join_date_list = join_date.split('-')
         join_date_datetime = datetime.date(int(join_date_list[0]),int(join_date_list[1]),int(join_date_list[2]))
 
-        company_annual_leave_total = (today - join_date_datetime).days / 365
-        company_annual_leave_available = company_annual_leave_total
+        if today < join_date_datetime:
+            company_annual_leave_total = 0
+            company_annual_leave_available = 0
+        else:
+            company_annual_leave_total = (today - join_date_datetime).days / 365
+            company_annual_leave_available = company_annual_leave_total
 
 
         orm = user_table(name=name,department=department,supervisor=supervisor,principal=principal,join_date=join_date,graduate_year=graduate_year,
@@ -512,7 +516,7 @@ def vacation_approve_process(request):
                     print e
                     return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
             else:
-                if orm.type == '病假' and orm.days >= 2 or orm.type == '产假' or orm.type == '婚假':
+                if orm.type == '病假' and orm.days >= 2 or orm.type == '产假' or orm.type == '婚假' or orm.type == '陪产假' or orm.type == '丧假':
                     state_interface = u'等待 ' + HR['name'] + u' 审批'
                     HR_email = HR['email']
 
@@ -575,7 +579,7 @@ def vacation_approve_process(request):
                     print e
                     return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
         if orm.state == 2:
-            if orm.type == '病假' and orm.days >= 2 or orm.type == '产假' or orm.type == '婚假':
+            if orm.type == '病假' and orm.days >= 2 or orm.type == '产假' or orm.type == '婚假' or orm.type == '陪产假' or orm.type == '丧假':
                 state_interface = u'等待 ' + HR['name'] + u' 审批'
                 HR_email = HR['email']
 
@@ -815,3 +819,26 @@ def vacation_log_data(request):
                    'aaData':aaData
         }
         return HttpResponse(simplejson.dumps(result),content_type="application/json")
+
+@login_required
+def vacation_export_excel(request):
+    try:
+        workbook = xlsxwriter.Workbook('static/files/vacation_log.xlsx')
+        worksheet = workbook.add_worksheet()
+
+        title = [u'姓名',u'操作',u'操作时间']
+
+        worksheet.write_row('B2',title)
+
+        orm = operation_log.objects.all()
+        count = 3
+        for i in orm:
+            operation = i.operation.replace('<b>','').replace('</b>','').replace('&nbsp',' ')
+            worksheet.write_row('B%s' % count, [i.name,operation,str(i.operation_time).split('+')[0]])
+            count += 1
+        workbook.close()
+        return HttpResponse(simplejson.dumps({'code':0,'msg':u'生成Excel文件成功'}),content_type="application/json")
+    except Exception,e:
+        print e
+        return HttpResponse(simplejson.dumps({'code':1,'msg':u'生成Excel文件失败'}),content_type="application/json")
+
