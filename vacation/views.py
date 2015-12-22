@@ -485,7 +485,7 @@ def vacation_approve_process(request):
     if int(flag) == 1:
         if orm.state == 1:
             orm_fetch_principal = user_table.objects.get(name=orm.name)
-            if orm_fetch_principal.supervisor != orm_fetch_principal.principal and orm.days >= 3:
+            if orm_fetch_principal.supervisor != orm_fetch_principal.principal and orm.days >= 2:
                 approve_now = orm_fetch_principal.principal
                 state_interface = u'等待 ' + orm_fetch_principal.principal + u' 审批'
                 orm_principal = user_table.objects.get(name=approve_now)
