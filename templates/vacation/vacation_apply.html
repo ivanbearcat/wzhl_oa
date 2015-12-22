@@ -43,60 +43,61 @@
             {#        </a>#}
                 </div>
             </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat blue">
-                    <div class="visual">
-                        <i class="fa fa-coffee"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                             {{ statutory_annual_leave_available }}
-                        </div>
-                        <div class="desc">
-                             法定年假剩余天数
-                        </div>
-                    </div>
+            {% include 'vacation/vacation_apply_sub.html' %}
+{#            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">#}
+{#                <div class="dashboard-stat blue">#}
+{#                    <div class="visual">#}
+{#                        <i class="fa fa-coffee"></i>#}
+{#                    </div>#}
+{#                    <div class="details">#}
+{#                        <div class="number">#}
+{#                             {{ statutory_annual_leave_available }}#}
+{#                        </div>#}
+{#                        <div class="desc">#}
+{#                             法定年假剩余天数#}
+{#                        </div>#}
+{#                    </div>#}
             {#        <a class="more" href="#">#}
             {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
             {#        </a>#}
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat purple">
-                    <div class="visual">
-                        <i class="fa fa-coffee"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                             {{ company_annual_leave_available }}
-                        </div>
-                        <div class="desc">
-                             公司年假剩余天数
-                        </div>
-                    </div>
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">#}
+{#                <div class="dashboard-stat purple">#}
+{#                    <div class="visual">#}
+{#                        <i class="fa fa-coffee"></i>#}
+{#                    </div>#}
+{#                    <div class="details">#}
+{#                        <div class="number">#}
+{#                             {{ company_annual_leave_available }}#}
+{#                        </div>#}
+{#                        <div class="desc">#}
+{#                             公司年假剩余天数#}
+{#                        </div>#}
+{#                    </div>#}
             {#        <a class="more" href="#">#}
             {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
             {#        </a>#}
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat yellow">
-                    <div class="visual">
-                        <i class="fa fa-coffee"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                             {{ seasons_leave_available }}
-                        </div>
-                        <div class="desc">
-                             季度假剩余天数
-                        </div>
-                    </div>
+{#                </div>#}
+{#            </div>#}
+{#            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">#}
+{#                <div class="dashboard-stat yellow">#}
+{#                    <div class="visual">#}
+{#                        <i class="fa fa-coffee"></i>#}
+{#                    </div>#}
+{#                    <div class="details">#}
+{#                        <div class="number">#}
+{#                             {{ seasons_leave_available }}#}
+{#                        </div>#}
+{#                        <div class="desc">#}
+{#                             季度假剩余天数#}
+{#                        </div>#}
+{#                    </div>#}
             {#        <a class="more" href="#">#}
             {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
             {#        </a>#}
-                </div>
-            </div>
+{#                </div>#}
+{#            </div>#}
         </div>
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
@@ -294,6 +295,7 @@
         </div>
     </div>
 </div>
+
 <!--/datatables-->
 {% endblock %}
 
@@ -344,8 +346,8 @@ $(document).ready(function () {
 
     //    startDate: moment().subtract('days', 29),
     //    endDate: moment(),
-        minDate: '2012/01/01',
-        maxDate: moment().add(120,'days'),
+        minDate: moment().subtract(90,'days'),
+        maxDate: moment().add(90,'days'),
         dateLimit: {
             days: 2800
         },
@@ -502,9 +504,9 @@ function loaddata() {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            if(aData[6] == 1 || aData[6] == 2){
+            if(aData[6] == 1 || aData[6] == 2 || aData[6] == 3){
                 $('td:eq(6)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp'+aData[7]+'</div>')
-            }else if(aData[6] == 3){
+            }else if(aData[6] == 8){
                 $('td:eq(6)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp'+aData[7]+'</div>')
             }else{
                 $('td:eq(6)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp'+aData[7]+'</div>')
@@ -560,6 +562,7 @@ function rule_save() {
             half_day: half_day
         },
         success: function (d) {
+            $('#refresh').load('/vacation_apply_sub/')
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
@@ -603,6 +606,7 @@ function del() {
     if (aData.length == 1) {
         showAjaxLoad()
         $.post('/vacation_apply_del/', {id: aData[0][8]}, function (d) {
+            $('#refresh').load('/vacation_apply_sub/')
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
