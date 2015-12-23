@@ -66,6 +66,7 @@
 								请假审批
 							</a>
 						</li>
+                        {% if request.session.vacation_can_view %}
                         <li id="vacation_table">
                             <a href="/vacation_table/">
                                 <i class="fa"></i>
@@ -78,5 +79,26 @@
 								日志记录
 							</a>
                         </li>
+                        {% endif %}
 					</ul>
 				</li>
+                {% if request.session.assets_can_view %}
+                <li id="assets">
+					<a href="javascript:;">
+						<i class="fa fa-truck"></i>
+						<span class="title">
+							资产管理
+						</span>
+						<span class="arrow ">
+						</span>
+					</a>
+					<ul class="sub-menu">
+                        <li id="assets_table">
+							<a href="/assets_table/">
+								<i class="fa"></i>
+								资产表
+							</a>
+						</li>
+					</ul>
+				</li>
+                {% endif %}

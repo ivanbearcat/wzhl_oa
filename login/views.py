@@ -15,6 +15,16 @@ def login_auth(request):
     authed = auth.authenticate(username=user_auth,password=passwd_auth)
     if authed and authed.is_active:
         auth.login(request,authed)
+
+        if request.user.has_perm('vacation.can_view'):
+            request.session['vacation_can_view'] = 1
+        else:
+            request.session['vacation_can_view'] = 0
+
+        if request.user.has_perm('assets.can_view'):
+            request.session['assets_can_view'] = 1
+        else:
+            request.session['assets_can_view'] = 0
         # if globals().has_key('next_next') and not next_next == None:
         #     logger.info('<%s> login in sucess.' % user_auth)
         #     return HttpResponseRedirect(next_next)

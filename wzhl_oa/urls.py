@@ -4,6 +4,7 @@ from login.views import *
 from order_form.views import *
 from user_manage.views import *
 from vacation.views import *
+from assets.views import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -48,4 +49,10 @@ urlpatterns = patterns('',
     url(r'^vacation_log/', vacation_log),
     url(r'^vacation_log_data/', vacation_log_data),
     url(r'^vacation_export_excel/', vacation_export_excel),
+    url(r'^assets_table/', assets_table),
+    url(r'^assets_table_data/', assets_table_data),
+    url(r'^assets_table_dropdown/', assets_table_dropdown),
+    url(r'^assets_table_save/', assets_table_save),
+    url(r'^assets_export_excel/', assets_export_excel),
+    url(r'^assets_refresh/', assets_refresh),
 )

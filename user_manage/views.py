@@ -1,5 +1,6 @@
 #coding:utf-8
 from django.shortcuts import render_to_response
+from django.template import RequestContext
 from django.http import HttpResponseRedirect,HttpResponse
 from django.utils.log import logger
 from django.contrib.auth.decorators import login_required
@@ -15,7 +16,7 @@ def chpasswd(request):
                                                            'path1':'user_manage',
                                                            'path2':path,
                                                            'page_name1':u'用户管理',
-                                                           'page_name2':u'修改密码',})
+                                                           'page_name2':u'修改密码',},context_instance=RequestContext(request))
 
 @login_required
 def post_chpasswd(request):

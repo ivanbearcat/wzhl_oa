@@ -135,6 +135,7 @@ INSTALLED_APPS = (
     'user_manage',
     'order_form',
     'vacation',
+    'assets',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -180,6 +181,15 @@ LOGGING = {
      },
  }
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+   # 'django.core.context_processors.auth',
+    'django.core.context_processors.request',
+   # 'django.core.context_processors.debug',
+   # 'django.core.context_processors.i18n',
+   # 'django.core.context_processors.media',
+   # 'tools.my_template_context_processors.request_filter',
+)
+
 #DATAFILE_MAXSIZE = 1024000000
 #DATAFILE_TMP_MAXSIZE = 1024000000
 #FILE_UPLOAD_MAX_MEMORY_SIZE =  1024000000
@@ -187,3 +197,11 @@ LOGGING = {
 
 #custom
 HR = {'name':'华慧宁','email':'huahuining@xiaoquan.com'}
+
+description = ['台式机','显示器','服务器','电视机','投影仪','打印机','ipad','imac','笔记本','交换机']
+model = ['戴尔（DELL）9020MT商用台式机','同方超翔 开票机机箱','戴尔（DELL）U2414H 液晶显示器','戴尔（DELL）R620 服务器',
+         '三星无缝拼接电视','明基投影仪','爱心诺 SK-860打印机','惠普（hp）MFP M277dw 彩色打印机',
+         'iPad平板电脑 16G WiFi版银色','iPad平板电脑 16G WiFi版金色','27 英寸配备 Retina 5K 显示屏的 iMac',
+         '21.5 英寸 iMac 苹果一体机 2.9GHZ','联想（ThinkPad）金属轻薄系列E450笔记本电脑','机房网络产品（交换机&UPS）']
+category = {'电子设备':36, '汽车':48, '办公家具':60}
+department = ['产品部','管理部','技术部','销售部']

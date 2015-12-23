@@ -8720,3 +8720,721 @@ DoesNotExist: user_table matching query does not exist.
 [2015-12-22 13:05:53,948] WARNING : Not Found: /static/assets/plugins/excanvas.min.js
 [2015-12-22 13:42:43,604] WARNING : Not Found: /static/assets/img/runing.png
 [2015-12-22 13:43:03,280] WARNING : Not Found: /static/assets/img/runing.png
+[2015-12-22 13:50:23,903] WARNING : Not Found: /static/assets/img/runing.png
+[2015-12-22 13:53:20,657] WARNING : Not Found: /static/assets/img/runing.png
+[2015-12-22 13:53:36,077] WARNING : Not Found: /static/assets/img/runing.png
+[2015-12-22 13:57:40,220] WARNING : Not Found: /static/assets/img/runing.png
+[2015-12-22 14:35:06,588] WARNING : Not Found: /static/assets/img/runing.png
+[2015-12-22 15:45:03,740] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 432, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-22 15:45:03,742] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-22 15:48:47,034] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 432, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-22 15:48:47,039] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-22 15:48:48,815] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 432, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-22 15:48:48,816] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-22 15:48:50,115] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 432, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-22 15:48:50,116] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-22 15:48:57,869] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 432, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-22 15:48:57,871] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-22 15:48:59,335] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 432, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-22 15:48:59,336] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-22 16:02:02,026] WARNING : Not Found: /static/assets/img/runing.png
+[2015-12-22 16:04:11,662] WARNING : Not Found: /static/assets/img/runing.png
+[2015-12-22 16:04:43,653] WARNING : Not Found: /static/assets/img/runing.png
+[2015-12-22 16:34:03,146] ERROR : Internal Server Error: /main/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/main/views.py", line 14, in main
+    'page_name1':u'主页'},context_instance=reqContext)
+NameError: global name 'reqContext' is not defined
+[2015-12-22 18:36:39,672] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-22 18:36:52,905] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-22 18:37:18,486] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-22 18:38:46,884] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-22 18:39:53,890] WARNING : <yanglin> login in fail.
+[2015-12-22 18:40:04,290] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-22 18:41:23,996] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-22 18:41:35,039] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-22 18:42:49,116] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 52, in <module>
+    url(r'^assets_table/', assets_table),
+NameError: name 'assets_table' is not defined
+[2015-12-22 18:43:10,619] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-22 18:44:03,791] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-22 18:44:52,904] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 80, in rendered_content
+    context = self.resolve_context(self.context_data)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 158, in resolve_context
+    return RequestContext(self._request, context, current_app=self._current_app)
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 175, in __init__
+    for processor in get_standard_processors() + processors:
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 155, in get_standard_processors
+    raise ImproperlyConfigured('Module "%s" does not define a "%s" callable request processor' % (module, attr))
+ImproperlyConfigured: Module "django.core.context_processors" does not define a "auth" callable request processor
+[2015-12-22 18:57:35,277] WARNING : Not Found: /assets_asset_data/
+[2015-12-22 18:57:35,287] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-22 19:05:24,046] WARNING : Not Found: /assets_asset_data/
+[2015-12-22 19:05:24,053] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-22 19:20:06,997] WARNING : Not Found: /assets_asset_data/
+[2015-12-22 19:20:07,014] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-22 19:21:14,256] WARNING : Not Found: /assets_asset_data/
+[2015-12-22 19:21:14,261] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-22 19:21:42,691] WARNING : Not Found: /assets_asset_data/
+[2015-12-22 19:21:42,702] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-22 19:23:27,760] WARNING : Not Found: /assets_asset_data/
+[2015-12-22 19:23:27,764] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-22 20:20:48,601] WARNING : Not Found: /robots.txt
+[2015-12-22 20:20:48,970] WARNING : Not Found: /sitemap.xml
+[2015-12-23 10:21:16,878] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-23 10:34:40,689] WARNING : Not Found: /assets_asset_data/
+[2015-12-23 10:34:40,725] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-23 10:37:11,712] WARNING : Not Found: /assets_asset_data/
+[2015-12-23 10:37:11,720] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-23 10:40:05,729] WARNING : Not Found: /assets_asset_data/
+[2015-12-23 10:40:05,735] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-23 10:40:24,357] WARNING : Not Found: /assets_asset_data/
+[2015-12-23 10:40:24,371] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-23 10:40:37,428] WARNING : Not Found: /assets_asset_data/
+[2015-12-23 10:40:37,434] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-23 10:40:59,646] WARNING : Not Found: /assets_asset_data/
+[2015-12-23 10:40:59,658] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-23 10:52:16,064] WARNING : Not Found: /assets_asset_data/
+[2015-12-23 10:52:16,076] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_asset_data/
+[2015-12-23 12:34:52,975] WARNING : Not Found: search.yahoo.com:443
+[2015-12-23 12:34:52,978] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-23 12:34:53,038] WARNING : Not Found: search.yahoo.com:443
+[2015-12-23 12:34:53,039] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-23 12:34:53,045] WARNING : Not Found: search.yahoo.com:443
+[2015-12-23 12:34:53,047] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-23 12:34:53,078] WARNING : Not Found: search.yahoo.com:443
+[2015-12-23 12:34:53,080] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-23 12:34:54,226] WARNING : Not Found: search.yahoo.com:443
+[2015-12-23 12:34:54,228] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-23 12:34:57,472] WARNING : Not Found: search.yahoo.com:443
+[2015-12-23 12:34:57,474] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-23 12:34:57,925] WARNING : Not Found: search.yahoo.com:443
+[2015-12-23 12:34:57,926] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-23 13:51:04,172] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 124, in assets_table_dropdown
+    result['category'].append({'text':category[i],'id':i})
+KeyError: 0
+[2015-12-23 13:51:04,187] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-23 13:51:19,538] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 124, in assets_table_dropdown
+    result['category'].append({'text':category[i],'id':i})
+KeyError: 0
+[2015-12-23 13:51:19,539] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-23 13:54:28,165] WARNING : Not Found: /assets_table_save/
+[2015-12-23 13:54:28,173] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_save/
+[2015-12-23 14:02:49,269] ERROR : Internal Server Error: /assets_table_save/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 146, in assets_table_save
+    depreciation = (int(cost) - residual_value) / category[_category]
+KeyError: u'\u7535'
+[2015-12-23 14:02:49,272] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_save/
+[2015-12-23 14:04:31,884] ERROR : Internal Server Error: /assets_table_save/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 147, in assets_table_save
+    depreciation = (int(cost) - residual_value) / category[_category]
+KeyError: u'\u7535'
+[2015-12-23 14:04:31,887] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_save/
+[2015-12-23 14:07:20,981] ERROR : Internal Server Error: /assets_table_save/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 147, in assets_table_save
+    depreciation = (int(cost) - residual_value) / category[_category]
+KeyError: u'\u7535'
+[2015-12-23 14:07:20,985] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_save/
+[2015-12-23 14:09:02,787] ERROR : Internal Server Error: /assets_table_save/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 147, in assets_table_save
+    depreciation = (int(cost) - residual_value) / category[_category]
+KeyError: None
+[2015-12-23 14:09:02,789] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_save/
+[2015-12-23 15:18:06,895] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 136, in assets_table_dropdown
+    for i in range(len(description)):
+TypeError: object of type 'NoneType' has no len()
+[2015-12-23 15:18:06,913] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-23 15:18:14,128] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 129, in assets_table_dropdown
+    for i in range(len(category.keys())):
+AttributeError: 'unicode' object has no attribute 'keys'
+[2015-12-23 15:18:14,129] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-23 15:19:01,797] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 136, in assets_table_dropdown
+    for i in range(len(description)):
+TypeError: object of type 'NoneType' has no len()
+[2015-12-23 15:19:01,809] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-23 15:20:34,429] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 125, in assets_table_dropdown
+    result['description_edit'].append({'text':description[i],'id':i})
+KeyError: 'description_edit'
+[2015-12-23 15:20:34,438] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-23 15:21:12,451] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 130, in assets_table_dropdown
+    if category[i] == _category:
+KeyError: 0
+[2015-12-23 15:21:12,454] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-23 15:36:58,798] WARNING : Not Found: /assets_export_excel/
+[2015-12-23 15:36:58,801] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_export_excel/

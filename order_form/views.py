@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render_to_response,render
 from django.http import HttpResponseRedirect,HttpResponse
+from django.template import RequestContext
 from order_form.models import user,order
 from django.db.models.query_utils import Q
 from django.utils.log import logger
@@ -113,7 +114,7 @@ def order_form(request):
                                                        'path1':'order_manage',
                                                        'path2':path,
                                                        'page_name1':u'订餐管理',
-                                                       'page_name2':u'订餐'})
+                                                       'page_name2':u'订餐'},context_instance=RequestContext(request))
 
 @login_required
 def order_form_data(request):

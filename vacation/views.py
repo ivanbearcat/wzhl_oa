@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
 from django.http import HttpResponse
+from django.template import RequestContext
 from vacation.models import user_table,operation_log,state
 from django.db.models.query_utils import Q
 from django.utils.log import logger
@@ -23,7 +24,7 @@ def vacation_table(request):
                                                        'path1':'vacation',
                                                        'path2':path,
                                                        'page_name1':u'请假管理',
-                                                       'page_name2':u'总览表'})
+                                                       'page_name2':u'总览表'},context_instance=RequestContext(request))
 
 @login_required
 def vacation_table_data(request):
@@ -248,7 +249,7 @@ def vacation_apply(request):
                                                        'page_name2':u'请假申请',
                                                        'statutory_annual_leave_available':orm.statutory_annual_leave_available,
                                                        'company_annual_leave_available':orm.company_annual_leave_available,
-                                                       'seasons_leave_available':orm.seasons_leave_available})
+                                                       'seasons_leave_available':orm.seasons_leave_available},context_instance=RequestContext(request))
 
 @login_required
 def vacation_apply_sub(request):
@@ -448,7 +449,7 @@ def vacation_approve(request):
                                                        'path1':'vacation',
                                                        'path2':path,
                                                        'page_name1':u'请假管理',
-                                                       'page_name2':u'请假申请',})
+                                                       'page_name2':u'请假申请',},context_instance=RequestContext(request))
 
 @login_required
 def vacation_approve_data(request):
@@ -768,7 +769,7 @@ def vacation_log(request):
                                                        'path1':'vacation',
                                                        'path2':path,
                                                        'page_name1':u'请假管理',
-                                                       'page_name2':u'日志记录'})
+                                                       'page_name2':u'日志记录'},context_instance=RequestContext(request))
 
 @login_required
 def vacation_log_data(request):
