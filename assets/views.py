@@ -4,10 +4,11 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.db.models.query_utils import Q
 from assets.models import table
+from libs.common import int_format
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from wzhl_oa.settings import description,model,category,department
-import simplejson,datetime,xlsxwriter
+import simplejson,datetime,xlsxwriter,re
 
 @login_required
 def assets_table(request):
@@ -75,21 +76,31 @@ def assets_table_data(request):
                                                     Q(comment__contains=sSearch)).count()
 
     for i in  result_data:
+        i_dict = {}
+        i_dict['payment'] = int_format(float('%.2f' % i.payment))
+        i_dict['cost'] = int_format(float('%.2f' % i.cost))
+        i_dict['residual_value'] = int_format(float('%.2f' % i.residual_value))
+        i_dict['depreciation'] = int_format(float('%.2f' % i.depreciation))
+        i_dict['total_depreciation'] = int_format(float('%.2f' % i.total_depreciation))
+        i_dict['netbook_value'] = int_format(float('%.2f' % i.netbook_value))
+        for j in i_dict.keys():
+            i_dict[j] = re.sub(r'\.0$','.00',i_dict[j])
+
         aaData.append({
                        '0':i.FANO,
                        '1':i.description,
                        '2':i.model,
                        '3':i.category,
-                       '4':i.department,
-                       '5':i.employee,
-                       '6':str(i.purchase_date).split('+')[0],
-                       '7':'%.2f' % i.payment,
-                       '8':'%.2f' % i.cost,
-                       '9':i.residual_life,
-                       '10':'%.2f' % i.residual_value,
-                       '11':'%.2f' % i.depreciation,
-                       '12':'%.2f' % i.total_depreciation,
-                       '13':'%.2f' % i.netbook_value,
+                       '4':i.residual_life,
+                       '5':i.department,
+                       '6':i.employee,
+                       '7':str(i.purchase_date).split('+')[0],
+                       '8':i_dict['payment'],
+                       '9':i_dict['cost'],
+                       '10':i_dict['residual_value'],
+                       '11':i_dict['depreciation'],
+                       '12':i_dict['total_depreciation'],
+                       '13':i_dict['netbook_value'],
                        '14':i.comment,
                        '15':i.id
                       })
@@ -152,6 +163,7 @@ def assets_table_save(request):
     _category = request.POST.get('category')
     _department = request.POST.get('department')
     employee = request.POST.get('employee')
+    purchase_date = request.POST.get('purchase_date')
     payment = request.POST.get('payment')
     cost = request.POST.get('cost')
     comment = request.POST.get('comment')
@@ -159,13 +171,13 @@ def assets_table_save(request):
 
     try:
         if _id =='':
-            residual_value = int(cost) * 0.05
-            depreciation = (int(cost) - residual_value) / category[str(_category)]
+            residual_value = float(cost) * 0.05
+            depreciation = (float(cost) - residual_value) / category[str(_category)]
 
             orm = table(FANO=FANO,description=_description,model=_model,category=_category,department=_department,
-                        employee=employee,payment=payment,cost=cost,residual_life=category[str(_category)],
+                        employee=employee,purchase_date=purchase_date,payment=payment,cost=cost,residual_life=category[str(_category)],
                         residual_value=residual_value,depreciation=depreciation,total_depreciation=0,
-                        netbook_value=int(cost),comment=comment)
+                        netbook_value=float(cost),comment=comment)
             orm.save()
         else:
             orm = table.objects.get(id=_id)
@@ -185,16 +197,16 @@ def assets_export_excel(request):
         workbook = xlsxwriter.Workbook('static/files/fixed_assets.xlsx')
         worksheet = workbook.add_worksheet()
 
-        title = ['编号','描述','型号','类别','部门','员工','购买日期','含税价','原价','剩余月','残值','折旧价','累计折旧价','剩余价值','备注']
+        title = ['编号','描述','型号','类别','剩余月','部门','员工','购买日期','含税价','原价','残值','折旧价','累计折旧价','剩余价值','备注']
 
         worksheet.write_row('B2',title)
 
         orm = table.objects.all()
         count = 3
         for i in orm:
-            worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.department,i.employee,
-                                                str(i.purchase_date).split('+')[0],'%.2f' % i.payment,'%.2f' % i.cost,
-                                                i.residual_life,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
+            worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.residual_life,i.department,
+                                                i.employee,str(i.purchase_date).split('+')[0],'%.2f' % i.payment,
+                                                '%.2f' % i.cost,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
                                                 '%.2f' % i.total_depreciation,'%.2f' % i.netbook_value,i.comment,])
             count += 1
         workbook.close()
@@ -205,6 +217,15 @@ def assets_export_excel(request):
 
 @login_required
 def assets_refresh(request):
-    orm = table.objects.all()
-    for i in orm:
-        print i
+    try:
+        today = datetime.datetime.now().date()
+        orm = table.objects.all()
+        for i in orm:
+            i.residual_life = category[str(i.category)] - (today - i.purchase_date).days // 30.5
+            i.total_depreciation = i.depreciation * ((today - i.purchase_date).days // 30.5)
+            i.netbook_value = i.cost - i.total_depreciation
+            i.save()
+        return HttpResponse('OK',content_type="application/json")
+    except Exception,e:
+        print e
+        return HttpResponse('ERROR',content_type="application/json")

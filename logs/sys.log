@@ -9438,3 +9438,90 @@ KeyError: 0
 [2015-12-23 15:21:12,454] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
 [2015-12-23 15:36:58,798] WARNING : Not Found: /assets_export_excel/
 [2015-12-23 15:36:58,801] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_export_excel/
+[2015-12-24 06:48:28,666] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-24 08:15:25,499] WARNING : Not Found: search.yahoo.com:443
+[2015-12-24 08:15:25,501] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-24 08:15:25,504] WARNING : Not Found: search.yahoo.com:443
+[2015-12-24 08:15:25,505] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-24 09:17:39,977] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-24 09:28:30,811] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-24 09:41:34,003] WARNING : Not Found: http://www.haosou.com/
+[2015-12-24 09:42:37,260] WARNING : Not Found: http://www.haosou.com/
+[2015-12-24 09:44:50,803] WARNING : Not Found: http://www.haosou.com/
+[2015-12-24 09:46:05,239] WARNING : Not Found: http://www.haosou.com/
+[2015-12-24 09:47:20,870] WARNING : Not Found: http://www.haosou.com/
+[2015-12-24 09:48:43,463] WARNING : Not Found: http://www.haosou.com/
+[2015-12-24 09:49:34,807] WARNING : Not Found: http://www.haosou.com/
+[2015-12-24 10:49:33,731] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-24 11:40:08,542] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-24 12:13:24,967] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-24 12:32:50,733] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-24 13:35:00,042] WARNING : Not Found: search.yahoo.com:443
+[2015-12-24 13:35:00,044] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-24 13:35:01,792] WARNING : Not Found: search.yahoo.com:443
+[2015-12-24 13:35:01,793] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-24 13:35:04,414] WARNING : Not Found: search.yahoo.com:443
+[2015-12-24 13:35:04,416] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-24 13:35:04,455] WARNING : Not Found: search.yahoo.com:443
+[2015-12-24 13:35:04,456] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-24 13:35:05,149] WARNING : Not Found: search.yahoo.com:443
+[2015-12-24 13:35:05,151] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-24 13:35:06,945] WARNING : Not Found: search.yahoo.com:443
+[2015-12-24 13:35:06,947] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-24 13:35:06,997] WARNING : Not Found: search.yahoo.com:443
+[2015-12-24 13:35:06,999] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-24 17:09:19,129] ERROR : Internal Server Error: /assets_table_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 87, in assets_table_data
+    '7':'%.2f' % int_format(i.payment),
+TypeError: float argument required, not str
+[2015-12-24 17:09:19,133] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_data/
+[2015-12-24 17:10:38,348] ERROR : Internal Server Error: /assets_table_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 87, in assets_table_data
+    '7':'%.2f' % int_format(float(i.payment)),
+TypeError: float argument required, not str
+[2015-12-24 17:10:38,352] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_data/
+[2015-12-24 17:11:39,758] ERROR : Internal Server Error: /assets_table_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 87, in assets_table_data
+    '7':'%.2f' % float(int_format(i.payment)),
+ValueError: invalid literal for float(): 123,123.0
+[2015-12-24 17:11:39,762] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_data/
+[2015-12-24 17:12:52,485] ERROR : Internal Server Error: /assets_table_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 88, in assets_table_data
+    '8':'%.2f' % int_format(i.cost),
+TypeError: float argument required, not str
+[2015-12-24 17:12:52,490] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_data/
+[2015-12-25 07:41:44,699] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-25 07:45:00,508] WARNING : Not Found: http://www.baidu.com/
+[2015-12-25 07:45:08,972] WARNING : Not Found: http://www.baidu.com/
+[2015-12-25 08:35:21,442] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-25 10:50:04,980] ERROR : Internal Server Error: /assets_refresh/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 223, in assets_refresh
+    i.residual_life = category[i.category] - (today - i.purchase_date).days
+KeyError: u'\u7535\u5b50\u8bbe\u5907'
+[2015-12-25 10:52:00,692] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-25 10:54:23,919] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify

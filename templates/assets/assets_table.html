@@ -8,6 +8,8 @@
 <!-- END PAGE LEVEL STYLES -->
 <link rel="stylesheet" type="text/css" href="/static/assets/plugins/bootstrap-select/bootstrap-select.min.css"/>
 <link rel="stylesheet" type="text/css" href="/static/assets/plugins/jquery-multi-select/css/multi-select.css"/>
+<link rel="stylesheet" type="text/css" href="/static/assets/plugins/bootstrap-datepicker/css/datepicker.css" />
+
 {% endblock %}
 {% block body %}
 <div class="row">
@@ -27,12 +29,12 @@
                         <th>描述</th>
                         <th>型号</th>
                         <th>类别</th>
+                        <th>剩余月</th>
                         <th>部门</th>
                         <th>员工</th>
                         <th>购买日期</th>
                         <th>含税价</th>
                         <th>原价</th>
-                        <th>剩余月</th>
                         <th>残值</th>
                         <th>折旧价</th>
                         <th>累计折旧价</th>
@@ -192,6 +194,21 @@
                             </div>
                         </div>
                         <div class="form-group">
+                            <label class="col-sm-4 control-label">购买日期</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group input-medium date date-picker" style="float: left" data-date-format="yyyy-mm-dd" data-date-end-date="+31d" >
+
+                                        <input type="text" class="form-control" id='purchase_date' readonly="">
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
                             <label class="col-sm-4 control-label">含税价格</label>
 
                             <div class="col-sm-8">
@@ -299,6 +316,7 @@
 <script src="/static/assets/plugins/select2/select2.js"></script>
 <script src="/static/assets/plugins/datatables/extras/TableTools.min.js"></script>
 <script src="/static/assets/scripts/custom/table-managed.js"></script>
+<script type="text/javascript" src="/static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
 
 <script type="text/javascript">
@@ -307,6 +325,12 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
+    $('.date-picker').datepicker({
+        rtl: App.isRTL(),
+        autoclose: true,
+        defaultDate: 0
+    });
+
     $.post('/assets_table_dropdown/', {}, function (d) {
         $('#description').select2({
             multiple: true,
@@ -375,6 +399,7 @@ $(document).ready(function () {
 
 
 });
+
 function loaddata() {
     oTable = $('#datatables').dataTable({
         "sAjaxSource": "/assets_table_data/?rand=" + Math.random(),
@@ -464,12 +489,13 @@ function rule_save() {
     var category = $('#category').select2('data')
     var department = $('#department').select2('data')
     var employee = $('#employee').select2('data')
+    var purchase_date = $('#purchase_date').val()
     var payment = $('#payment').val();
     var cost = $('#cost').val();
     var comment = $('#comment').val();
     var id = $('#id').val();
 
-    if (FANO == '' || description == '' || model == '' || category == '' || payment == '' || cost == '') {
+    if (FANO == '' || description == '' || model == '' || category == '' || purchase_date == '' || payment == '' || cost == '') {
         toastr.error('不能为空')
         return;
     }
@@ -513,6 +539,7 @@ function rule_save() {
             category:category_list[0],
             department:department_list[0],
             employee:employee_list[0],
+            purchase_date:purchase_date,
             payment:payment,
             cost:cost,
             comment:comment,
@@ -544,6 +571,7 @@ function add() {
     $('#category').select2("data", "")
     $('#department').select2("data", "")
     $('#employee').select2("data", "")
+    $('#purchase_date').val("")
     $('#payment').val("")
     $('#cost').val("")
     $('#comment').val("")
