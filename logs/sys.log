@@ -9755,3 +9755,404 @@ Traceback (most recent call last):
   File "/usr/lib/python2.6/site-packages/django/template/context.py", line 155, in get_standard_processors
     raise ImproperlyConfigured('Module "%s" does not define a "%s" callable request processor' % (module, attr))
 ImproperlyConfigured: Module "django.core.context_processors" does not define a "auth" callable request processor
+[2015-12-25 11:57:08,607] WARNING : Not Found: search.yahoo.com:443
+[2015-12-25 11:57:08,609] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-25 11:57:08,849] WARNING : Not Found: search.yahoo.com:443
+[2015-12-25 11:57:08,851] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-25 11:57:10,339] WARNING : Not Found: search.yahoo.com:443
+[2015-12-25 11:57:10,340] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-25 11:57:10,841] WARNING : Not Found: search.yahoo.com:443
+[2015-12-25 11:57:10,843] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-25 11:57:19,176] WARNING : Not Found: search.yahoo.com:443
+[2015-12-25 11:57:19,178] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-25 11:57:19,355] WARNING : Not Found: search.yahoo.com:443
+[2015-12-25 11:57:19,357] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-25 11:57:19,548] WARNING : Not Found: search.yahoo.com:443
+[2015-12-25 11:57:19,550] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-25 12:03:54,952] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-25 12:31:55,454] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 12:31:55,466] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 12:32:47,314] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 12:32:47,315] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 12:39:50,900] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 12:39:50,910] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 12:43:20,850] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 12:43:20,853] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 12:45:04,670] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 12:45:04,672] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 12:46:12,006] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 12:46:12,008] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 12:48:50,314] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 12:48:50,321] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 12:51:23,781] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 12:51:23,782] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 12:53:09,540] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 12:53:09,551] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 12:58:26,875] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 12:58:26,876] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 12:58:40,617] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 12:58:40,619] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:01:37,610] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:01:37,627] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:01:37,641] ERROR : Internal Server Error: /assets_table_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 87, in assets_table_data
+    i_dict[j] = re.sub(r'\.(\d)$','.\\10',i_dict[j])
+  File "/usr/lib64/python2.6/re.py", line 151, in sub
+    return _compile(pattern, 0).sub(repl, string, count)
+  File "/usr/lib64/python2.6/re.py", line 278, in filter
+    return sre_parse.expand_template(template, match)
+  File "/usr/lib64/python2.6/sre_parse.py", line 795, in expand_template
+    raise error, "invalid group reference"
+error: invalid group reference
+[2015-12-25 13:01:37,654] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_data/
+[2015-12-25 13:02:47,788] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:02:47,796] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:03:08,510] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:03:08,523] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:03:43,736] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:03:43,739] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:03:57,959] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:03:57,965] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:04:13,040] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:04:13,049] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:04:31,543] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:04:31,553] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:04:31,561] ERROR : Internal Server Error: /assets_table_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 87, in assets_table_data
+    i_dict[j] = re.sub(r'\.(\d)$','.\\10',i_dict[j])
+  File "/usr/lib64/python2.6/re.py", line 151, in sub
+    return _compile(pattern, 0).sub(repl, string, count)
+  File "/usr/lib64/python2.6/re.py", line 278, in filter
+    return sre_parse.expand_template(template, match)
+  File "/usr/lib64/python2.6/sre_parse.py", line 795, in expand_template
+    raise error, "invalid group reference"
+error: invalid group reference
+[2015-12-25 13:04:31,563] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_data/
+[2015-12-25 13:05:08,213] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:05:08,222] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:06:15,817] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:06:15,827] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:07:27,047] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:07:27,060] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:07:27,069] ERROR : Internal Server Error: /assets_table_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 87, in assets_table_data
+    i_dict[j] = re.sub(r'\.(\d)$','.\\1%s' % '0',i_dict[j])
+  File "/usr/lib64/python2.6/re.py", line 151, in sub
+    return _compile(pattern, 0).sub(repl, string, count)
+  File "/usr/lib64/python2.6/re.py", line 278, in filter
+    return sre_parse.expand_template(template, match)
+  File "/usr/lib64/python2.6/sre_parse.py", line 795, in expand_template
+    raise error, "invalid group reference"
+error: invalid group reference
+[2015-12-25 13:07:27,070] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_data/
+[2015-12-25 13:07:40,914] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:07:40,915] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:07:40,932] ERROR : Internal Server Error: /assets_table_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 87, in assets_table_data
+    i_dict[j] = re.sub(r'\.(\d)$','.\\1%s' % '0',i_dict[j])
+  File "/usr/lib64/python2.6/re.py", line 151, in sub
+    return _compile(pattern, 0).sub(repl, string, count)
+  File "/usr/lib64/python2.6/re.py", line 278, in filter
+    return sre_parse.expand_template(template, match)
+  File "/usr/lib64/python2.6/sre_parse.py", line 795, in expand_template
+    raise error, "invalid group reference"
+error: invalid group reference
+[2015-12-25 13:07:40,933] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_data/
+[2015-12-25 13:18:07,192] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:18:07,206] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/

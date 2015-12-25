@@ -587,10 +587,11 @@ function edit() {
         var description = aData[0][1];
         var model = aData[0][2];
         var category = aData[0][3];
-        var department = aData[0][4];
-        var employee = aData[0][5];
-        var payment = aData[0][7];
-        var cost = aData[0][8];
+        var department = aData[0][5];
+        var employee = aData[0][6];
+        var purchase_date = aData[0][7];
+        var payment = aData[0][8];
+        var cost = aData[0][9];
         var comment = aData[0][14];
         var id = aData[0][15];
 
@@ -605,6 +606,7 @@ function edit() {
         $.post('/order_form_dropdown/', {id:id,name:employee}, function (d) {
             $('#employee').select2("data",d['edit'])
         })
+        $('#purchase_date').val(purchase_date)
         $('#payment').val(payment)
         $('#cost').val(cost)
         $('#comment').val(comment)

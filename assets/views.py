@@ -84,7 +84,7 @@ def assets_table_data(request):
         i_dict['total_depreciation'] = int_format(float('%.2f' % i.total_depreciation))
         i_dict['netbook_value'] = int_format(float('%.2f' % i.netbook_value))
         for j in i_dict.keys():
-            i_dict[j] = re.sub(r'\.0$','.00',i_dict[j])
+            i_dict[j] = re.sub(r'\.(?P<d>\d)$','.\g<d>0',i_dict[j])
 
         aaData.append({
                        '0':i.FANO,
