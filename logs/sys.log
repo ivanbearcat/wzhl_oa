@@ -9525,3 +9525,233 @@ Traceback (most recent call last):
 KeyError: u'\u7535\u5b50\u8bbe\u5907'
 [2015-12-25 10:52:00,692] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
 [2015-12-25 10:54:23,919] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-25 11:13:23,833] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-25 11:24:40,301] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-25 11:30:40,478] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-25 11:30:46,519] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-25 11:30:53,849] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 81, in rendered_content
+    content = template.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 140, in render
+    return self._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 123, in render
+    return compiled_parent._render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 134, in _render
+    return self.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/loader_tags.py", line 62, in render
+    result = block.nodelist.render(context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 823, in render
+    bit = self.render_node(node, context)
+  File "/usr/lib/python2.6/site-packages/django/template/base.py", line 837, in render_node
+    return node.render(context)
+  File "/usr/lib/python2.6/site-packages/django/contrib/admin/templatetags/log.py", line 19, in render
+    user_id = context[self.user].id
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 54, in __getitem__
+    raise KeyError(key)
+KeyError: u'user'
+[2015-12-25 11:33:13,648] ERROR : Internal Server Error: /admin/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 134, in get_response
+    response = response.render()
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 104, in render
+    self._set_content(self.rendered_content)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 80, in rendered_content
+    context = self.resolve_context(self.context_data)
+  File "/usr/lib/python2.6/site-packages/django/template/response.py", line 158, in resolve_context
+    return RequestContext(self._request, context, current_app=self._current_app)
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 175, in __init__
+    for processor in get_standard_processors() + processors:
+  File "/usr/lib/python2.6/site-packages/django/template/context.py", line 155, in get_standard_processors
+    raise ImproperlyConfigured('Module "%s" does not define a "%s" callable request processor' % (module, attr))
+ImproperlyConfigured: Module "django.core.context_processors" does not define a "auth" callable request processor
