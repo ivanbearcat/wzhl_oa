@@ -24,6 +24,7 @@ class user_table(models.Model):
     seasons_leave_used = models.FloatField(verbose_name='已用季度假', max_length=10)
     seasons_leave_total = models.FloatField(verbose_name='总共季度假', max_length=10)
     has_approve = models.PositiveSmallIntegerField(verbose_name='有审批', max_length=10)
+    approved_id = models.CharField(verbose_name='经审批的id', max_length=10240, blank=True)
 
 class state(models.Model):
     name = models.CharField(verbose_name='员工名', max_length=30, blank=False)

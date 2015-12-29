@@ -325,11 +325,11 @@ var aButtons
 $(document).ready(function () {
     $('#type').select2({
         multiple: false,
-        placeholder: '选择请假类型',
+        placeholder: '选择申请类型',
         allowClear: true,
-        data: [{'text':'法定年假','id':1},{'text':'公司年假','id':2},{'text':'季度假','id':3},{'text':'病假','id':4},
-            {'text':'调休','id':5},{'text':'事假','id':6},{'text':'婚假','id':7},{'text':'产假','id':8},
-            {'text':'陪产假','id':9},{'text':'丧假','id':10}]
+        data: [{'text':'加班','id':1},{'text':'法定年假','id':2},{'text':'公司年假','id':3},{'text':'季度假','id':4},
+            {'text':'病假','id':5},{'text':'调休','id':6},{'text':'事假','id':7},{'text':'婚假','id':8},
+            {'text':'产假','id':9},{'text':'陪产假','id':10},{'text':'丧假','id':11}]
     });
 
     $('#type').on("click", function () {

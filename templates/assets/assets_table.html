@@ -443,7 +443,7 @@ function loaddata() {
 
         ],
         "aaSorting": [
-            [5, 'desc']
+            [0, 'asc']
         ],
         "oLanguage": {
             "sProcessing": "正在加载数据...",
@@ -495,7 +495,7 @@ function rule_save() {
     var comment = $('#comment').val();
     var id = $('#id').val();
 
-    if (FANO == '' || description == '' || model == '' || category == '' || purchase_date == '' || payment == '' || cost == '') {
+    if (description == '' || model == '' || category == '' || purchase_date == '' || payment == '' || cost == '') {
         toastr.error('不能为空')
         return;
     }
@@ -566,6 +566,7 @@ function contain(Array, s) {
 }
 function add() {
     $('#FANO').val("")
+    $('#FANO').attr('disabled',true)
     $('#description').select2("data", "")
     $('#model').select2("data", "")
     $('#category').select2("data", "")

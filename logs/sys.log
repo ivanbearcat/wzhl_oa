@@ -10156,3 +10156,561 @@ Traceback (most recent call last):
     % self.model._meta.object_name)
 DoesNotExist: user_table matching query does not exist.
 [2015-12-25 13:18:07,206] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:22:09,096] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:22:09,098] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:24:39,704] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-25 13:44:12,738] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:44:12,740] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:44:14,332] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:44:14,333] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:44:16,833] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:44:16,834] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:44:18,779] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:44:18,780] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 13:45:07,431] WARNING : Not Found: http://183.131.152.100/checkvip/proxyip_verify
+[2015-12-25 13:52:16,536] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 13:52:16,537] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 16:02:22,456] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 16:02:22,458] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 16:02:32,099] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 16:02:32,100] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 16:02:45,891] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 433, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-25 16:02:45,892] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-25 19:23:12,901] WARNING : Not Found: http://www.baidu.com/
+[2015-12-25 19:40:28,637] WARNING : Not Found: http://www.baidu.com/
+[2015-12-25 21:36:26,861] WARNING : Not Found: http://www.baidu.com/
+[2015-12-26 05:30:12,279] WARNING : Not Found: http://www.baidu.com/
+[2015-12-26 07:07:40,401] WARNING : Not Found: http://www.baidu.com/
+[2015-12-26 07:25:54,934] WARNING : Not Found: http://www.baidu.com/
+[2015-12-26 11:32:22,607] WARNING : Not Found: search.yahoo.com:443
+[2015-12-26 11:32:22,608] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-26 11:32:25,208] WARNING : Not Found: search.yahoo.com:443
+[2015-12-26 11:32:25,209] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-26 16:50:17,338] WARNING : Not Found: http://www.haosou.com/
+[2015-12-26 17:30:48,509] WARNING : Not Found: http://www.baidu.com/
+[2015-12-26 19:09:23,882] WARNING : Not Found: http://www.baidu.com/
+[2015-12-26 19:15:14,677] WARNING : Not Found: search.yahoo.com:443
+[2015-12-26 19:15:14,678] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-26 19:25:49,685] WARNING : Not Found: http://www.baidu.com/
+[2015-12-27 06:47:01,954] WARNING : Not Found: http://www.baidu.com/
+[2015-12-27 08:57:13,936] WARNING : Not Found: http://www.baidu.com/
+[2015-12-27 09:43:46,129] WARNING : Not Found: http://www.baidu.com/
+[2015-12-27 18:46:46,358] WARNING : Not Found: http://www.baidu.com/
+[2015-12-27 20:57:11,013] WARNING : Not Found: http://www.baidu.com/
+[2015-12-27 21:42:44,348] WARNING : Not Found: http://www.baidu.com/
+[2015-12-28 00:09:23,420] WARNING : Not Found: search.yahoo.com:443
+[2015-12-28 00:09:23,422] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-28 00:09:26,551] WARNING : Not Found: search.yahoo.com:443
+[2015-12-28 00:09:26,552] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-28 00:09:32,125] WARNING : Not Found: search.yahoo.com:443
+[2015-12-28 00:09:32,127] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-28 00:09:36,211] WARNING : Not Found: search.yahoo.com:443
+[2015-12-28 00:09:36,213] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-28 00:09:36,556] WARNING : Not Found: search.yahoo.com:443
+[2015-12-28 00:09:36,557] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-28 03:07:45,829] WARNING : Not Found: http://www.haosou.com/
+[2015-12-28 03:08:43,437] WARNING : Not Found: http://www.haosou.com/
+[2015-12-28 03:09:39,312] WARNING : Not Found: http://www.haosou.com/
+[2015-12-28 03:10:36,794] WARNING : Not Found: http://www.haosou.com/
+[2015-12-28 03:11:40,595] WARNING : Not Found: http://www.haosou.com/
+[2015-12-28 03:12:50,291] WARNING : Not Found: http://www.haosou.com/
+[2015-12-28 03:13:50,575] WARNING : Not Found: http://www.haosou.com/
+[2015-12-28 03:14:36,370] WARNING : Not Found: http://www.haosou.com/
+[2015-12-28 06:52:30,882] WARNING : Not Found: http://www.baidu.com/
+[2015-12-28 09:17:02,675] WARNING : Not Found: http://www.baidu.com/
+[2015-12-28 09:23:17,658] WARNING : Not Found: http://www.baidu.com/
+[2015-12-28 18:48:36,392] WARNING : Not Found: http://www.baidu.com/
+[2015-12-28 21:14:58,351] WARNING : Not Found: http://www.baidu.com/
+[2015-12-28 21:21:04,199] WARNING : Not Found: http://www.baidu.com/
+[2015-12-28 22:32:55,751] WARNING : Not Found: http://www.taobao.com/
+[2015-12-28 22:32:55,763] WARNING : Not Found: http://www.taobao.com/
+[2015-12-28 22:32:55,770] WARNING : Not Found: http://www.taobao.com/
+[2015-12-29 08:04:34,189] WARNING : Not Found: search.yahoo.com:443
+[2015-12-29 08:04:34,191] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-29 08:04:34,327] WARNING : Not Found: search.yahoo.com:443
+[2015-12-29 08:04:34,329] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-29 08:04:34,331] WARNING : Not Found: search.yahoo.com:443
+[2015-12-29 08:04:34,332] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-29 08:04:34,339] WARNING : Not Found: search.yahoo.com:443
+[2015-12-29 08:04:34,341] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-29 08:04:34,360] WARNING : Not Found: search.yahoo.com:443
+[2015-12-29 08:04:34,362] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-29 08:04:34,455] WARNING : Not Found: search.yahoo.com:443
+[2015-12-29 08:04:34,457] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-29 08:04:34,857] WARNING : Not Found: search.yahoo.com:443
+[2015-12-29 08:04:34,858] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-29 08:04:35,147] WARNING : Not Found: search.yahoo.com:443
+[2015-12-29 08:04:35,148] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-29 08:57:36,365] WARNING : Not Found: http://www.baidu.com/
+[2015-12-29 08:58:44,233] WARNING : Not Found: http://www.baidu.com/
+[2015-12-29 09:21:05,948] WARNING : Not Found: http://www.baidu.com/
+[2015-12-29 11:19:27,765] ERROR : Internal Server Error: /vacation_approve_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 469, in vacation_approve_data
+    subordinate_list = orm_subordinate.subordinate.sptli(',')
+AttributeError: 'unicode' object has no attribute 'sptli'
+[2015-12-29 11:19:27,769] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_data/
+[2015-12-29 11:19:44,371] ERROR : Internal Server Error: /vacation_approve_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 469, in vacation_approve_data
+    subordinate_list = orm_subordinate.subordinate.sptli(',')
+AttributeError: 'unicode' object has no attribute 'sptli'
+[2015-12-29 11:19:44,373] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_data/
+[2015-12-29 11:48:46,603] WARNING : Not Found: http://www.taobao.com/
+[2015-12-29 11:48:52,445] WARNING : Not Found: http://www.taobao.com/
+[2015-12-29 11:48:56,585] WARNING : Not Found: http://www.taobao.com/
+[2015-12-29 11:49:16,620] ERROR : Internal Server Error: /vacation_approve_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 470, in vacation_approve_data
+    subordinate_list = map(lambda x:int(x), subordinate_list)
+  File "/usr/share/nginx/html/vacation/views.py", line 470, in <lambda>
+    subordinate_list = map(lambda x:int(x), subordinate_list)
+UnicodeEncodeError: 'decimal' codec can't encode character u'\u859b' in position 0: invalid decimal Unicode string
+[2015-12-29 11:49:16,624] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_data/
+[2015-12-29 11:50:08,285] ERROR : Internal Server Error: /vacation_approve_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 470, in vacation_approve_data
+    subordinate_list = map(lambda x:int(x), subordinate_list)
+  File "/usr/share/nginx/html/vacation/views.py", line 470, in <lambda>
+    subordinate_list = map(lambda x:int(x), subordinate_list)
+UnicodeEncodeError: 'decimal' codec can't encode character u'\u859b' in position 0: invalid decimal Unicode string
+[2015-12-29 11:50:08,287] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_data/
+[2015-12-29 12:00:18,928] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1054, "Unknown column 'vacation_user_table.approved_id' in 'field list'")
+[2015-12-29 12:00:18,961] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-29 12:00:20,701] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1054, "Unknown column 'vacation_user_table.approved_id' in 'field list'")
+[2015-12-29 12:00:20,702] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-29 12:02:32,957] ERROR : Internal Server Error: /vacation_approve_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 469, in vacation_approve_data
+    subordinate_list = orm_subordinate.subordinate.split(',')
+AttributeError: 'user_table' object has no attribute 'subordinate'
+[2015-12-29 12:02:32,961] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_data/
+[2015-12-29 12:04:22,749] ERROR : Internal Server Error: /vacation_approve_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 470, in vacation_approve_data
+    approved_id_list = map(lambda x:int(x), approved_id_list)
+  File "/usr/share/nginx/html/vacation/views.py", line 470, in <lambda>
+    approved_id_list = map(lambda x:int(x), approved_id_list)
+ValueError: invalid literal for int() with base 10: ''
+[2015-12-29 12:04:22,754] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_data/
+[2015-12-29 12:25:07,175] ERROR : Internal Server Error: /vacation_approve_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 471, in vacation_approve_data
+    approved_id_list = map(lambda x:int(x), approved_id_list)
+  File "/usr/share/nginx/html/vacation/views.py", line 471, in <lambda>
+    approved_id_list = map(lambda x:int(x), approved_id_list)
+ValueError: invalid literal for int() with base 10: ''
+[2015-12-29 12:25:07,179] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_data/
+[2015-12-29 12:25:35,409] ERROR : Internal Server Error: /vacation_approve/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 6, in <module>
+    from vacation.views import *
+  File "/usr/share/nginx/html/vacation/views.py", line 470
+     if approved_id_list
+                       ^
+ SyntaxError: invalid syntax
+[2015-12-29 12:25:43,747] ERROR : Internal Server Error: /vacation_approve/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 6, in <module>
+    from vacation.views import *
+  File "/usr/share/nginx/html/vacation/views.py", line 470
+     if approved_id_list
+                       ^
+ SyntaxError: invalid syntax
+[2015-12-29 12:25:53,356] ERROR : Internal Server Error: /vacation_approve_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 471, in vacation_approve_data
+    approved_id_list = map(lambda x:int(x), approved_id_list)
+  File "/usr/share/nginx/html/vacation/views.py", line 471, in <lambda>
+    approved_id_list = map(lambda x:int(x), approved_id_list)
+ValueError: invalid literal for int() with base 10: ''
+[2015-12-29 12:25:53,361] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_data/
+[2015-12-29 12:28:10,044] ERROR : Internal Server Error: /vacation_approve_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 491, in vacation_approve_data
+    result_data = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 143, in filter
+    return self.get_query_set().filter(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1185, in add_filter
+    connector)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/where.py", line 69, in add
+    value = obj.prepare(lookup_type, value)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/where.py", line 320, in prepare
+    return self.field.get_prep_lookup(lookup_type, value)
+  File "/usr/lib/python2.6/site-packages/django/db/models/fields/__init__.py", line 312, in get_prep_lookup
+    return [self.get_prep_value(v) for v in value]
+  File "/usr/lib/python2.6/site-packages/django/db/models/fields/__init__.py", line 537, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+[2015-12-29 12:28:10,075] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_data/
+[2015-12-29 12:28:26,955] ERROR : Internal Server Error: /vacation_approve_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 491, in vacation_approve_data
+    result_data = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 143, in filter
+    return self.get_query_set().filter(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 624, in filter
+    return self._filter_or_exclude(False, *args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 642, in _filter_or_exclude
+    clone.query.add_q(Q(*args, **kwargs))
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1247, in add_q
+    self.add_q(child, used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1250, in add_q
+    can_reuse=used_aliases, force_having=force_having)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 1185, in add_filter
+    connector)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/where.py", line 69, in add
+    value = obj.prepare(lookup_type, value)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/where.py", line 320, in prepare
+    return self.field.get_prep_lookup(lookup_type, value)
+  File "/usr/lib/python2.6/site-packages/django/db/models/fields/__init__.py", line 312, in get_prep_lookup
+    return [self.get_prep_value(v) for v in value]
+  File "/usr/lib/python2.6/site-packages/django/db/models/fields/__init__.py", line 537, in get_prep_value
+    return int(value)
+ValueError: invalid literal for int() with base 10: ''
+[2015-12-29 12:28:26,957] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_data/
+[2015-12-29 14:01:04,843] WARNING : <yanglin> login in fail.
+[2015-12-29 14:13:05,578] WARNING : Not Found: http://www.haosou.com/
+[2015-12-29 14:29:17,654] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 156, in assets_table_dropdown
+    return HttpResponse(simplejson.dumps(result),content_type="application/json")
+  File "/usr/lib64/python2.6/site-packages/simplejson/__init__.py", line 380, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python2.6/site-packages/simplejson/encoder.py", line 275, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python2.6/site-packages/simplejson/encoder.py", line 357, in iterencode
+    return _iterencode(o, 0)
+UnicodeDecodeError: 'utf8' codec can't decode byte 0xe6 in position 0: unexpected end of data
+[2015-12-29 14:29:17,669] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-29 14:29:19,891] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 156, in assets_table_dropdown
+    return HttpResponse(simplejson.dumps(result),content_type="application/json")
+  File "/usr/lib64/python2.6/site-packages/simplejson/__init__.py", line 380, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python2.6/site-packages/simplejson/encoder.py", line 275, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python2.6/site-packages/simplejson/encoder.py", line 357, in iterencode
+    return _iterencode(o, 0)
+UnicodeDecodeError: 'utf8' codec can't decode byte 0xe6 in position 0: unexpected end of data
+[2015-12-29 14:29:19,895] WARNING : Forbidden (CSRF cookie not set.): /assets_table_dropdown/
+[2015-12-29 14:29:49,661] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 156, in assets_table_dropdown
+    return HttpResponse(simplejson.dumps(result),content_type="application/json")
+  File "/usr/lib64/python2.6/site-packages/simplejson/__init__.py", line 380, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python2.6/site-packages/simplejson/encoder.py", line 275, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python2.6/site-packages/simplejson/encoder.py", line 357, in iterencode
+    return _iterencode(o, 0)
+UnicodeDecodeError: 'utf8' codec can't decode byte 0xe6 in position 0: unexpected end of data
+[2015-12-29 14:29:49,662] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-29 14:31:02,487] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 156, in assets_table_dropdown
+    return HttpResponse(simplejson.dumps(result),content_type="application/json")
+  File "/usr/lib64/python2.6/site-packages/simplejson/__init__.py", line 380, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python2.6/site-packages/simplejson/encoder.py", line 275, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python2.6/site-packages/simplejson/encoder.py", line 357, in iterencode
+    return _iterencode(o, 0)
+UnicodeDecodeError: 'utf8' codec can't decode byte 0xe6 in position 0: unexpected end of data
+[2015-12-29 14:31:02,505] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-29 14:32:50,460] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 160, in assets_table_dropdown
+    return HttpResponse(simplejson.dumps(result),content_type="application/json")
+  File "/usr/lib64/python2.6/site-packages/simplejson/__init__.py", line 380, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python2.6/site-packages/simplejson/encoder.py", line 275, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python2.6/site-packages/simplejson/encoder.py", line 357, in iterencode
+    return _iterencode(o, 0)
+UnicodeDecodeError: 'utf8' codec can't decode byte 0xe6 in position 0: unexpected end of data
+[2015-12-29 14:32:50,464] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-29 14:36:48,174] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 161, in assets_table_dropdown
+    print simplejson.dumps(result)
+  File "/usr/lib64/python2.6/site-packages/simplejson/__init__.py", line 380, in dumps
+    return _default_encoder.encode(obj)
+  File "/usr/lib64/python2.6/site-packages/simplejson/encoder.py", line 275, in encode
+    chunks = self.iterencode(o, _one_shot=True)
+  File "/usr/lib64/python2.6/site-packages/simplejson/encoder.py", line 357, in iterencode
+    return _iterencode(o, 0)
+UnicodeDecodeError: 'utf8' codec can't decode byte 0xe6 in position 0: unexpected end of data
+[2015-12-29 14:36:48,195] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-29 14:46:25,750] ERROR : Internal Server Error: /assets_table_save/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 7, in <module>
+    from assets.views import *
+  File "/usr/share/nginx/html/assets/views.py", line 199
+     @login_required
+    ^
+ IndentationError: unexpected unindent
+[2015-12-29 15:47:36,283] WARNING : <yanglin> login in fail.

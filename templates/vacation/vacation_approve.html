@@ -75,7 +75,7 @@
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-globe"></i>待审批列表
+                    <i class="fa fa-globe"></i>审批列表
                 </div>
             </div>
             <div class="portlet-body">
@@ -516,7 +516,11 @@ function agree_verify() {
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
-        $("#myModal2").modal('show')
+        if (aData[0][6] == 8 || aData[0][6] == 9 || aData[0][6] == 0) {
+            toastr.error('这条申请已经审批过了')
+        } else {
+            $("#myModal2").modal('show')
+        }
     }
     else {
         toastr.error('没有选择')
@@ -554,7 +558,11 @@ function disagree_verify() {
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
-        $("#myModal3").modal('show')
+        if (aData[0][6] == 8 || aData[0][6] == 9 || aData[0][6] == 0) {
+            toastr.error('这条申请已经审批过了')
+        } else {
+            $("#myModal3").modal('show')
+        }
     }
     else {
         toastr.error('没有选择')

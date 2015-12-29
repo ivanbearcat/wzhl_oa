@@ -31,8 +31,8 @@ def assets_table_data(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['FANO','description','model','category','department','employee','purchase_date','payment','cost',
-            'residual_life','residual_value','depreciation','total_depreciation','netbook_value','comment']
+    sort = ['FANO','description','model','category','residual_life','department','employee','purchase_date','payment',
+            'cost','residual_value','depreciation','total_depreciation','netbook_value','comment']
 
     if  sSortDir_0 == 'asc':
         if sSearch == '':
@@ -157,7 +157,7 @@ def assets_table_dropdown(request):
 
 @login_required
 def assets_table_save(request):
-    FANO = request.POST.get('FANO')
+    # FANO = request.POST.get('FANO')
     _description = request.POST.get('description')
     _model = request.POST.get('model')
     _category = request.POST.get('category')
@@ -172,10 +172,22 @@ def assets_table_save(request):
     try:
         if _id =='':
             residual_value = float(cost) * 0.05
-            depreciation = (float(cost) - residual_value) / category[str(_category)]
+            depreciation = (float(cost) - residual_value) / category[str(_category)][0]
+
+            fetch_end_num = table.objects.filter(FANO__contains=category[str(_category)][1])
+            if fetch_end_num:
+                num_list = []
+                for i in fetch_end_num:
+                    num_re = re.search(r'\d+',i.FANO)
+                    num_list.append(int(num_re.group()))
+                num = max(num_list) + 1
+                num = (3 - len(str(num))) * '0' + str(num)
+                FANO =  category[str(_category)][1] + num
+            else:
+                FANO =  category[str(_category)][1] + "001"
 
             orm = table(FANO=FANO,description=_description,model=_model,category=_category,department=_department,
-                        employee=employee,purchase_date=purchase_date,payment=payment,cost=cost,residual_life=category[str(_category)],
+                        employee=employee,purchase_date=purchase_date,payment=payment,cost=cost,residual_life=category[str(_category)][0],
                         residual_value=residual_value,depreciation=depreciation,total_depreciation=0,
                         netbook_value=float(cost),comment=comment)
             orm.save()
@@ -221,7 +233,7 @@ def assets_refresh(request):
         today = datetime.datetime.now().date()
         orm = table.objects.all()
         for i in orm:
-            i.residual_life = category[str(i.category)] - (today - i.purchase_date).days // 30.5
+            i.residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
             i.total_depreciation = i.depreciation * ((today - i.purchase_date).days // 30.5)
             i.netbook_value = i.cost - i.total_depreciation
             i.save()
