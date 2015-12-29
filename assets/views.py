@@ -125,11 +125,12 @@ def assets_table_dropdown(request):
     result['category'] = []
     result['department'] = []
 
+    result['description_edit'] = []
+    result['model_edit'] = []
+    result['category_edit'] = []
+    result['department_edit'] = []
+
     if not _id == None:
-        result['description_edit'] = []
-        result['model_edit'] = []
-        result['category_edit'] = []
-        result['department_edit'] = []
 
         for i in range(len(description)):
             if description[i] == _description:
@@ -167,36 +168,45 @@ def assets_table_save(request):
     payment = request.POST.get('payment')
     cost = request.POST.get('cost')
     comment = request.POST.get('comment')
+    count = request.POST.get('count')
     _id = request.POST.get('id')
 
     try:
-        if _id =='':
-            residual_value = float(cost) * 0.05
-            depreciation = (float(cost) - residual_value) / category[str(_category)][0]
+        if not count:
+            count = 1
+        for c in range(int(count)):
+            if _id =='':
+                residual_value = float(cost) * 0.05
+                depreciation = (float(cost) - residual_value) / category[str(_category)][0]
 
-            fetch_end_num = table.objects.filter(FANO__contains=category[str(_category)][1])
-            if fetch_end_num:
-                num_list = []
-                for i in fetch_end_num:
-                    num_re = re.search(r'\d+',i.FANO)
-                    num_list.append(int(num_re.group()))
-                num = max(num_list) + 1
-                num = (3 - len(str(num))) * '0' + str(num)
-                FANO =  category[str(_category)][1] + num
+                fetch_end_num = table.objects.filter(FANO__contains=category[str(_category)][1])
+                if fetch_end_num:
+                    num_list = []
+                    for i in fetch_end_num:
+                        num_re = re.search(r'\d+',i.FANO)
+                        num_list.append(int(num_re.group()))
+                    num = max(num_list) + 1
+                    num = (3 - len(str(num))) * '0' + str(num)
+                    FANO =  category[str(_category)][1] + num
+                else:
+                    FANO =  category[str(_category)][1] + "001"
+
+                if not _department:
+                    _department = ''
+                if not employee:
+                    employee = ''
+
+                orm = table(FANO=FANO,description=_description,model=_model,category=_category,department=_department,
+                            employee=employee,purchase_date=purchase_date,payment=payment,cost=cost,residual_life=category[str(_category)][0],
+                            residual_value=residual_value,depreciation=depreciation,total_depreciation=0,
+                            netbook_value=float(cost),comment=comment)
+                orm.save()
             else:
-                FANO =  category[str(_category)][1] + "001"
-
-            orm = table(FANO=FANO,description=_description,model=_model,category=_category,department=_department,
-                        employee=employee,purchase_date=purchase_date,payment=payment,cost=cost,residual_life=category[str(_category)][0],
-                        residual_value=residual_value,depreciation=depreciation,total_depreciation=0,
-                        netbook_value=float(cost),comment=comment)
-            orm.save()
-        else:
-            orm = table.objects.get(id=_id)
-            orm.department = _department
-            orm.employee = employee
-            orm.comment = comment
-            orm.save()
+                orm = table.objects.get(id=_id)
+                orm.department = _department
+                orm.employee = employee
+                orm.comment = comment
+                orm.save()
 
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
     except Exception,e:

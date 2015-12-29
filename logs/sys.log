@@ -10714,3 +10714,202 @@ Traceback (most recent call last):
     ^
  IndentationError: unexpected unindent
 [2015-12-29 15:47:36,283] WARNING : <yanglin> login in fail.
+[2015-12-29 17:44:11,812] WARNING : <yanglin> login in fail.
+[2015-12-29 18:34:59,123] ERROR : Internal Server Error: /assets_table_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 40, in assets_table_data
+    iTotalRecords = table.objects.all().count()
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 351, in count
+    return self.query.get_count(using=self.db)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 418, in get_count
+    number = obj.get_aggregation(using=using)[None]
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 384, in get_aggregation
+    result = query.get_compiler(using).execute_sql(SINGLE)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1146, "Table 'wzhl.assets_table' doesn't exist")
+[2015-12-29 18:34:59,131] WARNING : Forbidden (CSRF cookie not set.): /assets_table_data/
+[2015-12-29 18:47:47,534] ERROR : Internal Server Error: /assets_table_save/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 7, in <module>
+    from assets.views import *
+  File "/usr/share/nginx/html/assets/views.py", line 209
+     except Exception,e:
+          ^
+ SyntaxError: invalid syntax
+[2015-12-29 19:03:37,999] ERROR : Internal Server Error: /assets_table/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 7, in <module>
+    from assets.views import *
+  File "/usr/share/nginx/html/assets/views.py", line 156
+     print result['description_edit'],result['model_edit'],result['category_edit'],result['department_edit'] = []
+                                                                                                             ^
+ SyntaxError: invalid syntax
+[2015-12-29 19:03:40,356] ERROR : Internal Server Error: /assets_table/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 7, in <module>
+    from assets.views import *
+  File "/usr/share/nginx/html/assets/views.py", line 156
+     print result['description_edit'],result['model_edit'],result['category_edit'],result['department_edit'] = []
+                                                                                                             ^
+ SyntaxError: invalid syntax
+[2015-12-29 19:03:41,120] ERROR : Internal Server Error: /assets_table/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 7, in <module>
+    from assets.views import *
+  File "/usr/share/nginx/html/assets/views.py", line 156
+     print result['description_edit'],result['model_edit'],result['category_edit'],result['department_edit'] = []
+                                                                                                             ^
+ SyntaxError: invalid syntax
+[2015-12-29 19:03:41,478] ERROR : Internal Server Error: /assets_table/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 7, in <module>
+    from assets.views import *
+  File "/usr/share/nginx/html/assets/views.py", line 156
+     print result['description_edit'],result['model_edit'],result['category_edit'],result['department_edit'] = []
+                                                                                                             ^
+ SyntaxError: invalid syntax
+[2015-12-29 19:03:41,635] ERROR : Internal Server Error: /assets_table/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 7, in <module>
+    from assets.views import *
+  File "/usr/share/nginx/html/assets/views.py", line 156
+     print result['description_edit'],result['model_edit'],result['category_edit'],result['department_edit'] = []
+                                                                                                             ^
+ SyntaxError: invalid syntax
+[2015-12-29 19:03:41,780] ERROR : Internal Server Error: /assets_table/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 7, in <module>
+    from assets.views import *
+  File "/usr/share/nginx/html/assets/views.py", line 156
+     print result['description_edit'],result['model_edit'],result['category_edit'],result['department_edit'] = []
+                                                                                                             ^
+ SyntaxError: invalid syntax
+[2015-12-29 19:03:41,931] ERROR : Internal Server Error: /assets_table/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 99, in get_response
+    request.path_info)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 317, in resolve
+    for pattern in self.url_patterns:
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 347, in url_patterns
+    patterns = getattr(self.urlconf_module, "urlpatterns", self.urlconf_module)
+  File "/usr/lib/python2.6/site-packages/django/core/urlresolvers.py", line 342, in urlconf_module
+    self._urlconf_module = import_module(self.urlconf_name)
+  File "/usr/lib/python2.6/site-packages/django/utils/importlib.py", line 35, in import_module
+    __import__(name)
+  File "/usr/share/nginx/html/wzhl_oa/urls.py", line 7, in <module>
+    from assets.views import *
+  File "/usr/share/nginx/html/assets/views.py", line 156
+     print result['description_edit'],result['model_edit'],result['category_edit'],result['department_edit'] = []
+                                                                                                             ^
+ SyntaxError: invalid syntax
+[2015-12-29 19:03:54,154] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 156, in assets_table_dropdown
+    print result['description_edit'],result['model_edit'],result['category_edit'],result['department_edit']
+KeyError: 'description_edit'
+[2015-12-29 19:03:54,161] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-29 19:04:28,900] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 156, in assets_table_dropdown
+    print result['description_edit'],result['model_edit'],result['category_edit'],result['department_edit']
+KeyError: 'description_edit'
+[2015-12-29 19:04:28,902] WARNING : Forbidden (CSRF cookie not set.): /assets_table_dropdown/
+[2015-12-29 19:06:31,597] ERROR : Internal Server Error: /assets_table_dropdown/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 156, in assets_table_dropdown
+    print result['description_edit'],result['model_edit'],result['category_edit'],result['department_edit']
+KeyError: 'description_edit'
+[2015-12-29 19:06:31,611] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/

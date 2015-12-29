@@ -201,7 +201,9 @@ def order_form_dropdown(request):
         name = request.POST.get('name')
         orm_edit = User.objects.filter(first_name=name)
         for i in orm_edit:
-            result['edit'].append({'text':i.first_name,'id':i.id})
+            if i.first_name:
+                result['edit'].append({'text':i.first_name,'id':i.id})
+
     orm = User.objects.all()
     for i in orm:
         if not i.first_name:continue
