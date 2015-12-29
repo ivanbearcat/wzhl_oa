@@ -607,7 +607,7 @@ function add() {
     $("#myModal").modal('show')
 }
 function edit() {
-
+    $('#count').val("")
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
