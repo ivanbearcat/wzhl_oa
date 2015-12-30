@@ -175,7 +175,7 @@ def assets_table_save(request):
         if not count:
             count = 1
         for c in range(int(count)):
-            if _id =='':
+            if _id == None:
                 residual_value = float(cost) * 0.05
                 depreciation = (float(cost) - residual_value) / category[str(_category)][0]
 
@@ -208,12 +208,12 @@ def assets_table_save(request):
                     log_orm.save()
 
             else:
-                orm = table.objects.get(id=_id)
-                orm.department = _department
-                orm.employee = employee
-                orm.comment = comment
-                orm.save()
+                if employee == None:
+                    employee = ''
+                if _department == None:
+                    _department = ''
 
+                orm = table.objects.get(id=_id)
                 if employee != orm.employee:
                     if employee:
                         comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 分配给了 <b>%s</b>' % (orm.FANO,_description,_model,employee)
@@ -222,6 +222,11 @@ def assets_table_save(request):
                         comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 被回收了' % (orm.FANO,_description,_model)
                         log_orm = log(comment=comment_info)
                     log_orm.save()
+
+                orm.department = _department
+                orm.employee = employee
+                orm.comment = comment
+                orm.save()
 
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
     except Exception,e:
