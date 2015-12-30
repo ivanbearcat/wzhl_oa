@@ -143,7 +143,7 @@ def vacation_table_save(request):
                          email=email,sick_leave_num=0,statutory_annual_leave_available=statutory_annual_leave_available,statutory_annual_leave_used=0,
                          statutory_annual_leave_total=statutory_annual_leave_total,company_annual_leave_available=company_annual_leave_available,
                          company_annual_leave_used=0,company_annual_leave_total=company_annual_leave_total,seasons_leave_available=1,
-                         seasons_leave_used=0,seasons_leave_total=1,has_approve=0)
+                         seasons_leave_used=0,seasons_leave_total=1,leave_in_lieu=0,has_approve=0,approved_id='')
 
         try:
             orm.save()
@@ -249,7 +249,8 @@ def vacation_apply(request):
                                                        'page_name2':u'请假申请',
                                                        'statutory_annual_leave_available':orm.statutory_annual_leave_available,
                                                        'company_annual_leave_available':orm.company_annual_leave_available,
-                                                       'seasons_leave_available':orm.seasons_leave_available},context_instance=RequestContext(request))
+                                                       'seasons_leave_available':orm.seasons_leave_available,
+                                                       'leave_in_lieu':orm.leave_in_lieu},context_instance=RequestContext(request))
 
 @login_required
 def vacation_apply_sub(request):
@@ -260,7 +261,8 @@ def vacation_apply_sub(request):
         return render(request,'public/no_passing.html')
     return render(request, 'vacation/vacation_apply_sub.html',{'statutory_annual_leave_available':orm.statutory_annual_leave_available,
                                                        'company_annual_leave_available':orm.company_annual_leave_available,
-                                                       'seasons_leave_available':orm.seasons_leave_available})
+                                                       'seasons_leave_available':orm.seasons_leave_available,
+                                                       'leave_in_lieu':orm.leave_in_lieu},context_instance=RequestContext(request))
 
 @login_required
 def vacation_apply_data(request):
@@ -369,6 +371,10 @@ def vacation_apply_save(request):
                 return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的季度假剩余不足'}),content_type="application/json")
             orm_fetch_supervisor.seasons_leave_available -= days
             orm_fetch_supervisor.seasons_leave_used += days
+        if type == '调休':
+            if days > orm_fetch_supervisor.leave_in_lieu:
+                return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的调休剩余不足'}),content_type="application/json")
+            orm_fetch_supervisor.leave_in_lieu -= days
 
         orm_fetch_supervisor.save()
 
@@ -532,6 +538,9 @@ def vacation_approve_process(request):
 
     orm = state.objects.get(id=dst_id)
 
+    if orm.approve_now != request.user.first_name:
+        return HttpResponse(simplejson.dumps({'code':1,'msg':u'这条申请的审批人不是您'}),content_type="application/json")
+
     if int(flag) == 1:
         if orm.state == 1:
             orm_fetch_principal = user_table.objects.get(name=orm.name)
@@ -560,7 +569,7 @@ def vacation_approve_process(request):
 
                 try:
                     if orm.type == u'病假':
-                        orm_fetch_principal.sick_leave_num += 1
+                        orm_fetch_principal.sick_leave_num += orm.days
                     orm_fetch_principal.save()
                     orm_log.save()
                     orm_alert.save()
@@ -614,7 +623,10 @@ def vacation_approve_process(request):
                 orm_log = operation_log(name=request.user.first_name,operation=log_info)
 
                 if orm.type == u'病假':
-                    orm_fetch_principal.sick_leave_num += 1
+                    orm_fetch_principal.sick_leave_num += orm.days
+
+                if orm.type == u'加班':
+                    orm_fetch_principal.leave_in_lieu += orm.days
                 # if orm.type == u'法定年假':
                 #     orm_fetch_principal.statutory_annual_leave_used += orm.days
                 #     orm_fetch_principal.statutory_annual_leave_available -= orm.days
@@ -687,7 +699,10 @@ def vacation_approve_process(request):
             apply_email = orm_fetch_principal.email
 
             if orm.type == u'病假':
-                orm_fetch_principal.sick_leave_num += 1
+                orm_fetch_principal.sick_leave_num += orm.days
+
+            if orm.type == u'加班':
+                orm_fetch_principal.leave_in_lieu += orm.days
             # if orm.type == '法定年假':
             #     orm_fetch_principal.statutory_annual_leave_used += orm.days
             #     orm_fetch_principal.statutory_annual_leave_available -= orm.days
@@ -728,7 +743,10 @@ def vacation_approve_process(request):
             apply_email = orm_fetch_principal.email
 
             if orm.type == u'病假':
-                orm_fetch_principal.sick_leave_num += 1
+                orm_fetch_principal.sick_leave_num += orm.days
+
+            if orm.type == u'加班':
+                    orm_fetch_principal.leave_in_lieu += orm.days
             # if orm.type == '法定年假':
             #     orm_fetch_principal.statutory_annual_leave_used += orm.days
             #     orm_fetch_principal.statutory_annual_leave_available -= orm.days
@@ -778,6 +796,8 @@ def vacation_approve_process(request):
             if orm.type == '季度假':
                 fetch_email.seasons_leave_available += orm.days
                 fetch_email.seasons_leave_used -= orm.days
+            if orm.type == '调休':
+                fetch_email.leave_in_lieu += orm.days
             fetch_email.save()
 
             send_mail(to_addr=email,subject='请假申请被拒绝',body='<h3>您的请假申请被拒绝，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % disagree_reason)

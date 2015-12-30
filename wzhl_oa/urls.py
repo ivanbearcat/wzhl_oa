@@ -55,4 +55,6 @@ urlpatterns = patterns('',
     url(r'^assets_table_save/', assets_table_save),
     url(r'^assets_export_excel/', assets_export_excel),
     url(r'^assets_refresh/', assets_refresh),
+    url(r'^assets_log/', assets_log),
+    url(r'^assets_log_data/', assets_log_data),
 )

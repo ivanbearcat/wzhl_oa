@@ -24,6 +24,9 @@
 {#            </a>#}
 {#        </div>#}
         <div class="container">
+
+            {% include 'vacation/vacation_apply_sub.html' %}
+            <br>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="dashboard-stat red">
                     <div class="visual">
@@ -32,9 +35,10 @@
                     <div class="details">
                         <div class="number">
                         </div>
-                        <a href="/static/files/auto_alert.exe">
+                        <a href="/static/files/小圈休假制度201512.pdf">
                             <div class="desc">
-                                 请假政策文件下载
+                                 查看请假政策文件<br>
+                                (右键另存为可下载)
                             </div>
                         </a>
                     </div>
@@ -43,7 +47,6 @@
             {#        </a>#}
                 </div>
             </div>
-            {% include 'vacation/vacation_apply_sub.html' %}
 {#            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">#}
 {#                <div class="dashboard-stat blue">#}
 {#                    <div class="visual">#}
@@ -268,33 +271,33 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title"></h4>
-            </div>
-            <div class="modal-body form">
-                <form action="#" class="form-horizontal form-row-seperated">
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>申请调休时，请将加班日期填写在调休的请假原由中。</h4></label>
-                        <div class="col-sm-8">
-                            <div class="input-group">
-                                <span class="twitter-typeahead"
-                                      style="position: relative; display: inline-block;">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
+{#<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">#}
+{#    <div class="modal-dialog">#}
+{#        <div class="modal-content">#}
+{#            <div class="modal-header">#}
+{#                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>#}
+{#                <h4 class="modal-title"></h4>#}
+{#            </div>#}
+{#            <div class="modal-body form">#}
+{#                <form action="#" class="form-horizontal form-row-seperated">#}
+{#                    <div class="form-group">#}
+{#                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>申请调休时，请将加班日期填写在调休的请假原由中。</h4></label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <div class="input-group">#}
+{#                                <span class="twitter-typeahead"#}
+{#                                      style="position: relative; display: inline-block;">#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="modal-footer">#}
 {#                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>#}
-                        <button type="button" class="btn btn-primary" data-dismiss="modal"></i>同意</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
+{#                        <button type="button" class="btn btn-primary" data-dismiss="modal"></i>同意</button>#}
+{#                    </div>#}
+{#                </form>#}
+{#            </div>#}
+{#        </div>#}
+{#    </div>#}
+{#</div>#}
 
 <!--/datatables-->
 {% endblock %}
@@ -327,18 +330,18 @@ $(document).ready(function () {
         multiple: false,
         placeholder: '选择申请类型',
         allowClear: true,
-        data: [{'text':'加班','id':1},{'text':'法定年假','id':2},{'text':'公司年假','id':3},{'text':'季度假','id':4},
-            {'text':'病假','id':5},{'text':'调休','id':6},{'text':'事假','id':7},{'text':'婚假','id':8},
-            {'text':'产假','id':9},{'text':'陪产假','id':10},{'text':'丧假','id':11}]
+        data: [{'text':'法定年假','id':1},{'text':'公司年假','id':2},{'text':'季度假','id':3},
+            {'text':'病假','id':4},{'text':'调休','id':5},{'text':'事假','id':6},{'text':'婚假','id':7},
+            {'text':'产假','id':8},{'text':'陪产假','id':9},{'text':'丧假','id':10},{'text':'加班','id':11}]
     });
 
     $('#type').on("click", function () {
         if ($('#type').select2('data')['text'] == '病假'){
             $("#myModal3").modal('show')
         }
-        if ($('#type').select2('data')['text'] == '调休'){
-            $("#myModal4").modal('show')
-        }
+{#        if ($('#type').select2('data')['text'] == '调休'){#}
+{#            $("#myModal4").modal('show')#}
+{#        }#}
     })
 
     $('#reportrange').daterangepicker({

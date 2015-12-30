@@ -21,3 +21,7 @@ class table(models.Model):
     total_depreciation = models.FloatField(verbose_name='累计折旧价格', max_length=10)
     netbook_value = models.FloatField(verbose_name='剩余价值', max_length=10)
     comment = models.CharField(verbose_name='备注', max_length=128, blank=True)
+
+class log(models.Model):
+    comment = models.CharField(verbose_name='备注', max_length=256)
+    add_time = models.DateTimeField(verbose_name='记录时间', auto_now_add=True)

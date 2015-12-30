@@ -10913,3 +10913,1058 @@ Traceback (most recent call last):
     print result['description_edit'],result['model_edit'],result['category_edit'],result['department_edit']
 KeyError: 'description_edit'
 [2015-12-29 19:06:31,611] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_table_dropdown/
+[2015-12-29 20:57:30,148] WARNING : Not Found: http://www.baidu.com/
+[2015-12-29 21:00:16,800] WARNING : Not Found: http://www.baidu.com/
+[2015-12-29 21:22:50,236] WARNING : Not Found: http://www.baidu.com/
+[2015-12-29 21:51:11,947] WARNING : Not Found: /robots.txt
+[2015-12-29 21:51:12,817] WARNING : Not Found: /sitemap.xml
+[2015-12-30 03:39:48,960] WARNING : Not Found: search.yahoo.com:443
+[2015-12-30 03:39:48,962] WARNING : Forbidden (CSRF cookie not set.): search.yahoo.com:443
+[2015-12-30 05:32:46,779] WARNING : Not Found: http://www.baidu.com/
+[2015-12-30 08:12:27,502] WARNING : Not Found: http://www.baidu.com/
+[2015-12-30 10:27:29,619] WARNING : Not Found: /favicon.ico
+[2015-12-30 10:31:39,725] WARNING : <yanglin> login in fail.
+[2015-12-30 11:02:34,279] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:02:34,287] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:03:23,382] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:03:23,385] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:03:23,893] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:03:23,895] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:03:24,119] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:03:24,121] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:03:24,379] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:03:24,381] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:03:24,557] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:03:24,560] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:03:24,814] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:03:24,818] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:03:25,011] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:03:25,015] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:03:25,258] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:03:25,261] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:03:27,338] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:03:27,346] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:10:18,837] ERROR : Internal Server Error: /vacation_approve_process/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 734, in vacation_approve_process
+    orm_fetch_principal.sick_leave_num += orm.dats
+AttributeError: 'state' object has no attribute 'dats'
+[2015-12-30 11:10:18,841] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_process/
+[2015-12-30 11:11:51,918] ERROR : Internal Server Error: /vacation_approve_process/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 734, in vacation_approve_process
+    orm_fetch_principal.sick_leave_num += orm.dats
+AttributeError: 'state' object has no attribute 'dats'
+[2015-12-30 11:11:51,920] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_process/
+[2015-12-30 11:20:24,363] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 436, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1054, "Unknown column 'vacation_user_table.leave_in_lieu' in 'field list'")
+[2015-12-30 11:20:24,370] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:20:24,385] ERROR : Internal Server Error: /vacation_table_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 73, in vacation_table_data
+    for i in  result_data:
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 118, in _result_iter
+    self._fill_cache()
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 892, in _fill_cache
+    self._result_cache.append(self._iter.next())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1054, "Unknown column 'vacation_user_table.leave_in_lieu' in 'field list'")
+[2015-12-30 11:20:24,387] WARNING : Forbidden (CSRF cookie not set.): /vacation_table_data/
+[2015-12-30 11:29:07,154] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1054, "Unknown column 'vacation_user_table.leave_in_lieu' in 'field list'")
+[2015-12-30 11:29:07,160] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:29:07,946] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1054, "Unknown column 'vacation_user_table.leave_in_lieu' in 'field list'")
+[2015-12-30 11:29:07,948] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:29:10,998] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1054, "Unknown column 'vacation_user_table.leave_in_lieu' in 'field list'")
+[2015-12-30 11:29:11,011] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:29:13,184] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1054, "Unknown column 'vacation_user_table.leave_in_lieu' in 'field list'")
+[2015-12-30 11:29:13,187] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:29:14,385] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1054, "Unknown column 'vacation_user_table.leave_in_lieu' in 'field list'")
+[2015-12-30 11:29:14,388] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:29:16,141] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 361, in get
+    num = len(clone)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 85, in __len__
+    self._result_cache = list(self.iterator())
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 291, in iterator
+    for row in compiler.results_iter():
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 763, in results_iter
+    for rows in self.execute_sql(MULTI):
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1054, "Unknown column 'vacation_user_table.leave_in_lieu' in 'field list'")
+[2015-12-30 11:29:16,144] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:30:32,999] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:30:33,004] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-30 11:30:35,065] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:30:35,066] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-30 11:30:43,587] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:30:43,588] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-30 11:30:48,698] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:30:48,699] WARNING : Forbidden (CSRF token missing or incorrect.): /vacation_approve_alert/
+[2015-12-30 11:31:27,678] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:31:27,680] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:31:28,271] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:31:28,273] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:31:28,452] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:31:28,454] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:31:30,529] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:31:30,535] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:32:59,700] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:32:59,702] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:33:02,417] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:33:02,419] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:33:04,045] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:33:04,047] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:33:05,856] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:33:05,858] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:33:07,061] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:33:07,063] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:33:07,466] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:33:07,468] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:33:14,474] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:33:14,476] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:34:47,388] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:34:47,390] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:34:50,775] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:34:50,783] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:34:53,388] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:34:53,390] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:34:54,536] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:34:54,543] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:34:56,362] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:34:56,363] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:34:58,489] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 437, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:34:58,491] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:43:54,240] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:43:54,249] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:44:01,044] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:44:01,046] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:44:02,367] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:44:02,369] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:44:03,631] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:44:03,633] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:44:04,848] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:44:04,862] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:44:07,007] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:44:07,009] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:44:08,134] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:44:08,136] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:44:14,154] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:44:14,158] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:44:15,318] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:44:15,325] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:44:20,733] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:44:20,735] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:44:24,023] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:44:24,025] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:44:25,142] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:44:25,148] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:44:34,611] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:44:34,612] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:48:59,943] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:48:59,945] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 11:53:41,682] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 438, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 11:53:41,688] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 12:00:33,024] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 442, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 12:00:33,029] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 12:00:42,864] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 442, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 12:00:42,866] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 12:00:43,435] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 442, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 12:00:43,437] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 12:00:49,855] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 442, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 12:00:49,856] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 12:00:51,384] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 442, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 12:00:51,386] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 12:00:54,218] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 442, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 12:00:54,220] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 12:08:31,937] ERROR : Internal Server Error: /vacation_approve_alert/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/vacation/views.py", line 442, in vacation_approve_alert
+    orm = user_table.objects.get(name=request.user.first_name)
+  File "/usr/lib/python2.6/site-packages/django/db/models/manager.py", line 131, in get
+    return self.get_query_set().get(*args, **kwargs)
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 366, in get
+    % self.model._meta.object_name)
+DoesNotExist: user_table matching query does not exist.
+[2015-12-30 12:08:31,940] WARNING : Forbidden (CSRF cookie not set.): /vacation_approve_alert/
+[2015-12-30 14:04:49,611] WARNING : Not Found: /assets_log/
+[2015-12-30 14:04:49,637] WARNING : Not Found: /assets_log/assets/scripts/core/app.js
+[2015-12-30 14:06:39,540] ERROR : Internal Server Error: /assets_log_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 290, in assets_log_data
+    result_data = log.objects.all().order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+NameError: global name 'log' is not defined
+[2015-12-30 14:06:39,546] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_log_data/
+[2015-12-30 14:07:19,553] ERROR : Internal Server Error: /assets_log_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 291, in assets_log_data
+    iTotalRecords = log.objects.all().count()
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 351, in count
+    return self.query.get_count(using=self.db)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 418, in get_count
+    number = obj.get_aggregation(using=using)[None]
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 384, in get_aggregation
+    result = query.get_compiler(using).execute_sql(SINGLE)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1146, "Table 'wzhl.assets_log' doesn't exist")
+[2015-12-30 14:07:19,560] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_log_data/
+[2015-12-30 14:07:40,060] ERROR : Internal Server Error: /assets_log_data/
+Traceback (most recent call last):
+  File "/usr/lib/python2.6/site-packages/django/core/handlers/base.py", line 109, in get_response
+    response = callback(request, *callback_args, **callback_kwargs)
+  File "/usr/lib/python2.6/site-packages/django/contrib/auth/decorators.py", line 20, in _wrapped_view
+    return view_func(request, *args, **kwargs)
+  File "/usr/share/nginx/html/assets/views.py", line 291, in assets_log_data
+    iTotalRecords = log.objects.all().count()
+  File "/usr/lib/python2.6/site-packages/django/db/models/query.py", line 351, in count
+    return self.query.get_count(using=self.db)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 418, in get_count
+    number = obj.get_aggregation(using=using)[None]
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/query.py", line 384, in get_aggregation
+    result = query.get_compiler(using).execute_sql(SINGLE)
+  File "/usr/lib/python2.6/site-packages/django/db/models/sql/compiler.py", line 818, in execute_sql
+    cursor.execute(sql, params)
+  File "/usr/lib/python2.6/site-packages/django/db/backends/mysql/base.py", line 114, in execute
+    return self.cursor.execute(query, args)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/cursors.py", line 173, in execute
+    self.errorhandler(self, exc, value)
+  File "/usr/lib64/python2.6/site-packages/MySQLdb/connections.py", line 36, in defaulterrorhandler
+    raise errorclass, errorvalue
+DatabaseError: (1146, "Table 'wzhl.assets_log' doesn't exist")
+[2015-12-30 14:07:40,062] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_log_data/

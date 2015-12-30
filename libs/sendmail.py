@@ -9,6 +9,8 @@ from email.header import Header
 # body = sys.argv[3]
 
 def send_mail(to_addr,subject,body):
+    if to_addr == '/':
+        return ''
     to_addr_list = to_addr.split(',')
     from_addr = 'oa@xiaoquan.com'
     password = 'RPvg8DD62i3U8o8F'

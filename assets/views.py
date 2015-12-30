@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.db.models.query_utils import Q
-from assets.models import table
+from assets.models import table,log
 from libs.common import int_format
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -201,12 +201,27 @@ def assets_table_save(request):
                             residual_value=residual_value,depreciation=depreciation,total_depreciation=0,
                             netbook_value=float(cost),comment=comment)
                 orm.save()
+
+                if employee:
+                    comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 分配给了 <b>%s</b>' % (FANO,_description,_model,employee)
+                    log_orm = log(comment=comment_info)
+                    log_orm.save()
+
             else:
                 orm = table.objects.get(id=_id)
                 orm.department = _department
                 orm.employee = employee
                 orm.comment = comment
                 orm.save()
+
+                if employee != orm.employee:
+                    if employee:
+                        comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 分配给了 <b>%s</b>' % (orm.FANO,_description,_model,employee)
+                        log_orm = log(comment=comment_info)
+                    else:
+                        comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 被回收了' % (orm.FANO,_description,_model)
+                        log_orm = log(comment=comment_info)
+                    log_orm.save()
 
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
     except Exception,e:
@@ -227,7 +242,7 @@ def assets_export_excel(request):
         count = 3
         for i in orm:
             worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.residual_life,i.department,
-                                                i.employee,str(i.purchase_date).split('+')[0],'%.2f' % i.payment,
+                                                i.employee,i.purchase_date.strftime('%Y/%m/%d'),'%.2f' % i.payment,
                                                 '%.2f' % i.cost,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
                                                 '%.2f' % i.total_depreciation,'%.2f' % i.netbook_value,i.comment,])
             count += 1
@@ -251,3 +266,59 @@ def assets_refresh(request):
     except Exception,e:
         print e
         return HttpResponse('ERROR',content_type="application/json")
+
+@login_required
+def assets_log(request):
+    path = request.path.split('/')[1]
+    if not request.user.has_perm('assets.can_view'):
+        return render(request,'public/no_passing.html')
+    return render(request,'assets/assets_log.html',{'user':request.user.username,
+                                                   'path1':'assets',
+                                                   'path2':path,
+                                                   'page_name1':u'资产管理',
+                                                   'page_name2':u'出入库记录'},context_instance=RequestContext(request))
+
+@login_required
+def assets_log_data(request):
+    sEcho =  request.POST.get('sEcho') #标志，直接返回
+    iDisplayStart = int(request.POST.get('iDisplayStart'))#第几行开始
+    iDisplayLength = int(request.POST.get('iDisplayLength'))#显示多少行
+    iSortCol_0 = int(request.POST.get("iSortCol_0"))#排序行号
+    sSortDir_0 = request.POST.get('sSortDir_0')#asc/desc
+    sSearch = request.POST.get('sSearch')#高级搜索
+
+    aaData = []
+    sort = ['comment','add_time','id']
+
+    if  sSortDir_0 == 'asc':
+        if sSearch == '':
+            result_data = log.objects.all().order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = log.objects.all().count()
+        else:
+            result_data = log.objects.filter(Q(comment__contains=sSearch) | \
+                                               Q(id__contains=sSearch)) \
+                                            .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = log.objects.filter(Q(comment__contains=sSearch) | \
+                                                 Q(id__contains=sSearch)).count()
+    else:
+        if sSearch == '':
+            result_data = log.objects.all().order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = log.objects.all().count()
+        else:
+            result_data = log.objects.filter(Q(comment__contains=sSearch) | \
+                                               Q(id__contains=sSearch)) \
+                                            .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = log.objects.filter(Q(comment__contains=sSearch) | \
+                                                 Q(id__contains=sSearch)).count()
+    for i in  result_data:
+        aaData.append({
+                       '0':i.comment,
+                       '1':str(i.add_time).split('+')[0],
+                       '2':i.id
+                      })
+    result = {'sEcho':sEcho,
+               'iTotalRecords':iTotalRecords,
+               'iTotalDisplayRecords':iTotalRecords,
+               'aaData':aaData
+    }
+    return HttpResponse(simplejson.dumps(result),content_type="application/json")

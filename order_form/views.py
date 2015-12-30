@@ -206,7 +206,7 @@ def order_form_dropdown(request):
 
     orm = User.objects.all()
     for i in orm:
-        if not i.first_name:continue
+        if not i.first_name or i.username == 'refresh_user':continue
         result['list'].append({'text':i.first_name,'id':i.id})
     return HttpResponse(simplejson.dumps(result),content_type="application/json")
 

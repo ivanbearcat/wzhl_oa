@@ -604,6 +604,13 @@ function add() {
     $('count').val("")
     $('#comment').val("")
     $('#id').val("")
+    $('#description').attr('disabled',false)
+    $('#model').attr('disabled',false)
+    $('#category').attr('disabled',false)
+    $('#count').attr('disabled',false)
+    $('#payment').attr('disabled',false)
+    $('#cost').attr('disabled',false)
+    $('#auto_calculate').attr('disabled',false)
     $("#myModal").modal('show')
 }
 function edit() {
@@ -645,6 +652,9 @@ function edit() {
         $('#model').attr('disabled',true)
         $('#category').attr('disabled',true)
         $('#count').attr('disabled',true)
+        $('#payment').attr('disabled',true)
+        $('#cost').attr('disabled',true)
+        $('#auto_calculate').attr('disabled',true)
 
         $("#myModal").modal('show')
     }
@@ -665,7 +675,7 @@ function export_excel_file(){
 
 $('#auto_calculate').click(function(){
     var payment = $('#payment').val()
-    $('#cost').val(payment * 0.83)
+    $('#cost').val(payment / 1.17)
 })
 
 </script>
