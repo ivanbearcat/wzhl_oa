@@ -11968,3 +11968,6 @@ Traceback (most recent call last):
     raise errorclass, errorvalue
 DatabaseError: (1146, "Table 'wzhl.assets_log' doesn't exist")
 [2015-12-30 14:07:40,062] WARNING : Forbidden (CSRF token missing or incorrect.): /assets_log_data/
+[2015-12-30 17:31:39,921] WARNING : Not Found: http://www.baidu.com/
+[2015-12-30 17:31:41,819] WARNING : Not Found: http://www.baidu.com/
+[2015-12-30 17:43:40,357] WARNING : Not Found: http://www.baidu.com/
