@@ -8,7 +8,7 @@ from django.utils.log import logger
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from libs.sendmail import send_mail
-from wzhl_oa.settings import HR
+from wzhl_oa.settings import HR,BASE_DIR
 import simplejson,datetime,xlsxwriter
 
 import sys
@@ -935,7 +935,7 @@ def vacation_log_data(request):
 @login_required
 def vacation_export_excel(request):
     try:
-        workbook = xlsxwriter.Workbook('static/files/vacation_log.xlsx')
+        workbook = xlsxwriter.Workbook(BASE_DIR + '/static/files/fixed_assets.xlsx''static/files/vacation_log.xlsx')
         worksheet = workbook.add_worksheet()
 
         title = [u'姓名',u'操作',u'操作时间']

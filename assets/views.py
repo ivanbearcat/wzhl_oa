@@ -7,7 +7,7 @@ from assets.models import table,log
 from libs.common import int_format
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
-from wzhl_oa.settings import description,model,category,department
+from wzhl_oa.settings import description,model,category,department,BASE_DIR
 import simplejson,datetime,xlsxwriter,re
 
 @login_required
@@ -236,7 +236,7 @@ def assets_table_save(request):
 @login_required
 def assets_export_excel(request):
     try:
-        workbook = xlsxwriter.Workbook('static/files/fixed_assets.xlsx')
+        workbook = xlsxwriter.Workbook(BASE_DIR + '/static/files/fixed_assets.xlsx')
         worksheet = workbook.add_worksheet()
 
         title = ['编号','描述','型号','类别','剩余月','部门','员工','购买日期','含税价','原价','残值','折旧价','累计折旧价','剩余价值','备注']
