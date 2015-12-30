@@ -935,7 +935,7 @@ def vacation_log_data(request):
 @login_required
 def vacation_export_excel(request):
     try:
-        workbook = xlsxwriter.Workbook(BASE_DIR + '/static/files/fixed_assets.xlsx''static/files/vacation_log.xlsx')
+        workbook = xlsxwriter.Workbook(BASE_DIR + '/static/files/fixed_assets.xlsx')
         worksheet = workbook.add_worksheet()
 
         title = [u'姓名',u'操作',u'操作时间']
