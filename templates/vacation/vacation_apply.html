@@ -391,6 +391,10 @@ $(document).ready(function () {
                 $("#half_day").attr('disabled',true)
             }else{
                 $("#half_day").attr('disabled',false)
+                var half_day = $('#half_day').select2('data');
+                if (half_day != null){
+                    $('#days').html('<div class="form-group"><label class="col-sm-4 control-label">已选天数</label><div class="col-sm-8"><h5>0.5天</h5></div></div></div>')
+                }
             }
 {#            var begin = start.format('YYYY-MM-DD')#}
 {#            var end = end.format('YYYY-MM-DD')#}
@@ -585,6 +589,7 @@ function contain(Array, s) {
     return false;
 }
 function add() {
+    $('#days').html("")
     $('#type').select2("data", "")
     $('#reason').val("")
     $('#reportrange span').html(moment().format('YYYY-MM-DD') + '  ->  ' + moment().format('YYYY-MM-DD'))
