@@ -219,7 +219,7 @@ def assets_table_save(request):
                         comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 分配给了 <b>%s</b>' % (orm.FANO,_description,_model,employee)
                         log_orm = log(comment=comment_info)
                     else:
-                        comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 从 %s 被回收了 ' % (orm.FANO,_description,_model,orm.employee)
+                        comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 从 <b>%s</b> 被回收了 ' % (orm.FANO,_description,_model,orm.employee)
                         log_orm = log(comment=comment_info)
                     log_orm.save()
 
