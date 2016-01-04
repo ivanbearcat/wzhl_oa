@@ -202,7 +202,8 @@ def vacation_refresh(request):
         company_annual_leave_total = (today - join_date).days / 365
 
         #刷新季度假
-        if today.month == 1 or today.month == 4 or today.month == 7 or today.month == 10 and today.day == 1:
+        if today.month == 1 and today.day == 1 or today.month == 4 and today.day == 1 or \
+                                today.month == 7 and today.day == 1 or today.month == 10 and today.day == 1:
             i.seasons_leave_used = 0
             i.seasons_leave_available = 1
 
