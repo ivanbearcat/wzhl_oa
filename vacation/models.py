@@ -28,6 +28,10 @@ class user_table(models.Model):
     approved_id = models.CharField(verbose_name='经审批的id', max_length=10240, blank=True)
 
 class state(models.Model):
+    class Meta:
+        permissions = (
+            ("can_view_all", "Can view all"),
+        )
     name = models.CharField(verbose_name='员工名', max_length=30, blank=False)
     type = models.CharField(verbose_name='请假类型', max_length=30, blank=False)
     reason = models.CharField(verbose_name='请假原由', max_length=30, blank=False)
