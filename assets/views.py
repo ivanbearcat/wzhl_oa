@@ -175,7 +175,7 @@ def assets_table_save(request):
         if not count:
             count = 1
         for c in range(int(count)):
-            if _id == None:
+            if not _id:
                 residual_value = float(cost) * 0.05
                 depreciation = (float(cost) - residual_value) / category[str(_category)][0]
 
