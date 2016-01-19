@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     'order_form',
     'vacation',
     'assets',
+    'KPI',
 )
 
 # A sample logging configuration. The only tangible logging

@@ -5,6 +5,7 @@ from order_form.views import *
 from user_manage.views import *
 from vacation.views import *
 from assets.views import *
+from KPI.views import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -57,4 +58,9 @@ urlpatterns = patterns('',
     url(r'^assets_refresh/', assets_refresh),
     url(r'^assets_log/', assets_log),
     url(r'^assets_log_data/', assets_log_data),
+    url(r'^KPI_table/', KPI_table),
+    url(r'^KPI_table_data/', KPI_table_data),
+    url(r'^KPI_set_session/', KPI_set_session),
+    url(r'^KPI_table_detail/', KPI_table_detail),
+    url(r'^KPI_table_detail_data/', KPI_table_detail_data),
 )
