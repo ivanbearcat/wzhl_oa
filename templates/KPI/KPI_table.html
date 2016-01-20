@@ -27,8 +27,8 @@
                     <tr>
                         <th>绩效名称</th>
                         <th>最终评分</th>
-                        <th>主管评价</th>
                         <th>状态</th>
+                        <th>导出</th>
                         <th>被考评人</th>
                         <th>ID</th>
                     </tr>
@@ -107,7 +107,7 @@ function loaddata() {
 
         ],
         "aaSorting": [
-            [0, 'desc']
+            [5, 'desc']
         ],
         "oLanguage": {
             "sProcessing": "正在加载数据...",
@@ -132,16 +132,18 @@ function loaddata() {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            if(aData[3] == '员工设定目标' || aData[3] == '等待主管确认目标' || aData[3] == '员工自我评分' ||
-                    aData[3] == '等待直属主管评分' || aData[3] == '等待部门负责人评分'){
-                $('td:eq(3)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp'+aData[3]+'</div>')
-            }else if(aData[3] == '已完成'){
-                $('td:eq(3)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp'+aData[3]+'</div>')
+            if(aData[2] == '员工设定目标' || aData[2] == '等待主管确认目标' || aData[2] == '员工自我评分' ||
+                    aData[2] == '等待直属主管评分' || aData[2] == '等待部门负责人评分'){
+                $('td:eq(2)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp'+aData[2]+'</div>')
+            }else if(aData[2] == '已完成'){
+                $('td:eq(2)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp'+aData[2]+'</div>')
             }
-            $('td',nRow).on('click',function(){
+            $('td:eq(0)',nRow).html('<a>'+aData[0]+'</a>')
+            $('td:eq(0)',nRow).on('click',function(){
                 var KPI_name = aData[0]
                 var name = aData[4]
-                $.post('/KPI_set_session/', {KPI_name:KPI_name,name:name}, function (d) {
+                var status = aData[2]
+                $.post('/KPI_set_session/', {KPI_name:KPI_name,name:name,status:status}, function (d) {
                     location.href = '/KPI_table_detail/'
                 })
             })

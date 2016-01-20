@@ -19,7 +19,7 @@ def KPI_table(request):
                                                  'path1':'KPI',
                                                  'path2':path,
                                                  'page_name1':u'绩效管理',
-                                                 'page_name2':u'绩效考评'},
+                                                 'page_name2':u'绩效考评',},
                                                 context_instance=RequestContext(request))
 
 @login_required
@@ -32,7 +32,7 @@ def KPI_table_data(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['KPI_name','final_score','supervisor_comment','status']
+    sort = ['KPI_name','final_score','supervisor_comment','status','name','id']
 
     if  sSortDir_0 == 'asc':
         if sSearch == '':
@@ -59,12 +59,19 @@ def KPI_table_data(request):
                                                     Q(final_score__contains=sSearch) | \
                                                     Q(status__contains=sSearch)).count()
 
+
+
     for i in  result_data:
+        export = '''
+                <a id="export" value="%s" class="btn btn-sm green">
+                    生成Excel文件 <i class="fa fa-level-down"></i>
+                </a>
+            ''' % i.id
         aaData.append({
                        '0':i.KPI_name,
                        '1':i.final_score,
-                       '2':i.supervisor_comment,
-                       '3':i.status,
+                       '2':i.status,
+                       '3':export,
                        '4':i.name,
                        '5':i.id
                       })
@@ -79,27 +86,45 @@ def KPI_table_data(request):
 def KPI_set_session(request):
     KPI_name = request.POST.get('KPI_name')
     name = request.POST.get('name')
+    status = request.POST.get('status')
     request.session['KPI'] = KPI_name,name
+    if status == '员工设定目标' or '等待主管确认目标':
+        request.session['status'] = 1
+    if status == '员工自我评分':
+        request.session['status'] = 2
+    if status == '等待直属主管评分':
+        request.session['status'] = 3
+    if status == '等待部门负责人评分':
+        request.session['status'] = 4
     return HttpResponse(simplejson.dumps('OK'),content_type="application/json")
 
 @login_required
 def KPI_table_detail(request):
-    KPI_name = request.session.get('KPI_name')
-    name = request.session.get('name')
+    KPI_name = request.session.get('KPI')[0]
+    name = request.session.get('KPI')[1]
     orm = table.objects.filter(KPI_name=KPI_name).filter(name=name)
-    for i in orm:
-        print i.status
-        status = i.status
-    try:
-        if status:pass
-    except Exception:
-        status = '员工设定目标'
+
+    if len(orm):
+        for i in orm:
+            self_comment = i.self_comment.replace('\n','\\n')
+            supervisor_comment = i.supervisor_comment.replace('\n','\\n')
+            principal_comment = i.principal_comment.replace('\n','\\n')
+    else:
+        self_comment = ''
+        supervisor_comment = ''
+        principal_comment = ''
+    # try:
+    #     if status:pass
+    # except Exception:
+    #     status = '员工设定目标'
     return render(request, 'KPI/KPI_table_detail.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                  'path1':'KPI',
                                                  'path2':'KPI_table',
                                                  'page_name1':u'绩效管理',
                                                  'page_name2':u'绩效考评',
-                                                 'status':status},
+                                                 'self_comment':self_comment,
+                                                 'supervisor_comment':supervisor_comment,
+                                                 'principal_comment':principal_comment},
                                                 context_instance=RequestContext(request))
 
 @login_required
@@ -204,3 +229,84 @@ def KPI_table_detail_data(request):
                'aaData':aaData
     }
     return HttpResponse(simplejson.dumps(result),content_type="application/json")
+
+@login_required
+def KPI_table_detail_save(request):
+    KPI_name = request.session.get('KPI')[0]
+    name = request.session.get('KPI')[1]
+    objective = request.POST.get('objective')
+    description = request.POST.get ('description')
+    weight = request.POST.get('weight')
+    self_report_value = request.POST.get('self_report_value')
+    supervisor_report_value = request.POST.get('self_report_value')
+    principal_report_value = request.POST.get('self_report_value')
+    _id = request.POST.get('id')
+
+    if not _id:
+        orm = table_detail(KPI_name=KPI_name,name=name,objective=objective,description=description,weight=weight,
+                           self_report_value=0,self_report_score=0,supervisor_report_value=0,supervisor_report_score=0,
+                           principal_report_value=0,principal_report_score=0)
+        try:
+            orm.save()
+            return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
+        except Exception,e:
+            print e
+            return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+    else:
+        orm = table_detail.objects.get(id=_id)
+        if self_report_value:
+            orm.self_report_value = self_report_value
+            orm.self_report_score = self_report_value / 100 * orm.weight
+        if supervisor_report_value:
+            orm.supervisor_report_value = supervisor_report_value
+            orm.supervisor_report_score = supervisor_report_value / 100 * orm.weight
+        if principal_report_value:
+            orm.principal_report_value = principal_report_value
+            orm.principal_report_score = principal_report_value / 100 * orm.weight
+        orm.objective = objective
+        orm.description = description
+        orm.weight = weight
+        try:
+            orm.save()
+            return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
+        except Exception,e:
+            print e
+            return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+@login_required
+def KPI_table_detail_del(request):
+    _id = request.POST.get('id')
+    orm = table_detail.objects.get(id=_id)
+    try:
+        orm.delete()
+        return HttpResponse(simplejson.dumps({'code':0,'msg':u'删除成功'}),content_type="application/json")
+    except Exception,e:
+        print e
+        return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+@login_required
+def KPI_table_detail_comment_save(request):
+    self_comment = request.POST.get('self_comment')
+    supervisor_comment = request.POST.get('supervisor_comment')
+    principal_comment = request.POST.get('principal_comment')
+
+    KPI_name = request.session.get('KPI')[0]
+    name = request.session.get('KPI')[1]
+    orm = table.objects.filter(KPI_name=KPI_name).filter(name=name)
+
+    if len(orm):
+        for i in orm:
+            if self_comment:
+                i.self_comment = self_comment
+            if supervisor_comment:
+                i.supervisor_comment = supervisor_comment
+            if principal_comment:
+                i.principal_comment = principal_comment
+            try:
+                i.save()
+                return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
+            except Exception,e:
+                print e
+                return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+    else:
+        return HttpResponse(simplejson.dumps({'code':1,'msg':u'保存失败'}),content_type="application/json")

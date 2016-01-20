@@ -26,7 +26,7 @@
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-globe"></i>绩效考评详情
+                    <i class="fa fa-globe"></i>绩效考评详情{{ status }}
                 </div>
             </div>
             <div class="portlet-body">
@@ -68,14 +68,14 @@
                 <div class="form-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea id="self_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
+                            <textarea id="textarea1" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-offset-11 col-md-9">
-                            <button id="self_comment_button" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
+                            <button id="button1" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
                         </div>
                     </div>
                 </div>
@@ -97,11 +97,16 @@
                 <div class="form-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea id="supervisor_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
+                            <textarea id="textarea2" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-offset-11 col-md-9">
+                            <button id="button2" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -121,11 +126,16 @@
                 <div class="form-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea id="principal_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
+                            <textarea id="textarea3" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-offset-11 col-md-9">
+                            <button id="button3" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -225,28 +235,20 @@ var aButtons
 
 $(document).ready(function () {
 {% if request.session.status != 2 %}
-    $('#self_comment').attr('disabled',true)
-    $('#self_comment_button').attr('disabled',true)
+    $('#textarea1').attr('disabled',true)
+    $('#button1').attr('disabled',true)
 {% endif %}
-    $('#supervisor_comment').attr('disabled',true)
-    $('#principal_comment').attr('disabled',true)
+{% if request.session.status != 3 %}
+    $('#textarea2').attr('disabled',true)
+    $('#button2').attr('disabled',true)
+{% endif %}
+{% if request.session.status != 4 %}
+    $('#textarea3').attr('disabled',true)
+    $('#button3').attr('disabled',true)
+{% endif %}
 
-    $('#self_comment').val('{{ self_comment }}')
-    $('#supervisor_comment').val('{{ supervisor_comment }}')
-    $('#principal_comment').val('{{ principal_comment }}')
 
-    $('#self_comment_button').on('click',function(){
-        var self_comment = $('#self_comment').val()
-        showAjaxLoad()
-        $.post('/KPI_table_detail_comment_save/', {self_comment:self_comment}, function (d) {
-            hideAjaxLoad()
-            if (d.code == 0) {
-                toastr.success(d.msg)
-            } else {
-                toastr.error(d.msg)
-            }
-        })
-    })
+
 
     $('#back').on('click',function(){
         history.go(-1)
@@ -256,6 +258,7 @@ $(document).ready(function () {
         {% if request.session.status == 1 or request.session.status == 2 %}
             {
                 "sExtends": 'text',
+
                 "sButtonText": '<font color="white">添加</font><i class="fa fa-plus"></i>',
                 "sButtonClass": "btn green ",
                 "fnComplete": function (nButton, oConfig, nRow) {
@@ -264,6 +267,7 @@ $(document).ready(function () {
             },
             {
                 "sExtends": 'text',
+
                 "sButtonText": '<font color="white">编辑</font><i class="fa fa-edit"></i>',
                 "sButtonClass": "btn blue ",
                 "fnComplete": function (nButton, oConfig, nRow) {
@@ -272,6 +276,7 @@ $(document).ready(function () {
             },
             {
                 "sExtends": 'text',
+
                 "sButtonText": '<font color="white">删除</font><i class="fa fa-times"></i>',
                 "sButtonClass": "btn red ",
                 "fnComplete": function (nButton, oConfig, nRow) {
@@ -279,9 +284,10 @@ $(document).ready(function () {
                 }
             },
         {% endif %}
-        {% if request.session.status == 2 %}
+        {% if request.session.status == 2 or request.session.status == 3 or request.session.status == 4 %}
             {
                 "sExtends": 'text',
+
                 "sButtonText": '<font color="white">评分</font><i class="fa fa-pencil"></i>',
                 "sButtonClass": "btn purple ",
                 "fnComplete": function (nButton, oConfig, nRow) {
