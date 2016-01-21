@@ -26,7 +26,7 @@
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-globe"></i>绩效考评详情{{ status }}
+                    <i class="fa fa-globe"></i>绩效考评详情
                 </div>
             </div>
             <div class="portlet-body">
@@ -68,14 +68,14 @@
                 <div class="form-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea id="textarea1" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
+                            <textarea id="self_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">
                         <div class="col-md-offset-11 col-md-9">
-                            <button id="button1" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
+                            <button id="self_comment_button" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
                         </div>
                     </div>
                 </div>
@@ -97,16 +97,11 @@
                 <div class="form-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea id="textarea2" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
+                            <textarea id="supervisor_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-offset-11 col-md-9">
-                            <button id="button2" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -126,16 +121,11 @@
                 <div class="form-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea id="textarea3" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
+                            <textarea id="principal_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-offset-11 col-md-9">
-                            <button id="button3" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -200,7 +190,33 @@
     </div>
 </div>
 
-
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>您确定要提交吗</h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button id="commit_button" type="button" class="btn btn-primary"><i class="fa fa-check"></i>确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 {#<span class="input-group-addon bootstrap-touchspin-postfix">%</span>#}
@@ -234,31 +250,57 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
-{% if request.session.status != 2 %}
-    $('#textarea1').attr('disabled',true)
-    $('#button1').attr('disabled',true)
-{% endif %}
 {% if request.session.status != 3 %}
-    $('#textarea2').attr('disabled',true)
-    $('#button2').attr('disabled',true)
+    $('#self_comment').attr('disabled',true)
+    $('#self_comment_button').attr('disabled',true)
 {% endif %}
-{% if request.session.status != 4 %}
-    $('#textarea3').attr('disabled',true)
-    $('#button3').attr('disabled',true)
-{% endif %}
+    $('#supervisor_comment').attr('disabled',true)
+    $('#principal_comment').attr('disabled',true)
 
+    $('#self_comment').val('{{ self_comment }}')
+    $('#supervisor_comment').val('{{ supervisor_comment }}')
+    $('#principal_comment').val('{{ principal_comment }}')
 
-
+    $('#self_comment_button').on('click',function(){
+        var self_comment = $('#self_comment').val()
+        showAjaxLoad()
+        $.post('/KPI_table_detail_comment_save/', {self_comment:self_comment}, function (d) {
+            hideAjaxLoad()
+            if (d.code == 0) {
+                toastr.success(d.msg)
+            } else {
+                toastr.error(d.msg)
+            }
+        })
+    })
 
     $('#back').on('click',function(){
         history.go(-1)
     })
 
+    $('#commit').on('click',function(){
+        $("#myModal2").modal('show')
+    })
+
+    $('#commit_button').on('click',function(){
+        showAjaxLoad()
+        $.post('/KPI_table_detail_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',
+            status:{{ request.session.status }}}, function (d) {
+            hideAjaxLoad()
+            if (d.code == 0) {
+                toastr.success(d.msg)
+                setTimeout('location.href = "/KPI_table/"',1000)
+                location.href = '/KPI_table/'
+            } else {
+                toastr.error(d.msg)
+            }
+        })
+    })
+
     aButtons = [
-        {% if request.session.status == 1 or request.session.status == 2 %}
+        {% if request.session.status == 1 or request.session.status == 2 or  request.session.status == 3%}
             {
                 "sExtends": 'text',
-
                 "sButtonText": '<font color="white">添加</font><i class="fa fa-plus"></i>',
                 "sButtonClass": "btn green ",
                 "fnComplete": function (nButton, oConfig, nRow) {
@@ -267,7 +309,6 @@ $(document).ready(function () {
             },
             {
                 "sExtends": 'text',
-
                 "sButtonText": '<font color="white">编辑</font><i class="fa fa-edit"></i>',
                 "sButtonClass": "btn blue ",
                 "fnComplete": function (nButton, oConfig, nRow) {
@@ -276,7 +317,6 @@ $(document).ready(function () {
             },
             {
                 "sExtends": 'text',
-
                 "sButtonText": '<font color="white">删除</font><i class="fa fa-times"></i>',
                 "sButtonClass": "btn red ",
                 "fnComplete": function (nButton, oConfig, nRow) {
@@ -284,10 +324,9 @@ $(document).ready(function () {
                 }
             },
         {% endif %}
-        {% if request.session.status == 2 or request.session.status == 3 or request.session.status == 4 %}
+        {% if request.session.status == 3 %}
             {
                 "sExtends": 'text',
-
                 "sButtonText": '<font color="white">评分</font><i class="fa fa-pencil"></i>',
                 "sButtonClass": "btn purple ",
                 "fnComplete": function (nButton, oConfig, nRow) {

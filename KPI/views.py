@@ -6,6 +6,7 @@ from django.db.models.query_utils import Q
 from django.contrib.auth.decorators import login_required
 from libs.sendmail import send_mail
 from KPI.models import table,table_detail
+from vacation.models import user_table
 import simplejson
 
 import sys
@@ -88,14 +89,16 @@ def KPI_set_session(request):
     name = request.POST.get('name')
     status = request.POST.get('status')
     request.session['KPI'] = KPI_name,name
-    if status == '员工设定目标' or '等待主管确认目标':
+    if status == '员工设定目标':
         request.session['status'] = 1
-    if status == '员工自我评分':
+    if status == '等待主管确认目标':
         request.session['status'] = 2
-    if status == '等待直属主管评分':
+    if status == '员工自我评分':
         request.session['status'] = 3
-    if status == '等待部门负责人评分':
+    if status == '等待直属主管评分':
         request.session['status'] = 4
+    if status == '等待部门负责人评分':
+        request.session['status'] = 5
     return HttpResponse(simplejson.dumps('OK'),content_type="application/json")
 
 @login_required
@@ -124,7 +127,9 @@ def KPI_table_detail(request):
                                                  'page_name2':u'绩效考评',
                                                  'self_comment':self_comment,
                                                  'supervisor_comment':supervisor_comment,
-                                                 'principal_comment':principal_comment},
+                                                 'principal_comment':principal_comment,
+                                                 'KPI_name':KPI_name,
+                                                 'name':name},
                                                 context_instance=RequestContext(request))
 
 @login_required
@@ -310,3 +315,30 @@ def KPI_table_detail_comment_save(request):
                 return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
     else:
         return HttpResponse(simplejson.dumps({'code':1,'msg':u'保存失败'}),content_type="application/json")
+
+@login_required
+def KPI_table_detail_commit(request):
+    KPI_name = request.POST.get('KPI_name')
+    name = request.POST.get('name')
+    status = request.POST.get('status')
+
+    orm = table.objects.filter(KPI_name=KPI_name).filter(name=name)
+    if len(orm):
+        for i in orm:
+            if status == '1':
+                i.status = '等待主管确认目标'
+                vacation_user_table_orm = user_table.objects.get(name=name)
+                i.commit_now = vacation_user_table_orm.supervisor
+                vacation_user_table_orm = user_table.objects.get(name=i.commit_now)
+                vacation_user_table_orm.has_KPI_commit += 1
+                if vacation_user_table_orm.KPI_commit_id:
+                    vacation_user_table_orm.KPI_commit_id += ',' + str(i.id)
+                else:
+                    vacation_user_table_orm.KPI_commit_id = str(i.id)
+                try:
+                    vacation_user_table_orm.save()
+                    i.save()
+                    return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
+                except Exception,e:
+                    print e
+                    return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")

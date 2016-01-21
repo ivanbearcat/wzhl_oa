@@ -9,6 +9,7 @@ class table(models.Model):
     self_comment = models.CharField(verbose_name='自我评价', max_length=256, blank=True)
     supervisor_comment = models.CharField(verbose_name='直属主管评价', max_length=256, blank=True)
     principal_comment = models.CharField(verbose_name='部门负责人评价', max_length=256, blank=True)
+    commit_now = models.CharField(verbose_name='当前流程人', max_length=30, blank=False)
 
 class table_detail(models.Model):
     KPI_name = models.CharField(verbose_name='绩效考评名称', max_length=30, blank=False)

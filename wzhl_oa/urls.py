@@ -66,4 +66,5 @@ urlpatterns = patterns('',
     url(r'^KPI_table_detail_save/', KPI_table_detail_save),
     url(r'^KPI_table_detail_del/', KPI_table_detail_del),
     url(r'^KPI_table_detail_comment_save/', KPI_table_detail_comment_save),
+    url(r'^KPI_table_detail_commit/', KPI_table_detail_commit),
 )

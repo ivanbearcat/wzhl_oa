@@ -190,7 +190,33 @@
     </div>
 </div>
 
-
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>您确定要提交吗</h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button id="commit_button" type="button" class="btn btn-primary"><i class="fa fa-check"></i>确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 
 {#<span class="input-group-addon bootstrap-touchspin-postfix">%</span>#}
@@ -224,7 +250,7 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
-{% if request.session.status != 2 %}
+{% if request.session.status != 3 %}
     $('#self_comment').attr('disabled',true)
     $('#self_comment_button').attr('disabled',true)
 {% endif %}
@@ -252,8 +278,27 @@ $(document).ready(function () {
         history.go(-1)
     })
 
+    $('#commit').on('click',function(){
+        $("#myModal2").modal('show')
+    })
+
+    $('#commit_button').on('click',function(){
+        showAjaxLoad()
+        $.post('/KPI_table_detail_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',
+            status:{{ request.session.status }}}, function (d) {
+            hideAjaxLoad()
+            if (d.code == 0) {
+                toastr.success(d.msg)
+                setTimeout('location.href = "/KPI_table/"',1000)
+                location.href = '/KPI_table/'
+            } else {
+                toastr.error(d.msg)
+            }
+        })
+    })
+
     aButtons = [
-        {% if request.session.status == 1 or request.session.status == 2 %}
+        {% if request.session.status == 1 or request.session.status == 2 or  request.session.status == 3%}
             {
                 "sExtends": 'text',
                 "sButtonText": '<font color="white">添加</font><i class="fa fa-plus"></i>',
@@ -279,7 +324,7 @@ $(document).ready(function () {
                 }
             },
         {% endif %}
-        {% if request.session.status == 2 %}
+        {% if request.session.status == 3 %}
             {
                 "sExtends": 'text',
                 "sButtonText": '<font color="white">评分</font><i class="fa fa-pencil"></i>',
