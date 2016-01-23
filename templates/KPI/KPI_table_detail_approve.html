@@ -19,9 +19,21 @@
         <a id="back" class="btn btn-sm yellow">
              返回 <i class="fa fa-reply"></i>
         </a>
+    {% if request.session.status == 2 or request.session.status == 4 or request.session.status == 5 %}
         <a id="commit" class="btn btn-sm purple">
-             提交审核 <i class="fa fa-check"></i>
+        {% if request.session.status == 2 %}
+            通过
+        {% else %}
+            提交
+        {% endif %}
+            <i class="fa fa-check"></i>
         </a>
+    {% endif %}
+    {% if request.session.status == 2 %}
+        <a id="refuse" class="btn btn-sm red">
+            不通过 <i class="fa fa-times"></i>
+        </a>
+    {% endif %}
         <div class="col-md-12"></div>
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
@@ -73,11 +85,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-offset-11 col-md-9">
-                            <button id="self_comment_button" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -102,6 +109,11 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-offset-11 col-md-9">
+                            <button id="supervisor_comment_button" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -126,6 +138,11 @@
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="col-md-offset-11 col-md-9">
+                            <button id="principal_comment_button" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -217,7 +234,33 @@
         </div>
     </div>
 </div>
-
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>您确定要不通过吗</h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button id="refuse_button" type="button" class="btn btn-primary"><i class="fa fa-check"></i>确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 {#<span class="input-group-addon bootstrap-touchspin-postfix">%</span>#}
 
@@ -250,16 +293,23 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
-{% if request.session.status != 3 %}
+    var flag = 0
+
     $('#self_comment').attr('disabled',true)
-    $('#self_comment_button').attr('disabled',true)
-{% endif %}
+
+{% if request.session.status != 4 %}
     $('#supervisor_comment').attr('disabled',true)
+    $('#supervisor_comment_button').attr('disabled',true)
+{% endif %}
+{% if request.session.status != 5 %}
     $('#principal_comment').attr('disabled',true)
+    $('#principal_comment_button').attr('disabled',true)
+{% endif %}
 
     $('#self_comment').val('{{ self_comment }}')
     $('#supervisor_comment').val('{{ supervisor_comment }}')
     $('#principal_comment').val('{{ principal_comment }}')
+
 
     $('#self_comment_button').on('click',function(){
         var self_comment = $('#self_comment').val()
@@ -284,8 +334,27 @@ $(document).ready(function () {
 
     $('#commit_button').on('click',function(){
         showAjaxLoad()
-        $.post('/KPI_table_detail_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',
-            status:{{ request.session.status }}}, function (d) {
+        $.post('/KPI_table_detail_approve_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag,commit:1}, function (d) {
+            $("#myModal2").modal('hide')
+            hideAjaxLoad()
+            if (d.code == 0) {
+                toastr.success(d.msg)
+                setTimeout('location.href = "/KPI_table/"',1000)
+                location.href = '/KPI_table/'
+            } else {
+                toastr.error(d.msg)
+            }
+        })
+    })
+
+    $('#refuse').on('click',function(){
+        $("#myModal3").modal('show')
+    })
+
+    $('#refuse_button').on('click',function(){
+        showAjaxLoad()
+        $.post('/KPI_table_detail_approve_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag,commit:0}, function (d) {
+            $("#myModal2").modal('hide')
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
@@ -298,33 +367,7 @@ $(document).ready(function () {
     })
 
     aButtons = [
-        {% if request.session.status == 1 or request.session.status == 2 or  request.session.status == 3%}
-            {
-                "sExtends": 'text',
-                "sButtonText": '<font color="white">添加</font><i class="fa fa-plus"></i>',
-                "sButtonClass": "btn green ",
-                "fnComplete": function (nButton, oConfig, nRow) {
-                    add()
-                }
-            },
-            {
-                "sExtends": 'text',
-                "sButtonText": '<font color="white">编辑</font><i class="fa fa-edit"></i>',
-                "sButtonClass": "btn blue ",
-                "fnComplete": function (nButton, oConfig, nRow) {
-                    edit()
-                }
-            },
-            {
-                "sExtends": 'text',
-                "sButtonText": '<font color="white">删除</font><i class="fa fa-times"></i>',
-                "sButtonClass": "btn red ",
-                "fnComplete": function (nButton, oConfig, nRow) {
-                    del()
-                }
-            },
-        {% endif %}
-        {% if request.session.status == 3 %}
+        {% if request.session.status == 4 or  request.session.status == 5 %}
             {
                 "sExtends": 'text',
                 "sButtonText": '<font color="white">评分</font><i class="fa fa-pencil"></i>',

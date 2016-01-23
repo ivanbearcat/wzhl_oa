@@ -140,42 +140,62 @@
                 <h4 class="modal-title">设定目标</h4>
             </div>
             <div class="modal-body form">
-                <form action="#" class="form-horizontal form-row-seperated">
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">目标</label>
-                        <div class="col-sm-8">
-                            <div class="input-group">
-                                <span class="twitter-typeahead"
-                                      style="position: relative; display: inline-block;">
-                                    <input type="text" class="form-control tt-hint"
-                                           disabled="" autocomplete="off" spellcheck="false"
-                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                    <input type="text" id="objective"
-                                           name="typeahead_example_modal_1"
-                                           class="form-control tt-input" autocomplete="off"
-                                           spellcheck="false" dir="auto"
-                                           style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
-                                        aria-hidden="true"
-                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                                        class="tt-dropdown-menu"
-                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
-                                        class="tt-dataset-1"></div></span></span>
+                <form action="#" id="form_sample_1" class="form-horizontal form-row-seperated">
+                    <div class="form-body">
+                        <div class="alert alert-danger display-hide">
+                            <button class="close" data-close="alert"></button>
+                            You have some form errors. Please check below.
+                        </div>
+                        <div class="alert alert-success display-hide">
+                            <button class="close" data-close="alert"></button>
+                            Your form validation is successful!
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">目标</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <span class="twitter-typeahead"
+                                          style="position: relative; display: inline-block;">
+                                        <input type="text" class="form-control tt-hint"
+                                               disabled="" autocomplete="off" spellcheck="false"
+                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                        <input type="text" id="objective"
+                                               name="typeahead_example_modal_1"
+                                               class="form-control tt-input" autocomplete="off"
+                                               spellcheck="false" dir="auto"
+                                               style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
+                                            aria-hidden="true"
+                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
+                                            class="tt-dropdown-menu"
+                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
+                                            class="tt-dataset-1"></div></span></span>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">具体描述</label>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" id='description' style="width: 290px" rows="3"></textarea>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">权重</label>
+                            <div class="col-md-6">
+                                <div class="slider bg-green ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider-snap-inc" aria-disabled="false">
+                                <a href="#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 80%;"></a></div>
+                                <div class="slider-value">
+                                    <span id="slider-snap-inc-amount">50%</span>
                                 </div>
                             </div>
                         </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">具体描述</label>
-                        <div class="col-sm-6">
-                            <textarea class="form-control" id='description' style="width: 290px" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">权重</label>
-                        <div class="col-md-6">
-                            <div class="slider bg-green ui-slider ui-slider-horizontal ui-widget ui-widget-content ui-corner-all" id="slider-snap-inc" aria-disabled="false">
-                            <a href="#" class="ui-slider-handle ui-state-default ui-corner-all" style="left: 80%;"></a></div>
-                            <div class="slider-value">
-                                <span id="slider-snap-inc-amount">50%</span>
+                        <div class="form-group">
+                            <label class="control-label col-md-3">Digits
+                            <span class="required">
+                                 *
+                            </span>
+                            </label>
+                            <div class="col-md-4">
+                                <input id="digits" type="text" class="form-control" name="digits">
                             </div>
                         </div>
                     </div>
@@ -243,6 +263,7 @@
 <script src="/static/assets/plugins/datatables/extras/TableTools.min.js"></script>
 <script src="/static/assets/scripts/custom/table-managed.js"></script>
 <script type="text/javascript" src="/static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/static/assets/scripts/custom/form-validation.js"></script>
 
 <script type="text/javascript">
 var oTable;
@@ -250,6 +271,34 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
+    $("#form_sample_1").validate({
+
+            rules: {
+
+                DictKey: { required: true, maxlength: 10 },
+
+                DictContent: { required: true, maxlength: 10 }
+
+            },
+
+            messages: {
+
+                DictKey: { required: "不能为空", maxlength: $.format("不能超过{0}个字符") },
+
+                DictContent: { required: "不能为空", maxlength: $.format("不能超过{0}个字符") }
+
+            },
+
+            submitHandler: function (form) {
+
+                form.submit();
+
+            }
+
+        })
+
+    var flag = 0
+
 {% if request.session.status != 3 %}
     $('#self_comment').attr('disabled',true)
     $('#self_comment_button').attr('disabled',true)
@@ -283,9 +332,10 @@ $(document).ready(function () {
     })
 
     $('#commit_button').on('click',function(){
+
         showAjaxLoad()
-        $.post('/KPI_table_detail_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',
-            status:{{ request.session.status }}}, function (d) {
+        $.post('/KPI_table_detail_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag}, function (d) {
+            $("#myModal2").modal('hide')
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
@@ -516,8 +566,5 @@ function del() {
     $('#myModal').modal('hide')
 }
 
-function grade(){
-    console.info({{request.session.status}})
-}
 </script>
 {% endblock %}

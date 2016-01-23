@@ -5,11 +5,12 @@ class table(models.Model):
     KPI_name = models.CharField(verbose_name='绩效考评名称', max_length=30, blank=False)
     name = models.CharField(verbose_name='被考评人名称', max_length=30, blank=False)
     final_score = models.FloatField(verbose_name='最终分数', max_length=10, blank=True)
-    status = models.CharField(verbose_name='状态', max_length=10, blank=False)
+    status_interface = models.CharField(verbose_name='状态显示', max_length=30, blank=False)
+    status = models.PositiveSmallIntegerField(verbose_name='状态', max_length=1)
     self_comment = models.CharField(verbose_name='自我评价', max_length=256, blank=True)
     supervisor_comment = models.CharField(verbose_name='直属主管评价', max_length=256, blank=True)
     principal_comment = models.CharField(verbose_name='部门负责人评价', max_length=256, blank=True)
-    commit_now = models.CharField(verbose_name='当前流程人', max_length=30, blank=False)
+    commit_now = models.CharField(verbose_name='当前流程人', max_length=30, blank=True)
 
 class table_detail(models.Model):
     KPI_name = models.CharField(verbose_name='绩效考评名称', max_length=30, blank=False)
