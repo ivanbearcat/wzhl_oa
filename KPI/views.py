@@ -104,8 +104,12 @@ def KPI_set_session(request):
 
 @login_required
 def KPI_table_detail(request):
-    KPI_name = request.session.get('KPI')[0]
-    name = request.session.get('KPI')[1]
+    if request.session.get('KPI'):
+        KPI_name = request.session.get('KPI')[0]
+        name = request.session.get('KPI')[1]
+    else:
+        KPI_name = ''
+        name = ''
     orm = table.objects.filter(KPI_name=KPI_name).filter(name=name)
 
     if len(orm):
@@ -123,9 +127,9 @@ def KPI_table_detail(request):
     #     status = '员工设定目标'
     return render(request, 'KPI/KPI_table_detail.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                  'path1':'KPI',
-                                                 'path2':'KPI_table',
+                                                 'path2':'',
                                                  'page_name1':u'绩效管理',
-                                                 'page_name2':u'绩效考评',
+                                                 'page_name2':u'绩效考评详情',
                                                  'self_comment':self_comment,
                                                  'supervisor_comment':supervisor_comment,
                                                  'principal_comment':principal_comment,
@@ -243,9 +247,7 @@ def KPI_table_detail_save(request):
     objective = request.POST.get('objective')
     description = request.POST.get ('description')
     weight = request.POST.get('weight')
-    self_report_value = request.POST.get('self_report_value')
-    supervisor_report_value = request.POST.get('self_report_value')
-    principal_report_value = request.POST.get('self_report_value')
+    status = request.POST.get('status')
     _id = request.POST.get('id')
 
     if not _id:
@@ -260,15 +262,18 @@ def KPI_table_detail_save(request):
             return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
     else:
         orm = table_detail.objects.get(id=_id)
-        if self_report_value:
+        if int(status) == 3:
+            self_report_value = int(request.POST.get('grade'))
             orm.self_report_value = self_report_value
-            orm.self_report_score = self_report_value / 100 * orm.weight
-        if supervisor_report_value:
+            orm.self_report_score = float(self_report_value) / 100 * orm.weight
+        if int(status) == 4:
+            supervisor_report_value = int(request.POST.get('grade'))
             orm.supervisor_report_value = supervisor_report_value
-            orm.supervisor_report_score = supervisor_report_value / 100 * orm.weight
-        if principal_report_value:
+            orm.supervisor_report_score = float(supervisor_report_value) / 100 * orm.weight
+        if int(status) == 5:
+            principal_report_value = int(request.POST.get('grade'))
             orm.principal_report_value = principal_report_value
-            orm.principal_report_score = principal_report_value / 100 * orm.weight
+            orm.principal_report_score = float(principal_report_value) / 100 * orm.weight
         orm.objective = objective
         orm.description = description
         orm.weight = weight
@@ -326,7 +331,7 @@ def KPI_table_detail_commit(request):
     orm = table.objects.filter(KPI_name=KPI_name).filter(name=name)
     if len(orm):
         for i in orm:
-            if not flag:
+            if flag == '0':
                 i.status = 2
                 vacation_user_table_orm = user_table.objects.get(name=name)
                 i.commit_now = vacation_user_table_orm.supervisor
@@ -348,6 +353,8 @@ def KPI_table_detail_commit(request):
                     print e
                     return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
             else:
+                if not i.self_comment:
+                    return HttpResponse(simplejson.dumps({'code':1,'msg':'请填写评价'}),content_type="application/json")
                 i.status = 4
                 vacation_user_table_orm = user_table.objects.get(name=name)
                 i.commit_now = vacation_user_table_orm.supervisor
@@ -476,9 +483,9 @@ def KPI_table_detail_approve(request):
     #     status = '员工设定目标'
     return render(request, 'KPI/KPI_table_detail_approve.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                  'path1':'KPI',
-                                                 'path2':'KPI_table',
+                                                 'path2':'',
                                                  'page_name1':u'绩效管理',
-                                                 'page_name2':u'绩效考评',
+                                                 'page_name2':u'绩效考评详情',
                                                  'self_comment':self_comment,
                                                  'supervisor_comment':supervisor_comment,
                                                  'principal_comment':principal_comment,
@@ -535,6 +542,8 @@ def KPI_table_detail_approve_commit(request):
                         return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
             else:
                 if i.status == 4:
+                    if not i.supervisor_comment:
+                        return HttpResponse(simplejson.dumps({'code':1,'msg':'请填写评价'}),content_type="application/json")
                     i.status = 5
                     vacation_user_table_orm = user_table.objects.get(name=name)
                     i.commit_now = vacation_user_table_orm.principal
@@ -556,6 +565,8 @@ def KPI_table_detail_approve_commit(request):
                         print e
                         return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
                 if i.status == 5:
+                    if not i.principal_comment:
+                        return HttpResponse(simplejson.dumps({'code':1,'msg':'请填写评价'}),content_type="application/json")
                     if i.commit_now == request.user.first_name:
                         i.status = 6
                         i.commit_now = ''
@@ -566,6 +577,9 @@ def KPI_table_detail_approve_commit(request):
 
                         vacation_user_table_orm = user_table.objects.get(name=request.user.first_name)
                         vacation_user_table_orm.has_KPI_commit -= 1
+
+                        final_score = request.POST.get('sum')
+                        i.final_score = float(final_score)
 
                         try:
                             i.save()

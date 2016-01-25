@@ -196,6 +196,15 @@
                             </div>
                         </div>
                     </div>
+                    <div id="from_grade" class="form-group">
+                        <label class="control-label col-md-4">打分
+                        <span class="required">
+                        </span>
+                        </label>
+                        <div class="col-md-6">
+                            <input id="grade" type="text" class="form-control" name="digits">
+                        </div>
+                    </div>
                 </form>
             </div>
             <div id="id" style="display: none"></div>
@@ -293,7 +302,11 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
+{% if request.session.status == 1 or request.session.status == 2 %}
     var flag = 0
+{% elif request.session.status == 3 or request.session.status == 4 or request.session.status == 5 %}
+    var flag = 1
+{% endif %}
 
     $('#self_comment').attr('disabled',true)
 
@@ -311,10 +324,22 @@ $(document).ready(function () {
     $('#principal_comment').val('{{ principal_comment }}')
 
 
-    $('#self_comment_button').on('click',function(){
-        var self_comment = $('#self_comment').val()
+    $('#supervisor_comment_button').on('click',function(){
+        var supervisor_comment = $('#supervisor_comment').val()
         showAjaxLoad()
-        $.post('/KPI_table_detail_comment_save/', {self_comment:self_comment}, function (d) {
+        $.post('/KPI_table_detail_comment_save/', {supervisor_comment:supervisor_comment}, function (d) {
+            hideAjaxLoad()
+            if (d.code == 0) {
+                toastr.success(d.msg)
+            } else {
+                toastr.error(d.msg)
+            }
+        })
+    })
+    $('#principal_comment_button').on('click',function(){
+        var principal_comment = $('#principal_comment').val()
+        showAjaxLoad()
+        $.post('/KPI_table_detail_comment_save/', {principal_comment:principal_comment}, function (d) {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
@@ -333,14 +358,22 @@ $(document).ready(function () {
     })
 
     $('#commit_button').on('click',function(){
+        var oTT = TableTools.fnGetInstance('datatables');
+        oTT.fnSelectAll()
+        var aData = oTT.fnGetSelectedData();
+        var sum = 0
+        for (var i in aData){
+            sum += aData[i][8]
+        }
+        oTT.fnSelectNone()
+
         showAjaxLoad()
-        $.post('/KPI_table_detail_approve_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag,commit:1}, function (d) {
+        $.post('/KPI_table_detail_approve_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag,commit:1,sum:sum}, function (d) {
             $("#myModal2").modal('hide')
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
-                setTimeout('location.href = "/KPI_table/"',1000)
-                location.href = '/KPI_table/'
+                setTimeout('location.href = "/KPI_table/"',500)
             } else {
                 toastr.error(d.msg)
             }
@@ -358,7 +391,7 @@ $(document).ready(function () {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
-                setTimeout('location.href = "/KPI_table/"',1000)
+                setTimeout('location.href = "/KPI_table/"',500)
                 location.href = '/KPI_table/'
             } else {
                 toastr.error(d.msg)
@@ -462,54 +495,15 @@ function loaddata() {
     });
 }
 
-function add(){
-    $('#objective').val('')
-    $('#description').val('')
-    $("#slider-snap-inc").slider({
-        isRTL: App.isRTL(),
-        value: 50,
-        min: 0,
-        max: 100,
-        step: 5,
-        slide: function (event, ui) {
-            $("#slider-snap-inc-amount").text(ui.value + "%");
-        }
-    });
-    $("#slider-snap-inc-amount").text(50 + "%");
-    $("#myModal").modal('show')
-}
-
-function edit(){
-    var oTT = TableTools.fnGetInstance('datatables');
-    var aData = oTT.fnGetSelectedData();
-    if (aData.length == 1) {
-        var objective = aData[0][0];
-        var description = aData[0][1];
-        var weight = aData[0][2];
-        var id = aData[0][11];
-        $('#objective').val(objective)
-        $('#description').val(description)
-        $("#slider-snap-inc").slider({
-            isRTL: App.isRTL(),
-            value: weight,
-            min: 0,
-            max: 100,
-            step: 5,
-            slide: function (event, ui) {
-                $("#slider-snap-inc-amount").text(ui.value + "%");
-            }
-        });
-        $("#slider-snap-inc-amount").text(weight + "%");
-        $('#id').val(id)
-
-    }
-    $("#myModal").modal('show')
-}
-
 $('#save').on('click',function() {
+    if ($('#from_grade').hasClass('has-error')){
+        toastr.error('请填写数字');
+        return
+    }
     var objective = $('#objective').val();
     var description = $('#description').val();
     var weight = $('#slider-snap-inc').slider("option","value");
+    var grade = $('#grade').val()
     var id = $('#id').val();
     if (objective == '' || description == '' || weight == '') {
         toastr.error('不能有空白');
@@ -525,6 +519,8 @@ $('#save').on('click',function() {
             objective: objective,
             description: description,
             weight: weight,
+            grade: grade,
+            status: {{ request.session.status }},
             id:id
         },
         success: function (d) {
@@ -560,7 +556,42 @@ function del() {
 }
 
 function grade(){
-    console.info({{request.session.status}})
+    $('#objective').attr('disabled',true)
+    $('#description').attr('disabled',true)
+    $('#slider-snap-inc').hide()
+    var oTT = TableTools.fnGetInstance('datatables');
+    var aData = oTT.fnGetSelectedData();
+    if (aData.length == 1) {
+        var objective = aData[0][0];
+        var description = aData[0][1];
+        var weight = aData[0][2];
+    {% if request.session.status == 3 %}
+        var grade = aData[0][3];
+    {% endif %}
+    {% if request.session.status == 4 %}
+        var grade = aData[0][5];
+    {% endif %}
+    {% if request.session.status == 5 %}
+        var grade = aData[0][7];
+    {% endif %}
+        var id = aData[0][11];
+        $('#objective').val(objective)
+        $('#description').val(description)
+        $("#slider-snap-inc").slider({
+            isRTL: App.isRTL(),
+            value: weight,
+            min: 0,
+            max: 100,
+            step: 5,
+            slide: function (event, ui) {
+                $("#slider-snap-inc-amount").text(ui.value + "%");
+            }
+        });
+        $("#slider-snap-inc-amount").text(weight + "%");
+        $('#grade').val(grade)
+        $('#id').val(id)
+        $("#myModal").modal('show')
+    }
 }
 </script>
 {% endblock %}
