@@ -109,11 +109,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-offset-11 col-md-9">
-                            <button id="supervisor_comment_button" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -139,10 +134,6 @@
                 </div>
                 <div class="row">
                     <div class="col-md-12">
-                        <div class="col-md-offset-11 col-md-9">
-                            <button id="principal_comment_button" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -157,7 +148,7 @@
                 <h4 class="modal-title">设定目标</h4>
             </div>
             <div class="modal-body form">
-                <form action="#" class="form-horizontal form-row-seperated">
+                <form id="form" action="#" class="form-horizontal form-row-seperated">
                     <div class="form-group">
                         <label class="col-sm-4 control-label">目标</label>
                         <div class="col-sm-8">
@@ -253,12 +244,18 @@
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>您确定要不通过吗</h4></label>
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>请填写不通过的理由</h4></label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="twitter-typeahead"
                                       style="position: relative; display: inline-block;">
                             </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">理由</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" id='reason' style="width: 290px" rows="3"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -295,6 +292,7 @@
 <script src="/static/assets/plugins/datatables/extras/TableTools.min.js"></script>
 <script src="/static/assets/scripts/custom/table-managed.js"></script>
 <script type="text/javascript" src="/static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/static/assets/plugins/jquery-validation/dist/jquery.validate.min.js"></script>
 
 <script type="text/javascript">
 var oTable;
@@ -302,6 +300,48 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
+    $('#form').validate({
+        errorElement: 'span', //default input error message container
+        errorClass: 'help-block', // default input error message class
+        focusInvalid: false, // do not focus the last invalid input
+        ignore: "",
+        rules: {
+            digits: {
+                digits: true,
+                range: [0,100]
+            }
+        },
+        messages: {
+            digits: "请输入范围在0-100的数字"
+        },
+
+        invalidHandler: function (event, validator) { //display error alert on form submit
+            success1.hide();
+            error1.show();
+            App.scrollTo(error1, -200);
+        },
+
+        highlight: function (element) { // hightlight error inputs
+            $(element)
+                .closest('.form-group').addClass('has-error'); // set error class to the control group
+        },
+
+        unhighlight: function (element) { // revert the change done by hightlight
+            $(element)
+                .closest('.form-group').removeClass('has-error'); // set error class to the control group
+        },
+
+        success: function (label) {
+            label
+                .closest('.form-group').removeClass('has-error'); // set success class to the control group
+        },
+
+        submitHandler: function (form) {
+            success1.show();
+            error1.hide();
+        }
+    });
+
 {% if request.session.status == 1 or request.session.status == 2 %}
     var flag = 0
 {% elif request.session.status == 3 or request.session.status == 4 or request.session.status == 5 %}
@@ -312,42 +352,14 @@ $(document).ready(function () {
 
 {% if request.session.status != 4 %}
     $('#supervisor_comment').attr('disabled',true)
-    $('#supervisor_comment_button').attr('disabled',true)
 {% endif %}
 {% if request.session.status != 5 %}
     $('#principal_comment').attr('disabled',true)
-    $('#principal_comment_button').attr('disabled',true)
 {% endif %}
 
     $('#self_comment').val('{{ self_comment }}')
     $('#supervisor_comment').val('{{ supervisor_comment }}')
     $('#principal_comment').val('{{ principal_comment }}')
-
-
-    $('#supervisor_comment_button').on('click',function(){
-        var supervisor_comment = $('#supervisor_comment').val()
-        showAjaxLoad()
-        $.post('/KPI_table_detail_comment_save/', {supervisor_comment:supervisor_comment}, function (d) {
-            hideAjaxLoad()
-            if (d.code == 0) {
-                toastr.success(d.msg)
-            } else {
-                toastr.error(d.msg)
-            }
-        })
-    })
-    $('#principal_comment_button').on('click',function(){
-        var principal_comment = $('#principal_comment').val()
-        showAjaxLoad()
-        $.post('/KPI_table_detail_comment_save/', {principal_comment:principal_comment}, function (d) {
-            hideAjaxLoad()
-            if (d.code == 0) {
-                toastr.success(d.msg)
-            } else {
-                toastr.error(d.msg)
-            }
-        })
-    })
 
     $('#back').on('click',function(){
         history.go(-1)
@@ -367,6 +379,45 @@ $(document).ready(function () {
         }
         oTT.fnSelectNone()
 
+    {% if request.session.status == 4 %}
+        var supervisor_comment = $('#supervisor_comment').val()
+        if (supervisor_comment == ''){
+            toastr.error('请填写评价')
+            return
+        }
+        $.post('/KPI_table_detail_comment_save/', {supervisor_comment:supervisor_comment}, function (d) {
+            showAjaxLoad()
+            $.post('/KPI_table_detail_approve_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag,commit:1,sum:sum}, function (d) {
+                $("#myModal2").modal('hide')
+                hideAjaxLoad()
+                if (d.code == 0) {
+                    toastr.success(d.msg)
+                    setTimeout('location.href = "/KPI_table/"',500)
+                } else {
+                    toastr.error(d.msg)
+                }
+            })
+        })
+    {% elif request.session.status == 5 %}
+        var principal_comment = $('#principal_comment').val()
+        if (principal_comment == ''){
+            toastr.error('请填写评价')
+            return
+        }
+        $.post('/KPI_table_detail_comment_save/', {principal_comment:principal_comment}, function (d) {
+            showAjaxLoad()
+            $.post('/KPI_table_detail_approve_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag,commit:1,sum:sum}, function (d) {
+                $("#myModal2").modal('hide')
+                hideAjaxLoad()
+                if (d.code == 0) {
+                    toastr.success(d.msg)
+                    setTimeout('location.href = "/KPI_table/"',500)
+                } else {
+                    toastr.error(d.msg)
+                }
+            })
+        })
+    {% else %}
         showAjaxLoad()
         $.post('/KPI_table_detail_approve_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag,commit:1,sum:sum}, function (d) {
             $("#myModal2").modal('hide')
@@ -378,6 +429,7 @@ $(document).ready(function () {
                 toastr.error(d.msg)
             }
         })
+    {% endif %}
     })
 
     $('#refuse').on('click',function(){
@@ -385,8 +437,13 @@ $(document).ready(function () {
     })
 
     $('#refuse_button').on('click',function(){
+        var reason = $('#reason').val()
+        if (reason == ''){
+            toastr.error('请填写理由')
+            return
+        }
         showAjaxLoad()
-        $.post('/KPI_table_detail_approve_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag,commit:0}, function (d) {
+        $.post('/KPI_table_detail_approve_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag,commit:0,reason:reason}, function (d) {
             $("#myModal2").modal('hide')
             hideAjaxLoad()
             if (d.code == 0) {
@@ -406,7 +463,7 @@ $(document).ready(function () {
                 "sButtonText": '<font color="white">评分</font><i class="fa fa-pencil"></i>',
                 "sButtonClass": "btn purple ",
                 "fnComplete": function (nButton, oConfig, nRow) {
-                    grade()
+                    grade_()
                 }
             },
         {% endif %}
@@ -555,7 +612,7 @@ function del() {
     $('#myModal').modal('hide')
 }
 
-function grade(){
+function grade_(){
     $('#objective').attr('disabled',true)
     $('#description').attr('disabled',true)
     $('#slider-snap-inc').hide()

@@ -19,7 +19,7 @@
         <a id="back" class="btn btn-sm yellow">
              返回 <i class="fa fa-reply"></i>
         </a>
-    {% if request.session.status != 4 and request.session.status != 5 %}
+    {% if request.session.status != 4 and request.session.status != 5 and request.session.status != 6 %}
         <a id="commit" class="btn btn-sm purple">
              提交审核 <i class="fa fa-check"></i>
         </a>
@@ -75,11 +75,6 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">
-                        <div class="col-md-offset-11 col-md-9">
-                            <button id="self_comment_button" class="btn purple" type="submit"><i class="fa fa-check"></i>提交</button>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -266,46 +261,46 @@ var aButtons
 
 $(document).ready(function () {
     $('#form').validate({
-                errorElement: 'span', //default input error message container
-                errorClass: 'help-block', // default input error message class
-                focusInvalid: false, // do not focus the last invalid input
-                ignore: "",
-                rules: {
-                    digits: {
-                        digits: true,
-                        range: [0,100]
-                    }
-                },
-                messages: {
-                    digits: "请输入范围在0-100的数字"
-                },
+        errorElement: 'span', //default input error message container
+        errorClass: 'help-block', // default input error message class
+        focusInvalid: false, // do not focus the last invalid input
+        ignore: "",
+        rules: {
+            digits: {
+                digits: true,
+                range: [0,100]
+            }
+        },
+        messages: {
+            digits: "请输入范围在0-100的数字"
+        },
 
-                invalidHandler: function (event, validator) { //display error alert on form submit
-                    success1.hide();
-                    error1.show();
-                    App.scrollTo(error1, -200);
-                },
+        invalidHandler: function (event, validator) { //display error alert on form submit
+            success1.hide();
+            error1.show();
+            App.scrollTo(error1, -200);
+        },
 
-                highlight: function (element) { // hightlight error inputs
-                    $(element)
-                        .closest('.form-group').addClass('has-error'); // set error class to the control group
-                },
+        highlight: function (element) { // hightlight error inputs
+            $(element)
+                .closest('.form-group').addClass('has-error'); // set error class to the control group
+        },
 
-                unhighlight: function (element) { // revert the change done by hightlight
-                    $(element)
-                        .closest('.form-group').removeClass('has-error'); // set error class to the control group
-                },
+        unhighlight: function (element) { // revert the change done by hightlight
+            $(element)
+                .closest('.form-group').removeClass('has-error'); // set error class to the control group
+        },
 
-                success: function (label) {
-                    label
-                        .closest('.form-group').removeClass('has-error'); // set success class to the control group
-                },
+        success: function (label) {
+            label
+                .closest('.form-group').removeClass('has-error'); // set success class to the control group
+        },
 
-                submitHandler: function (form) {
-                    success1.show();
-                    error1.hide();
-                }
-            });
+        submitHandler: function (form) {
+            success1.show();
+            error1.hide();
+        }
+    });
 
 {% if request.session.status == 1 or request.session.status == 2 %}
     var flag = 0
@@ -314,7 +309,6 @@ $(document).ready(function () {
 {% endif %}
 {% if request.session.status != 3 %}
     $('#self_comment').attr('disabled',true)
-    $('#self_comment_button').attr('disabled',true)
     $('#grade').attr('disabled',true)
 {% endif %}
     $('#supervisor_comment').attr('disabled',true)
@@ -325,16 +319,7 @@ $(document).ready(function () {
     $('#principal_comment').val('{{ principal_comment }}')
 
     $('#self_comment_button').on('click',function(){
-        var self_comment = $('#self_comment').val()
-        showAjaxLoad()
-        $.post('/KPI_table_detail_comment_save/', {self_comment:self_comment}, function (d) {
-            hideAjaxLoad()
-            if (d.code == 0) {
-                toastr.success(d.msg)
-            } else {
-                toastr.error(d.msg)
-            }
-        })
+
     })
 
     $('#back').on('click',function(){
@@ -358,7 +343,26 @@ $(document).ready(function () {
             toastr.error('请设定权重的总数为100%')
             return
         }
-
+    {% if request.session.status == 3 %}
+        var self_comment = $('#self_comment').val()
+        if (self_comment == ''){
+            toastr.error('请填写个人评价')
+            return
+        }
+        $.post('/KPI_table_detail_comment_save/', {self_comment:self_comment}, function (d) {
+            showAjaxLoad()
+            $.post('/KPI_table_detail_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag}, function (d) {
+                $("#myModal2").modal('hide')
+                hideAjaxLoad()
+                if (d.code == 0) {
+                    toastr.success(d.msg)
+                    setTimeout('location.href = "/KPI_table/"',500)
+                } else {
+                    toastr.error(d.msg)
+                }
+            })
+        })
+    {% else %}
         showAjaxLoad()
         $.post('/KPI_table_detail_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag}, function (d) {
             $("#myModal2").modal('hide')
@@ -370,6 +374,8 @@ $(document).ready(function () {
                 toastr.error(d.msg)
             }
         })
+    {% endif %}
+        showAjaxLoad()
     })
 
     aButtons = [
@@ -379,7 +385,7 @@ $(document).ready(function () {
                 "sButtonText": '<font color="white">添加</font><i class="fa fa-plus"></i>',
                 "sButtonClass": "btn green ",
                 "fnComplete": function (nButton, oConfig, nRow) {
-                    add()
+                    add_()
                 }
             },
             {
@@ -387,7 +393,7 @@ $(document).ready(function () {
                 "sButtonText": '<font color="white">编辑</font><i class="fa fa-edit"></i>',
                 "sButtonClass": "btn blue ",
                 "fnComplete": function (nButton, oConfig, nRow) {
-                    edit()
+                    edit_()
                 }
             },
             {
@@ -395,20 +401,20 @@ $(document).ready(function () {
                 "sButtonText": '<font color="white">删除</font><i class="fa fa-times"></i>',
                 "sButtonClass": "btn red ",
                 "fnComplete": function (nButton, oConfig, nRow) {
-                    del()
+                    del_()
                 }
             },
         {% endif %}
-{#        {% if request.session.status == 3 %}#}
+        {% if request.session.status == 3 %}
             {
                 "sExtends": 'text',
                 "sButtonText": '<font color="white">评分</font><i class="fa fa-pencil"></i>',
                 "sButtonClass": "btn purple ",
                 "fnComplete": function (nButton, oConfig, nRow) {
-                    grade()
+                    grade_()
                 }
             },
-{#        {% endif %}#}
+        {% endif %}
         ]
     loaddata()
 
@@ -494,7 +500,7 @@ function loaddata() {
     });
 }
 
-function add(){
+function add_(){
     $('#objective').val('')
     $('#description').val('')
     $("#slider-snap-inc").slider({
@@ -512,7 +518,7 @@ function add(){
     $("#myModal").modal('show')
 }
 
-function edit(){
+function edit_(){
     $('#grade').attr('disabled',true)
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
@@ -520,6 +526,7 @@ function edit(){
         var objective = aData[0][0];
         var description = aData[0][1];
         var weight = aData[0][2];
+        var grade = 0;
     {% if request.session.status == 3 %}
         var grade = aData[0][3];
     {% endif %}
@@ -543,9 +550,10 @@ function edit(){
             }
         });
         $("#slider-snap-inc-amount").text(weight + "%");
+        console.info(grade)
         $('#grade').val(grade)
         $('#id').val(id)
-    $("#myModal").modal('show')
+        $("#myModal").modal('show')
     }
 }
 $('#save').on('click',function() {
@@ -590,7 +598,7 @@ $('#save').on('click',function() {
     $(self).button('complete')
 })
 
-function del() {
+function del_() {
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
@@ -608,7 +616,7 @@ function del() {
     $('#myModal').modal('hide')
 }
 
-function grade(){
+function grade_(){
     $('#objective').attr('disabled',true)
     $('#description').attr('disabled',true)
     $('#slider-snap-inc').hide()

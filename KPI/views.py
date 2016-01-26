@@ -100,6 +100,8 @@ def KPI_set_session(request):
         request.session['status'] = 4
     if int(status) == 5:
         request.session['status'] = 5
+    if int(status) == 6:
+        request.session['status'] = 6
     return HttpResponse(simplejson.dumps('OK'),content_type="application/json")
 
 @login_required
@@ -353,8 +355,6 @@ def KPI_table_detail_commit(request):
                     print e
                     return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
             else:
-                if not i.self_comment:
-                    return HttpResponse(simplejson.dumps({'code':1,'msg':'请填写评价'}),content_type="application/json")
                 i.status = 4
                 vacation_user_table_orm = user_table.objects.get(name=name)
                 i.commit_now = vacation_user_table_orm.supervisor
@@ -532,18 +532,18 @@ def KPI_table_detail_approve_commit(request):
 
                     vacation_user_table_orm = user_table.objects.get(name=request.user.first_name)
                     vacation_user_table_orm.has_KPI_commit -= 1
+
+                    reason = request.POST.get('reason')
                     try:
                         i.save()
                         vacation_user_table_orm.save()
-                        send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>%s 不通过您设定的绩效目标，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/PKI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % request.user.first_name)
+                        send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>%s 不通过您设定的绩效目标，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br><br>OA链接：http://oa.xiaoquan.com/PKI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % (request.user.first_name,reason))
                         return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
                     except Exception,e:
                         print e
                         return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
             else:
                 if i.status == 4:
-                    if not i.supervisor_comment:
-                        return HttpResponse(simplejson.dumps({'code':1,'msg':'请填写评价'}),content_type="application/json")
                     i.status = 5
                     vacation_user_table_orm = user_table.objects.get(name=name)
                     i.commit_now = vacation_user_table_orm.principal
@@ -565,8 +565,6 @@ def KPI_table_detail_approve_commit(request):
                         print e
                         return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
                 if i.status == 5:
-                    if not i.principal_comment:
-                        return HttpResponse(simplejson.dumps({'code':1,'msg':'请填写评价'}),content_type="application/json")
                     if i.commit_now == request.user.first_name:
                         i.status = 6
                         i.commit_now = ''
