@@ -423,6 +423,8 @@ def vacation_apply_del(request):
         if orm.type == '季度假':
             orm_user.seasons_leave_available += orm.days
             orm_user.seasons_leave_used -= orm.days
+        if orm.type == '调休':
+            orm_user.leave_in_lieu += orm.days
         orm_user.save()
 
         approve_now = orm.approve_now
