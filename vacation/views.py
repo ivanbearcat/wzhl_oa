@@ -224,8 +224,11 @@ def vacation_refresh(request):
             if (datetime.datetime.now() - j.apply_time).days > 7 and (j.state == 1 or j.state == 2 or j.state == 3):
                 j.state = 9
                 j.state_interface = '已过期'
+                orm_fetch_approve_now = user_table.objects.get(name=j.approve_now)
+                orm_fetch_approve_now.has_approve -= 1
                 j.approve_now = ''
                 try:
+                    orm_fetch_approve_now.save()
                     j.save()
                 except Exception,e:
                     print e
