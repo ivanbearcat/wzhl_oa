@@ -355,8 +355,12 @@ def KPI_table_detail_commit(request):
                     print e
                     return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
             else:
-                i.status = 4
+
                 vacation_user_table_orm = user_table.objects.get(name=name)
+                if vacation_user_table_orm.supervisor == vacation_user_table_orm.principal:
+                    i.status = 5
+                else:
+                    i.status = 4
                 i.commit_now = vacation_user_table_orm.supervisor
                 i.status_interface = '等待 %s 评分' % vacation_user_table_orm.supervisor
 

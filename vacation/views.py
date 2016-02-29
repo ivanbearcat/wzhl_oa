@@ -143,7 +143,7 @@ def vacation_table_save(request):
                          email=email,sick_leave_num=0,statutory_annual_leave_available=statutory_annual_leave_available,statutory_annual_leave_used=0,
                          statutory_annual_leave_total=statutory_annual_leave_total,company_annual_leave_available=company_annual_leave_available,
                          company_annual_leave_used=0,company_annual_leave_total=company_annual_leave_total,seasons_leave_available=1,
-                         seasons_leave_used=0,seasons_leave_total=1,leave_in_lieu=0,has_approve=0,approved_id='')
+                         seasons_leave_used=0,seasons_leave_total=1,leave_in_lieu=0,has_approve=0,approved_id='',has_KPI_commit=0,KPI_commit_id='')
 
         try:
             orm.save()
