@@ -673,9 +673,17 @@ function export_excel_file(){
     })
 }
 
+function round(v,e){
+    var t=1;
+    for(;e>0;t*=10,e--);
+    for(;e<0;t/=10,e++);
+    return Math.round(v*t)/t;
+
+}
+
 $('#auto_calculate').click(function(){
     var payment = $('#payment').val()
-    $('#cost').val(payment / 1.17)
+    $('#cost').val(round(payment / 1.17,2))
 })
 
 </script>

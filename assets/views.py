@@ -176,8 +176,8 @@ def assets_table_save(request):
             count = 1
         for c in range(int(count)):
             if not _id:
-                residual_value = float(cost) * 0.05
-                depreciation = (float(cost) - residual_value) / category[str(_category)][0]
+                residual_value = round(float(cost) * 0.05, 2)
+                depreciation = round((float(cost) - residual_value) / category[str(_category)][0], 2)
 
                 fetch_end_num = table.objects.filter(FANO__contains=category[str(_category)][1])
                 if fetch_end_num:
@@ -264,8 +264,8 @@ def assets_refresh(request):
         orm = table.objects.all()
         for i in orm:
             i.residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
-            i.total_depreciation = i.depreciation * ((today - i.purchase_date).days // 30.5)
-            i.netbook_value = i.cost - i.total_depreciation
+            i.total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)
+            i.netbook_value = round(i.cost - i.total_depreciation, 2)
             i.save()
         return HttpResponse('OK',content_type="application/json")
     except Exception,e:
