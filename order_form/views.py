@@ -280,10 +280,11 @@ def summary(request):
 @login_required
 def order_form_star_save(request):
     type = request.POST.get('type')
+    date = request.POST.get('date')
     star = request.POST.get('star')
-    today = datetime.datetime.now()
-    begin = datetime.datetime(today.year,today.month,today.day,0,0,0)
-    end = datetime.datetime(today.year,today.month,today.day,23,59,59)
+    date = datetime.date(int(date.split('-')[0]),int(date.split('-')[1]),int(date.split('-')[2]))
+    begin = datetime.datetime(date.year,date.month,date.day,0,0,0)
+    end = datetime.datetime(date.year,date.month,date.day,23,59,59)
     try:
         orm = order.objects.filter(name=request.user.first_name).filter(type=type).filter(add_time__range=(begin,end))
         if len(orm) == 1:
@@ -291,6 +292,9 @@ def order_form_star_save(request):
                 i.star = float(star)
                 i.save()
             return HttpResponse(simplejson.dumps({'code':0,'msg':u'评星成功'}),content_type="application/json")
-        return HttpResponse(simplejson.dumps({'code':1,'msg':u'您还没有订餐'}),content_type="application/json")
+        elif len(orm) == 0:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'您还没有订餐'}),content_type="application/json")
+        else:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'评星失败'}),content_type="application/json")
     except Exception,e:
         return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
