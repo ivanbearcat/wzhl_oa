@@ -2,6 +2,10 @@
 from django.db import models
 
 class table(models.Model):
+    class Meta:
+        permissions = (
+            ("can_view", "Can view the button"),
+        )
     KPI_name = models.CharField(verbose_name='绩效考评名称', max_length=30, blank=False)
     name = models.CharField(verbose_name='被考评人名称', max_length=30, blank=False)
     final_score = models.FloatField(verbose_name='最终分数', max_length=10, blank=True)

@@ -181,8 +181,9 @@ def order_form_data(request):
                        '2':1,
                        '3':str(i.add_time).split('+')[0],
                        '4':i.order_name,
-                       '5':i.comment,
-                       '6':i.id
+                       '5':i.star,
+                       '6':i.comment,
+                       '7':i.id
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
@@ -232,7 +233,7 @@ def order_form_save(request):
                 check_orm = order.objects.filter(add_time__range=(begin,end)).filter(name=i).filter(type=type)
                 if check_orm:
                     return HttpResponse(simplejson.dumps({'code':1,'msg':u'您已订过餐'}),content_type="application/json")
-                orm = order(name=i,type=type,comment=comment,order_name=request.user.first_name)
+                orm = order(name=i,type=type,comment=comment,order_name=request.user.first_name,star=0)
                 orm.save()
         # else:
         #     orm = user.objects.get(id=int(_id))
@@ -275,3 +276,21 @@ def summary(request):
     lunch_int = order.objects.filter(add_time__range=(begin,end)).filter(type='午餐').count()
     dinner_int = order.objects.filter(add_time__range=(begin,end)).filter(type='晚餐').count()
     return render(request,'order_form/summary.html',{'lunch':lunch_int,'dinner':dinner_int})
+
+@login_required
+def order_form_star_save(request):
+    type = request.POST.get('type')
+    star = request.POST.get('star')
+    today = datetime.datetime.now()
+    begin = datetime.datetime(today.year,today.month,today.day,0,0,0)
+    end = datetime.datetime(today.year,today.month,today.day,23,59,59)
+    try:
+        orm = order.objects.filter(name=request.user.first_name).filter(type=type).filter(add_time__range=(begin,end))
+        if len(orm) == 1:
+            for i in orm:
+                i.star = float(star)
+                i.save()
+            return HttpResponse(simplejson.dumps({'code':0,'msg':u'评星成功'}),content_type="application/json")
+        return HttpResponse(simplejson.dumps({'code':1,'msg':u'您还没有订餐'}),content_type="application/json")
+    except Exception,e:
+        return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")

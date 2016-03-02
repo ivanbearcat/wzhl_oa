@@ -7,7 +7,8 @@ from django.contrib.auth.decorators import login_required
 from libs.sendmail import send_mail
 from KPI.models import table,table_detail
 from vacation.models import user_table
-import simplejson
+from wzhl_oa.settings import BASE_DIR
+import simplejson,xlsxwriter
 
 import sys
 reload(sys)
@@ -103,6 +104,116 @@ def KPI_set_session(request):
     if int(status) == 6:
         request.session['status'] = 6
     return HttpResponse(simplejson.dumps('OK'),content_type="application/json")
+
+@login_required
+def KPI_table_export_all(request):
+    try:
+        year = request.POST.get('year')
+        workbook = xlsxwriter.Workbook(BASE_DIR + '/static/files/KPI_year.xlsx'.format(year))
+        worksheet1 = workbook.add_worksheet('非运营')
+        worksheet2 = workbook.add_worksheet('运营')
+        sheet1_count = 3
+        sheet2_count = 3
+
+        vacation_user_table_orm = user_table.objects.all()
+        for i in vacation_user_table_orm:
+            KPI_table_orm = table.objects.filter(name=i.name)
+            flag = 0
+            for j in KPI_table_orm:
+                if j.KPI_name[4] == 'Q':
+                    flag = 1
+                    title = [u'姓名',u'部门',u'上级主管',u'部门负责人',u'入职时间',u'{0}Q1'.format(year),
+                             u'{0}Q2'.format(year),u'{0}Q3'.format(year),u'{0}Q4'.format(year)]
+                    worksheet1.write_row('B2',title)
+                    row = [i.name,i.department,i.supervisor,i.principal,str(i.join_date).split('+')[0]]
+                    if j.KPI_name[0:4] == year:
+                        if j.KPI_name[-1] == '1':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if j.KPI_name[-1] == '2':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if j.KPI_name[-1] == '3':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if j.KPI_name[-1] == '4':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                else:
+                    flag = 2
+                    title = [u'姓名',u'部门',u'上级主管',u'部门负责人',u'入职时间',u'{0}M1'.format(year),
+                             u'{0}M2'.format(year),u'{0}M3'.format(year),u'{0}M4'.format(year),u'{0}M5'.format(year),
+                             u'{0}M6'.format(year),u'{0}M7'.format(year),u'{0}M8'.format(year),u'{0}M9'.format(year),
+                             u'{0}M10'.format(year),u'{0}M11'.format(year),u'{0}M12'.format(year)]
+                    worksheet2.write_row('B2',title)
+                    row = [i.name,i.department,i.supervisor,i.principal,str(i.join_date).split('+')[0]]
+                    if j.KPI_name[0:4] == year:
+                        month = j.KPI_name.split('M')[1]
+                        if month == '1':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if month == '2':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if month == '3':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if month == '4':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if month == '5':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if month == '6':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if month == '7':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if month == '8':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if month == '9':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if month == '10':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if month == '11':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+                        if month == '12':
+                            row.append(j.final_score)
+                        else:
+                            row.append('')
+            if flag == 1:
+                worksheet1.write_row('B%s' % sheet1_count, row)
+                sheet1_count += 1
+            elif flag == 2:
+                worksheet2.write_row('B%s' % sheet2_count, row)
+                sheet2_count += 1
+            else:
+                pass
+        workbook.close()
+        return HttpResponse(simplejson.dumps({'code':0,'msg':u'生成Excel文件成功'}),content_type="application/json")
+    except Exception,e:
+        print e
+        return HttpResponse(simplejson.dumps({'code':1,'msg':u'生成Excel文件失败'}),content_type="application/json")
 
 @login_required
 def KPI_table_detail(request):

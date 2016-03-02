@@ -25,6 +25,11 @@ def login_auth(request):
             request.session['assets_can_view'] = 1
         else:
             request.session['assets_can_view'] = 0
+
+        if request.user.has_perm('KPI.can_view'):
+            request.session['KPI_can_view'] = 1
+        else:
+            request.session['KPI_can_view'] = 0
         # if globals().has_key('next_next') and not next_next == None:
         #     logger.info('<%s> login in sucess.' % user_auth)
         #     return HttpResponseRedirect(next_next)

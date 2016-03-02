@@ -12,3 +12,4 @@ class order(models.Model):
     add_time = models.DateTimeField(verbose_name='订餐时间', auto_now_add=True)
     order_name = models.CharField(verbose_name='订餐者姓名', max_length=30)
     comment = models.CharField(verbose_name='备注', max_length=256)
+    star = models.FloatField(verbose_name='星数', max_length=10)

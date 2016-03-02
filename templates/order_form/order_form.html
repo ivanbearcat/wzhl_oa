@@ -11,12 +11,13 @@
 <link rel="stylesheet" type="text/css" href="/static/assets/plugins/jquery-multi-select/css/multi-select.css"/>
 <link rel="stylesheet" type="text/css" href="/static/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" />
 <link rel="stylesheet" type="text/css" href="/static/assets/plugins/bootstrap-datepicker/css/datepicker.css"/>
+<link rel="stylesheet" type="text/css" href="/static/assets/plugins/star-rating/css/star-rating.css"/>
+
 {% endblock %}
 {% block body %}
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
-
         <div class="col-md-2" style="margin-left:-15px; float: left">
             <div id="reportrange" class="btn default">
                 <i class="fa fa-calendar"></i>
@@ -62,6 +63,7 @@
                                     <th>订餐状态</th>
                                     <th>订餐时间</th>
                                     <th>订餐者</th>
+                                    <th>星数</th>
                                     <th>备注</th>
                                     <th>ID</th>
                                 </tr>
@@ -151,6 +153,58 @@
         </div>
     </div>
 </div>
+
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">评星</h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">订餐类型</label>
+
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                                    <input type="text" class="form-control tt-hint"
+                                           disabled="" autocomplete="off" spellcheck="false"
+                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                    <div type="text" id="type1"
+                                         name="typeahead_example_modal_1"
+                                         class="form-control tt-input" autocomplete="off"
+                                         spellcheck="false" dir="auto"
+                                         style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
+                                        aria-hidden="true"
+                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
+                                        class="tt-dropdown-menu"
+                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
+                                        class="tt-dataset-1"></div></span></span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group last">
+                        <label class="col-sm-4 control-label">评星</label>
+                        <div class="col-sm-6">
+                            <input id="star" value="0" type="number" class="rating" min="0" max="5" step="0.5" data-stars=5
+                            data-symbol="&#xe005;" data-default-caption="{rating} 星" data-star-captions="{}" data-size="xs" >
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="id" style="display: none"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="button" class="btn btn-primary" onclick="star_save()"><i class="fa fa-check"></i>保存</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -197,9 +251,7 @@
 <script src="/static/assets/plugins/datatables/extras/TableTools.min.js"></script>
 <script src="/static/assets/scripts/custom/table-managed.js"></script>
 <script type="text/javascript" src="/static/assets/plugins/bootstrap-daterangepicker/daterangepicker.js" ></script>
-
-
-
+<script type="text/javascript" src="/static/assets/plugins/star-rating/js/star-rating.js" ></script>
 
 
 <script type="text/javascript">
@@ -208,7 +260,6 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
-
     $('#reportrange').daterangepicker({
         opens: (App.isRTL() ? 'left' : 'right'),
 
@@ -279,15 +330,6 @@ $(document).ready(function () {
                 }
 
             },
-{#            {#}
-{#                "sExtends": 'select',#}
-{#                "sButtonText": '<font color="white">编辑 </font><i class="fa fa-edit"></i>',#}
-{#                "sButtonClass": "btn blue",#}
-{#                "fnComplete": function (nButton, oConfig, nRow) {#}
-{#                    edit()#}
-{#                }#}
-{##}
-{#            },#}
             {
                 "sExtends": 'select',
                 "sButtonText": '<font color="white">删除 </font><i class="fa fa-times"></i>',
@@ -295,7 +337,16 @@ $(document).ready(function () {
                 "fnComplete": function (nButton, oConfig, nRow) {
                     del_verify()
                 }
-            }
+            },
+            {
+                "sExtends": 'text',
+                "sButtonText": '<font color="white">评星 </font><i class="fa fa-heart"></i>',
+                "sButtonClass": "btn yellow",
+                "fnComplete": function (nButton, oConfig, nRow) {
+                    star()
+                }
+
+            },
         ]
 
     loaddata(begin,end,'午餐')
@@ -334,6 +385,7 @@ function loaddata(begin,end,type) {
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
+            { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "0%", 'bVisible': false}
 
 
@@ -359,9 +411,11 @@ function loaddata(begin,end,type) {
         },
         "fnInitComplete": function (oSettings, json) {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
+            $('#star').rating();
         },
         "fnDrawCallback": function (oSettings) {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
+            $('#star').rating();
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
             if(aData[2] == '1'){
@@ -369,6 +423,17 @@ function loaddata(begin,end,type) {
             }else{
                 $('td:eq(2)',nRow).html('<div><img src="/static/assets/img/stoping.png">已取消</div>')
             }
+            if(aData[5] != '0') {
+                $('td:eq(5)', nRow).html('<div class="star-rating rating-x1 rating-active">\
+                                            <div title="Clear" class="clear-rating clear-rating-active"></div>\
+                                            <div class="rating-container rating-gly" data-content="">\
+                                                <div class="rating-stars" data-content="" style="width: ' + aData[5]/5*100 + '%;"></div>\
+                                            </div>\
+                                        </div>')
+            }else{
+                $('td:eq(5)', nRow).html('')
+            }
+
         },
         "fnServerData": function (sSource, aoData, fnCallback) {
             aoData.push({"name": "begin", "value": begin});
@@ -469,37 +534,17 @@ function add() {
     $('#id').val("")
     $("#myModal").modal('show')
 }
-{#function edit() {#}
-{##}
-{#    var oTT = TableTools.fnGetInstance('datatables');#}
-{#    var aData = oTT.fnGetSelectedData();#}
-{#    if (aData.length == 1) {#}
-{#        var name = aData[0][0];#}
-{#        var type = aData[0][1];#}
-{#        var comment = aData[0][5];#}
-{#        var id = aData[0][6];#}
-{#        $.post('/order_form_dropdown/', {id: id}, function (d) {#}
-{#            $('#name').select2({#}
-{#                multiple: true,#}
-{#                placeholder: '请选择被订餐者',#}
-{#                data: d['list']#}
-{#            });#}
-{#            $('#type').select2({#}
-{#                multiple: false,#}
-{#                placeholder: '选择订餐类型',#}
-{#                allowClear: true,#}
-{#                data: [{'text':'午餐','id':1},{'text':'晚餐','id':2}]#}
-{#            });#}
-{#            $('#name').select2("data",d['edit'])#}
-{#        })#}
-{#        $('#server_group_name').val(server_group_name)#}
-{#        $('#comment').val(comment)#}
-{#        $('#id').val(id)#}
-{#        $("#myModal").modal('show')#}
-{#    }#}
-{##}
-{##}
-{#}#}
+
+function star() {
+    $('#type1').select2("data", "")
+    $('#type1').select2({
+        multiple: false,
+        placeholder: '选择订餐类型',
+        allowClear: true,
+        data: [{'text':'午餐','id':1},{'text':'晚餐','id':2}]
+    });
+    $("#myModal1").modal('show')
+}
 
 function del_verify() {
     var oTT = TableTools.fnGetInstance('datatables');
@@ -528,6 +573,27 @@ function del() {
         })
     }
     $('#myModal2').modal('hide')
+}
+
+function star_save(){
+    $('#myModal1').modal('hide')
+    var type = $('#type1').select2('data')
+    if (type == null) {
+        toastr.error('不能为空')
+        return;
+    }
+    type = type["text"]
+    var star = $('#star').val()
+    showAjaxLoad()
+    $.post('/order_form_star_save/', {type: type,star:star}, function (d) {
+        hideAjaxLoad()
+        if (d.code == 0) {
+            toastr.success(d.msg)
+            $('#datatables').dataTable().fnDraw()
+        } else {
+            toastr.error(d.msg)
+        }
+    })
 }
 
 </script>
