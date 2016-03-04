@@ -108,6 +108,7 @@
 					</ul>
 				</li>
                 {% endif %}
+                {% if request.session.KPI_can_view %}
                 <li id="KPI">
 					<a href="javascript:;">
 						<i class="fa fa-pencil"></i>
@@ -132,3 +133,4 @@
 						</li>
 					</ul>
 				</li>
+                {% endif %}
