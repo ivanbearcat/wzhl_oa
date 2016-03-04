@@ -139,7 +139,7 @@ def order_form_data(request):
         end = datetime.datetime(int(end[0]),int(end[1]),int(end[2]),23,59)
 
     aaData = []
-    sort = ['name','type','None','add_time','order_name','comment','id']
+    sort = ['name','type','None','add_time','order_name','star','comment','id']
 
     if  sSortDir_0 == 'asc':
         if sSearch == '':
