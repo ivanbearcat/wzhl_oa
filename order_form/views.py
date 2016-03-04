@@ -216,7 +216,7 @@ def order_form_save(request):
     _id = request.POST.get('id')
     name = request.POST.get('name')
     type = request.POST.get('type')
-    comment = request.POST.get('comment')
+    # comment = request.POST.get('comment')
     time_now = datetime.datetime.now().time()
     begin = datetime.datetime.now().date()
     end = datetime.datetime.now() + datetime.timedelta(1)
@@ -233,7 +233,7 @@ def order_form_save(request):
                 check_orm = order.objects.filter(add_time__range=(begin,end)).filter(name=i).filter(type=type)
                 if check_orm:
                     return HttpResponse(simplejson.dumps({'code':1,'msg':u'您已订过餐'}),content_type="application/json")
-                orm = order(name=i,type=type,comment=comment,order_name=request.user.first_name,star=0)
+                orm = order(name=i,type=type,comment='',order_name=request.user.first_name,star=0)
                 orm.save()
         # else:
         #     orm = user.objects.get(id=int(_id))
@@ -282,6 +282,7 @@ def order_form_star_save(request):
     type = request.POST.get('type')
     date = request.POST.get('date')
     star = request.POST.get('star')
+    comment = request.POST.get('comment')
     date = datetime.date(int(date.split('-')[0]),int(date.split('-')[1]),int(date.split('-')[2]))
     begin = datetime.datetime(date.year,date.month,date.day,0,0,0)
     end = datetime.datetime(date.year,date.month,date.day,23,59,59)
@@ -290,6 +291,7 @@ def order_form_star_save(request):
         if len(orm) == 1:
             for i in orm:
                 i.star = float(star)
+                i.comment = comment
                 i.save()
             return HttpResponse(simplejson.dumps({'code':0,'msg':u'评星成功'}),content_type="application/json")
         elif len(orm) == 0:
