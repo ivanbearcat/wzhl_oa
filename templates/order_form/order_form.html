@@ -561,15 +561,6 @@ function star() {
         allowClear: true,
         data: [{'text':'午餐','id':1},{'text':'晚餐','id':2}]
     });
-    var oTT = TableTools.fnGetInstance('datatables');
-    oTT.fnSelectAll()
-    var aData = oTT.fnGetSelectedData();
-    for (var i in aData) {
-        if (aData[i][0] == '{{ user }}'){
-            $('#comment').val(aData[i][6])
-        }
-    }
-    oTT.fnSelectNone()
     $("#myModal1").modal('show')
 }
 
