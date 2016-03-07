@@ -589,7 +589,7 @@ function del() {
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
         showAjaxLoad()
-        $.post('/order_form_del/', {id: aData[0][6]}, function (d) {
+        $.post('/order_form_del/', {id: aData[0][7]}, function (d) {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
