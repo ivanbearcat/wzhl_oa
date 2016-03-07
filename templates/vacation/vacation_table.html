@@ -46,6 +46,7 @@
                         <th>可用季度假</th>
                         <th>已用季度假</th>
                         <th>总季度假</th>
+                        <th>调休假</th>
                         <th>邮箱地址</th>
                         <th>ID</th>
                     </tr>
@@ -360,6 +361,7 @@ function loaddata() {
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
+            { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%", 'bVisible': false}
 
@@ -519,8 +521,8 @@ function edit() {
         var principal = aData[0][3];
         var join_date = aData[0][4];
         var graduate_year = aData[0][5];
-        var email = aData[0][16];
-        var id = aData[0][17];
+        var email = aData[0][17];
+        var id = aData[0][18];
         $.post('/order_form_dropdown/', {id:id,name:name}, function (d) {
             $('#name').select2({
                 multiple: true,
@@ -573,7 +575,7 @@ function del() {
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
         showAjaxLoad()
-        $.post('/vacation_table_del/', {id: aData[0][17]}, function (d) {
+        $.post('/vacation_table_del/', {id: aData[0][18]}, function (d) {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)

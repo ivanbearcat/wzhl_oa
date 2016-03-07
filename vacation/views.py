@@ -88,8 +88,9 @@ def vacation_table_data(request):
                        '13':i.seasons_leave_available,
                        '14':i.seasons_leave_used,
                        '15':i.seasons_leave_total,
-                       '16':i.email,
-                       '17':i.id
+                       '16':i.leave_in_lieu,
+                       '17':i.email,
+                       '18':i.id
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
