@@ -393,7 +393,7 @@ function loaddata() {
 //                    [5, 15, 20, "All"] // change per page values here
 //                ],
         "oTableTools": {
-            "sRowSelect": "single",
+            "sRowSelect": "multi",
             'aButtons': aButtons
         },
         "aoColumns": [
@@ -515,10 +515,16 @@ function contain(Array, s) {
 function agree_verify() {
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
-    if (aData.length == 1) {
-        if (aData[0][6] == 8 || aData[0][6] == 9 || aData[0][6] == 0) {
-            toastr.error('这条申请已经审批过了')
-        } else {
+    var flag = 0
+    if (aData.length >= 1) {
+        for (var i in aData) {
+            if (aData[i][6] == 8 || aData[i][6] == 9 || aData[i][6] == 0) {
+                toastr.error('这条申请已经审批过了')
+            } else {
+                flag += 1
+            }
+        }
+        if (flag == aData.length) {
             $("#myModal2").modal('show')
         }
     }
@@ -531,36 +537,43 @@ function agree() {
     $('#myModal2').modal('hide')
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
-    if (aData.length == 1) {
-        var dst_id = aData[0][8]
-    }
     showAjaxLoad()
-    $.ajax({
-        url: '/vacation_approve_process/',
-        type: "POST",
-        data: {
-            flag: 1,
-            dst_id:dst_id
-        },
-        success: function (d) {
-            hideAjaxLoad()
-            if (d.code == 0) {
-                toastr.success(d.msg)
-                $('#datatables').dataTable().fnDraw()
-            } else {
-                toastr.error(d.msg)
+    for (var i in aData) {
+        var dst_id = aData[i][8]
+        $.ajax({
+            url: '/vacation_approve_process/',
+            type: "POST",
+            async: false,
+            data: {
+                flag: 1,
+                dst_id: dst_id
+            },
+            success: function (d) {
+                hideAjaxLoad()
+                if (d.code == 0) {
+                    toastr.success(d.msg)
+                    $('#datatables').dataTable().fnDraw()
+                } else {
+                    toastr.error(d.msg)
+                }
             }
-        }
-    });
+        });
+    }
 }
 
 function disagree_verify() {
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
-    if (aData.length == 1) {
-        if (aData[0][6] == 8 || aData[0][6] == 9 || aData[0][6] == 0) {
-            toastr.error('这条申请已经审批过了')
-        } else {
+    var flag = 0
+    if (aData.length >= 1) {
+        for (var i in aData) {
+            if (aData[i][6] == 8 || aData[i][6] == 9 || aData[i][6] == 0) {
+                toastr.error('这条申请已经审批过了')
+            } else {
+                flag += 1
+            }
+        }
+        if (flag == aData.length) {
             $("#myModal3").modal('show')
         }
     }
@@ -573,29 +586,30 @@ function disagree() {
     $('#myModal3').modal('hide')
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
-    if (aData.length == 1) {
-        var dst_id = aData[0][8]
-    }
-    var disagree_reason = $('#disagree_reason').val()
     showAjaxLoad()
-    $.ajax({
-        url: '/vacation_approve_process/',
-        type: "POST",
-        data: {
-            flag: 0,
-            dst_id:dst_id,
-            disagree_reason:disagree_reason
-        },
-        success: function (d) {
-            hideAjaxLoad()
-            if (d.code == 0) {
-                toastr.success(d.msg)
-                $('#datatables').dataTable().fnDraw()
-            } else {
-                toastr.error(d.msg)
+    for (var i in aData) {
+        var dst_id = aData[i][8]
+        var disagree_reason = $('#disagree_reason').val()
+        $.ajax({
+            url: '/vacation_approve_process/',
+            type: "POST",
+            async: false,
+            data: {
+                flag: 0,
+                dst_id: dst_id,
+                disagree_reason: disagree_reason
+            },
+            success: function (d) {
+                hideAjaxLoad()
+                if (d.code == 0) {
+                    toastr.success(d.msg)
+                    $('#datatables').dataTable().fnDraw()
+                } else {
+                    toastr.error(d.msg)
+                }
             }
-        }
-    });
+        });
+    }
 }
 </script>
 {% endblock %}

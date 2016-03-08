@@ -678,6 +678,7 @@ def vacation_approve_process(request):
                     except Exception,e:
                         print e
                         return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
                 apply_email = orm_fetch_principal.email
                 orm.state_interface = '已批准'
                 orm.state = 8
