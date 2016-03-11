@@ -6,6 +6,7 @@ from user_manage.views import *
 from vacation.views import *
 from assets.views import *
 from KPI.views import *
+from personal_information.views import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -74,4 +75,7 @@ urlpatterns = patterns('',
     url(r'^KPI_table_approve_data/', KPI_table_approve_data),
     url(r'^KPI_table_detail_approve/', KPI_table_detail_approve),
     url(r'^KPI_table_detail_approve_commit/', KPI_table_detail_approve_commit),
+    url(r'^personal_information_table/', personal_information_table),
+    url(r'^personal_information_table_data/', personal_information_table_data),
+    url(r'^personal_information_table_detail/', personal_information_table_detail),
 )

@@ -1,0 +1,170 @@
+{% extends 'public/index.html' %}
+{% block css %}
+<link href="/static/assets/theme/default/style.min.css" rel="stylesheet"/>
+<!-- BEGIN PAGE LEVEL STYLES -->
+<link rel="stylesheet" type="text/css" href="/static/assets/plugins/select2/select2.css"/>
+<link rel="stylesheet" type="text/css" href="/static/assets/plugins/select2/select2-metronic.css"/>
+<link rel="stylesheet" href="/static/assets/css/DT_bootstrap.css"/>
+<!-- END PAGE LEVEL STYLES -->
+<link rel="stylesheet" type="text/css" href="/static/assets/plugins/bootstrap-select/bootstrap-select.min.css"/>
+<link rel="stylesheet" type="text/css" href="/static/assets/plugins/jquery-multi-select/css/multi-select.css"/>
+<link rel="stylesheet" type="text/css" href="/static/assets/plugins/bootstrap-datepicker/css/datepicker.css" />
+
+{% endblock %}
+{% block body %}
+<div class="row">
+    <div class="col-md-12">
+        <!-- BEGIN EXAMPLE TABLE PORTLET-->
+        <div class="col-md-12">
+            <div class="portlet box grey">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-reorder"></i>Input Masks
+                    </div>
+                    <div class="tools">
+                        <a class="collapse" href="javascript:;">
+                        </a>
+                        <a class="reload" href="javascript:;">
+                        </a>
+                    </div>
+                </div>
+                <div class="portlet-body form">
+                    <!-- BEGIN FORM-->
+                    <form class="form-horizontal form-bordered" action="#">
+                        <div class="form-body">
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Date 1</label>
+                                <div class="col-md-4">
+                                    <input type="text" id="mask_date" class="form-control">
+                                    <span class="help-block">
+                                         y/m/d
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Date 2</label>
+                                <div class="col-md-4">
+                                    <input type="text" id="mask_date1" class="form-control">
+                                    <span class="help-block">
+                                         change the placeholder
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Date 3</label>
+                                <div class="col-md-4">
+                                    <input type="text" id="mask_date2" class="form-control">
+                                    <span class="help-block">
+                                         multi-char placeholder
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Phone</label>
+                                <div class="col-md-4">
+                                    <input type="text" id="mask_phone" class="form-control">
+                                    <span class="help-block">
+                                         (999) 999-9999
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Tax ID</label>
+                                <div class="col-md-4">
+                                    <input type="text" id="mask_tin" class="form-control">
+                                    <span class="help-block">
+                                         99-9999999
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Number</label>
+                                <div class="col-md-4">
+                                    <input type="text" id="mask_number" class="form-control">
+                                    <span class="help-block">
+                                         mask "9" or mask "99" or ... mask "9999999999"
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Currency</label>
+                                <div class="col-md-4">
+                                    <input type="text" id="mask_currency" class="form-control" style="text-align: right;">
+                                    <span class="help-block">
+                                         123456 =&gt; € ___.__1.234,56
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3">Currency 2</label>
+                                <div class="col-md-4">
+                                    <input type="text" id="mask_currency2" class="form-control">
+                                    <span class="help-block">
+                                         123456 =&gt; € ___.__1.234,56(left aligned)
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="form-group last">
+                                <label class="control-label col-md-3">SSN</label>
+                                <div class="col-md-4">
+                                    <input type="text" id="mask_ssn" class="form-control">
+                                    <span class="help-block">
+                                         999-99-9999. remove the empty mask on blur or when not empty removes the optional trailing part
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-actions fluid">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button class="btn purple" type="submit"><i class="fa fa-check"></i> Submit</button>
+                                        <button class="btn default" type="button">Cancel</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <!-- END FORM-->
+                </div>
+            </div>
+        </div>
+        <!-- END EXAMPLE TABLE PORTLET-->
+    </div>
+</div>
+
+<!--/datatables-->
+{% endblock %}
+
+{% block js %}
+<script type="text/javascript" src="/static/assets/plugins/select2/select2.min.js"></script>
+<script type="text/javascript" src="/static/assets/plugins/data-tables/jquery.dataTables.min.js"></script>
+<script type="text/javascript" src="/static/assets/plugins/data-tables/DT_bootstrap.js"></script>
+
+<!--<script src="/static/assets/plugins/context.js"></script>-->
+<!--<script src="/static/assets/plugins/jstree/dist/jstree.min.js"></script>-->
+<script src="/static/assets/plugins/holder.js"></script>
+<script src="/static/assets/plugins/stilearn-base.js"></script>
+<script type="text/javascript" src="/static/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+<script type="text/javascript" src="/static/assets/plugins/jquery-multi-select/js/jquery.multi-select.js"></script>
+<script src="/static/assets/plugins/select2/select2.js"></script>
+<script src="/static/assets/plugins/datatables/extras/TableTools.min.js"></script>
+<script src="/static/assets/scripts/custom/table-managed.js"></script>
+<script type="text/javascript" src="/static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+
+
+<script type="text/javascript">
+var oTable;
+var aButtons
+/* Formating function for row details */
+
+$(document).ready(function () {
+
+
+
+});
+
+
+
+</script>
+{% endblock %}

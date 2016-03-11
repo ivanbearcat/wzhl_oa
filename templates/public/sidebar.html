@@ -134,3 +134,23 @@
 					</ul>
 				</li>
                 {% endif %}
+{#                {% if request.session.personal_information_can_view %}#}
+                <li id="personal_information">
+					<a href="javascript:;">
+						<i class="fa fa-users"></i>
+						<span class="title">
+							人员信息
+						</span>
+						<span class="arrow ">
+						</span>
+					</a>
+					<ul class="sub-menu">
+                        <li id="personal_information_table">
+							<a href="/personal_information_table/">
+								<i class="fa"></i>
+								人员基本信息表
+							</a>
+						</li>
+					</ul>
+				</li>
+{#                {% endif %}#}
