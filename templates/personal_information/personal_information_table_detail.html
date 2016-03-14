@@ -19,7 +19,7 @@
             <div class="portlet box grey">
                 <div class="portlet-title">
                     <div class="caption">
-                        <i class="fa fa-reorder"></i>Input Masks
+                        <i class="fa fa-reorder"></i>人员基本信息表
                     </div>
                     <div class="tools">
                         <a class="collapse" href="javascript:;">
@@ -30,96 +30,145 @@
                 </div>
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
-                    <form class="form-horizontal form-bordered" action="#">
+                    <form class="form-horizontal form-bordered" action="/personal_information_table_detail/" enctype="multipart/form-data" method="post">
                         <div class="form-body">
                             <div class="form-group">
-                                <label class="control-label col-md-3">Date 1</label>
-                                <div class="col-md-4">
-                                    <input type="text" id="mask_date" class="form-control">
-                                    <span class="help-block">
-                                         y/m/d
-                                    </span>
+                                <label class="control-label col-md-1">* 姓名</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="name" name="name" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">* 邮箱</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="email" name="email" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Date 2</label>
-                                <div class="col-md-4">
-                                    <input type="text" id="mask_date1" class="form-control">
-                                    <span class="help-block">
-                                         change the placeholder
-                                    </span>
+                                <label class="control-label col-md-1">* 性别</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="sex" name="sex" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">* 电话</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="phone" name="phone" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Date 3</label>
-                                <div class="col-md-4">
-                                    <input type="text" id="mask_date2" class="form-control">
-                                    <span class="help-block">
-                                         multi-char placeholder
-                                    </span>
+                                <label class="control-label col-md-1">出生日期</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="birthday" name="birthday" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">* 毕业日期</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="graduate_date" name="graduate_date" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Phone</label>
-                                <div class="col-md-4">
-                                    <input type="text" id="mask_phone" class="form-control">
-                                    <span class="help-block">
-                                         (999) 999-9999
-                                    </span>
+                                <label class="control-label col-md-1">职级</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="job_level" name="job_level" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">职位</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="job_title" name="job_title" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Tax ID</label>
-                                <div class="col-md-4">
-                                    <input type="text" id="mask_tin" class="form-control">
-                                    <span class="help-block">
-                                         99-9999999
-                                    </span>
+                                <label class="control-label col-md-1">* 第一学历</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="first_education" name="first_education" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">* 学历</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="education" name="education" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Number</label>
-                                <div class="col-md-4">
-                                    <input type="text" id="mask_number" class="form-control">
-                                    <span class="help-block">
-                                         mask "9" or mask "99" or ... mask "9999999999"
-                                    </span>
+                                <label class="control-label col-md-1">* 毕业学校</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="graduate_school" name="graduate_school" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">* 专业</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="specialty" name="specialty" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Currency</label>
-                                <div class="col-md-4">
-                                    <input type="text" id="mask_currency" class="form-control" style="text-align: right;">
-                                    <span class="help-block">
-                                         123456 =&gt; € ___.__1.234,56
-                                    </span>
+                                <label class="control-label col-md-1">* 资源状态</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="resource_state" name="resource_state" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">状态变更时间</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="state_change_time" name="state_change_time" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-3">Currency 2</label>
-                                <div class="col-md-4">
-                                    <input type="text" id="mask_currency2" class="form-control">
-                                    <span class="help-block">
-                                         123456 =&gt; € ___.__1.234,56(left aligned)
-                                    </span>
+                                <label class="control-label col-md-1">* 曾入职公司</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="last_company" name="last_company" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">* 简历</label>
+                                <div class="col-md-2">
+                                    <input type="file" id="resumes" name="resumes">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1">* 渠道</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="channel" name="channel" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">推荐人(选填)</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="referrer" name="referrer" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1">* 岗位类别</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="job_type" name="job_type" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">入库日期</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="date_of_entry" name="date_of_entry" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1">方向</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="direction" name="direction" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">薪资状况</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="salary" name="salary" class="form-control">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-1">执行人</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="executor" name="executor" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">更新日期</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="update_time" name="update_time" class="form-control">
                                 </div>
                             </div>
                             <div class="form-group last">
-                                <label class="control-label col-md-3">SSN</label>
-                                <div class="col-md-4">
-                                    <input type="text" id="mask_ssn" class="form-control">
-                                    <span class="help-block">
-                                         999-99-9999. remove the empty mask on blur or when not empty removes the optional trailing part
-                                    </span>
+                                <label class="control-label col-md-1">* 关键词</label>
+                                <div class="col-md-2">
+                                    <input type="text" id="keywords" name="keywords" class="form-control">
+                                </div>
+                                <label class="control-label col-md-offset-2 col-md-1">备注</label>
+                                <div class="col-md-5">
+                                    <input type="text" id="comment" name="comment" class="form-control">
                                 </div>
                             </div>
+                            <div id="id"></div>
                         </div>
                         <div class="form-actions fluid">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <div class="col-md-offset-3 col-md-9">
-                                        <button class="btn purple" type="submit"><i class="fa fa-check"></i> Submit</button>
-                                        <button class="btn default" type="button">Cancel</button>
+                                    <div class="col-md-offset-11 col-md-9">
+                                        <button class="btn purple" type="submit"><i class="fa fa-check"></i> 提交</button>
                                     </div>
                                 </div>
                             </div>
@@ -151,7 +200,18 @@
 <script src="/static/assets/plugins/datatables/extras/TableTools.min.js"></script>
 <script src="/static/assets/scripts/custom/table-managed.js"></script>
 <script type="text/javascript" src="/static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
-
+<script type="text/javascript" src="/static/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
+<script type="text/javascript" src="/static/assets/plugins/fuelux/js/spinner.min.js" ></script>
+<script type="text/javascript" src="/static/assets/plugins/bootstrap-fileinput/bootstrap-fileinput.js" ></script>
+<script type="text/javascript" src="/static/assets/plugins/jquery.input-ip-address-control-1.0.min.js" ></script>
+<script src="/static/assets/plugins/jquery.pwstrength.bootstrap/src/pwstrength.js" ></script>
+<script src="/static/assets/plugins/bootstrap-switch/js/bootstrap-switch.min.js" ></script>
+<script src="/static/assets/plugins/jquery-tags-input/jquery.tagsinput.min.js" ></script>
+<script src="/static/assets/plugins/bootstrap-maxlength/bootstrap-maxlength.min.js" ></script>
+<script src="/static/assets/plugins/bootstrap-touchspin/bootstrap.touchspin.js" ></script>
+<script src="/static/assets/plugins/typeahead/handlebars.min.js" ></script>
+<script src="/static/assets/plugins/typeahead/typeahead.min.js" type="text/javascript"></script>
+<script src="/static/assets/scripts/custom/components-form-tools.js"></script>
 
 <script type="text/javascript">
 var oTable;
@@ -159,8 +219,81 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
+    $('#sex').select2({
+        multiple: false,
+        placeholder: '请选择性别',
+        allowClear: true,
+        data: [{'text':'男','id':1},{'text':'女','id':2}]
+    });
 
+    $('#phone').inputmask({
+        "mask": "99999999999"
+    });
 
+    $('#date_of_entry').inputmask("y-m-d", {
+        "placeholder": "yyyy-mm-dd"
+    })
+    $('#date_of_entry').attr('disabled',true)
+
+    $('#birthday').inputmask("y-m-d", {
+        "placeholder": "yyyy-mm-dd"
+    })
+
+    $('#graduate_date').inputmask("y-m-d", {
+        "placeholder": "yyyy-mm-dd"
+    })
+
+    $('#first_education').select2({
+        multiple: false,
+        placeholder: '请选择学历',
+        allowClear: true,
+        data: [{'text':'本科','id':1},{'text':'大专','id':2},{'text':'硕士','id':3},{'text':'博士','id':4},
+               {'text':'中专职校','id':5},{'text':'初中以下','id':6}]
+    });
+
+    $('#education').select2({
+        multiple: false,
+        placeholder: '请选择学历',
+        allowClear: true,
+        data: [{'text':'本科','id':1},{'text':'大专','id':2},{'text':'硕士','id':3},{'text':'博士','id':4},
+               {'text':'中专职校','id':5},{'text':'初中以下','id':6}]
+    });
+
+    $('#channel').select2({
+        multiple: false,
+        placeholder: '请选择渠道',
+        allowClear: true,
+        data: [{'text':'Boss','id':1},{'text':'猎聘','id':2},{'text':'拉钩','id':3},{'text':'内部推荐','id':4},
+               {'text':'其他','id':5}]
+    });
+
+    $('#job_type').select2({
+        multiple: false,
+        placeholder: '请选择类别',
+        allowClear: true,
+        data: [{'text':'开发','id':1},{'text':'测试','id':2},{'text':'运维','id':3},{'text':'产品','id':4},
+               {'text':'设计','id':5},{'text':'BD','id':6},{'text':'文案','id':7},{'text':'策划','id':8},
+               {'text':'市场','id':9},{'text':'HR','id':10},{'text':'财务','id':11},{'text':'行政','id':12}]
+    });
+
+    $('#resource_state').select2({
+        multiple: false,
+        placeholder: '请选择类别',
+        allowClear: true,
+        data: [{'text':'待面试','id':1},{'text':'待入职','id':2},{'text':'已入职','id':3},{'text':'拒offer','id':4},
+               {'text':'离职','id':5}]
+    });
+
+    $('#state_change_time').attr('disabled',true)
+
+    $('#update_time').attr('disabled',true)
+
+    $('#executor').select2({
+        multiple: false,
+        placeholder: '请选择执行人',
+        allowClear: true,
+        data: [{'text':'李璟','id':1},{'text':'华慧宁','id':2}]
+    });
 
 });
 
