@@ -141,16 +141,10 @@ function loaddata() {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            if(aData[5] == 1 || aData[5] == 2 || aData[5] == 3 || aData[5] == 4 || aData[5] == 5){
-                $('td:eq(2)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp'+aData[2]+'</div>')
-            }else if(aData[5] == 6){
-                $('td:eq(2)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp'+aData[2]+'</div>')
-            }
-{#            $('td:eq(0)',nRow).html('<a>'+aData[0]+'</a>')#}
             $('td',nRow).on('click',function(){
-{#                $.post('/personal_information_set_session/', {KPI_name:KPI_name,name:name,status:status}, function (d) {#}
+                $.post('/personal_information_set_session/', {id:aData[4]}, function (d) {
                     location.href = '/personal_information_table_detail/'
-{#                })#}
+                })
             })
         },
         "fnServerData": function (sSource, aoData, fnCallback) {
@@ -167,7 +161,9 @@ function loaddata() {
 }
 
 function add(){
-    location.href = '/personal_information_table_detail/'
+    $.post('/personal_information_set_session/', {id:0}, function (d) {
+        location.href = '/personal_information_table_detail/'
+    })
 }
 
 </script>

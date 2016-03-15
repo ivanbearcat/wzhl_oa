@@ -8,6 +8,7 @@ from personal_information.models import table
 from wzhl_oa.settings import BASE_DIR
 import json
 import datetime
+import os
 
 @login_required
 def personal_information_table(request):
@@ -112,6 +113,11 @@ def personal_information_table_detail(request):
     executor = request.POST.get('executor')
     _id = request.POST.get('id')
 
+    try:
+        request.session.pop('personal_information')
+    except KeyError:
+        pass
+
     if _id:
         orm = table.objects.get(id=_id)
         if orm.resource_state != resource_state:
@@ -139,16 +145,72 @@ def personal_information_table_detail(request):
         orm.resource_state = resource_state
         orm.comment = comment
         orm.executor = executor
+
+        orm.save()
     else:
-        orm.object
+        if name:
+            orm = table(name=name,email=email,phone=phone,keywords=keywords,sex=sex,birthday=birthday,graduate_date=graduate_date,
+                        first_education=first_education,education=education,specialty=specialty,graduate_school=graduate_school,
+                        last_company=last_company,channel=channel,referrer=referrer,salary=salary,job_level=job_level,
+                        job_title=job_title,job_type=job_type,resumes=resumes,direction=direction,resource_state=resource_state,
+                        comment=comment,executor=executor,state_change_time=datetime.datetime.now())
+            try:
+                orm.save()
+                request.session['personal_information'] = u'保存成功'
+            except Exception,e:
+                print e
+                request.session['personal_information'] = e
 
-
-
-
+    personal_information_id = request.session.get('personal_information_id')
+    if personal_information_id:
+        orm = table.objects.get(id=personal_information_id)
+        return render(request, 'personal_information/personal_information_table_detail.html'
+                      ,{'user':'%s%s' % (request.user.last_name,request.user.first_name),
+                        'path1':'personal_information',
+                        'path2':path,
+                        'page_name1':u'人员信息',
+                        'page_name2':u'人员基本信息表',
+                        'name':orm.name,
+                        'phone':orm.phone,
+                        'email':orm.email,
+                        'keywords':orm.keywords,
+                        'sex':orm.sex,
+                        'date_of_entry':str(orm.date_of_entry).split('+')[0],
+                        'birthday':str(orm.birthday).split('+')[0],
+                        'graduate_date':str(orm.graduate_date).split('+')[0],
+                        'first_education':orm.first_education,
+                        'education':orm.education,
+                        'specialty':orm.specialty,
+                        'graduate_school':orm.graduate_school,
+                        'last_company':orm.last_company,
+                        'channel':orm.channel,
+                        'referrer':orm.referrer,
+                        'salary':orm.salary,
+                        'job_level':orm.job_level,
+                        'job_title':orm.job_title,
+                        'job_type':orm.job_type,
+                        'resumes':os.path.basename(str(orm.resumes)),
+                        'direction':orm.direction,
+                        'resource_state':orm.resource_state,
+                        'comment':orm.comment,
+                        'state_change_time':str(orm.state_change_time).split('+')[0],
+                        'executor':orm.executor,
+                        'update_time':str(orm.update_time).split('+')[0],
+                        'id':orm.id},
+                      context_instance=RequestContext(request))
     return render(request, 'personal_information/personal_information_table_detail.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                  'path1':'personal_information',
                                                  'path2':path,
                                                  'page_name1':u'人员信息',
                                                  'page_name2':u'人员基本信息表',},
                                                 context_instance=RequestContext(request))
+
+@login_required
+def personal_information_set_session(request):
+    _id = request.POST.get('id')
+    if _id == '0':
+        request.session.pop('personal_information_id')
+    elif _id:
+        request.session['personal_information_id'] = int(_id)
+    return HttpResponse(json.dumps('OK'),content_type="application/json")
 

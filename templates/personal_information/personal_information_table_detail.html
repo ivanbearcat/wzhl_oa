@@ -21,12 +21,6 @@
                     <div class="caption">
                         <i class="fa fa-reorder"></i>人员基本信息表
                     </div>
-                    <div class="tools">
-                        <a class="collapse" href="javascript:;">
-                        </a>
-                        <a class="reload" href="javascript:;">
-                        </a>
-                    </div>
                 </div>
                 <div class="portlet-body form">
                     <!-- BEGIN FORM-->
@@ -53,7 +47,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label class="control-label col-md-1">出生日期</label>
+                                <label class="control-label col-md-1">* 出生日期</label>
                                 <div class="col-md-2">
                                     <input type="text" id="birthday" name="birthday" class="form-control">
                                 </div>
@@ -109,7 +103,9 @@
                                 </div>
                                 <label class="control-label col-md-offset-2 col-md-1">* 简历</label>
                                 <div class="col-md-2">
-                                    <input type="file" id="resumes" name="resumes">
+                                    <a class="btn yellow" style="position:relative;width:100px;height:30px;overflow:hidden;">浏览...
+                                        <input type="file" id="resumes" name="resumes" style="position:absolute;z-index:1;left:0;top:0;opacity:0;">
+                                    </a>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -162,7 +158,7 @@
                                     <input type="text" id="comment" name="comment" class="form-control">
                                 </div>
                             </div>
-                            <div id="id"></div>
+                            <input id="id" name="id" style="display:none">
                         </div>
                         <div class="form-actions fluid">
                             <div class="row">
@@ -223,16 +219,13 @@ $(document).ready(function () {
         multiple: false,
         placeholder: '请选择性别',
         allowClear: true,
-        data: [{'text':'男','id':1},{'text':'女','id':2}]
+        data: [{'text':'男','id':'男'},{'text':'女','id':'女'}]
     });
 
     $('#phone').inputmask({
         "mask": "99999999999"
     });
 
-    $('#date_of_entry').inputmask("y-m-d", {
-        "placeholder": "yyyy-mm-dd"
-    })
     $('#date_of_entry').attr('disabled',true)
 
     $('#birthday').inputmask("y-m-d", {
@@ -247,41 +240,41 @@ $(document).ready(function () {
         multiple: false,
         placeholder: '请选择学历',
         allowClear: true,
-        data: [{'text':'本科','id':1},{'text':'大专','id':2},{'text':'硕士','id':3},{'text':'博士','id':4},
-               {'text':'中专职校','id':5},{'text':'初中以下','id':6}]
+        data: [{'text':'本科','id':'本科'},{'text':'大专','id':'大专'},{'text':'硕士','id':'硕士'},{'text':'博士','id':'博士'},
+               {'text':'中专职校','id':'中专职校'},{'text':'初中以下','id':'初中以下'}]
     });
 
     $('#education').select2({
         multiple: false,
         placeholder: '请选择学历',
         allowClear: true,
-        data: [{'text':'本科','id':1},{'text':'大专','id':2},{'text':'硕士','id':3},{'text':'博士','id':4},
-               {'text':'中专职校','id':5},{'text':'初中以下','id':6}]
+        data: [{'text':'本科','id':'本科'},{'text':'大专','id':'大专'},{'text':'硕士','id':'硕士'},{'text':'博士','id':'博士'},
+               {'text':'中专职校','id':'中专职校'},{'text':'初中以下','id':'初中以下'}]
     });
 
     $('#channel').select2({
         multiple: false,
         placeholder: '请选择渠道',
         allowClear: true,
-        data: [{'text':'Boss','id':1},{'text':'猎聘','id':2},{'text':'拉钩','id':3},{'text':'内部推荐','id':4},
-               {'text':'其他','id':5}]
+        data: [{'text':'Boss','id':'Boss'},{'text':'猎聘','id':'猎聘'},{'text':'拉钩','id':'拉钩'},{'text':'内部推荐','id':'内部推荐'},
+               {'text':'其他','id':'其他'}]
     });
 
     $('#job_type').select2({
         multiple: false,
         placeholder: '请选择类别',
         allowClear: true,
-        data: [{'text':'开发','id':1},{'text':'测试','id':2},{'text':'运维','id':3},{'text':'产品','id':4},
-               {'text':'设计','id':5},{'text':'BD','id':6},{'text':'文案','id':7},{'text':'策划','id':8},
-               {'text':'市场','id':9},{'text':'HR','id':10},{'text':'财务','id':11},{'text':'行政','id':12}]
+        data: [{'text':'开发','id':'开发'},{'text':'测试','id':'测试'},{'text':'运维','id':'运维'},{'text':'产品','id':'产品'},
+               {'text':'设计','id':'设计'},{'text':'BD','id':'BD'},{'text':'文案','id':'文案'},{'text':'策划','id':'策划'},
+               {'text':'市场','id':'市场'},{'text':'HR','id':'HR'},{'text':'财务','id':'财务'},{'text':'行政','id':'行政'}]
     });
 
     $('#resource_state').select2({
         multiple: false,
         placeholder: '请选择类别',
         allowClear: true,
-        data: [{'text':'待面试','id':1},{'text':'待入职','id':2},{'text':'已入职','id':3},{'text':'拒offer','id':4},
-               {'text':'离职','id':5}]
+        data: [{'text':'待面试','id':'待面试'},{'text':'待入职','id':'待入职'},{'text':'已入职','id':'已入职'},{'text':'拒offer','id':'拒offer'},
+               {'text':'离职','id':'离职'}]
     });
 
     $('#state_change_time').attr('disabled',true)
@@ -292,9 +285,43 @@ $(document).ready(function () {
         multiple: false,
         placeholder: '请选择执行人',
         allowClear: true,
-        data: [{'text':'李璟','id':1},{'text':'华慧宁','id':2}]
+        data: [{'text':'李璟','id':'李璟'},{'text':'华慧宁','id':'华慧宁'}]
     });
+{% if request.session.personal_information %}
+    {% ifequal request.session.personal_information '保存成功' %}
+        toastr.success('保存成功')
+    {% else %}
+        toastr.success('{{ request.session.personal_information }}')
+    {% endifequal %}
+{% endif %}
 
+    $('#name').val('{{ name }}')
+    $('#phone').val('{{ phone }}')
+    $('#email').val('{{ email }}')
+    $('#keywords').val('{{ keywords }}')
+    $('#sex').select2('data',{'text':'{{ sex }}','id':'{{ sex }}'})
+    $('#date_of_entry').val('{{ date_of_entry }}')
+    $('#birthday').val('{{ birthday }}')
+    $('#graduate_date').val('{{ graduate_date }}')
+    $('#first_education').select2('data',{'text':'{{ first_education }}','id':'{{ first_education }}'})
+    $('#education').select2('data',{'text':'{{ education }}','id':'{{ education }}'})
+    $('#specialty').val('{{ specialty }}')
+    $('#graduate_school').val('{{ graduate_school }}')
+    $('#last_company').val('{{ last_company }}')
+    $('#channel').select2('data',{'text':'{{ channel }}','id':'{{ channel }}'})
+    $('#referrer').val('{{ referrer }}')
+    $('#salary').val('{{ salary }}')
+    $('#job_level').val('{{ job_level }}')
+    $('#job_title').val('{{ job_title }}')
+    $('#job_type').select2('data',{'text':'{{ job_type }}','id':'{{ job_type }}'})
+{#    $('#resumes').#}
+    $('#direction').val('{{ direction }}')
+    $('#resource_state').select2('data',{'text':'{{ resource_state }}','id':'{{ resource_state }}'})
+    $('#comment').val('{{ comment }}')
+    $('#state_change_time').val('{{ state_change_time }}')
+    $('#executor').select2('data',{'text':'{{ executor }}','id':'{{ executor }}'})
+    $('#update_time').val('{{ update_time }}')
+    $('#id').val('{{ id }}')
 });
 
 

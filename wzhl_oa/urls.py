@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, include, url
+from wzhl_oa import settings
 from main.views import *
 from login.views import *
 from order_form.views import *
@@ -20,6 +21,7 @@ urlpatterns = patterns('',
     # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
+    url(r'^media/(?P<path>.*)$', 'django.views.static.serve',{'document_root': settings.MEDIA_ROOT}),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^$', login),
     url(r'^login_auth/', login_auth),
@@ -78,4 +80,5 @@ urlpatterns = patterns('',
     url(r'^personal_information_table/', personal_information_table),
     url(r'^personal_information_table_data/', personal_information_table_data),
     url(r'^personal_information_table_detail/', personal_information_table_detail),
+    url(r'^personal_information_set_session/', personal_information_set_session),
 )
