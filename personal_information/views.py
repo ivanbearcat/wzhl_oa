@@ -190,6 +190,7 @@ def personal_information_table_detail(request):
                         'job_title':orm.job_title,
                         'job_type':orm.job_type,
                         'resumes':os.path.basename(str(orm.resumes)),
+                        'resumes_path':str(orm.resumes),
                         'direction':orm.direction,
                         'resource_state':orm.resource_state,
                         'comment':orm.comment,
@@ -209,7 +210,10 @@ def personal_information_table_detail(request):
 def personal_information_set_session(request):
     _id = request.POST.get('id')
     if _id == '0':
-        request.session.pop('personal_information_id')
+        try:
+            request.session.pop('personal_information_id')
+        except KeyError:
+            pass
     elif _id:
         request.session['personal_information_id'] = int(_id)
     return HttpResponse(json.dumps('OK'),content_type="application/json")
