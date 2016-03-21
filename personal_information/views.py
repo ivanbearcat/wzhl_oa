@@ -4,7 +4,7 @@ from django.http import HttpResponse
 from django.template import RequestContext
 from django.db.models.query_utils import Q
 from django.contrib.auth.decorators import login_required
-from personal_information.models import table
+from personal_information.models import table, interview
 from wzhl_oa.settings import BASE_DIR
 import json
 import datetime
@@ -216,5 +216,64 @@ def personal_information_set_session(request):
             pass
     elif _id:
         request.session['personal_information_id'] = int(_id)
+    return HttpResponse(json.dumps('OK'),content_type="application/json")
+
+@login_required
+def personal_information_interview_data(request):
+    sEcho =  request.POST.get('sEcho') #标志，直接返回
+    iDisplayStart = int(request.POST.get('iDisplayStart'))#第几行开始
+    iDisplayLength = int(request.POST.get('iDisplayLength'))#显示多少行
+    iSortCol_0 = int(request.POST.get("iSortCol_0"))#排序行号
+    sSortDir_0 = request.POST.get('sSortDir_0')#asc/desc
+    sSearch = request.POST.get('sSearch')#高级搜索
+
+    aaData = []
+    sort = ['name','interview_times','id']
+
+    if  sSortDir_0 == 'asc':
+        if sSearch == '':
+            result_data = interview.objects.all().order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = interview.objects.all().count()
+        else:
+            result_data = interview.objects.filter(Q(name__contains=sSearch) | \
+                                                    Q(interview_times__contains=sSearch)) \
+                                                    .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = interview.objects.filter(Q(name__contains=sSearch) | \
+                                                    Q(interview_times__contains=sSearch)).count()
+    else:
+        if sSearch == '':
+            result_data = interview.objects.all().order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = interview.objects.all().count()
+        else:
+            result_data = interview.objects.filter(Q(name__contains=sSearch) | \
+                                                    Q(interview_times__contains=sSearch)) \
+                                                    .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = interview.objects.filter(Q(name__contains=sSearch) | \
+                                                    Q(interview_times__contains=sSearch)).count()
+
+
+    for i in  result_data:
+        aaData.append({
+                       '0':i.name,
+                       '1':i.interview_times,
+                       '2':i.id
+                      })
+    result = {'sEcho':sEcho,
+               'iTotalRecords':iTotalRecords,
+               'iTotalDisplayRecords':iTotalRecords,
+               'aaData':aaData
+    }
+    return HttpResponse(json.dumps(result),content_type="application/json")
+
+@login_required
+def personal_information_interview_set_session(request):
+    _id = request.POST.get('id')
+    if _id == '0':
+        try:
+            request.session.pop('personal_information_interview_id')
+        except KeyError:
+            pass
+    elif _id:
+        request.session['personal_information_interview_id'] = int(_id)
     return HttpResponse(json.dumps('OK'),content_type="application/json")
 

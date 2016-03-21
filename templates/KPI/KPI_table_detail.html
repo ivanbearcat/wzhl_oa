@@ -63,7 +63,7 @@
         <div class="portlet box grey">
             <div class="portlet-title">
                 <div class="caption">
-                    <h5><i class="fa fa-globe"></i>自我评价</h5>
+                    <h5><i class="fa fa-globe"></i>自我评价（请对本季度绩效作具体描述）</h5>
                 </div>
             </div>
             <div class="portlet-body">
@@ -303,9 +303,9 @@ $(document).ready(function () {
     });
 
 {% if request.session.status == 1 or request.session.status == 2 %}
-    var flag = 0
+    flag = 0
 {% elif request.session.status == 3 or request.session.status == 4 or request.session.status == 5 %}
-    var flag = 1
+    flag = 1
 {% endif %}
 {% if request.session.status != 3 %}
     $('#self_comment').attr('disabled',true)
@@ -345,10 +345,10 @@ $(document).ready(function () {
         }
     {% if request.session.status == 3 %}
         var self_comment = $('#self_comment').val()
-        if (self_comment == ''){
-            toastr.error('请填写个人评价')
-            return
-        }
+{#        if (self_comment == ''){#}
+{#            toastr.error('请填写个人评价')#}
+{#            return#}
+{#        }#}
         $.post('/KPI_table_detail_comment_save/', {self_comment:self_comment}, function (d) {
             showAjaxLoad()
             $.post('/KPI_table_detail_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag}, function (d) {
@@ -379,7 +379,7 @@ $(document).ready(function () {
     })
 
     aButtons = [
-        {% if request.session.status == 1 or request.session.status == 2 %}
+        {% if request.session.status == 1 or request.session.status == 2 or request.session.status == 3 %}
             {
                 "sExtends": 'text',
                 "sButtonText": '<font color="white">添加</font><i class="fa fa-plus"></i>',
@@ -501,6 +501,7 @@ function loaddata() {
 }
 
 function add_(){
+    flag = 0
     $('#objective').val('')
     $('#description').val('')
     $("#slider-snap-inc").slider({
@@ -519,6 +520,7 @@ function add_(){
 }
 
 function edit_(){
+    flag = 0
     $('#grade').attr('disabled',true)
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
@@ -550,7 +552,6 @@ function edit_(){
             }
         });
         $("#slider-snap-inc-amount").text(weight + "%");
-        console.info(grade)
         $('#grade').val(grade)
         $('#id').val(id)
         $("#myModal").modal('show')
@@ -599,6 +600,7 @@ $('#save').on('click',function() {
 })
 
 function del_() {
+    flag = 0
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {

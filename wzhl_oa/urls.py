@@ -81,4 +81,6 @@ urlpatterns = patterns('',
     url(r'^personal_information_table_data/', personal_information_table_data),
     url(r'^personal_information_table_detail/', personal_information_table_detail),
     url(r'^personal_information_set_session/', personal_information_set_session),
+    url(r'^personal_information_interview_data/', personal_information_interview_data),
+    url(r'^personal_information_interview_set_session/', personal_information_interview_set_session),
 )
