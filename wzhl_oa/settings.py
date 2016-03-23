@@ -198,6 +198,13 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #FILE_UPLOAD_MAX_MEMORY_SIZE =  1024000000
 #FILE_UPLOAD_TEMP_DIR = 'tmp'
 
+#加入crontab
+#结算资产价值
+#0 5 25 * * /usr/bin/python /usr/share/nginx/wzhl_oa/libs/refresh_script.py assets_refresh
+#刷新假日
+#0 10 * * * /usr/bin/python /usr/share/nginx/wzhl_oa/libs/refresh_script.py vacation_refresh
+
+
 #custom
 HR = {'name':'华慧宁','email':'huahuining@xiaoquan.com'}
 

@@ -77,6 +77,32 @@
         </div>
     </div>
 </div>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/KPI/{{ username }}/KPI.xlsx">下载Excel文件</a></h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!--/datatables-->
 {% endblock %}
 
@@ -168,9 +194,9 @@ function loaddata() {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            if(aData[5] == 1 || aData[5] == 2 || aData[5] == 3 || aData[5] == 4 || aData[5] == 5){
+            if(aData[5] == 1 || aData[5] == 2 || aData[5] == 3 || aData[5] == 4 || aData[5] == 5 || aData[5] == 6){
                 $('td:eq(2)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp'+aData[2]+'</div>')
-            }else if(aData[5] == 6){
+            }else if(aData[5] == 7){
                 $('td:eq(2)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp'+aData[2]+'</div>')
             }
             $('td:eq(0)',nRow).html('<a>'+aData[0]+'</a>')
@@ -213,6 +239,13 @@ $('#export_all').on('click',function(){
         toastr.error('年份不能为空')
     }
 })
+
+function export_excel(){
+    alert($('#export').val())
+{#    $.post('/create_excel/', {}, function (d) {#}
+        $('#myModal2').modal('show')
+{#    })#}
+}
 
 </script>
 {% endblock %}

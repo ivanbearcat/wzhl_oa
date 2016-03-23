@@ -542,34 +542,39 @@ def vacation_approve_data(request):
         else:
             approved_id_list = []
 
+        if  orm_approved_id.subordinate:
+            subordinate_list = orm_approved_id.subordinate.split(',')
+        else:
+            subordinate_list = []
+
         if  sSortDir_0 == 'asc':
             if sSearch == '':
-                result_data = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list)).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list)).count()
+                result_data = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list) | Q(name__in=subordinate_list)).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list) | Q(name__in=subordinate_list)).count()
             else:
-                result_data = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list)).filter(Q(name__contains=sSearch) | \
+                result_data = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list) | Q(name__in=subordinate_list)).filter(Q(name__contains=sSearch) | \
                                                         Q(type__contains=sSearch) | \
                                                         Q(vacation_date__contains=sSearch) | \
                                                         Q(days__contains=sSearch) | \
                                                         Q(state_interface__contains=sSearch)) \
                                                         .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list)).filter(Q(name__contains=sSearch) | \
+                iTotalRecords = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list) | Q(name__in=subordinate_list)).filter(Q(name__contains=sSearch) | \
                                                         Q(type__contains=sSearch) | \
                                                         Q(vacation_date__contains=sSearch) | \
                                                         Q(days__contains=sSearch) | \
                                                         Q(state_interface__contains=sSearch)).count()
         else:
             if sSearch == '':
-                result_data = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list)).count()
+                result_data = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list) | Q(name__in=subordinate_list)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list) | Q(name__in=subordinate_list)).count()
             else:
-                result_data = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list)).filter(Q(name__contains=sSearch) | \
+                result_data = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list) | Q(name__in=subordinate_list)).filter(Q(name__contains=sSearch) | \
                                                         Q(type__contains=sSearch) | \
                                                         Q(vacation_date__contains=sSearch) | \
                                                         Q(days__contains=sSearch) | \
                                                         Q(state_interface__contains=sSearch)) \
                                                         .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list)).filter(Q(name__contains=sSearch) | \
+                iTotalRecords = state.objects.filter(Q(approve_now=request.user.first_name) | Q(id__in=approved_id_list) | Q(name__in=subordinate_list)).filter(Q(name__contains=sSearch) | \
                                                         Q(type__contains=sSearch) | \
                                                         Q(vacation_date__contains=sSearch) | \
                                                         Q(days__contains=sSearch) | \
@@ -1018,4 +1023,21 @@ def vacation_export_excel(request):
     except Exception,e:
         print e
         return HttpResponse(simplejson.dumps({'code':1,'msg':u'生成Excel文件失败'}),content_type="application/json")
+
+@login_required
+def refresh_subordinate(request):
+    for i in user_table.objects.all():
+        if i.name != i.principal:
+            principal_orm = user_table.objects.get(name=i.principal)
+            if principal_orm.subordinate:
+                if i.name not in principal_orm.subordinate.split(','):
+                    principal_orm.subordinate += ',' + i.name
+            else:
+                principal_orm.subordinate = i.name
+            try:
+                principal_orm.save()
+            except Exception,e:
+                print e
+    return HttpResponse(simplejson.dumps('finish'),content_type="application/json")
+
 

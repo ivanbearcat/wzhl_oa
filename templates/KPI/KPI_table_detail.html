@@ -24,6 +24,11 @@
              提交审核 <i class="fa fa-check"></i>
         </a>
     {% endif %}
+    {% if request.session.status == 6 %}
+        <a id="commit" class="btn btn-sm purple">
+             最终确认 <i class="fa fa-check"></i>
+        </a>
+    {% endif %}
         <div class="col-md-12"></div>
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
@@ -306,6 +311,8 @@ $(document).ready(function () {
     flag = 0
 {% elif request.session.status == 3 or request.session.status == 4 or request.session.status == 5 %}
     flag = 1
+{% elif request.session.status == 6 %}
+    flag = 2
 {% endif %}
 {% if request.session.status != 3 %}
     $('#self_comment').attr('disabled',true)
@@ -501,6 +508,15 @@ function loaddata() {
 }
 
 function add_(){
+    var oTT = TableTools.fnGetInstance('datatables');
+    oTT.fnSelectAll()
+    var aData = oTT.fnGetSelectedData();
+    oTT.fnSelectNone()
+    if (aData.length >= 5) {
+        toastr.error('目标上限为5条')
+        return
+    }
+
     flag = 0
     $('#objective').val('')
     $('#description').val('')

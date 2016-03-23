@@ -8,7 +8,10 @@ from libs.sendmail import send_mail
 from KPI.models import table,table_detail
 from vacation.models import user_table
 from wzhl_oa.settings import BASE_DIR
-import simplejson,xlsxwriter
+from openpyxl import load_workbook
+import simplejson
+import xlsxwriter
+import datetime
 
 import sys
 reload(sys)
@@ -65,7 +68,7 @@ def KPI_table_data(request):
 
     for i in  result_data:
         export = '''
-                <a id="export" value="%s" class="btn btn-sm green">
+                <a id="export" value="%s" class="btn btn-sm green" onclick="export_excel()">
                     生成Excel文件 <i class="fa fa-level-down"></i>
                 </a>
             ''' % i.id
@@ -103,6 +106,8 @@ def KPI_set_session(request):
         request.session['status'] = 5
     if int(status) == 6:
         request.session['status'] = 6
+    if int(status) == 7:
+        request.session['status'] = 7
     return HttpResponse(simplejson.dumps('OK'),content_type="application/json")
 
 @login_required
@@ -454,7 +459,8 @@ def KPI_table_detail_commit(request):
                 supervisor_email = vacation_user_table_orm.email
                 vacation_user_table_orm.has_KPI_commit += 1
                 if vacation_user_table_orm.KPI_commit_id:
-                    vacation_user_table_orm.KPI_commit_id += ',' + str(i.id)
+                    if str(i.id) not in vacation_user_table_orm.KPI_commit_id.split(','):
+                        vacation_user_table_orm.KPI_commit_id += ',' + str(i.id)
                 else:
                     vacation_user_table_orm.KPI_commit_id = str(i.id)
                 try:
@@ -465,7 +471,7 @@ def KPI_table_detail_commit(request):
                 except Exception,e:
                     print e
                     return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
-            else:
+            elif flag == '1':
 
                 vacation_user_table_orm = user_table.objects.get(name=name)
                 if vacation_user_table_orm.supervisor == vacation_user_table_orm.principal:
@@ -487,6 +493,16 @@ def KPI_table_detail_commit(request):
                 except Exception,e:
                     print e
                     return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
+            else:
+                i.status = 7
+                i.status_interface = '已完成'
+                try:
+                    i.save()
+                    return HttpResponse(simplejson.dumps({'code':0,'msg':u'确认成功'}),content_type="application/json")
+                except Exception,e:
+                    print e
+                    return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
+
 
 
 @login_required
@@ -528,28 +544,33 @@ def KPI_table_approve_data(request):
     else:
         KPI_commit_id_list = []
 
+    if  orm_KPI_commit_id.subordinate:
+        subordinate_list = orm_KPI_commit_id.subordinate.split(',')
+    else:
+        subordinate_list = []
+
     if  sSortDir_0 == 'asc':
         if sSearch == '':
-            result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list)).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list)).count()
+            result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).count()
         else:
-            result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list)).filter(Q(KPI_name__contains=sSearch) | \
+            result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
                                                     Q(final_score__contains=sSearch) | \
                                                     Q(status__contains=sSearch)) \
                                                     .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list)).filter(Q(KPI_name__contains=sSearch) | \
+            iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
                                                     Q(final_score__contains=sSearch) | \
                                                     Q(status__contains=sSearch)).count()
     else:
         if sSearch == '':
-            result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list)).count()
+            result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).count()
         else:
-            result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list)).filter(Q(KPI_name__contains=sSearch) | \
+            result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
                                                     Q(final_score__contains=sSearch) | \
                                                     Q(status__contains=sSearch)) \
                                                     .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list)).filter(Q(KPI_name__contains=sSearch) | \
+            iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
                                                     Q(final_score__contains=sSearch) | \
                                                     Q(status__contains=sSearch)).count()
 
@@ -557,7 +578,7 @@ def KPI_table_approve_data(request):
 
     for i in  result_data:
         export = '''
-                <a id="export" value="%s" class="btn btn-sm green">
+                <a id="export" value="%s" class="btn btn-sm green" onclick="export_excel()">
                     生成Excel文件 <i class="fa fa-level-down"></i>
                 </a>
             ''' % i.id
@@ -683,7 +704,7 @@ def KPI_table_detail_approve_commit(request):
                     if i.commit_now == request.user.first_name:
                         i.status = 6
                         i.commit_now = ''
-                        i.status_interface = '已完成'
+                        i.status_interface = '等待员工最终确认'
 
                         vacation_user_table_orm = user_table.objects.get(name=name)
                         email = vacation_user_table_orm.email
@@ -697,10 +718,34 @@ def KPI_table_detail_approve_commit(request):
                         try:
                             i.save()
                             vacation_user_table_orm.save()
-                            send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>您的绩效考评已完成，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/PKI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                            send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>您的绩效考评已完成全部打分，等待最终确认，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/PKI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                             return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
                         except Exception,e:
                             print e
                             return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
                     else:
                         return HttpResponse(simplejson.dumps({'code':0,'msg':'当前审核人不是您'}),content_type="application/json")
+
+@login_required
+def create_excel(requests):
+    _id = requests.POST.get('id')
+    KPI_table_orm = table.objects.get(id=_id)
+    user_table_orm = user_table.objects.get(name=KPI_table_orm.name)
+
+    name = user_table_orm.name
+    join_date = user_table_orm.join_date
+    supervisor = user_table_orm.supervisor
+    KPI_name = KPI_table_orm.KPI_name
+
+    try:
+        wb = load_workbook(filename = BASE_DIR + '/static/files/KPI_template.xlsx')
+        ws = wb.active
+        ws['B6'] = name
+        ws['F6'] = join_date
+        ws['B7'] = supervisor
+        ws['F7'] = KPI_name
+        wb.save(BASE_DIR + '/static/files/KPI/' + requests.user.username + '/KPI.xlsx')
+        return HttpResponse(simplejson.dumps({'code':0,'msg':u'生成成功'}),content_type="application/json")
+    except Exception,e:
+        print e
+        return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
