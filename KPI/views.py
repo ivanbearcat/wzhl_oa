@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse,HttpResponseRedirect
 from django.template import RequestContext
 from django.db.models.query_utils import Q
 from django.contrib.auth.decorators import login_required
@@ -12,6 +12,7 @@ from openpyxl import load_workbook
 import simplejson
 import xlsxwriter
 import datetime
+import os
 
 import sys
 reload(sys)
@@ -19,12 +20,24 @@ sys.setdefaultencoding('utf-8')
 
 @login_required
 def KPI_table(request):
+    KPI_conf_save = request.GET.get('KPI_conf_save')
+    if KPI_conf_save:
+        path = request.path.split('/')[1]
+        return render(request, 'KPI/KPI_table.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
+                                                     'path1':'KPI',
+                                                     'path2':path,
+                                                     'page_name1':u'绩效管理',
+                                                     'page_name2':u'绩效考评',
+                                                     'username':request.user.username,
+                                                     'KPI_conf_save':KPI_conf_save},
+                                                    context_instance=RequestContext(request))
     path = request.path.split('/')[1]
     return render(request, 'KPI/KPI_table.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                  'path1':'KPI',
                                                  'path2':path,
                                                  'page_name1':u'绩效管理',
-                                                 'page_name2':u'绩效考评',},
+                                                 'page_name2':u'绩效考评',
+                                                 'username':request.user.username},
                                                 context_instance=RequestContext(request))
 
 @login_required
@@ -37,7 +50,7 @@ def KPI_table_data(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['KPI_name','final_score','supervisor_comment','status','name','id']
+    sort = ['KPI_name','final_score','KPI_level','status_interface',None,'name','status','id']
 
     if  sSortDir_0 == 'asc':
         if sSearch == '':
@@ -68,18 +81,19 @@ def KPI_table_data(request):
 
     for i in  result_data:
         export = '''
-                <a id="export" value="%s" class="btn btn-sm green" onclick="export_excel()">
+                <a class="btn btn-sm green">
                     生成Excel文件 <i class="fa fa-level-down"></i>
                 </a>
-            ''' % i.id
+            '''.format(i.id)
         aaData.append({
                        '0':i.KPI_name,
                        '1':i.final_score,
-                       '2':i.status_interface,
-                       '3':export,
-                       '4':i.name,
-                       '5':i.status,
-                       '6':i.id
+                       '2':i.KPI_level,
+                       '3':i.status_interface,
+                       '4':export,
+                       '5':i.name,
+                       '6':i.status,
+                       '7':i.id
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
@@ -522,7 +536,8 @@ def KPI_table_approve(request):
                                                  'path1':'KPI',
                                                  'path2':path,
                                                  'page_name1':u'绩效管理',
-                                                 'page_name2':u'绩效考评',},
+                                                 'page_name2':u'绩效考评',
+                                                 'username':request.user.username},
                                                 context_instance=RequestContext(request))
 
 @login_required
@@ -535,61 +550,89 @@ def KPI_table_approve_data(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['KPI_name','final_score','supervisor_comment','status','name','id']
+    sort = ['name','KPI_name','final_score','final_score','KPI_level','status_interface',None,'id']
 
-    orm_KPI_commit_id = user_table.objects.get(name=request.user.first_name)
-    KPI_commit_id_list = orm_KPI_commit_id.KPI_commit_id.split(',')
-    if KPI_commit_id_list != [u'']:
-        KPI_commit_id_list = map(lambda x:int(x), KPI_commit_id_list)
-    else:
-        KPI_commit_id_list = []
-
-    if  orm_KPI_commit_id.subordinate:
-        subordinate_list = orm_KPI_commit_id.subordinate.split(',')
-    else:
-        subordinate_list = []
-
-    if  sSortDir_0 == 'asc':
-        if sSearch == '':
-            result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).count()
+    print request.user.has_perm('KPI.can_view_all')
+    if request.user.has_perm('KPI.can_view_all'):
+        if  sSortDir_0 == 'asc':
+            if sSearch == '':
+                result_data = table.objects.all().order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.all().count()
+            else:
+                result_data = table.objects.all().filter(Q(KPI_name__contains=sSearch) | \
+                                                        Q(final_score__contains=sSearch) | \
+                                                        Q(status__contains=sSearch)) \
+                                                        .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.all().filter(Q(KPI_name__contains=sSearch) | \
+                                                        Q(final_score__contains=sSearch) | \
+                                                        Q(status__contains=sSearch)).count()
         else:
-            result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
-                                                    Q(final_score__contains=sSearch) | \
-                                                    Q(status__contains=sSearch)) \
-                                                    .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
-                                                    Q(final_score__contains=sSearch) | \
-                                                    Q(status__contains=sSearch)).count()
+            if sSearch == '':
+                result_data = table.objects.all().order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.all().count()
+            else:
+                result_data = table.objects.all().filter(Q(KPI_name__contains=sSearch) | \
+                                                        Q(final_score__contains=sSearch) | \
+                                                        Q(status__contains=sSearch)) \
+                                                        .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.all().filter(Q(KPI_name__contains=sSearch) | \
+                                                        Q(final_score__contains=sSearch) | \
+                                                        Q(status__contains=sSearch)).count()
     else:
-        if sSearch == '':
-            result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).count()
+        orm_KPI_commit_id = user_table.objects.get(name=request.user.first_name)
+        KPI_commit_id_list = orm_KPI_commit_id.KPI_commit_id.split(',')
+        if KPI_commit_id_list != [u'']:
+            KPI_commit_id_list = map(lambda x:int(x), KPI_commit_id_list)
         else:
-            result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
-                                                    Q(final_score__contains=sSearch) | \
-                                                    Q(status__contains=sSearch)) \
-                                                    .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
-                                                    Q(final_score__contains=sSearch) | \
-                                                    Q(status__contains=sSearch)).count()
+            KPI_commit_id_list = []
+
+        if  orm_KPI_commit_id.subordinate:
+            subordinate_list = orm_KPI_commit_id.subordinate.split(',')
+        else:
+            subordinate_list = []
+
+        if  sSortDir_0 == 'asc':
+            if sSearch == '':
+                result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).count()
+            else:
+                result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
+                                                        Q(final_score__contains=sSearch) | \
+                                                        Q(status__contains=sSearch)) \
+                                                        .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
+                                                        Q(final_score__contains=sSearch) | \
+                                                        Q(status__contains=sSearch)).count()
+        else:
+            if sSearch == '':
+                result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).count()
+            else:
+                result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
+                                                        Q(final_score__contains=sSearch) | \
+                                                        Q(status__contains=sSearch)) \
+                                                        .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
+                                                        Q(final_score__contains=sSearch) | \
+                                                        Q(status__contains=sSearch)).count()
 
 
 
     for i in  result_data:
         export = '''
-                <a id="export" value="%s" class="btn btn-sm green" onclick="export_excel()">
+                <a class="btn btn-sm green"">
                     生成Excel文件 <i class="fa fa-level-down"></i>
                 </a>
-            ''' % i.id
+            '''
         aaData.append({
                        '0':i.name,
                        '1':i.KPI_name,
                        '2':i.final_score,
-                       '3':i.status_interface,
-                       '4':export,
-                       '5':i.status,
-                       '6':i.id
+                       '3':i.KPI_level,
+                       '4':i.status_interface,
+                       '5':export,
+                       '6':i.status,
+                       '7':i.id
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
@@ -731,21 +774,82 @@ def create_excel(requests):
     _id = requests.POST.get('id')
     KPI_table_orm = table.objects.get(id=_id)
     user_table_orm = user_table.objects.get(name=KPI_table_orm.name)
+    KPI_table_detail_orm_iter = table_detail.objects.filter(name=KPI_table_orm.name,KPI_name=KPI_table_orm.KPI_name)
+
+    if KPI_table_orm.status != 7:
+        return HttpResponse(simplejson.dumps({'code':1,'msg':'您的绩效未完成无法生成Excel'}),content_type="application/json")
 
     name = user_table_orm.name
     join_date = user_table_orm.join_date
     supervisor = user_table_orm.supervisor
     KPI_name = KPI_table_orm.KPI_name
+    final_score = KPI_table_orm.final_score
+    KPI_level = KPI_table_orm.KPI_level
+    self_comment = KPI_table_orm.self_comment
+    supervisor_comment = KPI_table_orm.supervisor_comment
+    principal_comment = KPI_table_orm.principal_comment
+
+    objective_list = []
+    for KPI_detail in KPI_table_detail_orm_iter:
+        objective_list.append({'objective':KPI_detail.objective,'description':KPI_detail.description,
+                               'weight':KPI_detail.weight,'self_report_value':KPI_detail.self_report_value,
+                               'supervisor_report_value':KPI_detail.supervisor_report_value,
+                               'principal_report_value':KPI_detail.principal_report_value})
 
     try:
+        save_dir = BASE_DIR + '/static/files/KPI/' + requests.user.username
+        if not os.path.exists(save_dir):
+            os.makedirs(save_dir)
         wb = load_workbook(filename = BASE_DIR + '/static/files/KPI_template.xlsx')
         ws = wb.active
         ws['B6'] = name
         ws['F6'] = join_date
         ws['B7'] = supervisor
         ws['F7'] = KPI_name
-        wb.save(BASE_DIR + '/static/files/KPI/' + requests.user.username + '/KPI.xlsx')
+
+        row_num = '10'
+        for objective in objective_list:
+            ws['B'+row_num] = objective['objective']
+            ws['C'+row_num] = objective['description']
+            ws['E'+row_num] = str(objective['weight']) + '%'
+            ws['F'+row_num] = objective['self_report_value']
+            ws['G'+row_num] = objective['supervisor_report_value']
+            ws['H'+row_num] = objective['principal_report_value']
+            row_num = str(int(row_num) + 2)
+
+        ws['H20'] = final_score
+        ws['H21'] = KPI_level
+        ws['B22'] = self_comment
+        ws['B23'] = supervisor_comment
+        ws['B24'] = principal_comment
+
+        wb.save(save_dir + '/KPI.xlsx')
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'生成成功'}),content_type="application/json")
     except Exception,e:
         print e
         return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+@login_required
+def KPI_upload_conf(requests):
+    KPI_conf = requests.FILES.get('KPI_conf')
+    try:
+        with open(BASE_DIR+'/static/files/KPI_conf','w') as f:
+            for data in KPI_conf.chunks():
+                f.write(data.decode('gbk').encode('utf8'))
+
+        with open(BASE_DIR+'/static/files/KPI_conf') as f:
+            KPI_name = f.readline().strip()
+            line = f.readline()
+            while line:
+                line_list = line.split()
+                orm = table.objects.filter(name=line_list[0]).filter(KPI_name=KPI_name)
+                if len(orm) == 1:
+                    for i in orm:
+                        i.KPI_level = line_list[1]
+                        i.save()
+                line = f.readline()
+        return HttpResponseRedirect('/KPI_table/?KPI_conf_save=1')
+    except Exception,e:
+        print e
+        return HttpResponseRedirect('/KPI_table/?KPI_conf_save=2')
+
