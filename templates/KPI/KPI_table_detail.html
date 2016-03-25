@@ -390,11 +390,13 @@ $(document).ready(function () {
         for (var i in aData){
             sum += aData[i][2]
         {% if request.session.status == 3 %}
+            {% if request.COOKIES.flag != '0' %}
             if (aData[i][3] == '0'){
                 oTT.fnSelectNone()
                 toastr.error('请完成自我评分')
                 return
             }
+            {% endif %}
         {% endif %}
         }
         oTT.fnSelectNone()
@@ -478,6 +480,7 @@ $(document).ready(function () {
             },
         {% endif %}
         {% if request.session.status == 3 %}
+            {% if request.COOKIES.flag != '0' %}
             {
                 "sExtends": 'text',
                 "sButtonText": '<font color="white">评分</font><i class="fa fa-pencil"></i>',
@@ -486,6 +489,7 @@ $(document).ready(function () {
                     grade_()
                 }
             },
+                {% endif %}
         {% endif %}
         ]
     loaddata()
@@ -616,11 +620,7 @@ function add_(){
         return
     }
 
-    $.cookie('flag',0,{ expires: 1 })
-    if ($.cookie('flag') == 0) {
-        $('#ToolTables_datatables_3')[0].style.display = 'none'
-    }
-
+    $('id').val('')
     $('#objective').val('')
     $('#description').val('')
     $("#slider-snap-inc").slider({
@@ -639,11 +639,6 @@ function add_(){
 }
 
 function edit_(){
-    $.cookie('flag',0,{ expires: 1 })
-    if ($.cookie('flag') == 0) {
-        $('#ToolTables_datatables_3')[0].style.display = 'none'
-    }
-
     $('#grade').attr('disabled',true)
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
@@ -713,6 +708,14 @@ $('#save').on('click',function() {
             if (d.code == 0) {
                 toastr.success(d.msg)
                 $('#datatables').dataTable().fnDraw()
+                if (grade_operation != 1){
+                    $.cookie('flag', 0, {expires: 1})
+                    if ($.cookie('flag') == 0) {
+                        if ($('#ToolTables_datatables_3') == '') {
+                            $('#ToolTables_datatables_3')[0].style.display = 'none'
+                        }
+                    }
+                }
             } else {
                 toastr.error(d.msg)
             }
@@ -723,11 +726,6 @@ $('#save').on('click',function() {
 })
 
 function del_() {
-    $.cookie('flag',0,{ expires: 1 })
-    if ($.cookie('flag') == 0) {
-        $('#ToolTables_datatables_3')[0].style.display = 'none'
-    }
-
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
@@ -737,6 +735,12 @@ function del_() {
             if (d.code == 0) {
                 toastr.success(d.msg)
                 $('#datatables').dataTable().fnDraw()
+                $.cookie('flag',0,{ expires: 1 })
+                if ($.cookie('flag') == 0) {
+                    if ($('#ToolTables_datatables_3') == '') {
+                        $('#ToolTables_datatables_3')[0].style.display = 'none'
+                    }
+                }
             } else {
                 toastr.error(d.msg)
             }
@@ -781,6 +785,7 @@ function grade_(){
         $("#slider-snap-inc-amount").text(weight + "%");
         $('#grade').val(grade)
         $('#id').val(id)
+        grade_operation = 1
         $("#myModal").modal('show')
     }
 }
