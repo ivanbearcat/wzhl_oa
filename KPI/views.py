@@ -141,25 +141,31 @@ def KPI_table_export_all(request):
             for j in KPI_table_orm:
                 # if j.KPI_name[4] == 'Q':
                     # flag = 1
-                title = [u'姓名',u'部门',u'上级主管',u'部门负责人',u'入职时间',u'{0}Q1'.format(year),
-                         u'{0}Q2'.format(year),u'{0}Q3'.format(year),u'{0}Q4'.format(year)]
+                title = [u'姓名',u'部门',u'上级主管',u'部门负责人',u'入职时间',u'{0}Q1分数'.format(year),
+                         u'{0}Q1等级'.format(year),u'{0}Q2分数'.format(year),u'{0}Q2等级'.format(year),
+                         u'{0}Q3分数'.format(year),u'{0}Q3等级'.format(year),u'{0}Q4分数'.format(year),
+                         u'{0}Q4等级'.format(year)]
                 worksheet1.write_row('B2',title)
                 row = [i.name,i.department,i.supervisor,i.principal,str(i.join_date).split('+')[0]]
                 if j.KPI_name[0:4] == year:
                     if j.KPI_name[-1] == '1':
                         row.append(j.final_score)
+                        row.append(j.KPI_level)
                     else:
                         row.append('')
                     if j.KPI_name[-1] == '2':
                         row.append(j.final_score)
+                        row.append(j.KPI_level)
                     else:
                         row.append('')
                     if j.KPI_name[-1] == '3':
                         row.append(j.final_score)
+                        row.append(j.KPI_level)
                     else:
                         row.append('')
                     if j.KPI_name[-1] == '4':
                         row.append(j.final_score)
+                        row.append(j.KPI_level)
                     else:
                         row.append('')
                 # else:
@@ -459,6 +465,7 @@ def KPI_table_detail_commit(request):
     KPI_name = request.POST.get('KPI_name')
     name = request.POST.get('name')
     flag = request.POST.get('flag')
+    print flag
 
     orm = table.objects.filter(KPI_name=KPI_name).filter(name=name)
     if len(orm):
@@ -486,7 +493,11 @@ def KPI_table_detail_commit(request):
                     print e
                     return HttpResponse(simplejson.dumps({'code':0,'msg':str(e)}),content_type="application/json")
             elif flag == '1':
-
+                KPI_table_orm = table.objects.filter(name=name).filter(KPI_name=KPI_name)
+                if len(KPI_table_orm) == 1:
+                    for i in KPI_table_orm:
+                        if i.self_comment == '':
+                            return HttpResponse(simplejson.dumps({'code':1,'msg':u'请填写自我评价'}),content_type="application/json")
                 vacation_user_table_orm = user_table.objects.get(name=name)
                 if vacation_user_table_orm.supervisor == vacation_user_table_orm.principal:
                     i.status = 5
@@ -552,7 +563,6 @@ def KPI_table_approve_data(request):
     aaData = []
     sort = ['name','KPI_name','final_score','final_score','KPI_level','status_interface',None,'id']
 
-    print request.user.has_perm('KPI.can_view_all')
     if request.user.has_perm('KPI.can_view_all'):
         if  sSortDir_0 == 'asc':
             if sSearch == '':
@@ -652,10 +662,12 @@ def KPI_table_detail_approve(request):
             self_comment = i.self_comment.replace('\n','\\n')
             supervisor_comment = i.supervisor_comment.replace('\n','\\n')
             principal_comment = i.principal_comment.replace('\n','\\n')
+            commit_now = i.commit_now
     else:
         self_comment = ''
         supervisor_comment = ''
         principal_comment = ''
+        commit_now = ""
     # try:
     #     if status:pass
     # except Exception:
@@ -669,7 +681,8 @@ def KPI_table_detail_approve(request):
                                                  'supervisor_comment':supervisor_comment,
                                                  'principal_comment':principal_comment,
                                                  'KPI_name':KPI_name,
-                                                 'name':name},
+                                                 'name':name,
+                                                 'commit_now':commit_now},
                                                 context_instance=RequestContext(request))
 
 @login_required

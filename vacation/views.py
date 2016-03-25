@@ -1027,6 +1027,9 @@ def vacation_export_excel(request):
 @login_required
 def refresh_subordinate(request):
     for i in user_table.objects.all():
+        i.subordinate = ''
+        i.save()
+    for i in user_table.objects.all():
         if i.name != i.principal:
             principal_orm = user_table.objects.get(name=i.principal)
             if principal_orm.subordinate:

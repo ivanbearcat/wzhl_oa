@@ -14,6 +14,27 @@
 {% block body %}
 <div class="row">
     <div class="col-md-12">
+    {% if request.session.KPI_can_view %}
+        <div class="col-md-4">
+            <div style="width:113px;float:left">
+                <input placeholder="请输入年份" id="year" class="col-md-3 form-control">
+                <a class="btn btn-sm green" id="export_all">
+                    生成Excel文件 <i class="fa fa-level-down"></i>
+                </a>
+            </div>
+            <form action="/KPI_upload_conf/" enctype="multipart/form-data" method="post">
+                <div class="col-md-6" style="float:right;margin-top: 3%">
+                    <a id="KPI_conf_button" class="btn yellow" style="position:relative;width:100px;height:30px;display:inline-block;overflow:hidden;float:left">浏览...
+                        <input type="file" id="KPI_conf" name="KPI_conf" style="position:absolute;z-index:1;left:0;top:0;opacity:0;">
+                    </a>
+                    <button class="btn btn-sm blue" type="submit" id="upload_conf" style="width:100px;height:30px;float:right">
+                        上传文件 <i class="fa fa-share"></i>
+                    </button>
+                    <a id="KPI_conf_show" style="float:left">请选择文件</a>
+                </div>
+            </form>
+        </div>
+    {% endif %}
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
@@ -70,6 +91,58 @@
     </div>
 </div>
 <!--/datatables-->
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/KPI_year.xlsx">下载Excel文件</a></h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/KPI/{{ username }}/KPI.xlsx">下载Excel文件</a></h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 {% endblock %}
 
 {% block js %}
@@ -98,7 +171,16 @@ $(document).ready(function () {
     aButtons = []
     loaddata()
 
+    $('#KPI_conf_button').on('change',function(){
+        $('#KPI_conf_show').html($('#KPI_conf').val())
+    })
 
+    if ('{{ KPI_conf_save }}' == 1){
+        toastr.success('保存成功')
+    }
+    if ('{{ KPI_conf_save }}' == 2){
+        toastr.error('保存失败')
+    }
 });
 
 function loaddata() {
@@ -155,13 +237,13 @@ function loaddata() {
 
         },
         "fnInitComplete": function (oSettings, json) {
-            $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
+            $('input[type=checkbox],input[type=radio],input[type=file][name!=KPI_conf]').uniform()
         },
         "fnDrawCallback": function (oSettings) {
-            $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
+            $('input[type=checkbox],input[type=radio],input[type=file][name!=KPI_conf]').uniform()
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            if(aData[6] == 1 || aData[6] == 2 || aData[6] == 3 || aData[6] == 4 || aData[6] == 5){
+            if(aData[6] == 1 || aData[6] == 2 || aData[6] == 3 || aData[6] == 4 || aData[6] == 5 || aData[6] == 6){
                 $('td:eq(4)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp'+aData[4]+'</div>')
             }else if(aData[4] == '已完成'){
                 $('td:eq(4)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp'+aData[4]+'</div>')
@@ -199,8 +281,22 @@ function loaddata() {
     });
 }
 
-function export_excel(){
-    $('#myModal2').modal('show')
-}
+$('#export_all').on('click',function(){
+    var year = $('#year').val()
+    if (year != ''){
+        showAjaxLoad()
+        $.post('/KPI_table_export_all/', {year:year}, function (d) {
+            hideAjaxLoad()
+            if (d.code == 0) {
+                toastr.success(d.msg)
+                $("#myModal1").modal('show')
+            } else {
+                toastr.error(d.msg)
+            }
+        })
+    }else{
+        toastr.error('年份不能为空')
+    }
+})
 </script>
 {% endblock %}
