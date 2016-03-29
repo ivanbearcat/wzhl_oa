@@ -18,7 +18,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'wzhl_test',
+        'NAME': 'wzhl',
 	    'USER': 'admin',
 	    'PASSWORD': '!@#rp1qaz@WSX',
 	    'HOST': '127.0.0.1',
