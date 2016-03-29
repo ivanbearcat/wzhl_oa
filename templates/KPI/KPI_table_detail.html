@@ -109,7 +109,7 @@
                 <div class="form-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea id="self_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
+                            <textarea id="self_comment" placeholder="在此输入评价内容" rows="{{ self_comment_row }}" maxlength="" class="form-control" ></textarea>
                         </div>
                     </div>
                 </div>
@@ -133,7 +133,7 @@
                 <div class="form-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea id="supervisor_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
+                            <textarea id="supervisor_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" ></textarea>
                         </div>
                     </div>
                 </div>
@@ -157,7 +157,7 @@
                 <div class="form-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea id="principal_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
+                            <textarea id="principal_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
@@ -179,48 +179,17 @@
             <div class="modal-body form">
                 <form action="#" id="form" class="form-horizontal form-row-seperated">
                     <div class="form-body">
-                        <div class="form-group">
+                        <div class="form-group last">
                             <label class="col-sm-4 control-label">评估内容</label>
-                            <div class="col-sm-8">
-                                <div class="input-group">
-                                    <span class="twitter-typeahead"
-                                          style="position: relative; display: inline-block;">
-                                        <input type="text" class="form-control tt-hint"
-                                               disabled="" autocomplete="off" spellcheck="false"
-                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                        <input type="text" id="objective"
-                                               name="typeahead_example_modal_1"
-                                               class="form-control tt-input" autocomplete="off"
-                                               spellcheck="false" dir="auto"
-                                               style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
-                                            aria-hidden="true"
-                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                                            class="tt-dropdown-menu"
-                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
-                                            class="tt-dataset-1"></div></span></span>
-                                    </div>
-                                </div>
+                            <div class="col-sm-6">
+                                <textarea class="form-control" id='objective' style="width: 290px" rows="2"></textarea>
                             </div>
-                        <div class="form-group">
+                        </div>
+                        <div class="form-group last">
                             <label class="col-sm-4 control-label">评估标准</label>
-                            <div class="col-sm-8">
-                            <div class="input-group">
-                                <span class="twitter-typeahead"
-                                      style="position: relative; display: inline-block;">
-                                    <input type="text" class="form-control tt-hint"
-                                           disabled="" autocomplete="off" spellcheck="false"
-                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                    <input type="text" id="description"
-                                           name="typeahead_example_modal_1"
-                                           class="form-control tt-input" autocomplete="off"
-                                           spellcheck="false" dir="auto"
-                                           style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
-                                        aria-hidden="true"
-                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                                        class="tt-dropdown-menu"
-                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
-                                        class="tt-dataset-1"></div></span></span>
-                                </div>
+
+                            <div class="col-sm-6">
+                                <textarea class="form-control" id='description' style="width: 290px" rows="2"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
@@ -266,7 +235,7 @@
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>您确定要提交吗</h4></label>
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4 id="score_html">您确定要提交吗</h4></label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="twitter-typeahead"
@@ -390,13 +359,13 @@ $(document).ready(function () {
         for (var i in aData){
             sum += aData[i][2]
         {% if request.session.status == 3 %}
-            {% if request.COOKIES.flag != '0' %}
-            if (aData[i][3] == '0'){
-                oTT.fnSelectNone()
-                toastr.error('请完成自我评分')
-                return
+            if ($.cookie('flag') != 0) {
+                if (aData[i][3] == '0') {
+                    oTT.fnSelectNone()
+                    toastr.error('请完成自我评分')
+                    return
+                }
             }
-            {% endif %}
         {% endif %}
         }
         oTT.fnSelectNone()
@@ -409,7 +378,7 @@ $(document).ready(function () {
 
     $('#commit_button').on('click',function(){
     {% if request.session.status == 3 %}
-        if ('{{ request.COOKIES.flag }}' == 0){
+        if ($.cookie('flag') == 0){
             flag = 0
         }
 
@@ -544,7 +513,7 @@ function loaddata() {
 
         ],
         "aaSorting": [
-            [0, 'desc']
+            [11, 'asc']
         ],
         "oLanguage": {
             "sProcessing": "正在加载数据...",
@@ -599,6 +568,9 @@ function total_score(){
         principal_total_score += aData[i][8]
     }
     $('#self_total_score').val(round(self_total_score,2))
+    {% if request.session.status == 3 %}
+        $('#score_html').html('您确定要提交吗<br><h5>您打的总分为：<span style="color:green">' + round(self_total_score,2)+'</span></h5>')
+    {% endif %}
     $('#supervisor_total_score').val(round(supervisor_total_score,2))
     $('#principal_total_score').val(round(principal_total_score,2))
 }
@@ -611,6 +583,11 @@ function round(v,e){
 }
 
 function add_(){
+    $('#id').val('')
+    grade_operation = 0
+    $('#objective').attr('disabled',false)
+    $('#description').attr('disabled',false)
+    $('#grade').attr('disabled',true)
     var oTT = TableTools.fnGetInstance('datatables');
     oTT.fnSelectAll()
     var aData = oTT.fnGetSelectedData();
@@ -639,6 +616,9 @@ function add_(){
 }
 
 function edit_(){
+    grade_operation = 0
+    $('#objective').attr('disabled',false)
+    $('#description').attr('disabled',false)
     $('#grade').attr('disabled',true)
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
@@ -711,7 +691,7 @@ $('#save').on('click',function() {
                 if (grade_operation != 1){
                     $.cookie('flag', 0, {expires: 1})
                     if ($.cookie('flag') == 0) {
-                        if ($('#ToolTables_datatables_3') == '') {
+                        if ($('#ToolTables_datatables_3').length > 0) {
                             $('#ToolTables_datatables_3')[0].style.display = 'none'
                         }
                     }
@@ -737,7 +717,7 @@ function del_() {
                 $('#datatables').dataTable().fnDraw()
                 $.cookie('flag',0,{ expires: 1 })
                 if ($.cookie('flag') == 0) {
-                    if ($('#ToolTables_datatables_3') == '') {
+                    if ($('#ToolTables_datatables_3').length > 0) {
                         $('#ToolTables_datatables_3')[0].style.display = 'none'
                     }
                 }

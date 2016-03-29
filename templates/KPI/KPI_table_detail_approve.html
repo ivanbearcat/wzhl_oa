@@ -116,7 +116,7 @@
                 <div class="form-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea id="self_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
+                            <textarea id="self_comment" placeholder="在此输入评价内容" rows="{{ self_comment_row }}" maxlength="" class="form-control" ></textarea>
                         </div>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
                 <div class="form-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea id="supervisor_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
+                            <textarea id="supervisor_comment" placeholder="在此输入评价内容" rows="{{ supervisor_comment_row }}" maxlength="" class="form-control" ></textarea>
                         </div>
                     </div>
                 </div>
@@ -164,7 +164,7 @@
                 <div class="form-body">
                     <div class="form-group">
                         <div class="col-md-12">
-                            <textarea id="principal_comment" placeholder="在此输入评价内容" rows="3" maxlength="" class="form-control" id="maxlength_textarea"></textarea>
+                            <textarea id="principal_comment" placeholder="在此输入评价内容" rows="{{ principal_comment_row }}" maxlength="" class="form-control"></textarea>
                         </div>
                     </div>
                 </div>
@@ -270,7 +270,7 @@
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>您确定要提交吗</h4></label>
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4 id="score_html">您确定要提交吗</h4></label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="twitter-typeahead"
@@ -596,7 +596,7 @@ function loaddata() {
 
         ],
         "aaSorting": [
-            [0, 'desc']
+            [11, 'asc']
         ],
         "oLanguage": {
             "sProcessing": "正在加载数据...",
@@ -616,6 +616,7 @@ function loaddata() {
         },
         "fnInitComplete": function (oSettings, json) {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
+            total_score()
         },
         "fnDrawCallback": function (oSettings) {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
@@ -653,6 +654,12 @@ function total_score(){
     $('#self_total_score').val(round(self_total_score,2))
     $('#supervisor_total_score').val(round(supervisor_total_score,2))
     $('#principal_total_score').val(round(principal_total_score,2))
+    {% if request.session.status == 4 %}
+        $('#score_html').html('您确定要提交吗<br><h5>您打的总分为：<span style="color:green">' + round(supervisor_total_score,2)+'</span></h5>')
+    {% endif %}
+    {% if request.session.status == 5 %}
+        $('#score_html').html('您确定要提交吗<br><h5>您打的总分为：<span style="color:green">' + round(principal_total_score,2)+'</span></h5>')
+    {% endif %}
 }
 
 function round(v,e){

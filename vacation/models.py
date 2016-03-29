@@ -44,6 +44,7 @@ class state(models.Model):
     state_interface = models.CharField(verbose_name='状态显示', max_length=30, blank=False)
     state = models.PositiveSmallIntegerField(verbose_name='状态', max_length=1)
     approve_now = models.CharField(verbose_name='当前审批人', max_length=30, blank=False)
+    real_days = models.FloatField(verbose_name='请假天数', max_length=10, blank=False)
 
 class operation_log(models.Model):
     name = models.CharField(verbose_name='姓名', max_length=30, blank=False)
