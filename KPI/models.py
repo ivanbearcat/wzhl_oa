@@ -21,8 +21,8 @@ class table(models.Model):
 class table_detail(models.Model):
     KPI_name = models.CharField(verbose_name='绩效考评名称', max_length=30, blank=False)
     name = models.CharField(verbose_name='被考评人名称', max_length=30, blank=False)
-    objective = models.CharField(verbose_name='绩效目标', max_length=30, blank=False)
-    description = models.CharField(verbose_name='描述', max_length=128, blank=False)
+    objective = models.CharField(verbose_name='绩效目标', max_length=256, blank=False)
+    description = models.CharField(verbose_name='描述', max_length=256, blank=False)
     weight = models.IntegerField(verbose_name='权重', max_length=10, blank=False)
     self_report_value = models.FloatField(verbose_name='自评分值', max_length=10, blank=True)
     self_report_score = models.FloatField(verbose_name='自评分数', max_length=10, blank=True)
