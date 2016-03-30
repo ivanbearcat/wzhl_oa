@@ -16,20 +16,12 @@ def login_auth(request):
     if authed and authed.is_active:
         auth.login(request,authed)
 
-        if request.user.has_perm('vacation.can_view'):
-            request.session['vacation_can_view'] = 1
-        else:
-            request.session['vacation_can_view'] = 0
+        for perm in ['vacation.can_view','assets.can_view','KPI.can_view','personal_information.can_view']:
+            if request.user.has_perm(perm):
+                request.session['_'.join(perm.split('.'))] = 1
+            else:
+                request.session['_'.join(perm.split('.'))] = 0
 
-        if request.user.has_perm('assets.can_view'):
-            request.session['assets_can_view'] = 1
-        else:
-            request.session['assets_can_view'] = 0
-
-        if request.user.has_perm('KPI.can_view'):
-            request.session['KPI_can_view'] = 1
-        else:
-            request.session['KPI_can_view'] = 0
         # if globals().has_key('next_next') and not next_next == None:
         #     logger.info('<%s> login in sucess.' % user_auth)
         #     return HttpResponseRedirect(next_next)

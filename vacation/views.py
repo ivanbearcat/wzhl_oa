@@ -355,71 +355,113 @@ def vacation_apply_save(request):
     end = request.POST.get('end')
     half_day = request.POST.get('half_day')
 
-    try:
-        if begin == end:
-            days = 1
-            vacation_date = begin
-            if half_day:
-                days = 0.5
-                vacation_date = '%s %s' % (vacation_date,half_day)
+    # try:
+    if begin == end:
+        days = 1
+        vacation_date = begin
+        if half_day:
+            days = 0.5
+            vacation_date = '%s %s' % (vacation_date,half_day)
+    else:
+        begin_list = begin.split('-')
+        begin_datetime = datetime.date(int(begin_list[0]),int(begin_list[1]),int(begin_list[2]))
+        end_list = end.split('-')
+        end_datetime = datetime.date(int(end_list[0]),int(end_list[1]),int(end_list[2]))
+        days = (end_datetime - begin_datetime).days + 1
+        vacation_date = begin + '&nbsp->&nbsp' + end
+
+    orm_fetch_supervisor = user_table.objects.get(name=request.user.first_name)
+
+    if orm_fetch_supervisor.supervisor == '/':
+        return HttpResponse(simplejson.dumps({'code':0,'msg':u'您是部门负责人无需申请'}),content_type="application/json")
+
+    if type == '法定年假':
+        if days > orm_fetch_supervisor.statutory_annual_leave_available:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的法定年假剩余不足'}),content_type="application/json")
+        orm_fetch_supervisor.statutory_annual_leave_available -= days
+        orm_fetch_supervisor.statutory_annual_leave_used += days
+    if type == '公司年假':
+        if days > orm_fetch_supervisor.company_annual_leave_available:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的公司年假剩余不足'}),content_type="application/json")
+        orm_fetch_supervisor.company_annual_leave_available -= days
+        orm_fetch_supervisor.company_annual_leave_used += days
+    if type == '季度假':
+        if days > orm_fetch_supervisor.seasons_leave_available:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的季度假剩余不足'}),content_type="application/json")
+        orm_fetch_supervisor.seasons_leave_available -= days
+        orm_fetch_supervisor.seasons_leave_used += days
+    if type == '调休':
+        if days > orm_fetch_supervisor.leave_in_lieu:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的调休剩余不足'}),content_type="application/json")
+        orm_fetch_supervisor.leave_in_lieu -= days
+
+    orm_fetch_supervisor.save()
+
+    approve_now = orm_fetch_supervisor.supervisor
+    state_interface = u'等待 ' + orm_fetch_supervisor.supervisor + u' 审批'
+    orm_supervisor = user_table.objects.get(name=approve_now)
+    supervisor_email = orm_supervisor.email
+
+    orm = state(name=request.user.first_name,type=type,reason=reason,vacation_date=vacation_date,days=days,
+                state_interface=state_interface,state=1,approve_now=approve_now,real_days=0)
+
+    log_info = '<b>%s</b> 申请了 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,type,vacation_date,state_interface)
+    orm_log = operation_log(name=request.user.first_name,operation=log_info)
+
+    orm_alert = user_table.objects.get(name=approve_now)
+    orm_alert.has_approve += 1
+
+    orm_log.save()
+    orm_alert.save()
+    orm.save()
+
+    def add_entry_group_reduce_func(front_time,back_time):
+        #将刚才的结构进一步处理成为,以自己的datetime为key，[[所有组成员的datetime列表],所有组成员的id以逗号隔开,请假天数,自己的id]为value
+        if all_entry_dict[back_time][2] == 0.5:
+            all_entry_dict[back_time][2] = 1
+        if ((back_time + datetime.timedelta(all_entry_dict[back_time][2] - 1)) - front_time).days < 2:
+            all_entry_dict[front_time][0] += all_entry_dict[back_time][0]
+            all_entry_dict[back_time][0] = all_entry_dict[front_time][0]
+            all_entry_dict[back_time][1] += ',' + all_entry_dict[front_time][1]
+            for i in all_entry_dict[front_time][0]:
+                all_entry_dict[i][1] = all_entry_dict[back_time][1]
+        return back_time
+
+    #以自己的datetime为key，[[自己的datetime],自己的id,请假天数,自己的id]为value，这样的结构存入字典，交给reduce处理
+    state_orm = state.objects.filter(name=request.user.first_name).exclude(type='加班')
+    all_entry_dict = {}
+    for entry in state_orm:
+        date = entry.vacation_date.split('&nbsp')[0].split()
+        date_list = date[0].split('-')
+        if len(date) > 1:
+            if date[1] == '10:00-15:00':
+                date_datetime = datetime.datetime(int(date_list[0]),int(date_list[1]),int(date_list[2]),1)
+            if date[1] == '15:00-19:00':
+                date_datetime = datetime.datetime(int(date_list[0]),int(date_list[1]),int(date_list[2]),2)
         else:
-            begin_list = begin.split('-')
-            begin_datetime = datetime.date(int(begin_list[0]),int(begin_list[1]),int(begin_list[2]))
-            end_list = end.split('-')
-            end_datetime = datetime.date(int(end_list[0]),int(end_list[1]),int(end_list[2]))
-            days = (end_datetime - begin_datetime).days + 1
-            vacation_date = begin + '&nbsp->&nbsp' + end
+            date_datetime = datetime.datetime(int(date_list[0]),int(date_list[1]),int(date_list[2]),0)
+        all_entry_dict[date_datetime] = [[date_datetime],str(entry.id),entry.days,str(entry.id)]
+    from pprint import pprint
+    pprint(sorted(all_entry_dict.keys()))
+    reduce(add_entry_group_reduce_func,sorted(all_entry_dict.keys()))
+    print
+    pprint(all_entry_dict)
+    #根据刚才的数据结构，计算出每个id的real_days
+    for entry in all_entry_dict.values():
+        orm_iter = state.objects.filter(id__in=entry[1].split(','))
+        real_days = 0
+        for orm in orm_iter:
+            real_days += orm.days
 
-        orm_fetch_supervisor = user_table.objects.get(name=request.user.first_name)
-
-        if orm_fetch_supervisor.supervisor == '/':
-            return HttpResponse(simplejson.dumps({'code':0,'msg':u'您是部门负责人无需申请'}),content_type="application/json")
-
-        if type == '法定年假':
-            if days > orm_fetch_supervisor.statutory_annual_leave_available:
-                return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的法定年假剩余不足'}),content_type="application/json")
-            orm_fetch_supervisor.statutory_annual_leave_available -= days
-            orm_fetch_supervisor.statutory_annual_leave_used += days
-        if type == '公司年假':
-            if days > orm_fetch_supervisor.company_annual_leave_available:
-                return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的公司年假剩余不足'}),content_type="application/json")
-            orm_fetch_supervisor.company_annual_leave_available -= days
-            orm_fetch_supervisor.company_annual_leave_used += days
-        if type == '季度假':
-            if days > orm_fetch_supervisor.seasons_leave_available:
-                return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的季度假剩余不足'}),content_type="application/json")
-            orm_fetch_supervisor.seasons_leave_available -= days
-            orm_fetch_supervisor.seasons_leave_used += days
-        if type == '调休':
-            if days > orm_fetch_supervisor.leave_in_lieu:
-                return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的调休剩余不足'}),content_type="application/json")
-            orm_fetch_supervisor.leave_in_lieu -= days
-
-        orm_fetch_supervisor.save()
-
-        approve_now = orm_fetch_supervisor.supervisor
-        state_interface = u'等待 ' + orm_fetch_supervisor.supervisor + u' 审批'
-        orm_supervisor = user_table.objects.get(name=approve_now)
-        supervisor_email = orm_supervisor.email
-
-        orm = state(name=request.user.first_name,type=type,reason=reason,vacation_date=vacation_date,days=days,
-                    state_interface=state_interface,state=1,approve_now=approve_now)
-
-        log_info = '<b>%s</b> 申请了 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,type,vacation_date,state_interface)
-        orm_log = operation_log(name=request.user.first_name,operation=log_info)
-
-        orm_alert = user_table.objects.get(name=approve_now)
-        orm_alert.has_approve += 1
-
-        orm_log.save()
-        orm_alert.save()
+        orm = state.objects.get(id=entry[3])
+        orm.real_days = real_days
         orm.save()
 
-        send_mail(to_addr=supervisor_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
-        return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
-    except Exception,e:
-        print e
-        return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+    send_mail(to_addr=supervisor_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+    return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
+    # except Exception,e:
+    #     print e
+    #     return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
 
 @login_required
 def vacation_apply_del(request):
