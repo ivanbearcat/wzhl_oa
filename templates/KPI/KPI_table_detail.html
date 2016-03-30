@@ -624,7 +624,13 @@ function edit_(){
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
         var objective = aData[0][0];
+        objective = objective.split('<br>')
+        objective = objective.join('\n')
+        objective = objective.replace(/&nbsp/g,' ')
         var description = aData[0][1];
+        description = description.split('<br>')
+        description = description.join('\n')
+        description = description.replace(/&nbsp/g,' ')
         var weight = aData[0][2];
         var grade = 0;
     {% if request.session.status == 3 %}
