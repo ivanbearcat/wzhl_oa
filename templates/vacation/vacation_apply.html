@@ -9,6 +9,7 @@
 <link rel="stylesheet" type="text/css" href="/static/assets/plugins/bootstrap-select/bootstrap-select.min.css"/>
 <link rel="stylesheet" type="text/css" href="/static/assets/plugins/jquery-multi-select/css/multi-select.css"/>
 <link rel="stylesheet" type="text/css" href="/static/assets/plugins/bootstrap-daterangepicker/daterangepicker-bs3.css" />
+<link rel="stylesheet" type="text/css" href="/static/assets/plugins/bootstrap-datepicker/css/datepicker.css"/>
 
 
 {% endblock %}
@@ -131,7 +132,7 @@
         <!-- END EXAMPLE TABLE PORTLET-->
     </div>
 
-    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -217,7 +218,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -244,7 +245,7 @@
         </div>
     </div>
 </div>
-<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal3" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
@@ -307,8 +308,8 @@
 <script type="text/javascript" src="/static/assets/plugins/data-tables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="/static/assets/plugins/data-tables/DT_bootstrap.js"></script>
 
-<!--<script src="/static/assets/plugins/context.js"></script>-->
-<!--<script src="/static/assets/plugins/jstree/dist/jstree.min.js"></script>-->
+<script src="/static/assets/plugins/context.js"></script>
+<script src="/static/assets/plugins/jstree/dist/jstree.min.js"></script>
 <script src="/static/assets/plugins/holder.js"></script>
 <script src="/static/assets/plugins/stilearn-base.js"></script>
 <script type="text/javascript" src="/static/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
@@ -316,8 +317,9 @@
 <script src="/static/assets/plugins/select2/select2.js"></script>
 <script src="/static/assets/plugins/datatables/extras/TableTools.min.js"></script>
 <script src="/static/assets/scripts/custom/table-managed.js"></script>
-<script type="text/javascript" src="/static/assets/plugins/bootstrap-daterangepicker/moment.min.js"></script>
+{#<script type="text/javascript" src="/static/assets/plugins/bootstrap-daterangepicker/moment.min.js"></script>#}
 <script type="text/javascript" src="/static/assets/plugins/bootstrap-daterangepicker/daterangepicker.js" ></script>
+<script type="text/javascript" src="/static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
 
 
 <script type="text/javascript">
@@ -345,7 +347,7 @@ $(document).ready(function () {
     })
 
     $('#reportrange').daterangepicker({
-{#        opens: (App.isRTL() ? 'left' : 'right'),#}
+        opens: (App.isRTL() ? 'left' : 'right'),
 
     //    startDate: moment().subtract('days', 29),
     //    endDate: moment(),
@@ -357,7 +359,7 @@ $(document).ready(function () {
         showDropdowns: true,
         showWeekNumbers: false,
         timePicker: false,
-        timePickerIncrement: 0,
+        timePickerIncrement: 1,
         timePicker12Hour: false,
         ranges: {
            'Today': [moment(), moment()],
