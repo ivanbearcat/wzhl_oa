@@ -15,166 +15,173 @@
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
-        <div class="col-md-12">
-            <div class="portlet box grey">
-                <div class="portlet-title">
-                    <div class="caption">
-                        <i class="fa fa-reorder"></i>人员基本信息表
-                    </div>
-                </div>
-                <div class="portlet-body form">
-                    <!-- BEGIN FORM-->
-                    <form class="form-horizontal form-bordered" action="/personal_information_table_detail/" enctype="multipart/form-data" method="post">
-                        <div class="form-body">
-                            <div class="form-group">
-                                <label class="control-label col-md-1">* 姓名</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="name" name="name" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">* 邮箱</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="email" name="email" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1">* 性别</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="sex" name="sex" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">* 电话</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="phone" name="phone" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1">* 出生日期</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="birthday" name="birthday" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">* 毕业日期</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="graduate_date" name="graduate_date" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1">职级</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="job_level" name="job_level" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">职位</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="job_title" name="job_title" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1">* 第一学历</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="first_education" name="first_education" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">* 学历</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="education" name="education" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1">* 毕业学校</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="graduate_school" name="graduate_school" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">* 专业</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="specialty" name="specialty" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1">* 资源状态</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="resource_state" name="resource_state" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">状态变更时间</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="state_change_time" name="state_change_time" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1">* 曾入职公司</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="last_company" name="last_company" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">简历</label>
-                                <div class="col-md-4">
-                                    <a id="resumes_button" class="btn yellow" style="position:relative;width:100px;height:30px;display:inline-block;overflow:hidden;">浏览...
-                                        <input type="file" id="resumes" name="resumes" style="position:absolute;z-index:1;left:0;top:0;opacity:0;">
-                                    </a>
-                                    <a id="resumes_show"></a>
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1">* 渠道</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="channel" name="channel" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">推荐人(选填)</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="referrer" name="referrer" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1">* 岗位类别</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="job_type" name="job_type" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">入库日期</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="date_of_entry" name="date_of_entry" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1">方向</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="direction" name="direction" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">薪资状况</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="salary" name="salary" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-1">执行人</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="executor" name="executor" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">更新日期</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="update_time" name="update_time" class="form-control">
-                                </div>
-                            </div>
-                            <div class="form-group last">
-                                <label class="control-label col-md-1">* 关键词</label>
-                                <div class="col-md-2">
-                                    <input type="text" id="keywords" name="keywords" class="form-control">
-                                </div>
-                                <label class="control-label col-md-offset-2 col-md-1">备注</label>
-                                <div class="col-md-5">
-                                    <input type="text" id="comment" name="comment" class="form-control">
-                                </div>
-                            </div>
-                            <input id="id" name="id" style="display:none">
-                        </div>
-                        <div class="form-actions fluid">
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="col-md-offset-11 col-md-9">
-                                        <button class="btn purple" type="submit"><i class="fa fa-check"></i> 提交</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </form>
-                    <!-- END FORM-->
+        <a id="back" class="btn btn-sm yellow">
+             返回 <i class="fa fa-reply"></i>
+        </a>
+    {% if request.session.personal_information_id %}
+        <a id="edit" class="btn btn-sm blue">
+             编辑 <i class="fa fa-edit"></i>
+        </a>
+    {% endif %}
+        <div class="portlet box grey">
+            <div class="portlet-title">
+                <div class="caption">
+                    <i class="fa fa-reorder"></i>人员基本信息表
                 </div>
             </div>
+            <div class="portlet-body form">
+                <!-- BEGIN FORM-->
+                <form class="form-horizontal form-bordered" action="/personal_information_table_detail/" enctype="multipart/form-data" method="post">
+                    <div class="form-body">
+                        <div class="form-group">
+                            <label class="control-label col-md-1">* 姓名</label>
+                            <div class="col-md-2">
+                                <input type="text" id="name" name="name" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">* 邮箱</label>
+                            <div class="col-md-2">
+                                <input type="text" id="email" name="email" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">* 性别</label>
+                            <div class="col-md-2">
+                                <input type="text" id="sex" name="sex" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">* 电话</label>
+                            <div class="col-md-2">
+                                <input type="text" id="phone" name="phone" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">* 出生日期</label>
+                            <div class="col-md-2">
+                                <input type="text" id="birthday" name="birthday" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">* 毕业日期</label>
+                            <div class="col-md-2">
+                                <input type="text" id="graduate_date" name="graduate_date" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">职级</label>
+                            <div class="col-md-2">
+                                <input type="text" id="job_level" name="job_level" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">职位</label>
+                            <div class="col-md-2">
+                                <input type="text" id="job_title" name="job_title" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">* 第一学历</label>
+                            <div class="col-md-2">
+                                <input type="text" id="first_education" name="first_education" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">* 最高学历</label>
+                            <div class="col-md-2">
+                                <input type="text" id="education" name="education" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">* 毕业学校</label>
+                            <div class="col-md-2">
+                                <input type="text" id="graduate_school" name="graduate_school" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">* 专业</label>
+                            <div class="col-md-2">
+                                <input type="text" id="specialty" name="specialty" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">* 资源状态</label>
+                            <div class="col-md-2">
+                                <input type="text" id="resource_state" name="resource_state" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">状态变更时间</label>
+                            <div class="col-md-2">
+                                <input type="text" id="state_change_time" name="state_change_time" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">* 曾入职公司</label>
+                            <div class="col-md-2">
+                                <input type="text" id="last_company" name="last_company" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">简历</label>
+                            <div class="col-md-4">
+                                <a id="resumes_button" class="btn yellow" style="position:relative;width:100px;height:30px;display:inline-block;overflow:hidden;">浏览...
+                                    <input type="file" id="resumes" name="resumes" style="position:absolute;z-index:1;left:0;top:0;opacity:0;">
+                                </a>
+                                <a id="resumes_show"></a>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">* 渠道</label>
+                            <div class="col-md-2">
+                                <input type="text" id="channel" name="channel" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">推荐人(选填)</label>
+                            <div class="col-md-2">
+                                <input type="text" id="referrer" name="referrer" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">* 岗位类别</label>
+                            <div class="col-md-2">
+                                <input type="text" id="job_type" name="job_type" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">入库日期</label>
+                            <div class="col-md-2">
+                                <input type="text" id="date_of_entry" name="date_of_entry" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">方向</label>
+                            <div class="col-md-2">
+                                <input type="text" id="direction" name="direction" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">薪资状况</label>
+                            <div class="col-md-2">
+                                <input type="text" id="salary" name="salary" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">执行人</label>
+                            <div class="col-md-2">
+                                <input type="text" id="executor" name="executor" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">更新日期</label>
+                            <div class="col-md-2">
+                                <input type="text" id="update_time" name="update_time" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group last">
+                            <label class="control-label col-md-1">* 关键词</label>
+                            <div class="col-md-2">
+                                <input type="text" id="keywords" name="keywords" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">备注</label>
+                            <div class="col-md-5">
+                                <input type="text" id="comment" name="comment" class="form-control">
+                            </div>
+                        </div>
+                        <input id="id" name="id" style="display:none">
+                    </div>
+                    <div class="form-actions fluid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="col-md-offset-11 col-md-9">
+                                    <button id="submit" class="btn purple" type="submit"><i class="fa fa-check"></i> 提交</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <!-- END FORM-->
+            </div>
         </div>
+    {% if request.session.personal_information_id %}
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
                 <div class="caption">
@@ -194,8 +201,9 @@
                     </tbody>
                 </table>
             </div>
+            <!-- END EXAMPLE TABLE PORTLET-->
         </div>
-        <!-- END EXAMPLE TABLE PORTLET-->
+    {% endif %}
     </div>
 </div>
 
@@ -277,7 +285,7 @@ $(document).ready(function () {
         multiple: false,
         placeholder: '请选择渠道',
         allowClear: true,
-        data: [{'text':'Boss','id':'Boss'},{'text':'猎聘','id':'猎聘'},{'text':'拉钩','id':'拉钩'},{'text':'内部推荐','id':'内部推荐'},
+        data: [{'text':'Boss','id':'Boss'},{'text':'猎聘','id':'猎聘'},{'text':'前程无忧','id':'前程无忧'},{'text':'拉钩','id':'拉钩'},{'text':'内部推荐','id':'内部推荐'},
                {'text':'其他','id':'其他'}]
     });
 
@@ -311,6 +319,7 @@ $(document).ready(function () {
 {% if request.session.personal_information %}
     {% ifequal request.session.personal_information '保存成功' %}
         toastr.success('保存成功')
+        setTimeout('location.href = "/personal_information_table/"',500)
     {% else %}
         toastr.error('{{ request.session.personal_information }}')
     {% endifequal %}
@@ -325,7 +334,6 @@ $(document).ready(function () {
     $('#email').val('{{ email }}')
     $('#keywords').val('{{ keywords }}')
     $('#sex').select2('data',{'text':'{{ sex }}','id':'{{ sex }}'})
-    $('#date_of_entry').val('{{ date_of_entry }}')
     $('#birthday').val('{{ birthday }}')
     $('#graduate_date').val('{{ graduate_date }}')
     $('#first_education').select2('data',{'text':'{{ first_education }}','id':'{{ first_education }}'})
@@ -346,11 +354,67 @@ $(document).ready(function () {
     $('#comment').val('{{ comment }}')
     $('#state_change_time').val('{{ state_change_time }}')
     $('#executor').select2('data',{'text':'{{ executor }}','id':'{{ executor }}'})
-    $('#update_time').val('{{ update_time }}')
     $('#id').val('{{ id }}')
 
     loaddata()
 
+    $('#back').on('click',function(){
+        history.go(-1)
+    })
+
+{% if request.session.personal_information_id %}
+    $('#submit').hide()
+    $('#name').attr('disabled',true)
+    $('#phone').attr('disabled',true)
+    $('#email').attr('disabled',true)
+    $('#keywords').attr('disabled',true)
+    $('#sex').attr('disabled',true)
+    $('#birthday').attr('disabled',true)
+    $('#graduate_date').attr('disabled',true)
+    $('#first_education').attr('disabled',true)
+    $('#education').attr('disabled',true)
+    $('#specialty').attr('disabled',true)
+    $('#graduate_school').attr('disabled',true)
+    $('#last_company').attr('disabled',true)
+    $('#channel').attr('disabled',true)
+    $('#referrer').attr('disabled',true)
+    $('#salary').attr('disabled',true)
+    $('#job_level').attr('disabled',true)
+    $('#job_title').attr('disabled',true)
+    $('#job_type').attr('disabled',true)
+    $('#resumes').attr('disabled',true)
+    $('#direction').attr('disabled',true)
+    $('#resource_state').attr('disabled',true)
+    $('#comment').attr('disabled',true)
+    $('#executor').attr('disabled',true)
+{% endif %}
+
+    $('#edit').on('click',function(){
+        $('#submit').show()
+        $('#name').attr('disabled',false)
+        $('#phone').attr('disabled',false)
+        $('#email').attr('disabled',false)
+        $('#keywords').attr('disabled',false)
+        $('#sex').attr('disabled',false)
+        $('#birthday').attr('disabled',false)
+        $('#graduate_date').attr('disabled',false)
+        $('#first_education').attr('disabled',false)
+        $('#education').attr('disabled',false)
+        $('#specialty').attr('disabled',false)
+        $('#graduate_school').attr('disabled',false)
+        $('#last_company').attr('disabled',false)
+        $('#channel').attr('disabled',false)
+        $('#referrer').attr('disabled',false)
+        $('#salary').attr('disabled',false)
+        $('#job_level').attr('disabled',false)
+        $('#job_title').attr('disabled',false)
+        $('#job_type').attr('disabled',false)
+        $('#resumes').attr('disabled',false)
+        $('#direction').attr('disabled',false)
+        $('#resource_state').attr('disabled',false)
+        $('#comment').attr('disabled',false)
+        $('#executor').attr('disabled',false)
+    })
 });
 
 function loaddata() {
@@ -441,6 +505,7 @@ function add(){
         location.href = '/personal_information_interview_detail/'
     })
 }
+
 
 </script>
 {% endblock %}

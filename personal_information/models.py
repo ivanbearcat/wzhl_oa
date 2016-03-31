@@ -39,7 +39,7 @@ class interview(models.Model):
     education = models.CharField(verbose_name='学历', max_length=10, blank=False)
     interview_times = models.PositiveSmallIntegerField(verbose_name='面试次数', max_length=3, blank=False)
     interview_date = models.DateField(verbose_name='面试日期', blank=False)
-    reply_date = models.DateField(verbose_name='回复日期', blank=False)
+    reply_date = models.DateField(verbose_name='回复日期', auto_now_add=True)
     interview_mode = models.CharField(verbose_name='面试方式', max_length=4, blank=False)
     job_title = models.CharField(verbose_name='职位', max_length=20, blank=False)
     job_type = models.CharField(verbose_name='岗位类别', max_length=10, blank=False)
