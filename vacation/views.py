@@ -441,11 +441,7 @@ def vacation_apply_save(request):
         else:
             date_datetime = datetime.datetime(int(date_list[0]),int(date_list[1]),int(date_list[2]),0)
         all_entry_dict[date_datetime] = [[date_datetime],str(entry.id),entry.days,str(entry.id)]
-    from pprint import pprint
-    pprint(sorted(all_entry_dict.keys()))
     reduce(add_entry_group_reduce_func,sorted(all_entry_dict.keys()))
-    print
-    pprint(all_entry_dict)
     #根据刚才的数据结构，计算出每个id的real_days
     for entry in all_entry_dict.values():
         orm_iter = state.objects.filter(id__in=entry[1].split(','))
