@@ -695,7 +695,9 @@ $('#save').on('click',function() {
                 toastr.success(d.msg)
                 $('#datatables').dataTable().fnDraw()
                 if (grade_operation != 1){
+                    {% if request.session.status == 3 %}
                     $.cookie('flag', 0, {expires: 1})
+                    {% endif %}
                     if ($.cookie('flag') == 0) {
                         if ($('#ToolTables_datatables_3').length > 0) {
                             $('#ToolTables_datatables_3')[0].style.display = 'none'
