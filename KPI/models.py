@@ -30,3 +30,8 @@ class table_detail(models.Model):
     supervisor_report_score = models.FloatField(verbose_name='直属主管所评分数', max_length=10, blank=True)
     principal_report_value = models.FloatField(verbose_name='部门负责人所评分值', max_length=10, blank=True)
     principal_report_score = models.FloatField(verbose_name='部门负责人所评分数', max_length=10, blank=True)
+
+class ban(models.Model):
+    KPI_name = models.CharField(verbose_name='绩效考评名称', max_length=30, blank=False)
+    ban_date = models.DateField(verbose_name='封禁日期', blank=False)
+

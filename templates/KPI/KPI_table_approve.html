@@ -14,6 +14,12 @@
 {% block body %}
 <div class="row">
     <div class="col-md-12">
+        <div class="note note-danger">
+{#            <h4 class="block">过期通知：</h4>#}
+            <p>
+                <span style="color:red">{{ expire_info }}</span>
+            </p>
+        </div>
     {% if request.session.KPI_can_view %}
         <div class="col-md-4">
             <div style="width:113px;float:left">
@@ -33,6 +39,18 @@
                     <a id="KPI_conf_show" style="float:left">请选择文件</a>
                 </div>
             </form>
+        </div>
+        <div class="col-md-3">
+            <input placeholder="请输入KPI名" id="ban_KPI_name" class="form-control" style="width:113px;float:left">
+            <input placeholder="请输入日期" id="ban_date" class="form-control" style="width:113px;float:left">
+            <br>
+            <br>
+            <a class="btn btn-sm red" id="ban" style="width:113px;float:left">
+                封禁 <i class="fa fa-times"></i>
+            </a>
+            <a class="btn btn-sm green" id="unban" style="width:113px;float:left">
+                解封 <i class="fa fa-check"></i>
+            </a>
         </div>
     {% endif %}
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -160,6 +178,7 @@
 <script src="/static/assets/plugins/datatables/extras/TableTools.min.js"></script>
 <script src="/static/assets/scripts/custom/table-managed.js"></script>
 <script type="text/javascript" src="/static/assets/plugins/bootstrap-datepicker/js/bootstrap-datepicker.js"></script>
+<script type="text/javascript" src="/static/assets/plugins/jquery-inputmask/jquery.inputmask.bundle.min.js"></script>
 
 
 <script type="text/javascript">
@@ -297,6 +316,35 @@ $('#export_all').on('click',function(){
     }else{
         toastr.error('年份不能为空')
     }
+})
+
+$('#ban_date').inputmask("y-m-d", {
+        "placeholder": "yyyy-mm-dd"
+    })
+
+$('#ban').on('click',function(){
+    var ban_KPI_name = $('#ban_KPI_name').val()
+    var ban_date = $('#ban_date').val()
+    $.post('/KPI_ban_save/', {ban_KPI_name:ban_KPI_name,ban_date:ban_date,ban_type:1}, function (d) {
+        if (d.code == 0) {
+            toastr.success(d.msg)
+        } else {
+            toastr.error(d.msg)
+        }
+    })
+})
+
+$('#unban').on('click',function(){
+    var ban_KPI_name = $('#ban_KPI_name').val()
+    var ban_date = $('#ban_date').val()
+    console.info(ban_date)
+    $.post('/KPI_ban_save/', {ban_KPI_name:ban_KPI_name,ban_date:ban_date,ban_type:0}, function (d) {
+        if (d.code == 0) {
+            toastr.success(d.msg)
+        } else {
+            toastr.error(d.msg)
+        }
+    })
 })
 </script>
 {% endblock %}

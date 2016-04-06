@@ -391,6 +391,8 @@ $(document).ready(function () {
             showAjaxLoad()
             if (d.code == 1) {
                 toastr.error(d.msg)
+                hideAjaxLoad()
+                $("#myModal2").modal('hide')
                 return
             }
             $.post('/KPI_table_detail_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag}, function (d) {

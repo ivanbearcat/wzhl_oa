@@ -5,7 +5,7 @@ from django.template import RequestContext
 from django.db.models.query_utils import Q
 from django.contrib.auth.decorators import login_required
 from libs.sendmail import send_mail
-from KPI.models import table,table_detail
+from KPI.models import table,table_detail,ban
 from vacation.models import user_table
 from wzhl_oa.settings import BASE_DIR
 from openpyxl import load_workbook
@@ -21,12 +21,20 @@ sys.setdefaultencoding('utf-8')
 @login_required
 def KPI_table(request):
     path = request.path.split('/')[1]
+
+    orm = ban.objects.all().order_by('id').reverse()
+    if orm:
+        expire_info = '''{0} 的截止日期为 {1}'''.format(orm[0].KPI_name,str(orm[0].ban_date).split('+')[0])
+    else:
+        expire_info = ''
+
     return render(request, 'KPI/KPI_table.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                  'path1':'KPI',
                                                  'path2':path,
                                                  'page_name1':u'绩效管理',
                                                  'page_name2':u'绩效考评',
-                                                 'username':request.user.username},
+                                                 'username':request.user.username,
+                                                 'expire_info':expire_info},
                                                 context_instance=RequestContext(request))
 
 @login_required
@@ -386,6 +394,11 @@ def KPI_table_detail_save(request):
     status = request.POST.get('status')
     _id = request.POST.get('id')
 
+    ban_orm = ban.objects.filter(KPI_name=KPI_name)
+    for i in ban_orm:
+        if datetime.datetime.now().date() > i.ban_date:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'本季度KPI已经截止，无法保存'}),content_type="application/json")
+
     if not _id:
         orm = table_detail(KPI_name=KPI_name,name=name,objective=objective,description=description,weight=weight,
                            self_report_value=0,self_report_score=0,supervisor_report_value=0,supervisor_report_score=0,
@@ -424,6 +437,13 @@ def KPI_table_detail_save(request):
 def KPI_table_detail_del(request):
     _id = request.POST.get('id')
     orm = table_detail.objects.get(id=_id)
+
+    KPI_name = request.session.get('KPI')[0]
+    ban_orm = ban.objects.filter(KPI_name=KPI_name)
+    for i in ban_orm:
+        if datetime.datetime.now().date() > i.ban_date:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'本季度KPI已经截止，无法保存'}),content_type="application/json")
+
     try:
         orm.delete()
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'删除成功'}),content_type="application/json")
@@ -440,6 +460,11 @@ def KPI_table_detail_comment_save(request):
     KPI_name = request.session.get('KPI')[0]
     name = request.session.get('KPI')[1]
     orm = table.objects.filter(KPI_name=KPI_name).filter(name=name)
+
+    ban_orm = ban.objects.filter(KPI_name=KPI_name)
+    for i in ban_orm:
+        if datetime.datetime.now().date() > i.ban_date:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'本季度KPI已经截止，无法保存'}),content_type="application/json")
 
     if len(orm):
         for i in orm:
@@ -463,7 +488,11 @@ def KPI_table_detail_commit(request):
     KPI_name = request.POST.get('KPI_name')
     name = request.POST.get('name')
     flag = request.POST.get('flag')
-    print flag
+
+    ban_orm = ban.objects.filter(KPI_name=KPI_name)
+    for i in ban_orm:
+        if datetime.datetime.now().date() > i.ban_date:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'本季度KPI已经截止，无法保存'}),content_type="application/json")
 
     orm = table.objects.filter(KPI_name=KPI_name).filter(name=name)
     if len(orm):
@@ -542,13 +571,21 @@ def KPI_approve_alert(request):
 def KPI_table_approve(request):
     KPI_conf_save = request.GET.get('KPI_conf_save')
     path = request.path.split('/')[1]
+
+    orm = ban.objects.all().order_by('id').reverse()
+    if orm:
+        expire_info = '''{0} 的截止日期为 {1}'''.format(orm[0].KPI_name,str(orm[0].ban_date).split('+')[0])
+    else:
+        expire_info = ''
+
     return render(request, 'KPI/KPI_table_approve.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                  'path1':'KPI',
                                                  'path2':path,
                                                  'page_name1':u'绩效管理',
                                                  'page_name2':u'绩效考评',
                                                  'username':request.user.username,
-                                                 'KPI_conf_save':KPI_conf_save},
+                                                 'KPI_conf_save':KPI_conf_save,
+                                                 'expire_info':expire_info},
                                                 context_instance=RequestContext(request))
 
 @login_required
@@ -702,6 +739,11 @@ def KPI_table_detail_approve_commit(request):
     name = request.POST.get('name')
     flag = request.POST.get('flag')
     commit = request.POST.get('commit')
+
+    ban_orm = ban.objects.filter(KPI_name=KPI_name)
+    for i in ban_orm:
+        if datetime.datetime.now().date() > i.ban_date:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'本季度KPI已经截止，无法保存'}),content_type="application/json")
 
     orm = table.objects.filter(KPI_name=KPI_name).filter(name=name)
     if len(orm):
@@ -900,3 +942,34 @@ def KPI_upload_conf(requests):
         print e
         return HttpResponseRedirect('/KPI_table_approve/?KPI_conf_save=2')
 
+@login_required
+def KPI_ban_save(requests):
+    ban_KPI_name = requests.POST.get('ban_KPI_name')
+    ban_date = requests.POST.get('ban_date')
+    ban_type = requests.POST.get('ban_type')
+
+    if ban_type == '1':
+        if not ban_date:
+            ban_date = datetime.datetime.now().date()
+        orm = ban(KPI_name=ban_KPI_name,ban_date=ban_date)
+        try:
+            orm.save()
+            return HttpResponse(simplejson.dumps({'code':0,'msg':u'封禁成功'}),content_type="application/json")
+        except Exception,e:
+            print e
+            return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+    else:
+        if ban_date:
+            orm = ban.objects.filter(KPI_name=ban_KPI_name).filter(ban_date=ban_date)
+        else:
+            orm = ban.objects.filter(KPI_name=ban_KPI_name)
+        if not len(orm):
+            return HttpResponse(simplejson.dumps({'code':1,'msg':'没有可解封的对象'}),content_type="application/json")
+        else:
+            try:
+                for i in orm:
+                    i.delete()
+                return HttpResponse(simplejson.dumps({'code':0,'msg':u'解封成功'}),content_type="application/json")
+            except Exception,e:
+                print e
+                return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
