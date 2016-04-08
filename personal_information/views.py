@@ -154,6 +154,8 @@ def personal_information_table_detail(request):
             request.session['personal_information'] = e
     else:
         if name:
+            if not birthday:
+                birthday = '1970-01-01'
             orm = table(name=name,email=email,phone=phone,keywords=keywords,sex=sex,birthday=birthday,graduate_date=graduate_date,
                         first_education=first_education,education=education,specialty=specialty,graduate_school=graduate_school,
                         last_company=last_company,channel=channel,referrer=referrer,salary=salary,job_level=job_level,

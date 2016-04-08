@@ -12,7 +12,7 @@ class table(models.Model):
     keywords = models.CharField(verbose_name='关键词', max_length=30, blank=False)
     sex = models.CharField(verbose_name='性别', max_length=4, blank=False)
     date_of_entry = models.DateTimeField(verbose_name='入库日期', auto_now_add=True, blank=True)
-    birthday = models.DateField(verbose_name='出生日期', auto_now_add=False, blank=False)
+    birthday = models.DateField(verbose_name='出生日期', auto_now_add=False, blank=True)
     graduate_date = models.DateField(verbose_name='毕业日期', auto_now_add=False, blank=False)
     first_education = models.CharField(verbose_name='第一学历', max_length=10, blank=False)
     education = models.CharField(verbose_name='学历', max_length=10, blank=False)
