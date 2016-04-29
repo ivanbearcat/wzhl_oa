@@ -465,7 +465,7 @@ $(document).ready(function () {
                 hideAjaxLoad()
                 if (d.code == 0) {
                     toastr.success(d.msg)
-                    setTimeout('location.href = "/KPI_table/"',500)
+                    setTimeout('location.href = "/KPI_table_approve/"',500)
                 } else {
                     toastr.error(d.msg)
                 }
@@ -484,7 +484,7 @@ $(document).ready(function () {
                 hideAjaxLoad()
                 if (d.code == 0) {
                     toastr.success(d.msg)
-                    setTimeout('location.href = "/KPI_table/"',500)
+                    setTimeout('location.href = "/KPI_table_approve/"',500)
                 } else {
                     toastr.error(d.msg)
                 }
@@ -497,7 +497,7 @@ $(document).ready(function () {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
-                setTimeout('location.href = "/KPI_table/"',500)
+                setTimeout('location.href = "/KPI_table_approve/"',500)
             } else {
                 toastr.error(d.msg)
             }
@@ -521,8 +521,7 @@ $(document).ready(function () {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
-                setTimeout('location.href = "/KPI_table/"',500)
-                location.href = '/KPI_table/'
+                setTimeout('location.href = "/KPI_table_approve/"',500)
             } else {
                 toastr.error(d.msg)
             }
