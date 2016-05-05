@@ -54,13 +54,13 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-1">* 出生日期</label>
-                            <div class="col-md-2">
-                                <input type="text" id="birthday" name="birthday" class="form-control">
-                            </div>
-                            <label class="control-label col-md-offset-2 col-md-1">* 毕业日期</label>
+                            <label class="control-label col-md-1">* 毕业日期</label>
                             <div class="col-md-2">
                                 <input type="text" id="graduate_date" name="graduate_date" class="form-control">
+                            </div>
+                            <label class="control-label col-md-offset-2 col-md-1">毕业年限</label>
+                            <div class="col-md-2">
+                                <input type="text" id="graduate_year" name="graduate_year" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
@@ -257,13 +257,12 @@ $(document).ready(function () {
 
     $('#date_of_entry').attr('disabled',true)
 
-    $('#birthday').inputmask("y-m-d", {
-        "placeholder": "yyyy-mm-dd"
-    })
 
     $('#graduate_date').inputmask("y-m-d", {
         "placeholder": "yyyy-mm-dd"
     })
+
+    $('#graduate_year').attr('disabled',true)
 
     $('#first_education').select2({
         multiple: false,
@@ -334,7 +333,7 @@ $(document).ready(function () {
     $('#email').val('{{ email }}')
     $('#keywords').val('{{ keywords }}')
     $('#sex').select2('data',{'text':'{{ sex }}','id':'{{ sex }}'})
-    $('#birthday').val('{{ birthday }}')
+    $('#graduate_year').val('{{ graduate_year }}')
     $('#graduate_date').val('{{ graduate_date }}')
     $('#first_education').select2('data',{'text':'{{ first_education }}','id':'{{ first_education }}'})
     $('#education').select2('data',{'text':'{{ education }}','id':'{{ education }}'})
@@ -369,7 +368,6 @@ $(document).ready(function () {
     $('#email').attr('disabled',true)
     $('#keywords').attr('disabled',true)
     $('#sex').attr('disabled',true)
-    $('#birthday').attr('disabled',true)
     $('#graduate_date').attr('disabled',true)
     $('#first_education').attr('disabled',true)
     $('#education').attr('disabled',true)
@@ -396,7 +394,6 @@ $(document).ready(function () {
         $('#email').attr('disabled',false)
         $('#keywords').attr('disabled',false)
         $('#sex').attr('disabled',false)
-        $('#birthday').attr('disabled',false)
         $('#graduate_date').attr('disabled',false)
         $('#first_education').attr('disabled',false)
         $('#education').attr('disabled',false)

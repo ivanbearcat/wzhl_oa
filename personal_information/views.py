@@ -93,7 +93,6 @@ def personal_information_table_detail(request):
     phone = request.POST.get('phone')
     keywords = request.POST.get('keywords')
     sex = request.POST.get('sex')
-    birthday = request.POST.get('birthday')
     graduate_date = request.POST.get('graduate_date')
     first_education = request.POST.get('first_education')
     education = request.POST.get('education')
@@ -117,6 +116,11 @@ def personal_information_table_detail(request):
         request.session.pop('personal_information')
     except KeyError:
         pass
+    if graduate_date:
+        graduate_date_list = graduate_date.split('-')
+        graduate_date_datetime = datetime.date(int(graduate_date_list[0]),int(graduate_date_list[1]),int(graduate_date_list[2]))
+        today_datetime = datetime.datetime.now().date()
+        graduate_year = (today_datetime - graduate_date_datetime).days // 365
 
     if _id:
         orm = table.objects.get(id=_id)
@@ -127,7 +131,7 @@ def personal_information_table_detail(request):
         orm.phone = phone
         orm.keywords = keywords
         orm.sex = sex
-        orm.birthday = birthday
+        orm.graduate_year = graduate_year
         orm.graduate_date = graduate_date
         orm.first_education = first_education
         orm.education = education
@@ -154,9 +158,7 @@ def personal_information_table_detail(request):
             request.session['personal_information'] = e
     else:
         if name:
-            if not birthday:
-                birthday = '1970-01-01'
-            orm = table(name=name,email=email,phone=phone,keywords=keywords,sex=sex,birthday=birthday,graduate_date=graduate_date,
+            orm = table(name=name,email=email,phone=phone,keywords=keywords,sex=sex,graduate_year=graduate_year,graduate_date=graduate_date,
                         first_education=first_education,education=education,specialty=specialty,graduate_school=graduate_school,
                         last_company=last_company,channel=channel,referrer=referrer,salary=salary,job_level=job_level,
                         job_title=job_title,job_type=job_type,resumes=resumes,direction=direction,resource_state=resource_state,
@@ -183,7 +185,7 @@ def personal_information_table_detail(request):
                         'keywords':orm.keywords,
                         'sex':orm.sex,
                         'date_of_entry':str(orm.date_of_entry).split('+')[0],
-                        'birthday':str(orm.birthday).split('+')[0],
+                        'graduate_year':orm.graduate_year,
                         'graduate_date':str(orm.graduate_date).split('+')[0],
                         'first_education':orm.first_education,
                         'education':orm.education,
