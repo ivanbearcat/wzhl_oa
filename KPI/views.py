@@ -135,40 +135,33 @@ def KPI_table_export_all(request):
         sheet1_count = 3
         # sheet2_count = 3
 
+
+        title = [u'姓名',u'部门',u'上级主管',u'部门负责人',u'入职时间',u'{0}Q1分数'.format(year),
+                 u'{0}Q1等级'.format(year),u'{0}Q2分数'.format(year),u'{0}Q2等级'.format(year),
+                 u'{0}Q3分数'.format(year),u'{0}Q3等级'.format(year),u'{0}Q4分数'.format(year),
+                 u'{0}Q4等级'.format(year)]
+        worksheet1.write_row('B2',title)
+
         vacation_user_table_orm = user_table.objects.all()
         for i in vacation_user_table_orm:
+
             KPI_table_orm = table.objects.filter(name=i.name)
             # flag = 0
+            row = [i.name,i.department,i.supervisor,i.principal,str(i.join_date).split('+')[0],'','','','','','','','']
             for j in KPI_table_orm:
-                # if j.KPI_name[4] == 'Q':
-                    # flag = 1
-                title = [u'姓名',u'部门',u'上级主管',u'部门负责人',u'入职时间',u'{0}Q1分数'.format(year),
-                         u'{0}Q1等级'.format(year),u'{0}Q2分数'.format(year),u'{0}Q2等级'.format(year),
-                         u'{0}Q3分数'.format(year),u'{0}Q3等级'.format(year),u'{0}Q4分数'.format(year),
-                         u'{0}Q4等级'.format(year)]
-                worksheet1.write_row('B2',title)
-                row = [i.name,i.department,i.supervisor,i.principal,str(i.join_date).split('+')[0]]
                 if j.KPI_name[0:4] == year:
                     if j.KPI_name[-1] == '1':
-                        row.append(j.final_score)
-                        row.append(j.KPI_level)
-                    else:
-                        row.append('')
+                        row[5] = j.final_score
+                        row[6] = j.KPI_level
                     if j.KPI_name[-1] == '2':
-                        row.append(j.final_score)
-                        row.append(j.KPI_level)
-                    else:
-                        row.append('')
+                        row[7] = j.final_score
+                        row[8] = j.KPI_level
                     if j.KPI_name[-1] == '3':
-                        row.append(j.final_score)
-                        row.append(j.KPI_level)
-                    else:
-                        row.append('')
+                        row[9] = j.final_score
+                        row[10] = j.KPI_level
                     if j.KPI_name[-1] == '4':
-                        row.append(j.final_score)
-                        row.append(j.KPI_level)
-                    else:
-                        row.append('')
+                        row[11] = j.final_score
+                        row[12] = j.KPI_level
                 # else:
                 #     flag = 2
                 #     title = [u'姓名',u'部门',u'上级主管',u'部门负责人',u'入职时间',u'{0}M1'.format(year),
@@ -228,8 +221,8 @@ def KPI_table_export_all(request):
                 #         else:
                 #             row.append('')
             # if flag == 1:
-                worksheet1.write_row('B%s' % sheet1_count, row)
-                sheet1_count += 1
+            worksheet1.write_row('B%s' % sheet1_count, row)
+            sheet1_count += 1
             # elif flag == 2:
             #     worksheet2.write_row('B%s' % sheet2_count, row)
             #     sheet2_count += 1
