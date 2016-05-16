@@ -495,8 +495,10 @@ def KPI_table_detail_commit(request):
                 vacation_user_table_orm = user_table.objects.get(name=name)
                 i.commit_now = vacation_user_table_orm.supervisor
                 i.status_interface = '等待 %s 确认目标' % vacation_user_table_orm.supervisor
-
-                vacation_user_table_orm = user_table.objects.get(name=i.commit_now)
+                try:
+                    vacation_user_table_orm = user_table.objects.get(name=i.commit_now)
+                except Exception:
+                    return HttpResponse(simplejson.dumps({'code':1,'msg':u'上级信息不存在'}),content_type="application/json")
                 supervisor_email = vacation_user_table_orm.email
                 vacation_user_table_orm.has_KPI_commit += 1
                 if vacation_user_table_orm.KPI_commit_id:
