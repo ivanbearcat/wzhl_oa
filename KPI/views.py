@@ -920,6 +920,8 @@ def KPI_upload_conf(requests):
             if line_1_list[1] == "绩效等级":
                 line = f.readline()
                 while line:
+                    if line == '':
+                        continue
                     line_list = line.split()
                     orm = table.objects.filter(name=line_list[0]).filter(KPI_name=KPI_name)
                     if len(orm) == 1:
@@ -930,6 +932,8 @@ def KPI_upload_conf(requests):
             elif line_1_list[1] == "员工信息":
                 line = f.readline()
                 while line:
+                    if line == '':
+                        continue
                     name = line.strip()
                     if len(table.objects.filter(KPI_name=KPI_name).filter(name=name)) == 0:
                         orm = table(KPI_name=KPI_name,name=name,final_score=0,status_interface='员工设定目标',status=1)
