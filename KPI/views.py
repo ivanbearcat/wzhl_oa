@@ -13,6 +13,7 @@ import simplejson
 import xlsxwriter
 import datetime
 import os
+from threading import Thread
 
 import sys
 reload(sys)
@@ -509,7 +510,8 @@ def KPI_table_detail_commit(request):
                 try:
                     i.save()
                     vacation_user_table_orm.save()
-                    send_mail(to_addr=supervisor_email,subject='绩效审核提醒',body='<h3>有一个绩效事件等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    Thread(target=send_mail,args=(supervisor_email,'绩效审核提醒','<h3>有一个绩效事件等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    # send_mail(to_addr=supervisor_email,subject='绩效审核提醒',body='<h3>有一个绩效事件等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                     return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
                 except Exception,e:
                     print e
@@ -538,7 +540,8 @@ def KPI_table_detail_commit(request):
                 try:
                     i.save()
                     vacation_user_table_orm.save()
-                    send_mail(to_addr=supervisor_email,subject='绩效审核提醒',body='<h3>有一个绩效事件等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    Thread(target=send_mail,args=(supervisor_email,'绩效审核提醒','<h3>有一个绩效事件等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    # send_mail(to_addr=supervisor_email,subject='绩效审核提醒',body='<h3>有一个绩效事件等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                     return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
                 except Exception,e:
                     print e
@@ -760,7 +763,8 @@ def KPI_table_detail_approve_commit(request):
                     try:
                         i.save()
                         vacation_user_table_orm.save()
-                        send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>%s 通过了您设定的绩效目标，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % request.user.first_name)
+                        Thread(target=send_mail,args=(email,'绩效审核提醒','<h3>%s 通过了您设定的绩效目标，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % request.user.first_name)).start()
+                        # send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>%s 通过了您设定的绩效目标，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % request.user.first_name)
                         return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
                     except Exception,e:
                         print e
@@ -780,7 +784,8 @@ def KPI_table_detail_approve_commit(request):
                     try:
                         i.save()
                         vacation_user_table_orm.save()
-                        send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>%s 不通过您设定的绩效目标，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % (request.user.first_name,reason))
+                        Thread(target=send_mail,args=(email,'绩效审核提醒','<h3>%s 不通过您设定的绩效目标，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % (request.user.first_name,reason))).start()
+                        # send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>%s 不通过您设定的绩效目标，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % (request.user.first_name,reason))
                         return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
                     except Exception,e:
                         print e
@@ -802,7 +807,8 @@ def KPI_table_detail_approve_commit(request):
                         vacation_user_table_orm = user_table.objects.get(name=request.user.first_name)
                         vacation_user_table_orm.has_KPI_commit -= 1
                         vacation_user_table_orm.save()
-                        send_mail(to_addr=principal_email,subject='绩效审核提醒',body='<h3>有一个绩效事件等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                        Thread(target=send_mail,args=(principal_email,'绩效审核提醒','<h3>有一个绩效事件等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                        # send_mail(to_addr=principal_email,subject='绩效审核提醒',body='<h3>有一个绩效事件等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                         return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
                     except Exception,e:
                         print e
@@ -825,7 +831,8 @@ def KPI_table_detail_approve_commit(request):
                         try:
                             i.save()
                             vacation_user_table_orm.save()
-                            send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>您的绩效考评已完成全部打分，等待最终确认，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                            Thread(target=send_mail,args=(email,'绩效审核提醒','<h3>您的绩效考评已完成全部打分，等待最终确认，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                            # send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>您的绩效考评已完成全部打分，等待最终确认，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                             return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
                         except Exception,e:
                             print e

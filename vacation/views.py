@@ -10,6 +10,7 @@ from django.contrib.auth.decorators import login_required
 from libs.sendmail import send_mail
 from wzhl_oa.settings import HR,BASE_DIR
 import simplejson,datetime,xlsxwriter
+from threading import Thread
 
 import sys
 reload(sys)
@@ -218,8 +219,9 @@ def vacation_refresh(request):
             if j.state not in [0,8,9]:
                 if 6 < (datetime.datetime.now() - j.apply_time).days and (j.state == 1 or j.state == 2 or j.state == 3):
                     orm_fetch_email = user_table.objects.get(name=j.approve_now)
-                    send_mail(to_addr='%s' % orm_fetch_email.email,subject='请假审批过期提醒',
-                              body='<h3>有一个请假事件等待您的审批，还有1天就将过期，请在尽快在OA系统中审批。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    Thread(target=send_mail,args=(orm_fetch_email.email,'请假审批过期提醒','<h3>有一个请假事件等待您的审批，还有1天就将过期，请在尽快在OA系统中审批。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    # send_mail(to_addr='%s' % orm_fetch_email.email,subject='请假审批过期提醒',
+                    #           body='<h3>有一个请假事件等待您的审批，还有1天就将过期，请在尽快在OA系统中审批。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
 
                 if (datetime.datetime.now() - j.apply_time).days > 7 and (j.state == 1 or j.state == 2 or j.state == 3):
                     j.state = 9
@@ -415,8 +417,10 @@ def vacation_apply_save(request):
     orm_alert.save()
     orm.save()
 
+    all_entry_dict = {}
     def add_entry_group_reduce_func(front_time,back_time):
         #将刚才的结构进一步处理成为,以自己的datetime为key，[[所有组成员的datetime列表],所有组成员的id以逗号隔开,请假天数,自己的id]为value
+
         if all_entry_dict[back_time][2] == 0.5:
             all_entry_dict[back_time][2] = 1
         if ((back_time + datetime.timedelta(all_entry_dict[back_time][2] - 1)) - front_time).days < 2:
@@ -427,33 +431,35 @@ def vacation_apply_save(request):
                 all_entry_dict[i][1] = all_entry_dict[back_time][1]
         return back_time
 
-    #以自己的datetime为key，[[自己的datetime],自己的id,请假天数,自己的id]为value，这样的结构存入字典，交给reduce处理
-    state_orm = state.objects.filter(name=request.user.first_name).exclude(type='加班')
-    all_entry_dict = {}
-    for entry in state_orm:
-        date = entry.vacation_date.split('&nbsp')[0].split()
-        date_list = date[0].split('-')
-        if len(date) > 1:
-            if date[1] == '10:00-15:00':
-                date_datetime = datetime.datetime(int(date_list[0]),int(date_list[1]),int(date_list[2]),1)
-            if date[1] == '15:00-19:00':
-                date_datetime = datetime.datetime(int(date_list[0]),int(date_list[1]),int(date_list[2]),2)
-        else:
-            date_datetime = datetime.datetime(int(date_list[0]),int(date_list[1]),int(date_list[2]),0)
-        all_entry_dict[date_datetime] = [[date_datetime],str(entry.id),entry.days,str(entry.id)]
-    reduce(add_entry_group_reduce_func,sorted(all_entry_dict.keys()))
-    #根据刚才的数据结构，计算出每个id的real_days
-    for entry in all_entry_dict.values():
-        orm_iter = state.objects.filter(id__in=entry[1].split(','))
-        real_days = 0
-        for orm in orm_iter:
-            real_days += orm.days
+    def thread_run():
+        #以自己的datetime为key，[[自己的datetime],自己的id,请假天数,自己的id]为value，这样的结构存入字典，交给reduce处理
+        state_orm = state.objects.filter(name=request.user.first_name).exclude(type='加班')
 
-        orm = state.objects.get(id=entry[3])
-        orm.real_days = real_days
-        orm.save()
+        for entry in state_orm:
+            date = entry.vacation_date.split('&nbsp')[0].split()
+            date_list = date[0].split('-')
+            if len(date) > 1:
+                if date[1] == '10:00-15:00':
+                    date_datetime = datetime.datetime(int(date_list[0]),int(date_list[1]),int(date_list[2]),1)
+                if date[1] == '15:00-19:00':
+                    date_datetime = datetime.datetime(int(date_list[0]),int(date_list[1]),int(date_list[2]),2)
+            else:
+                date_datetime = datetime.datetime(int(date_list[0]),int(date_list[1]),int(date_list[2]),0)
+            all_entry_dict[date_datetime] = [[date_datetime],str(entry.id),entry.days,str(entry.id)]
+        reduce(add_entry_group_reduce_func,sorted(all_entry_dict.keys()))
+        #根据刚才的数据结构，计算出每个id的real_days
+        for entry in all_entry_dict.values():
+            orm_iter = state.objects.filter(id__in=entry[1].split(','))
+            real_days = 0
+            for orm in orm_iter:
+                real_days += orm.days
 
-    send_mail(to_addr=supervisor_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+            orm = state.objects.get(id=entry[3])
+            orm.real_days = real_days
+            orm.save()
+    Thread(target=thread_run).start()
+    Thread(target=send_mail,args=(supervisor_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+    # send_mail(to_addr=supervisor_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
     return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
     # except Exception,e:
     #     print e
@@ -694,8 +700,8 @@ def vacation_approve_process(request):
                     orm_alert.save()
                     orm_alert_my.save()
                     orm.save()
-
-                    send_mail(to_addr=principal_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    Thread(target=send_mail,args=(principal_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    # send_mail(to_addr=principal_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                     return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
                 except Exception,e:
                     print e
@@ -727,8 +733,8 @@ def vacation_approve_process(request):
                         orm_alert.save()
                         orm_alert_my.save()
                         orm.save()
-
-                        send_mail(to_addr=HR_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                        Thread(target=send_mail,args=(HR_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                        # send_mail(to_addr=HR_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                         return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
                     except Exception,e:
                         print e
@@ -768,8 +774,8 @@ def vacation_approve_process(request):
                         orm_alert_my.approved_id = str(orm.id)
                     orm_alert_my.save()
                     orm.save()
-
-                    send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
 
                     return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
                 except Exception,e:
@@ -802,8 +808,8 @@ def vacation_approve_process(request):
                     orm_alert.save()
                     orm_alert_my.save()
                     orm.save()
-
-                    send_mail(to_addr=HR_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    Thread(target=send_mail,args=(HR_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    # send_mail(to_addr=HR_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                     return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
                 except Exception,e:
                     print e
@@ -844,8 +850,8 @@ def vacation_approve_process(request):
                     orm_alert_my.approved_id = str(orm.id)
                 orm_alert_my.save()
                 orm.save()
-
-                send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
 
                 return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
             except Exception,e:
@@ -888,8 +894,8 @@ def vacation_approve_process(request):
                     orm_alert_my.approved_id = str(orm.id)
                 orm_alert_my.save()
                 orm.save()
-
-                send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
 
                 return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
             except Exception,e:
@@ -919,8 +925,8 @@ def vacation_approve_process(request):
             if orm.type == '调休':
                 fetch_email.leave_in_lieu += orm.days
             fetch_email.save()
-
-            send_mail(to_addr=email,subject='请假申请被拒绝',body='<h3>您的请假申请被拒绝，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % disagree_reason)
+            Thread(target=send_mail,args=(email,'请假申请被拒绝','<h3>您的请假申请被拒绝，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % disagree_reason)).start()
+            # send_mail(to_addr=email,subject='请假申请被拒绝',body='<h3>您的请假申请被拒绝，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % disagree_reason)
             orm_alert = user_table.objects.get(name=request.user.first_name)
             orm_alert.has_approve -= 1
             if orm_alert.approved_id:
