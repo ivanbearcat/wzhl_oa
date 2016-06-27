@@ -3,6 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext
 from vacation.models import user_table,operation_log,state
+from KPI.models import table,table_detail
 from django.db.models.query_utils import Q
 from django.utils.log import logger
 from django.contrib.auth.models import User
@@ -173,7 +174,14 @@ def vacation_table_save(request):
 def vacation_table_del(request):
     _id = request.POST.get('id')
     orm = user_table.objects.get(id=_id)
+    name = orm.name
+    KPI_orm = table.objects.filter(name=name)
+    KPI_detail_orm = table_detail.objects.filter(name=name)
     try:
+        for i in KPI_orm:
+            i.delete()
+        for i in KPI_detail_orm:
+            i.delete()
         orm.delete()
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'删除成功'}),content_type="application/json")
     except Exception,e:
