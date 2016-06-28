@@ -886,8 +886,8 @@ def create_excel(requests):
         supervisor_total_score = 0
         principal_total_score = 0
         for objective in objective_list:
-            ws['B'+row_num] = objective['objective']
-            ws['C'+row_num] = objective['description']
+            ws['B'+row_num] = objective['objective'].replace('<br>','\n').replace('&nbsp',' ')
+            ws['C'+row_num] = objective['description'].replace('<br>','\n').replace('&nbsp',' ')
             ws['E'+row_num] = str(objective['weight']) + '%'
             ws['F'+row_num] = objective['self_report_value']
             ws['G'+row_num] = objective['supervisor_report_value']
