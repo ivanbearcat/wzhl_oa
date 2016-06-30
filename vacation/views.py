@@ -118,8 +118,8 @@ def vacation_table_save(request):
         #判断法定年假天数
         graduate_year_date_list = graduate_year.split('-')
         graduate_year_datetime = datetime.date(int(graduate_year_date_list[0]),int(graduate_year_date_list[1]),int(graduate_year_date_list[2]))
-
-        if today < graduate_year_datetime+datetime.timedelta(+365):
+        print graduate_year_datetime+datetime.timedelta(+365),today,graduate_year_datetime+datetime.timedelta(+3650)
+        if today <= graduate_year_datetime+datetime.timedelta(+365):
             statutory_annual_leave_total = 0
         if graduate_year_datetime+datetime.timedelta(+365) < today <= graduate_year_datetime+datetime.timedelta(+3650):
             statutory_annual_leave_total = 5
@@ -199,7 +199,7 @@ def vacation_refresh(request):
         join_date = i.join_date
 
         #判断法定年假天数
-        if today < graduate_year+datetime.timedelta(+365):
+        if today <= graduate_year+datetime.timedelta(+365):
             statutory_annual_leave_total = 0
         if graduate_year+datetime.timedelta(+365) < today <= graduate_year+datetime.timedelta(+3650):
             statutory_annual_leave_total = 5
