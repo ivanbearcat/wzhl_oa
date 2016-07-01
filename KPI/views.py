@@ -758,11 +758,11 @@ def KPI_table_detail_approve_commit(request):
                     vacation_user_table_orm = user_table.objects.get(name=name)
                     email = vacation_user_table_orm.email
 
-                    vacation_user_table_orm = user_table.objects.get(name=request.user.first_name)
-                    vacation_user_table_orm.has_KPI_commit -= 1
+                    vacation_user_table_orm2 = user_table.objects.get(name=request.user.first_name)
+                    vacation_user_table_orm2.has_KPI_commit -= 1
                     try:
                         i.save()
-                        vacation_user_table_orm.save()
+                        vacation_user_table_orm2.save()
                         Thread(target=send_mail,args=(email,'绩效审核提醒','<h3>%s 通过了您设定的绩效目标，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % request.user.first_name)).start()
                         # send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>%s 通过了您设定的绩效目标，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % request.user.first_name)
                         return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
@@ -777,13 +777,13 @@ def KPI_table_detail_approve_commit(request):
                     vacation_user_table_orm = user_table.objects.get(name=name)
                     email = vacation_user_table_orm.email
 
-                    vacation_user_table_orm = user_table.objects.get(name=request.user.first_name)
-                    vacation_user_table_orm.has_KPI_commit -= 1
+                    vacation_user_table_orm2 = user_table.objects.get(name=request.user.first_name)
+                    vacation_user_table_orm2.has_KPI_commit -= 1
 
                     reason = request.POST.get('reason')
                     try:
                         i.save()
-                        vacation_user_table_orm.save()
+                        vacation_user_table_orm2.save()
                         Thread(target=send_mail,args=(email,'绩效审核提醒','<h3>%s 不通过您设定的绩效目标，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % (request.user.first_name,reason))).start()
                         # send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>%s 不通过您设定的绩效目标，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % (request.user.first_name,reason))
                         return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
@@ -797,16 +797,16 @@ def KPI_table_detail_approve_commit(request):
                     i.commit_now = vacation_user_table_orm.principal
                     i.status_interface = '等待 %s 评分' % vacation_user_table_orm.principal
 
-                    vacation_user_table_orm = user_table.objects.get(name=i.commit_now)
-                    principal_email = vacation_user_table_orm.email
-                    vacation_user_table_orm.has_KPI_commit += 1
+                    vacation_user_table_orm2 = user_table.objects.get(name=i.commit_now)
+                    principal_email = vacation_user_table_orm2.email
+                    vacation_user_table_orm2.has_KPI_commit += 1
 
                     try:
                         i.save()
-                        vacation_user_table_orm.save()
-                        vacation_user_table_orm = user_table.objects.get(name=request.user.first_name)
-                        vacation_user_table_orm.has_KPI_commit -= 1
-                        vacation_user_table_orm.save()
+                        vacation_user_table_orm2.save()
+                        vacation_user_table_orm3 = user_table.objects.get(name=request.user.first_name)
+                        vacation_user_table_orm3.has_KPI_commit -= 1
+                        vacation_user_table_orm3.save()
                         Thread(target=send_mail,args=(principal_email,'绩效审核提醒','<h3>有一个绩效事件等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
                         # send_mail(to_addr=principal_email,subject='绩效审核提醒',body='<h3>有一个绩效事件等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                         return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
@@ -822,15 +822,15 @@ def KPI_table_detail_approve_commit(request):
                         vacation_user_table_orm = user_table.objects.get(name=name)
                         email = vacation_user_table_orm.email
 
-                        vacation_user_table_orm = user_table.objects.get(name=request.user.first_name)
-                        vacation_user_table_orm.has_KPI_commit -= 1
+                        vacation_user_table_orm2 = user_table.objects.get(name=request.user.first_name)
+                        vacation_user_table_orm2.has_KPI_commit -= 1
 
                         final_score = request.POST.get('sum')
                         i.final_score = float(final_score)
 
                         try:
                             i.save()
-                            vacation_user_table_orm.save()
+                            vacation_user_table_orm2.save()
                             Thread(target=send_mail,args=(email,'绩效审核提醒','<h3>您的绩效考评已完成全部打分，等待最终确认，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
                             # send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>您的绩效考评已完成全部打分，等待最终确认，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                             return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
