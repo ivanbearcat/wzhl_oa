@@ -208,11 +208,12 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 #custom
 HR = {'name':'华慧宁','email':'huahuining@xiaoquan.com'}
 
-description = ['台式机','显示器','服务器','电视机','投影仪','打印机','ipad','imac','笔记本','交换机']
+description = ['台式机','显示器','服务器','电视机','投影仪','打印机','ipad','imac','笔记本','交换机','防火墙']
 model = ['戴尔（DELL）9020MT商用台式机','同方超翔 开票机机箱','戴尔（DELL）U2414H 液晶显示器','戴尔（DELL）R620 服务器',
          '三星无缝拼接电视','明基投影仪','爱心诺 SK-860打印机','惠普（hp）MFP M277dw 彩色打印机','惠普HP M427dw 黑白打印机',
          'iPad平板电脑 16G WiFi版银色','iPad平板电脑 16G WiFi版金色','27 英寸配备 Retina 5K 显示屏的 iMac',
          '21.5 英寸 iMac 苹果一体机 2.9GHZ','21.5 英寸 iMac 苹果一体机 2.7GHZ',
-         '联想（ThinkPad）金属轻薄系列E450笔记本电脑','机房网络产品（交换机&UPS）']
+         '联想（ThinkPad）金属轻薄系列E450笔记本电脑','机房网络产品（交换机&UPS）','戴尔（DELL）R730 服务器',
+         '华为S6720S-26Q-EI-24S组合配置&配件','华为USG6370交流主机&配件']
 category = {'电子设备':[36,'HUBFAA'], '汽车':[48,'HUBFAB'], '办公家具':[60,'HUBFAC']}
 department = ['产品部','管理部','技术部','运营部']
