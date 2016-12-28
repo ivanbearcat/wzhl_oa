@@ -701,8 +701,8 @@ def vacation_approve_process(request):
                     orm_alert_my.approved_id = str(orm.id)
 
                 try:
-                    if orm.type == u'病假':
-                        orm_fetch_principal.sick_leave_num += orm.days
+#                    if orm.type == u'病假':
+#                        orm_fetch_principal.sick_leave_num += orm.days
                     orm_fetch_principal.save()
                     orm_log.save()
                     orm_alert.save()
