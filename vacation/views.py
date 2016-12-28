@@ -118,15 +118,40 @@ def vacation_table_save(request):
         #判断法定年假天数
         graduate_year_date_list = graduate_year.split('-')
         graduate_year_datetime = datetime.date(int(graduate_year_date_list[0]),int(graduate_year_date_list[1]),int(graduate_year_date_list[2]))
-        print graduate_year_datetime+datetime.timedelta(+365),today,graduate_year_datetime+datetime.timedelta(+3650)
-        if today <= graduate_year_datetime+datetime.timedelta(+365):
-            statutory_annual_leave_total = 0
-        if graduate_year_datetime+datetime.timedelta(+365) < today <= graduate_year_datetime+datetime.timedelta(+3650):
-            statutory_annual_leave_total = 5
-        if graduate_year_datetime+datetime.timedelta(+3650) < today <= graduate_year_datetime+datetime.timedelta(+7300):
-            statutory_annual_leave_total = 10
-        if today > graduate_year_datetime+datetime.timedelta(+7300):
-            statutory_annual_leave_total = 15
+        #print graduate_year_datetime+datetime.timedelta(+365),today,graduate_year_datetime+datetime.timedelta(+3650)
+        if (today - join_date).days / 365 >= 1:
+            if today <= graduate_year+datetime.timedelta(+365):
+                statutory_annual_leave_total = 0
+            if graduate_year+datetime.timedelta(+365) < today <= graduate_year+datetime.timedelta(+3650):
+                statutory_annual_leave_total = 5
+            if graduate_year+datetime.timedelta(+3650) < today <= graduate_year+datetime.timedelta(+7300):
+                statutory_annual_leave_total = 10
+            if today > graduate_year+datetime.timedelta(+7300):
+                statutory_annual_leave_total = 15
+        else:
+            work_days = (today - join_date).days
+
+            if today <= graduate_year+datetime.timedelta(+365):
+                statutory_annual_leave_total = 0
+            if graduate_year+datetime.timedelta(+365) < today <= graduate_year+datetime.timedelta(+3650):
+                statutory_annual_leave_total = 5
+            if graduate_year+datetime.timedelta(+3650) < today <= graduate_year+datetime.timedelta(+7300):
+                statutory_annual_leave_total = 10
+            if today > graduate_year+datetime.timedelta(+7300):
+                statutory_annual_leave_total = 15
+
+            statutory_annual_leave_total = statutory_annual_leave_total / 365.0 * work_days
+
+            if statutory_annual_leave_total <= int(statutory_annual_leave_total) + 0.5:
+                if statutory_annual_leave_total < int(statutory_annual_leave_total) + 0.25:
+                    statutory_annual_leave_total = int(statutory_annual_leave_total)
+                else:
+                    statutory_annual_leave_total = int(statutory_annual_leave_total) + 0.5
+            else:
+                if statutory_annual_leave_total < int(statutory_annual_leave_total) + 0.75:
+                    statutory_annual_leave_total = int(statutory_annual_leave_total) + 0.5
+                else:
+                    statutory_annual_leave_total = int(statutory_annual_leave_total) + 1
 
         statutory_annual_leave_available = statutory_annual_leave_total
 
@@ -199,14 +224,39 @@ def vacation_refresh(request):
         join_date = i.join_date
 
         #判断法定年假天数
-        if today <= graduate_year+datetime.timedelta(+365):
-            statutory_annual_leave_total = 0
-        if graduate_year+datetime.timedelta(+365) < today <= graduate_year+datetime.timedelta(+3650):
-            statutory_annual_leave_total = 5
-        if graduate_year+datetime.timedelta(+3650) < today <= graduate_year+datetime.timedelta(+7300):
-            statutory_annual_leave_total = 10
-        if today > graduate_year+datetime.timedelta(+7300):
-            statutory_annual_leave_total = 15
+        if (today - join_date).days / 365 >= 1:
+            if today <= graduate_year+datetime.timedelta(+365):
+                statutory_annual_leave_total = 0
+            if graduate_year+datetime.timedelta(+365) < today <= graduate_year+datetime.timedelta(+3650):
+                statutory_annual_leave_total = 5
+            if graduate_year+datetime.timedelta(+3650) < today <= graduate_year+datetime.timedelta(+7300):
+                statutory_annual_leave_total = 10
+            if today > graduate_year+datetime.timedelta(+7300):
+                statutory_annual_leave_total = 15
+        else:
+            work_days = (today - join_date).days
+
+            if today <= graduate_year+datetime.timedelta(+365):
+                statutory_annual_leave_total = 0
+            if graduate_year+datetime.timedelta(+365) < today <= graduate_year+datetime.timedelta(+3650):
+                statutory_annual_leave_total = 5
+            if graduate_year+datetime.timedelta(+3650) < today <= graduate_year+datetime.timedelta(+7300):
+                statutory_annual_leave_total = 10
+            if today > graduate_year+datetime.timedelta(+7300):
+                statutory_annual_leave_total = 15
+
+            statutory_annual_leave_total = statutory_annual_leave_total / 365.0 * work_days
+
+            if statutory_annual_leave_total <= int(statutory_annual_leave_total) + 0.5:
+                if statutory_annual_leave_total < int(statutory_annual_leave_total) + 0.25:
+                    statutory_annual_leave_total = int(statutory_annual_leave_total)
+                else:
+                    statutory_annual_leave_total = int(statutory_annual_leave_total) + 0.5
+            else:
+                if statutory_annual_leave_total < int(statutory_annual_leave_total) + 0.75:
+                    statutory_annual_leave_total = int(statutory_annual_leave_total) + 0.5
+                else:
+                    statutory_annual_leave_total = int(statutory_annual_leave_total) + 1
 
         #判断公司年假天数
         company_annual_leave_total = (today - join_date).days / 365
