@@ -112,6 +112,9 @@ def vacation_table_save(request):
     email = request.POST.get('email')
     _id = request.POST.get('id')
 
+    join_date_list = join_date.split('-')
+    join_date_datetime = datetime.date(int(join_date_list[0]),int(join_date_list[1]),int(join_date_list[2]))
+
     if not _id:
         today = datetime.datetime.now().date()
 
@@ -119,25 +122,25 @@ def vacation_table_save(request):
         graduate_year_date_list = graduate_year.split('-')
         graduate_year_datetime = datetime.date(int(graduate_year_date_list[0]),int(graduate_year_date_list[1]),int(graduate_year_date_list[2]))
         #print graduate_year_datetime+datetime.timedelta(+365),today,graduate_year_datetime+datetime.timedelta(+3650)
-        if (today - join_date).days / 365 >= 1:
-            if today <= graduate_year+datetime.timedelta(+365):
+        if (today - join_date_datetime).days / 365 >= 1:
+            if today <= graduate_year_datetime+datetime.timedelta(+365):
                 statutory_annual_leave_total = 0
-            if graduate_year+datetime.timedelta(+365) < today <= graduate_year+datetime.timedelta(+3650):
+            if graduate_year_datetime+datetime.timedelta(+365) < today <= graduate_year_datetime+datetime.timedelta(+3650):
                 statutory_annual_leave_total = 5
-            if graduate_year+datetime.timedelta(+3650) < today <= graduate_year+datetime.timedelta(+7300):
+            if graduate_year_datetime+datetime.timedelta(+3650) < today <= graduate_year_datetime+datetime.timedelta(+7300):
                 statutory_annual_leave_total = 10
-            if today > graduate_year+datetime.timedelta(+7300):
+            if today > graduate_year_datetime+datetime.timedelta(+7300):
                 statutory_annual_leave_total = 15
         else:
-            work_days = (today - join_date).days
-
-            if today <= graduate_year+datetime.timedelta(+365):
+            work_days = (today - join_date_datetime).days
+            print graduate_year_datetime
+            if today <= graduate_year_datetime+datetime.timedelta(+365):
                 statutory_annual_leave_total = 0
-            if graduate_year+datetime.timedelta(+365) < today <= graduate_year+datetime.timedelta(+3650):
+            if graduate_year_datetime+datetime.timedelta(+365) < today <= graduate_year_datetime+datetime.timedelta(+3650):
                 statutory_annual_leave_total = 5
-            if graduate_year+datetime.timedelta(+3650) < today <= graduate_year+datetime.timedelta(+7300):
+            if graduate_year_datetime+datetime.timedelta(+3650) < today <= graduate_year_datetime+datetime.timedelta(+7300):
                 statutory_annual_leave_total = 10
-            if today > graduate_year+datetime.timedelta(+7300):
+            if today > graduate_year_datetime+datetime.timedelta(+7300):
                 statutory_annual_leave_total = 15
 
             statutory_annual_leave_total = statutory_annual_leave_total / 365.0 * work_days
@@ -156,8 +159,8 @@ def vacation_table_save(request):
         statutory_annual_leave_available = statutory_annual_leave_total
 
         #判断公司年假天数
-        join_date_list = join_date.split('-')
-        join_date_datetime = datetime.date(int(join_date_list[0]),int(join_date_list[1]),int(join_date_list[2]))
+#        join_date_list = join_date.split('-')
+#        join_date_datetime = datetime.date(int(join_date_list[0]),int(join_date_list[1]),int(join_date_list[2]))
 
         if today < join_date_datetime:
             company_annual_leave_total = 0
@@ -188,6 +191,7 @@ def vacation_table_save(request):
         orm.join_date = join_date
         orm.graduate_year = graduate_year
         orm.email = email
+
         try:
             orm.save()
             return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
