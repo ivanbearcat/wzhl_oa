@@ -572,10 +572,9 @@ def vacation_apply_del(request):
 
 @login_required
 def vacation_approve_alert(request):
-    orm = user_table.objects.get(name=request.user.first_name)
-    approve_alert_num = orm.has_approve
-    if approve_alert_num > 0:
-        msg = '有%s个请假事件等待您的审批' % approve_alert_num
+    orm = state.objects.filter(approve_now=request.user.first_name)
+    if len(orm) > 0:
+        msg = '有%s个请假事件等待您的审批' % len(orm)
         return HttpResponse(simplejson.dumps({'code':0,'msg':msg}),content_type="application/json")
     else:
         return HttpResponse(simplejson.dumps({'code':1}),content_type="application/json")

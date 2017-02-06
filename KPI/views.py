@@ -6,7 +6,7 @@ from django.db.models.query_utils import Q
 from django.contrib.auth.decorators import login_required
 from libs.sendmail import send_mail
 from KPI.models import table,table_detail,ban
-from vacation.models import user_table
+from vacation.models import user_table, state
 from wzhl_oa.settings import BASE_DIR
 from openpyxl import load_workbook
 import simplejson
@@ -560,10 +560,9 @@ def KPI_table_detail_commit(request):
 
 @login_required
 def KPI_approve_alert(request):
-    orm = user_table.objects.get(name=request.user.first_name)
-    KPI_alert_num = orm.has_KPI_commit
-    if KPI_alert_num > 0:
-        msg = '有%s个绩效事件等待您的审核' % KPI_alert_num
+    orm = table.objects.filter(commit_now=request.user.first_name)
+    if len(orm) > 0:
+        msg = '有%s个绩效事件等待您的审核' % len(orm)
         return HttpResponse(simplejson.dumps({'code':0,'msg':msg}),content_type="application/json")
     else:
         return HttpResponse(simplejson.dumps({'code':1}),content_type="application/json")
