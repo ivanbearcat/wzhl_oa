@@ -29,6 +29,7 @@ class user_table(models.Model):
     has_KPI_commit = models.PositiveSmallIntegerField(verbose_name='有KPI审核', max_length=10)
     KPI_commit_id = models.CharField(verbose_name='经KPI审核的id', max_length=5120, blank=True)
     subordinate = models.CharField(verbose_name='下属', max_length=10240, blank=True)
+    positive_date = models.DateField(verbose_name='转正日期', auto_now_add=False)
 
 class state(models.Model):
     class Meta:

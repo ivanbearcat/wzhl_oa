@@ -36,6 +36,7 @@
                         <th>部门负责人</th>
                         <th>入职日期</th>
                         <th>毕业日期</th>
+                        <th>转正日期</th>
                         <th>已请病假数</th>
                         <th>可用法定年假</th>
                         <th>已用法定年假</th>
@@ -168,7 +169,7 @@
 
                                         <input type="text" class="form-control" id='join_date' readonly="">
                                         <span class="input-group-btn">
-                                            <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                            <button id="join_date_button" class="btn default" type="button"><i class="fa fa-calendar"></i></button>
                                         </span>
 
                                     </div>
@@ -183,7 +184,22 @@
 
                                         <input type="text" class="form-control" id='graduate_year' readonly="">
                                         <span class="input-group-btn">
-                                            <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                            <button id="graduate_year_button" class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">转正日期</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group input-medium date date-picker" style="float: left" data-date-format="yyyy-mm-dd" data-date-end-date="+31d" >
+
+                                        <input type="text" class="form-control" id='positive_date' readonly="">
+                                        <span class="input-group-btn">
+                                            <button id="positive_date_button" class="btn default" type="button"><i class="fa fa-calendar"></i></button>
                                         </span>
 
                                     </div>
@@ -351,6 +367,7 @@ function loaddata() {
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
+            { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
@@ -364,8 +381,6 @@ function loaddata() {
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%", 'bVisible': false}
-
-
         ],
         "aaSorting": [
             [0, 'asc']
@@ -393,15 +408,15 @@ function loaddata() {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            $('td:eq(7)',nRow).attr('class','success')
             $('td:eq(8)',nRow).attr('class','success')
             $('td:eq(9)',nRow).attr('class','success')
-            $('td:eq(10)',nRow).attr('class','warning')
+            $('td:eq(10)',nRow).attr('class','success')
             $('td:eq(11)',nRow).attr('class','warning')
             $('td:eq(12)',nRow).attr('class','warning')
-            $('td:eq(13)',nRow).attr('class','danger')
+            $('td:eq(13)',nRow).attr('class','warning')
             $('td:eq(14)',nRow).attr('class','danger')
             $('td:eq(15)',nRow).attr('class','danger')
+            $('td:eq(16)',nRow).attr('class','danger')
         },
         "fnServerData": function (sSource, aoData, fnCallback) {
 {#            aoData.push({csrfmiddlewaretoken: '{{ csrf_token }}'})#}
@@ -435,9 +450,10 @@ function rule_save() {
     }
     var join_date = $('#join_date').val();
     var graduate_year = $('#graduate_year').val();
+    var positive_date = $('#positive_date').val()
     var email = $('#email').val();
     var id = $('#id').val();
-    if (name == '' || department == '' || supervisor == '' || principal == '' || join_date == '' || graduate_year == '' || email == '') {
+    if (name == '' || department == '' || supervisor == '' || principal == '' || join_date == '' || graduate_year == '' || email == '' || positive_date == '') {
         toastr.error('不能有空白');
         return;
     }
@@ -457,6 +473,7 @@ function rule_save() {
             principal: principal_list[0],
             join_date: join_date,
             graduate_year: graduate_year,
+            positive_date: positive_date,
             email: email,
             id:id
         },
@@ -480,14 +497,21 @@ function contain(Array, s) {
     return false;
 }
 function add() {
-    $('#name').select2("data", "")
-    $('#department').val("")
-    $('#supervisor').select2("data", "")
-    $('#principal').select2("data", "")
-    $('#join_date').val("")
-    $('#graduate_year').val("")
-    $('#email').val("")
-    $('#id').val("")
+    $('#join_date').attr('disabled',false);
+    $('#join_date_button').show();
+    $('#graduate_year').attr('disabled',false);
+    $('#graduate_year_button').show();
+    $('#positive_date').attr('disabled',false);
+    $('#positive_date_button').show();
+    $('#name').select2("data", "");
+    $('#department').val("");
+    $('#supervisor').select2("data", "");
+    $('#principal').select2("data", "");
+    $('#join_date').val("");
+    $('#graduate_year').val("");
+    $('#positive_date').val("");
+    $('#email').val("");
+    $('#id').val("");
     $.post('/order_form_dropdown/', {}, function (d) {
         $('#name').select2({
             multiple: true,
@@ -521,8 +545,9 @@ function edit() {
         var principal = aData[0][3];
         var join_date = aData[0][4];
         var graduate_year = aData[0][5];
-        var email = aData[0][17];
-        var id = aData[0][18];
+        var positive_date = aData[0][6];
+        var email = aData[0][18];
+        var id = aData[0][19];
         $.post('/order_form_dropdown/', {id:id,name:name}, function (d) {
             $('#name').select2({
                 multiple: true,
@@ -553,8 +578,13 @@ function edit() {
         $('#department').val(department)
         $('#join_date').val(join_date)
         $('#join_date').attr('disabled',true)
+        $('#join_date_button').hide()
         $('#graduate_year').val(graduate_year)
         $('#graduate_year').attr('disabled',true)
+        $('#graduate_year_button').hide()
+        $('#positive_date').val(positive_date)
+        $('#positive_date').attr('disabled',true)
+        $('#positive_date_button').hide()
         $('#email').val(email)
         $('#id').val(id)
         $("#myModal").modal('show')
@@ -577,7 +607,7 @@ function del() {
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
         showAjaxLoad()
-        $.post('/vacation_table_del/', {id: aData[0][18]}, function (d) {
+        $.post('/vacation_table_del/', {id: aData[0][19]}, function (d) {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)

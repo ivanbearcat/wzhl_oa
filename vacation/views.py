@@ -38,7 +38,7 @@ def vacation_table_data(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['name','department','supervisor','principal','join_date','graduate_year','sick_leave_num','statutory_annual_leave_available',
+    sort = ['name','department','supervisor','principal','join_date','graduate_year','positive_date','sick_leave_num','statutory_annual_leave_available',
             'statutory_annual_leave_used','statutory_annual_leave_total','company_annual_leave_available',
             'company_annual_leave_used','company_annual_leave_total','seasons_leave_available','seasons_leave_used',
             'seasons_leave_total','email','id']
@@ -80,19 +80,20 @@ def vacation_table_data(request):
                        '3':i.principal,
                        '4':str(i.join_date).split('+')[0],
                        '5':str(i.graduate_year).split('+')[0],
-                       '6':i.sick_leave_num,
-                       '7':i.statutory_annual_leave_available,
-                       '8':i.statutory_annual_leave_used,
-                       '9':i.statutory_annual_leave_total,
-                       '10':i.company_annual_leave_available,
-                       '11':i.company_annual_leave_used,
-                       '12':i.company_annual_leave_total,
-                       '13':i.seasons_leave_available,
-                       '14':i.seasons_leave_used,
-                       '15':i.seasons_leave_total,
-                       '16':i.leave_in_lieu,
-                       '17':i.email,
-                       '18':i.id
+                       '6':str(i.positive_date).split('+')[0],
+                       '7':i.sick_leave_num,
+                       '8':i.statutory_annual_leave_available,
+                       '9':i.statutory_annual_leave_used,
+                       '10':i.statutory_annual_leave_total,
+                       '11':i.company_annual_leave_available,
+                       '12':i.company_annual_leave_used,
+                       '13':i.company_annual_leave_total,
+                       '14':i.seasons_leave_available,
+                       '15':i.seasons_leave_used,
+                       '16':i.seasons_leave_total,
+                       '17':i.leave_in_lieu,
+                       '18':i.email,
+                       '19':i.id,
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
@@ -109,6 +110,7 @@ def vacation_table_save(request):
     principal = request.POST.get('principal')
     join_date = request.POST.get('join_date')
     graduate_year = request.POST.get('graduate_year')
+    positive_date = request.POST.get('positive_date')
     email = request.POST.get('email')
     _id = request.POST.get('id')
 
@@ -122,7 +124,10 @@ def vacation_table_save(request):
         graduate_year_date_list = graduate_year.split('-')
         graduate_year_datetime = datetime.date(int(graduate_year_date_list[0]),int(graduate_year_date_list[1]),int(graduate_year_date_list[2]))
         #print graduate_year_datetime+datetime.timedelta(+365),today,graduate_year_datetime+datetime.timedelta(+3650)
-        if (today - join_date_datetime).days / 365 >= 1:
+        positive_date_list = positive_date.split('-')
+        positive_date_datetime = datetime.date(int(positive_date_list[0]),int(positive_date_list[1]),int(positive_date_list[2]))
+
+        if today > positive_date_datetime:
             if today <= graduate_year_datetime+datetime.timedelta(+365):
                 statutory_annual_leave_total = 0
             if graduate_year_datetime+datetime.timedelta(+365) < today <= graduate_year_datetime+datetime.timedelta(+3650):
@@ -133,7 +138,6 @@ def vacation_table_save(request):
                 statutory_annual_leave_total = 15
         else:
             work_days = (today - join_date_datetime).days
-            print graduate_year_datetime
             if today <= graduate_year_datetime+datetime.timedelta(+365):
                 statutory_annual_leave_total = 0
             if graduate_year_datetime+datetime.timedelta(+365) < today <= graduate_year_datetime+datetime.timedelta(+3650):
@@ -174,7 +178,8 @@ def vacation_table_save(request):
                          email=email,sick_leave_num=0,statutory_annual_leave_available=statutory_annual_leave_available,statutory_annual_leave_used=0,
                          statutory_annual_leave_total=statutory_annual_leave_total,company_annual_leave_available=company_annual_leave_available,
                          company_annual_leave_used=0,company_annual_leave_total=company_annual_leave_total,seasons_leave_available=1,
-                         seasons_leave_used=0,seasons_leave_total=1,leave_in_lieu=0,has_approve=0,approved_id='',has_KPI_commit=0,KPI_commit_id='')
+                         seasons_leave_used=0,seasons_leave_total=1,leave_in_lieu=0,has_approve=0,approved_id='',
+                         has_KPI_commit=0,KPI_commit_id='',positive_date=positive_date_datetime)
 
         try:
             orm.save()
@@ -226,9 +231,10 @@ def vacation_refresh(request):
     for i in orm:
         graduate_year = i.graduate_year
         join_date = i.join_date
+        positive_date = i.positive_date
 
         #判断法定年假天数
-        if (today - join_date).days / 365 >= 1:
+        if today > positive_date:
             if today <= graduate_year+datetime.timedelta(+365):
                 statutory_annual_leave_total = 0
             if graduate_year+datetime.timedelta(+365) < today <= graduate_year+datetime.timedelta(+3650):
