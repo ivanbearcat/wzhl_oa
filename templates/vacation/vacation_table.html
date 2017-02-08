@@ -195,7 +195,7 @@
                             <label class="col-sm-4 control-label">转正日期</label>
                             <div class="col-sm-8">
                                 <div class="input-group">
-                                    <div class="input-group input-medium date date-picker" style="float: left" data-date-format="yyyy-mm-dd" data-date-end-date="+31d" >
+                                    <div class="input-group input-medium date date-picker" style="float: left" data-date-format="yyyy-mm-dd">
 
                                         <input type="text" class="form-control" id='positive_date' readonly="">
                                         <span class="input-group-btn">
@@ -302,7 +302,7 @@ $(document).ready(function () {
     $('.date-picker').datepicker({
         rtl: App.isRTL(),
         autoclose: true,
-        defaultDate: 0
+        defaultDate: 0,
     });
 
     aButtons = [
