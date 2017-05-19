@@ -307,7 +307,7 @@
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/wanzhong_fixed_assets.xlsx">下载Excel文件</a></h4></label>
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/liujie_fixed_assets.xlsx">下载Excel文件</a></h4></label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="twitter-typeahead"
@@ -426,7 +426,7 @@ $(document).ready(function () {
 
 function loaddata() {
     oTable = $('#datatables').dataTable({
-        "sAjaxSource": "/assets_table_data/?rand=" + Math.random(),
+        "sAjaxSource": "/assets_table_data2/?rand=" + Math.random(),
         "sDom": "<'row-fluid'<'span6'T><'span6'f>r><'table-scrollable't><'fluid'<'span3'l><'span4'i><'span5'p>>",
         "bServerSide": true,
         "bPaginate": true, // 是否使用分页
@@ -555,7 +555,7 @@ function rule_save() {
 
 
     $.ajax({
-        url: '/assets_table_save/',
+        url: '/assets_table_save2/',
         type: "POST",
         data: {
             FANO:FANO,
@@ -662,7 +662,7 @@ function edit() {
 
 function export_excel_file(){
     showAjaxLoad()
-    $.post('/assets_export_excel/', {}, function (d) {
+    $.post('/assets_export_excel2/', {}, function (d) {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
