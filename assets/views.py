@@ -329,6 +329,7 @@ def assets_table_save(request):
                         log_orm = log(comment=comment_info)
                     log_orm.save()
 
+                orm.purchase_date = purchase_date
                 orm.department = _department
                 orm.employee = employee
                 orm.comment = comment
@@ -408,6 +409,7 @@ def assets_table_save2(request):
                         log_orm = log(comment=comment_info)
                     log_orm.save()
 
+                orm.purchase_date = purchase_date
                 orm.department = _department
                 orm.employee = employee
                 orm.comment = comment
@@ -475,12 +477,16 @@ def assets_refresh(request):
         today = datetime.datetime.now().date()
         orm = table.objects.all()
         for i in orm:
+            if not i.purchase_date:
+                continue
             i.residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
             i.total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)
             i.netbook_value = round(i.cost - i.total_depreciation, 2)
             i.save()
         orm2 = table2.objects.all()
         for i in orm2:
+            if not i.purchase_date:
+                continue
             i.residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
             i.total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)
             i.netbook_value = round(i.cost - i.total_depreciation, 2)

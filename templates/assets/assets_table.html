@@ -114,11 +114,11 @@
                                         <input type="text" class="form-control tt-hint"
                                                disabled="" autocomplete="off" spellcheck="false"
                                                style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                        <div type="text" id="model"
-                                             name="typeahead_example_modal_1"
-                                             class="form-control tt-input" autocomplete="off"
-                                             spellcheck="false" dir="auto"
-                                             style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
+                                        <input type="text" id="model"
+                                               name="typeahead_example_modal_1"
+                                               class="form-control tt-input" autocomplete="off"
+                                               spellcheck="false" dir="auto"
+                                               style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
                                             aria-hidden="true"
                                             style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
                                             class="tt-dropdown-menu"
@@ -158,11 +158,11 @@
                                         <input type="text" class="form-control tt-hint"
                                                disabled="" autocomplete="off" spellcheck="false"
                                                style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                        <div type="text" id="department"
-                                             name="typeahead_example_modal_1"
-                                             class="form-control tt-input" autocomplete="off"
-                                             spellcheck="false" dir="auto"
-                                             style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
+                                        <input type="text" id="department"
+                                               name="typeahead_example_modal_1"
+                                               class="form-control tt-input" autocomplete="off"
+                                               spellcheck="false" dir="auto"
+                                               style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
                                             aria-hidden="true"
                                             style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
                                             class="tt-dropdown-menu"
@@ -362,24 +362,24 @@ $(document).ready(function () {
             allowClear: true,
             data: d['description']
         });
-        $('#model').select2({
-            multiple: true,
-            placeholder: '请选择型号',
-            allowClear: true,
-            data: d['model']
-        });
+{#        $('#model').select2({#}
+{#            multiple: true,#}
+{#            placeholder: '请选择型号',#}
+{#            allowClear: true,#}
+{#            data: d['model']#}
+{#        });#}
         $('#category').select2({
             multiple: true,
             placeholder: '请选择类别',
             allowClear: true,
             data: d['category']
         });
-        $('#department').select2({
-            multiple: true,
-            placeholder: '请选择部门',
-            allowClear: true,
-            data: d['department']
-        });
+{#        $('#department').select2({#}
+{#            multiple: true,#}
+{#            placeholder: '请选择部门',#}
+{#            allowClear: true,#}
+{#            data: d['department']#}
+{#        });#}
     })
     $.post('/order_form_dropdown/', {}, function (d) {
         $('#employee').select2({
@@ -509,9 +509,11 @@ function loaddata() {
 function rule_save() {
     var FANO = $('#FANO').val();
     var description = $('#description').select2('data')
-    var model = $('#model').select2('data')
+{#    var model = $('#model').select2('data')#}
+    var model = $('#model').val();
     var category = $('#category').select2('data')
-    var department = $('#department').select2('data')
+{#    var department = $('#department').select2('data')#}
+    var department = $('#department').val();
     var employee = $('#employee').select2('data')
     var purchase_date = $('#purchase_date').val()
     var payment = $('#payment').val();
@@ -530,20 +532,20 @@ function rule_save() {
         description_list.push(description[i]["text"])
     }
 
-    var model_list = []
-    for (var i in model) {
-        model_list.push(model[i]["text"])
-    }
+{#    var model_list = []#}
+{#    for (var i in model) {#}
+{#        model_list.push(model[i]["text"])#}
+{#    }#}
 
     var category_list = []
     for (var i in category) {
         category_list.push(category[i]["text"])
     }
 
-    var department_list = []
-    for (var i in department) {
-        department_list.push(department[i]["text"])
-    }
+{#    var department_list = []#}
+{#    for (var i in department) {#}
+{#        department_list.push(department[i]["text"])#}
+{#    }#}
 
     var employee_list = []
     for (var i in employee) {
@@ -560,9 +562,9 @@ function rule_save() {
         data: {
             FANO:FANO,
             description:description_list[0],
-            model:model_list[0],
+            model:model,
             category:category_list[0],
-            department:department_list[0],
+            department:department,
             employee:employee_list[0],
             purchase_date:purchase_date,
             payment:payment,
@@ -594,9 +596,11 @@ function add() {
     $('#FANO').val("")
 {#    $('#FANO').attr('disabled',true)#}
     $('#description').select2("data", "")
-    $('#model').select2("data", "")
+{#    $('#model').select2("data", "")#}
+    $('#model').val("")
     $('#category').select2("data", "")
-    $('#department').select2("data", "")
+{#    $('#department').select2("data", "")#}
+    $('#department').val("")
     $('#employee').select2("data", "")
     $('#purchase_date').val("")
     $('#payment').val("")
@@ -634,13 +638,15 @@ function edit() {
         $.post('/assets_table_dropdown/', {id:id,description:description,model:model,category:category,
                                             department:department}, function (d) {
             $('#description').select2("data",d['description_edit'])
-            $('#model').select2("data",d['model_edit'])
+{#            $('#model').select2("data",d['model_edit'])#}
             $('#category').select2("data",d['category_edit'])
-            $('#department').select2("data",d['department_edit'])
+{#            $('#department').select2("data",d['department_edit'])#}
         })
         $.post('/order_form_dropdown/', {id:id,name:employee}, function (d) {
             $('#employee').select2("data",d['edit'])
         })
+        $('#model').val(model)
+        $('#department').val(department)
         $('#purchase_date').val(purchase_date)
         $('#payment').val(payment)
         $('#cost').val(cost)
