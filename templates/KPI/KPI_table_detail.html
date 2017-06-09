@@ -696,16 +696,16 @@ $('#save').on('click',function() {
             if (d.code == 0) {
                 toastr.success(d.msg)
                 $('#datatables').dataTable().fnDraw()
-                if (grade_operation != 1){
-                    {% if request.session.status == 3 %}
-                    $.cookie('flag', 0, {expires: 1})
-                    {% endif %}
-                    if ($.cookie('flag') == 0) {
-                        if ($('#ToolTables_datatables_3').length > 0) {
-                            $('#ToolTables_datatables_3')[0].style.display = 'none'
-                        }
-                    }
-                }
+{#                if (grade_operation != 1){#}
+{#                    {% if request.session.status == 3 %}#}
+{#                    $.cookie('flag', 0, {expires: 1})#}
+{#                    {% endif %}#}
+{#                    if ($.cookie('flag') == 0) {#}
+{#                        if ($('#ToolTables_datatables_3').length > 0) {#}
+{#                            $('#ToolTables_datatables_3')[0].style.display = 'none'#}
+{#                        }#}
+{#                    }#}
+{#                }#}
             } else {
                 toastr.error(d.msg)
             }
@@ -725,12 +725,12 @@ function del_() {
             if (d.code == 0) {
                 toastr.success(d.msg)
                 $('#datatables').dataTable().fnDraw()
-                $.cookie('flag',0,{ expires: 1 })
-                if ($.cookie('flag') == 0) {
-                    if ($('#ToolTables_datatables_3').length > 0) {
-                        $('#ToolTables_datatables_3')[0].style.display = 'none'
-                    }
-                }
+{#                $.cookie('flag',0,{ expires: 1 })#}
+{#                if ($.cookie('flag') == 0) {#}
+{#                    if ($('#ToolTables_datatables_3').length > 0) {#}
+{#                        $('#ToolTables_datatables_3')[0].style.display = 'none'#}
+{#                    }#}
+{#                }#}
             } else {
                 toastr.error(d.msg)
             }

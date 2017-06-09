@@ -736,6 +736,35 @@ def vacation_approve_process(request):
     if int(flag) == 1:
         if orm.state == 1:
             orm_fetch_principal = user_table.objects.get(name=orm.name)
+
+            if orm.type == u'公事外出':
+                apply_email = orm_fetch_principal.email
+                orm.state_interface = '已批准'
+                orm.state = 8
+                orm.approve_now = ''
+
+                log_info = '<b>%s</b> 批准了 <b>%s</b> 申请的 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,orm.name,orm.type,orm.vacation_date,orm.state_interface)
+                orm_log = operation_log(name=request.user.first_name,operation=log_info)
+
+                try:
+                    orm_log.save()
+                    orm_fetch_principal.save()
+                    orm_alert_my = user_table.objects.get(name=request.user.first_name)
+                    orm_alert_my.has_approve -= 1
+                    if orm_alert_my.approved_id:
+                        orm_alert_my.approved_id += ',' + str(orm.id)
+                    else:
+                        orm_alert_my.approved_id = str(orm.id)
+                    orm_alert_my.save()
+                    orm.save()
+                    Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+
+                    return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
+                except Exception,e:
+                    print e
+                    return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
             if orm_fetch_principal.supervisor != orm_fetch_principal.principal and orm.real_days >= 2:
                 approve_now = orm_fetch_principal.principal
                 state_interface = u'等待 ' + orm_fetch_principal.principal + u' 审批'
