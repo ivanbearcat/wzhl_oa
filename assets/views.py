@@ -434,11 +434,18 @@ def assets_export_excel(request):
         orm = table.objects.all()
         count = 3
         for i in orm:
-            worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.residual_life,i.department,
-                                                i.employee,i.purchase_date.strftime('%Y/%m/%d'),'%.2f' % i.payment,
-                                                '%.2f' % i.cost,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
-                                                '%.2f' % i.total_depreciation,'%.2f' % i.netbook_value,i.comment,])
-            count += 1
+            try:
+                worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.residual_life,i.department,
+                                                    i.employee,i.purchase_date.strftime('%Y/%m/%d'),'%.2f' % i.payment,
+                                                    '%.2f' % i.cost,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
+                                                    '%.2f' % i.total_depreciation,'%.2f' % i.netbook_value,i.comment,])
+                count += 1
+            except:
+                worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.residual_life,i.department,
+                                                    i.employee,i.purchase_date,'%.2f' % i.payment,
+                                                    '%.2f' % i.cost,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
+                                                    '%.2f' % i.total_depreciation,'%.2f' % i.netbook_value,i.comment,])
+                count += 1
         workbook.close()
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'生成Excel文件成功'}),content_type="application/json")
     except Exception,e:
@@ -459,11 +466,18 @@ def assets_export_excel2(request):
         orm = table2.objects.all()
         count = 3
         for i in orm:
-            worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.residual_life,i.department,
-                                                i.employee,i.purchase_date.strftime('%Y/%m/%d'),'%.2f' % i.payment,
-                                                '%.2f' % i.cost,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
-                                                '%.2f' % i.total_depreciation,'%.2f' % i.netbook_value,i.comment,])
-            count += 1
+            try:
+                worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.residual_life,i.department,
+                                                    i.employee,i.purchase_date.strftime('%Y/%m/%d'),'%.2f' % i.payment,
+                                                    '%.2f' % i.cost,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
+                                                    '%.2f' % i.total_depreciation,'%.2f' % i.netbook_value,i.comment,])
+                count += 1
+            except:
+                worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.residual_life,i.department,
+                                                    i.employee,i.purchase_date,'%.2f' % i.payment,
+                                                    '%.2f' % i.cost,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
+                                                    '%.2f' % i.total_depreciation,'%.2f' % i.netbook_value,i.comment,])
+                count += 1
         workbook.close()
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'生成Excel文件成功'}),content_type="application/json")
     except Exception,e:
