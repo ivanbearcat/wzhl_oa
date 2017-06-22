@@ -803,7 +803,7 @@ def vacation_approve_process(request):
                     print e
                     return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
             else:
-                if orm.type == '病假' and orm.real_days >= 2 or orm.type == '产假' or orm.type == '婚假' or orm.type == '陪产假' or orm.type == '丧假' or orm.type == '事假' or orm.type == u'加班':
+                if (orm.type == '病假' and orm.real_days >= 2) or orm.type == '产假' or orm.type == '婚假' or orm.type == '陪产假' or orm.type == '丧假' or orm.type == '事假' or orm.type == u'加班':
                     state_interface = u'等待 ' + HR['name'] + u' 审批'
                     HR_email = HR['email']
 
@@ -878,7 +878,7 @@ def vacation_approve_process(request):
                     print e
                     return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
         if orm.state == 2:
-            if orm.type == '病假' and orm.real_days >= 2 or orm.type == '产假' or orm.type == '婚假' or orm.type == '陪产假' or orm.type == '丧假' or orm.type == u'加班':
+            if (orm.type == '病假' and orm.real_days >= 2) or orm.type == '产假' or orm.type == '婚假' or orm.type == '陪产假' or orm.type == '丧假' or orm.type == '事假' or orm.type == u'加班':
                 state_interface = u'等待 ' + HR['name'] + u' 审批'
                 HR_email = HR['email']
 
