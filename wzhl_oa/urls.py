@@ -8,6 +8,7 @@ from vacation.views import *
 from assets.views import *
 from KPI.views import *
 from personal_information.views import *
+from business_trip.views import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -92,4 +93,16 @@ urlpatterns = patterns('',
     url(r'^personal_information_interview_data/', personal_information_interview_data),
     url(r'^personal_information_interview_set_session/', personal_information_interview_set_session),
     url(r'^personal_information_interview_detail/', personal_information_interview_detail),
+    url(r'^business_trip_table/', business_trip_table),
+    url(r'^business_trip_table_data/', business_trip_table_data),
+    url(r'^business_trip_table_save/', business_trip_table_save),
+    url(r'^business_trip_table_del/', business_trip_table_del),
+    url(r'^business_trip_set_session/', business_trip_set_session),
+    url(r'^business_trip_budget/', business_trip_budget),
+    url(r'^business_trip_budget_data/', business_trip_budget_data),
+    url(r'^business_trip_budget_save/', business_trip_budget_save),
+    url(r'^business_trip_budget_del/', business_trip_budget_del),
+    url(r'^business_trip_approve/', business_trip_approve),
+    url(r'^business_trip_approve_data/', business_trip_approve_data),
+    url(r'^business_trip_approve_process/', business_trip_approve_process),
 )

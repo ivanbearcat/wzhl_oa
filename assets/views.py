@@ -99,6 +99,11 @@ def assets_table_data(request):
         for j in i_dict.keys():
             i_dict[j] = re.sub(r'\.(?P<d>\d)$','.\g<d>0',i_dict[j])
 
+        if str(i.purchase_date) == '1970-01-01':
+            purchase_date = ''
+        else:
+            purchase_date = str(i.purchase_date)
+
         aaData.append({
                        '0':i.FANO,
                        '1':i.description,
@@ -107,7 +112,7 @@ def assets_table_data(request):
                        '4':i.residual_life,
                        '5':i.department,
                        '6':i.employee,
-                       '7':str(i.purchase_date).split('+')[0],
+                       '7':purchase_date,
                        '8':i_dict['payment'],
                        '9':i_dict['cost'],
                        '10':i_dict['residual_value'],
@@ -190,6 +195,11 @@ def assets_table_data2(request):
         for j in i_dict.keys():
             i_dict[j] = re.sub(r'\.(?P<d>\d)$','.\g<d>0',i_dict[j])
 
+        if str(i.purchase_date) == '1970-01-01':
+            purchase_date = ''
+        else:
+            purchase_date = str(i.purchase_date)
+
         aaData.append({
                        '0':i.FANO,
                        '1':i.description,
@@ -198,7 +208,7 @@ def assets_table_data2(request):
                        '4':i.residual_life,
                        '5':i.department,
                        '6':i.employee,
-                       '7':str(i.purchase_date).split('+')[0],
+                       '7':purchase_date,
                        '8':i_dict['payment'],
                        '9':i_dict['cost'],
                        '10':i_dict['residual_value'],
@@ -301,6 +311,8 @@ def assets_table_save(request):
                     _department = ''
                 if not employee:
                     employee = ''
+                if not purchase_date or purchase_date == 'None':
+                    purchase_date = datetime.date(1970,1,1)
 
                 orm = table(FANO=FANO,description=_description,model=_model,category=_category,department=_department,
                             employee=employee,purchase_date=purchase_date,payment=payment,cost=cost,residual_life=category[str(_category)][0],
@@ -318,6 +330,8 @@ def assets_table_save(request):
                     employee = ''
                 if _department == None:
                     _department = ''
+                if not purchase_date or purchase_date == 'None':
+                    purchase_date = datetime.date(1970,1,1)
 
                 orm = table.objects.get(id=_id)
                 if employee != orm.employee:
@@ -381,6 +395,8 @@ def assets_table_save2(request):
                     _department = ''
                 if not employee:
                     employee = ''
+                if not purchase_date or purchase_date == 'None':
+                    purchase_date = datetime.date(1970,1,1)
 
                 orm = table2(FANO=FANO,description=_description,model=_model,category=_category,department=_department,
                             employee=employee,purchase_date=purchase_date,payment=payment,cost=cost,residual_life=category[str(_category)][0],
@@ -398,6 +414,8 @@ def assets_table_save2(request):
                     employee = ''
                 if _department == None:
                     _department = ''
+                if not purchase_date or purchase_date == 'None':
+                    purchase_date = datetime.date(1970,1,1)
 
                 orm = table2.objects.get(id=_id)
                 if employee != orm.employee:
@@ -491,7 +509,7 @@ def assets_refresh(request):
         today = datetime.datetime.now().date()
         orm = table.objects.all()
         for i in orm:
-            if not i.purchase_date:
+            if not i.purchase_date or str(i.purchase_date).split('+')[0] == '1970-01-01':
                 continue
             i.residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
             i.total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)
@@ -499,7 +517,7 @@ def assets_refresh(request):
             i.save()
         orm2 = table2.objects.all()
         for i in orm2:
-            if not i.purchase_date:
+            if not i.purchase_date or str(i.purchase_date).split('+')[0] == '1970-01-01':
                 continue
             i.residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
             i.total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)

@@ -522,7 +522,7 @@ function rule_save() {
     var comment = $('#comment').val();
     var id = $('#id').val();
 
-    if (FANO == '' || description == '' || model == '' || category == '' || purchase_date == '' || payment == '' || cost == '') {
+    if (FANO == '' || description == '' || model == '' || category == '' || payment == '' || cost == '') {
         toastr.error('不能为空')
         return;
     }
