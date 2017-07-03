@@ -33,7 +33,7 @@ def login_auth(request):
             request.session.pop('next')
             return HttpResponseRedirect(next_page)
         else:
-            return HttpResponseRedirect('/order_form/')
+            return HttpResponseRedirect('/main/')
     else:
         logger.warn('<%s> login in fail.' % user_auth)
         return render_to_response('login/login.html',{'msg':u'账号或密码错误'})

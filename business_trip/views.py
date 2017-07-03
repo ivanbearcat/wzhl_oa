@@ -46,29 +46,29 @@ def business_trip_table_data(request):
     if  sSortDir_0 == 'asc':
         if sSearch == '':
             print iSortCol_0
-            result_data = main.objects.filter(name=request.user.first_name).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = main.objects.filter(name=request.user.first_name).count()
+            result_data = table.objects.filter(name=request.user.first_name).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table.objects.filter(name=request.user.first_name).count()
         else:
-            result_data = main.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
+            result_data = table.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
                                                                                     Q(reason__contains=sSearch) | \
                                                                                     Q(vehicle__contains=sSearch) | \
                                                                                     Q(destination__contains=sSearch)) \
                                                                                 .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = main.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
+            iTotalRecords = table.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
                                                                                     Q(reason__contains=sSearch) | \
                                                                                     Q(vehicle__contains=sSearch) | \
                                                                                     Q(destination__contains=sSearch)).count()
     else:
         if sSearch == '':
-            result_data = main.objects.filter(name=request.user.first_name).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = main.objects.filter(name=request.user.first_name).count()
+            result_data = table.objects.filter(name=request.user.first_name).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table.objects.filter(name=request.user.first_name).count()
         else:
-            result_data = main.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
+            result_data = table.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
                                                                                     Q(reason__contains=sSearch) | \
                                                                                     Q(vehicle__contains=sSearch) | \
                                                                                     Q(destination__contains=sSearch)) \
                                                     .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = main.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
+            iTotalRecords = table.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
                                                                                     Q(reason__contains=sSearch) | \
                                                                                     Q(vehicle__contains=sSearch) | \
                                                                                     Q(destination__contains=sSearch)).count()
@@ -142,12 +142,12 @@ def business_trip_table_save(request):
 
         approve_now = orm_fetch_supervisor.supervisor
 
-        orm = main(name=request.user.first_name, reason=reason, destination=destination, date=date, travel_partner=travel_partner,
+        orm = table(name=request.user.first_name, reason=reason, destination=destination, date=date, travel_partner=travel_partner,
              vehicle=vehicle, hotel_reservation=hotel_reservation, budget_sum=0, status=1, approve_now=approve_now,
              commit_time=datetime.datetime.now())
         orm.save()
     else:
-        orm = main.objects.get(id=_id)
+        orm = table.objects.get(id=_id)
         orm.reason = reason
         orm.destination = destination
         orm.date = date
@@ -163,7 +163,7 @@ def business_trip_table_save(request):
 @login_required
 def business_trip_table_del(request):
     _id = request.POST.get('id')
-    orm = main.objects.get(id=_id)
+    orm = table.objects.get(id=_id)
     if orm.status == 5 or orm.status == 6 or orm.status == 7 or orm.status == 8:
         return HttpResponse(json.dumps({'code':1,'msg':u'无法删除'}),content_type="application/json")
     else:
@@ -265,7 +265,7 @@ def business_trip_budget_save(request):
         orm2 = budget.objects.filter(parent_id=parent_id)
         for i in orm2:
             budget_sum += i.budget
-        orm3 = main.objects.get(id=parent_id)
+        orm3 = table.objects.get(id=parent_id)
         orm3.budget_sum = budget_sum
         orm3.save()
     else:
@@ -277,7 +277,7 @@ def business_trip_budget_save(request):
         orm2 = budget.objects.filter(parent_id=parent_id)
         for i in orm2:
             budget_sum += i.budget
-        orm3 = main.objects.get(id=parent_id)
+        orm3 = table.objects.get(id=parent_id)
         orm3.budget_sum = budget_sum
         orm3.save()
 
@@ -327,29 +327,29 @@ def business_trip_approve_data(request):
         if  sSortDir_0 == 'asc':
             if sSearch == '':
                 print iSortCol_0
-                result_data = main.objects.filter(name=request.user.first_name).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = main.objects.filter(name=request.user.first_name).count()
+                result_data = table.objects.filter(name=request.user.first_name).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(name=request.user.first_name).count()
             else:
-                result_data = main.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                result_data = table.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
                                                                                         Q(reason__contains=sSearch) | \
                                                                                         Q(vehicle__contains=sSearch) | \
                                                                                         Q(destination__contains=sSearch)) \
                                                                                     .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = main.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                iTotalRecords = table.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
                                                                                         Q(reason__contains=sSearch) | \
                                                                                         Q(vehicle__contains=sSearch) | \
                                                                                         Q(destination__contains=sSearch)).count()
         else:
             if sSearch == '':
-                result_data = main.objects.filter(name=request.user.first_name).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = main.objects.filter(name=request.user.first_name).count()
+                result_data = table.objects.filter(name=request.user.first_name).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(name=request.user.first_name).count()
             else:
-                result_data = main.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                result_data = table.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
                                                                                         Q(reason__contains=sSearch) | \
                                                                                         Q(vehicle__contains=sSearch) | \
                                                                                         Q(destination__contains=sSearch)) \
                                                         .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = main.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                iTotalRecords = table.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
                                                                                         Q(reason__contains=sSearch) | \
                                                                                         Q(vehicle__contains=sSearch) | \
                                                                                         Q(destination__contains=sSearch)).count()
@@ -357,29 +357,29 @@ def business_trip_approve_data(request):
         if  sSortDir_0 == 'asc':
             if sSearch == '':
                 print iSortCol_0
-                result_data = main.objects.filter(approve_now=request.user.first_name).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = main.objects.filter(approve_now=request.user.first_name).count()
+                result_data = table.objects.filter(approve_now=request.user.first_name).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(approve_now=request.user.first_name).count()
             else:
-                result_data = main.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                result_data = table.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
                                                                                         Q(reason__contains=sSearch) | \
                                                                                         Q(vehicle__contains=sSearch) | \
                                                                                         Q(destination__contains=sSearch)) \
                                                                                     .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = main.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                iTotalRecords = table.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
                                                                                         Q(reason__contains=sSearch) | \
                                                                                         Q(vehicle__contains=sSearch) | \
                                                                                         Q(destination__contains=sSearch)).count()
         else:
             if sSearch == '':
-                result_data = main.objects.filter(approve_now=request.user.first_name).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = main.objects.filter(approve_now=request.user.first_name).count()
+                result_data = table.objects.filter(approve_now=request.user.first_name).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(approve_now=request.user.first_name).count()
             else:
-                result_data = main.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                result_data = table.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
                                                                                         Q(reason__contains=sSearch) | \
                                                                                         Q(vehicle__contains=sSearch) | \
                                                                                         Q(destination__contains=sSearch)) \
                                                         .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = main.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                iTotalRecords = table.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
                                                                                         Q(reason__contains=sSearch) | \
                                                                                         Q(vehicle__contains=sSearch) | \
                                                                                         Q(destination__contains=sSearch)).count()
@@ -443,7 +443,7 @@ def business_trip_approve_process(request):
     _id = request.POST.get('id')
     status = request.POST.get('status')
 
-    orm = main.objects.get(id=_id)
+    orm = table.objects.get(id=_id)
     if flag == '1':
         if status == '1':
             orm.status = 2

@@ -1,7 +1,7 @@
 #coding:utf8
 from django.db import models
 
-class main(models.Model):
+class table(models.Model):
     class Meta:
         permissions = (
             ("can_view_all", "Can view all"),
