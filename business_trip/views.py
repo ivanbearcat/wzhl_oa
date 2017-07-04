@@ -80,37 +80,40 @@ def business_trip_table_data(request):
                     <a class="btn btn-sm blue">
                         详细预算 <i class="fa"></i>
                     </a>
-                '''.format(i.id)
+                '''
         export = '''
                     <a class="btn btn-sm green">
                         生成Excel文件 <i class="fa fa-level-down"></i>
                     </a>
-                '''.format(i.id)
+                '''
         delete = '''
                     <a class="btn btn-sm red">
                         删除 <i class="fa"></i>
                     </a>
-                 '''.format(i.id)
+                 '''
+        detail = '''
+                    <a class="btn btn-sm blue">
+                        行程详情 <i class="fa"></i>
+                    </a>
+                 '''
         if i.hotel_reservation == 1:
             hotel_reservation = u'是'
         else:
             hotel_reservation = u'否'
         aaData.append({
                        '0':i.name,
-                       '1':i.reason,
-                       '2':i.destination,
+                       '1':detail,
+                       '2':i.date,
                        '3':str(i.apply_time),
-                       '4':i.date,
-                       '5':i.travel_partner,
-                       '6':i.vehicle,
-                       '7':hotel_reservation,
-                       '8':i.budget_sum,
-                       '9':i.status,
-                       '10':budget_info,
-                       '11':export,
-                       '12':delete,
-                       '13':i.id,
-                       '14':i.approve_now
+                       '4':i.travel_partner,
+                       '5':hotel_reservation,
+                       '6':i.budget_sum,
+                       '7':i.status,
+                       '8':budget_info,
+                       '9':export,
+                       '10':delete,
+                       '11':i.id,
+                       '12':i.approve_now
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,

@@ -19,7 +19,7 @@
         <a id="back" class="btn btn-sm yellow">
              返回 <i class="fa fa-reply"></i>
         </a>
-        {% if request.session.status != 4 and request.session.status != 5 and request.session.status != 6 and request.session.status != 7 %}
+        {% if request.session.status != 2 and request.session.status != 4 and request.session.status != 5 and request.session.status != 6 and request.session.status != 7 %}
             <a id="commit" class="btn btn-sm purple">
                  提交审核 <i class="fa fa-check"></i>
             </a>
@@ -424,7 +424,7 @@ $(document).ready(function () {
     })
 
     aButtons = [
-        {% if request.session.status == 1 or request.session.status == 2 or request.session.status == 3 %}
+        {% if request.session.status == 1 %}
             {
                 "sExtends": 'text',
                 "sButtonText": '<font color="white">添加</font><i class="fa fa-plus"></i>',
