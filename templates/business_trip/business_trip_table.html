@@ -34,13 +34,12 @@
                     <tr>
                         <th>姓名</th>
                         <th>行程详情</th>
+                        <th>详细预算</th>
                         <th>行程起止日期</th>
                         <th>申请日期</th>
                         <th>同行人</th>
-                        <th>订酒店</th>
                         <th>总预算</th>
                         <th>状态</th>
-                        <th>详细预算</th>
                         <th>Excel</th>
                         <th>提交审核</th>
                         <th>ID</th>
@@ -64,48 +63,48 @@
             </div>
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">事由</label>
-                        <div class="col-sm-6">
-                            <textarea class="form-control" id='reason' style="width: 290px" rows="3"></textarea>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">目的地</label>
-                        <div class="col-sm-8">
-                            <div class="input-group">
-                                <span class="twitter-typeahead"
-                                      style="position: relative; display: inline-block;">
-                                    <input type="text" class="form-control tt-hint"
-                                           disabled="" autocomplete="off" spellcheck="false"
-                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                    <input type="text" id="destination"
-                                           name="typeahead_example_modal_1"
-                                           class="form-control tt-input" autocomplete="off"
-                                           spellcheck="false" dir="auto"
-                                           style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
-                                        aria-hidden="true"
-                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                                        class="tt-dropdown-menu"
-                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
-                                        class="tt-dataset-1"></div></span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="reportrange_div" class="form-group">
-                        <label class="col-sm-4 control-label">出差日期</label>
-                        <div class="col-sm-8">
-                            <div class="col-md-2" style="margin-left:-15px; float: left">
-                                <div id="reportrange" class="btn default">
-                                    <i class="fa fa-calendar"></i>
-                                    <span>
-                                    </span>
-                                    <b class="fa fa-angle-down"></b>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div id="days"></div>
+{#                    <div class="form-group">#}
+{#                        <label class="col-sm-4 control-label">事由</label>#}
+{#                        <div class="col-sm-6">#}
+{#                            <textarea class="form-control" id='reason' style="width: 290px" rows="3"></textarea>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div class="form-group">#}
+{#                        <label class="col-sm-4 control-label">目的地</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <div class="input-group">#}
+{#                                <span class="twitter-typeahead"#}
+{#                                      style="position: relative; display: inline-block;">#}
+{#                                    <input type="text" class="form-control tt-hint"#}
+{#                                           disabled="" autocomplete="off" spellcheck="false"#}
+{#                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">#}
+{#                                    <input type="text" id="destination"#}
+{#                                           name="typeahead_example_modal_1"#}
+{#                                           class="form-control tt-input" autocomplete="off"#}
+{#                                           spellcheck="false" dir="auto"#}
+{#                                           style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre#}
+{#                                        aria-hidden="true"#}
+{#                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span#}
+{#                                        class="tt-dropdown-menu"#}
+{#                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div#}
+{#                                        class="tt-dataset-1"></div></span></span>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div id="reportrange_div" class="form-group">#}
+{#                        <label class="col-sm-4 control-label">出差日期</label>#}
+{#                        <div class="col-sm-8">#}
+{#                            <div class="col-md-2" style="margin-left:-15px; float: left">#}
+{#                                <div id="reportrange" class="btn default">#}
+{#                                    <i class="fa fa-calendar"></i>#}
+{#                                    <span>#}
+{#                                    </span>#}
+{#                                    <b class="fa fa-angle-down"></b>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div id="days"></div>#}
                     <div class="form-group">
                         <label class="col-sm-4 control-label">同行人</label>
 
@@ -129,29 +128,29 @@
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">交通工具</label>
-
-                        <div class="col-sm-8">
-                            <div class="input-group">
-                                <span class="twitter-typeahead"
-                                      style="position: relative; display: inline-block;">
-                                    <input type="text" class="form-control tt-hint"
-                                           disabled="" autocomplete="off" spellcheck="false"
-                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                    <div type="text" id="vehicle"
-                                         name="typeahead_example_modal_1"
-                                         class="form-control tt-input" autocomplete="off"
-                                         spellcheck="false" dir="auto"
-                                         style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
-                                        aria-hidden="true"
-                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                                        class="tt-dropdown-menu"
-                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
-                                        class="tt-dataset-1"></div></span></span>
-                            </div>
-                        </div>
-                    </div>
+{#                    <div class="form-group">#}
+{#                        <label class="col-sm-4 control-label">交通工具</label>#}
+{##}
+{#                        <div class="col-sm-8">#}
+{#                            <div class="input-group">#}
+{#                                <span class="twitter-typeahead"#}
+{#                                      style="position: relative; display: inline-block;">#}
+{#                                    <input type="text" class="form-control tt-hint"#}
+{#                                           disabled="" autocomplete="off" spellcheck="false"#}
+{#                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">#}
+{#                                    <div type="text" id="vehicle"#}
+{#                                         name="typeahead_example_modal_1"#}
+{#                                         class="form-control tt-input" autocomplete="off"#}
+{#                                         spellcheck="false" dir="auto"#}
+{#                                         style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre#}
+{#                                        aria-hidden="true"#}
+{#                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span#}
+{#                                        class="tt-dropdown-menu"#}
+{#                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div#}
+{#                                        class="tt-dataset-1"></div></span></span>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
                     <div class="form-group">
                         <label class="col-sm-4 control-label">订酒店</label>
                             <div  class="col-sm-8">
@@ -197,7 +196,7 @@
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/KPI/{{ username }}/KPI.xlsx">下载Excel文件</a></h4></label>
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/business_trip.xlsx">下载Excel文件</a></h4></label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="twitter-typeahead"
@@ -235,6 +234,34 @@
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                         <button type="button" class="btn btn-primary" onclick="del()"><i class="fa fa-check"></i>确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>您确定要提交吗</h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" onclick="commit()"><i class="fa fa-check"></i>确定</button>
                     </div>
                 </form>
             </div>
@@ -385,23 +412,20 @@ function loaddata() {
             'aButtons': aButtons
         },
         "aoColumns": [
-            { "sClass": "center", 'sWidth': "5%"},
-            { "sClass": "center", 'sWidth': "5%"},
-            { "sClass": "center", 'sWidth': "5%"},
-            { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
             { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
-            { "sClass": "center", 'sWidth': "5%"},
-            { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
+            { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
+            { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
+            { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
+            { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
+            { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
             { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
             { "sClass": "center", 'sWidth': "5%", 'bVisible': false}
-
-
         ],
         "aaSorting": [
-            [13, 'desc']
+            [10, 'desc']
         ],
         "oLanguage": {
             "sProcessing": "正在加载数据...",
@@ -426,29 +450,39 @@ function loaddata() {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            if(aData[7] == 1 || aData[7] == 2 || aData[7] == 3){
-                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp等待&nbsp'+aData[12]+'&nbsp审批</div>')
+            if(aData[7] == 0){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp等待提交</div>')
+            }else if(aData[7] == 1 || aData[7] == 2 || aData[7] == 3){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp等待&nbsp'+aData[11]+'&nbsp审批</div>')
             }else if(aData[7] == 4){
-                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp待出差</div>')
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp待出差</div>')
             }else if(aData[7] == 5){
-                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp行程完成</div>')
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp行程完成</div>')
             }else if(aData[7] == 6){
-                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp行程取消</div>')
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp行程取消</div>')
             }else if(aData[7] == 7){
-                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp审核不通过</div>')
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp审核不通过</div>')
             }else if(aData[7] == 8){
-                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已过期</div>')
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已过期</div>')
             }
 
 {#            $('td:eq(0)',nRow).html('<a>'+aData[0]+'</a>')#}
-            $('td:eq(10)',nRow).on('click',function(){
-                var parent_id = aData[11]
-                $.post('/business_trip_set_session/', {parent_id: parent_id}, function (d) {
+            $('td:eq(1)',nRow).on('click',function(){
+                var parent_id = aData[10]
+                var status = aData[7]
+                $.post('/business_trip_set_session/', {parent_id: parent_id, status: status}, function (d) {
+                    location.href = '/business_trip_detail/'
+                });
+            });
+            $('td:eq(2)',nRow).on('click',function(){
+                var parent_id = aData[10]
+                var status = aData[7]
+                $.post('/business_trip_set_session/', {parent_id: parent_id, status: status}, function (d) {
                     location.href = '/business_trip_budget/'
-                })
-            })
-            $('td:eq(11)',nRow).on('click',function(){
-                $.post('/create_excel/', {id:aData[11]}, function (d) {
+                });
+            });
+            $('td:eq(8)',nRow).on('click',function(){
+                $.post('/business_trip_create_excel/', {id:aData[10]}, function (d) {
                     if (d.code == 0) {
                         toastr.success(d.msg)
                         $('#myModal2').modal('show')
@@ -457,10 +491,16 @@ function loaddata() {
                     }
                 })
             })
-            $('td:eq(12)',nRow).on('click',function(){
-                var parent_id = aData[11]
-                $.cookie('flag',parent_id,{ expires: 1 })
-                $("#myModal3").modal('show')
+            $('td:eq(9)',nRow).on('click',function(){
+                if (aData[7] == 0){
+                    var parent_id = aData[10]
+                    $.cookie('flag',parent_id,{ expires: 1 })
+                    $("#myModal4").modal('show')
+                }else {
+                    var parent_id = aData[10]
+                    $.cookie('flag',parent_id,{ expires: 1 })
+                    $("#myModal3").modal('show')
+                }
             })
         },
         "fnServerData": function (sSource, aoData, fnCallback) {
@@ -491,18 +531,18 @@ function add() {
 function edit() {
     var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
-    var reason = aData[0][1];
+{#    var reason = aData[0][1];#}
 {#    var destination = aData[0][2];#}
 {#    var date = aData[0][4];#}
     var travel_partner = aData[0][5];
 {#    var vehicle = aData[0][6];#}
     var hotel_reservation = aData[0][7];
     var id = aData[0][10];
-    $('#reason').val(reason);
-    $('#destination').val(destination);
-    $('#reportrange span').html(date)
+{#    $('#reason').val(reason);#}
+{#    $('#destination').val(destination);#}
+{#    $('#reportrange span').html(date)#}
     $('#travel_partner').val(travel_partner);
-    $('#vehicle').select2("data",{'text':vehicle});
+{#    $('#vehicle').select2("data",{'text':vehicle});#}
     $('#hotel_reservation').select2("data",{'text':hotel_reservation});
     $('#id').val(id);
     $("#myModal").modal('show')
@@ -526,43 +566,20 @@ function del() {
 
 
 function rule_save() {
-    var reason = $('#reason').val();
-    var destination = $('#destination').val();
-    var date = $('#reportrange span').html().split('  -&gt;  ');
-    var begin = date[0]
-    var end = date[1]
+{#    var reason = $('#reason').val();#}
+{#    var destination = $('#destination').val();#}
+{#    var date = $('#reportrange span').html().split('  -&gt;  ');#}
+{#    var begin = date[0]#}
+{#    var end = date[1]#}
     var travel_partner = $('#travel_partner').val();
-    var vehicle = $('#vehicle').select2('data');
+{#    var vehicle = $('#vehicle').select2('data');#}
     var hotel_reservation = $('#hotel_reservation').select2('data');
-
-
-{#        var name = $('#name').select2('data');#}
-{#        var name_list = []#}
-{#        for (var i in name) {#}
-{#            name_list.push(name[i]["text"]);#}
-{#        }#}
-{#        var department = $('#department').val();#}
-{#        var supervisor = $('#supervisor').select2('data');#}
-{#        var supervisor_list = []#}
-{#        for (var i in supervisor) {#}
-{#            supervisor_list.push(supervisor[i]["text"]);#}
-{#        }#}
-{#        var principal = $('#principal').select2('data');#}
-{#        var principal_list = []#}
-{#        for (var i in principal) {#}
-{#            principal_list.push(principal[i]["text"]);#}
-{#        }#}
-{#        var join_date = $('#join_date').val();#}
-{#        var graduate_year = $('#graduate_year').val();#}
-{#        var positive_date = $('#positive_date').val()#}
-{#        var email = $('#email').val();#}
     var id = $('#id').val();
 
-    if (reason == '' || destination == '' || begin == '' || vehicle == null || hotel_reservation == null) {
+    if (hotel_reservation == null) {
         toastr.error('不能有空白');
         return;
     }
-{#        console.info(name_list[0],department,supervisor_list[0],principal_list[0],join_date,graduate_year)#}
 
     showAjaxLoad();
     $(self).button('loading');//正在登陆中，显示data-loading-text 标记内容
@@ -572,12 +589,12 @@ function rule_save() {
         url: '/business_trip_table_save/',
         type: "POST",
         data: {
-            reason: reason,
-            destination: destination,
-            begin: begin,
-            end: end,
+{#            reason: reason,#}
+{#            destination: destination,#}
+{#            begin: begin,#}
+{#            end: end,#}
             travel_partner: travel_partner,
-            vehicle: vehicle['text'],
+{#            vehicle: vehicle['text'],#}
             hotel_reservation: hotel_reservation['id'],
             id: id
         },
@@ -593,6 +610,20 @@ function rule_save() {
     });
     $('#myModal').modal('hide')
     $(self).button('complete')
+}
+
+
+function commit(){
+    var id = $.cookie('flag')
+    $.post('/business_trip_approve_process/', {id:id, status:0, flag:1}, function (d) {
+        if (d.code == 0) {
+            toastr.success(d.msg)
+            $('#datatables').dataTable().fnDraw()
+        } else {
+            toastr.error(d.msg)
+        }
+    })
+    $('#myModal4').modal('hide')
 }
 
 </script>

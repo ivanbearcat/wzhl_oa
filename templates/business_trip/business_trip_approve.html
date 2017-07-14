@@ -33,16 +33,13 @@
                     <thead>
                     <tr>
                         <th>姓名</th>
-                        <th>事由</th>
-                        <th>目的地</th>
+                        <th>行程详情</th>
+                        <th>详细预算</th>
+                        <th>起止日期</th>
                         <th>申请日期</th>
-                        <th>出差日期</th>
                         <th>同行人</th>
-                        <th>交通工具</th>
-                        <th>订酒店</th>
                         <th>总预算</th>
                         <th>状态</th>
-                        <th>详细预算</th>
                         <th>Excel</th>
                         <th>审批通过</th>
                         <th>审批不通过</th>
@@ -200,7 +197,7 @@
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/KPI/{{ username }}/KPI.xlsx">下载Excel文件</a></h4></label>
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/business_trip.xlsx">下载Excel文件</a></h4></label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="twitter-typeahead"
@@ -400,26 +397,21 @@ function loaddata() {
             'aButtons': aButtons
         },
         "aoColumns": [
-            { "sClass": "center", 'sWidth': "5%"},
-            { "sClass": "center", 'sWidth': "5%"},
-            { "sClass": "center", 'sWidth': "5%"},
-            { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
             { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
-            { "sClass": "center", 'sWidth': "5%"},
+            { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
+            { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
+            { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
+            { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
             { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
             { "sClass": "center", 'sWidth': "5%"},
-            { "sClass": "center", 'sWidth': "5%"},
-            { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
             { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
             { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
             { "sClass": "center", 'sWidth': "5%", 'bSortable': false},
             { "sClass": "center", 'sWidth': "5%", 'bVisible': false}
-
-
         ],
         "aaSorting": [
-            [13, 'desc']
+            [11, 'desc']
         ],
         "oLanguage": {
             "sProcessing": "正在加载数据...",
@@ -444,29 +436,41 @@ function loaddata() {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            if(aData[9] == 1 || aData[9] == 2 || aData[9] == 3){
-                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp等待&nbsp'+aData[15]+'&nbsp审批</div>')
-            }else if(aData[9] == 4){
-                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp待出差</div>')
-            }else if(aData[9] == 5){
-                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp行程完成</div>')
-            }else if(aData[9] == 6){
-                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp行程取消</div>')
-            }else if(aData[9] == 7){
-                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp审核不通过</div>')
-            }else if(aData[9] == 8){
-                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已过期</div>')
+            if(aData[7] == 0){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp等待提交</div>')
+            }else if(aData[7] == 1 || aData[7] == 2 || aData[7] == 3){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp等待&nbsp'+aData[12]+'&nbsp审批</div>')
+            }else if(aData[7] == 4){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp待出差</div>')
+            }else if(aData[7] == 5){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp行程完成</div>')
+            }else if(aData[7] == 6){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp行程取消</div>')
+            }else if(aData[7] == 7){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp审核不通过</div>')
+            }else if(aData[7] == 8){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已过期</div>')
             }
-
-{#            $('td:eq(0)',nRow).html('<a>'+aData[0]+'</a>')#}
-            $('td:eq(10)',nRow).on('click',function(){
-                var parent_id = aData[14]
-                $.post('/business_trip_set_session/', {parent_id: parent_id}, function (d) {
+            if (aData[12] != '{{ user }}'){
+                $('td:eq(9)',nRow).html('');
+                $('td:eq(10)',nRow).html('');
+            }
+            $('td:eq(1)',nRow).on('click',function(){
+                var parent_id = aData[11]
+                var status = aData[7]
+                $.post('/business_trip_set_session/', {parent_id: parent_id, status: status}, function (d) {
+                    location.href = '/business_trip_detail/'
+                });
+            });
+            $('td:eq(2)',nRow).on('click',function(){
+                var parent_id = aData[11]
+                var status = aData[7]
+                $.post('/business_trip_set_session/', {parent_id: parent_id, status: status}, function (d) {
                     location.href = '/business_trip_budget/'
-                })
+                });
             })
-            $('td:eq(11)',nRow).on('click',function(){
-                $.post('/create_excel/', {id:aData[14]}, function (d) {
+            $('td:eq(8)',nRow).on('click',function(){
+                $.post('/business_trip_create_excel/', {id:aData[11]}, function (d) {
                     if (d.code == 0) {
                         toastr.success(d.msg)
                         $('#myModal2').modal('show')
@@ -475,17 +479,17 @@ function loaddata() {
                     }
                 })
             })
-            $('td:eq(12)',nRow).on('click',function(){
-                var parent_id = aData[14]
+            $('td:eq(9)',nRow).on('click',function(){
+                var parent_id = aData[11]
                 $.cookie('flag',parent_id,{ expires: 1 })
-                var status = aData[9]
+                var status = aData[7]
                 $.cookie('status',status,{ expires: 1 })
                 $("#myModal3").modal('show')
             })
-            $('td:eq(13)',nRow).on('click',function(){
-                var parent_id = aData[14]
+            $('td:eq(10)',nRow).on('click',function(){
+                var parent_id = aData[11]
                 $.cookie('flag',parent_id,{ expires: 1 })
-                var status = aData[9]
+                var status = aData[7]
                 $.cookie('status',status,{ expires: 1 })
                 $("#myModal4").modal('show')
             })

@@ -28,15 +28,18 @@
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-globe"></i>出差预算
+                    <i class="fa fa-globe"></i>行程详情
                 </div>
             </div>
             <div class="portlet-body">
-                <table class="table table-striped table-bordered table-hover table-full-width"  id="datatables1">
+                <table class="table table-striped table-bordered table-hover table-full-width"  id="datatables">
                     <thead>
                     <tr>
-                        <th>预算类别</th>
-                        <th>预算费用</th>
+                        <th>事由</th>
+                        <th>起点</th>
+                        <th>终点</th>
+                        <th>起止日期</th>
+                        <th>交通工具</th>
                         <th>ID</th>
                     </tr>
                     </thead>
@@ -48,54 +51,24 @@
         <!-- END EXAMPLE TABLE PORTLET-->
     </div>
 </div>
-{% if request.session.status == '4' %}
-<div class="row">
-    <div class="col-md-12">
-        <!-- BEGIN EXAMPLE TABLE PORTLET-->
-{#        <div class="note note-danger">#}
-{#            <h4 class="block">过期通知：</h4>#}
-{#            <p>#}
-{#                <span style="color:red">{{ expire_info }}</span>#}
-{#            </p>#}
-{#        </div>#}
-        <div class="portlet box grey tasks-widget">
-            <div class="portlet-title">
-                <div class="caption">
-                    <i class="fa fa-globe"></i>实际预算
-                </div>
-            </div>
-            <div class="portlet-body">
-                <table class="table table-striped table-bordered table-hover table-full-width"  id="datatables2">
-                    <thead>
-                    <tr>
-                        <th>实际机票费用</th>
-                        <th>实际住宿费用</th>
-                        <th>住宿费用支付方式</th>
-                        <th>ID</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-        </div>
-        <!-- END EXAMPLE TABLE PORTLET-->
-    </div>
-</div>
-{% endif %}
 
-<div class="modal fade" id="myModal1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">出差预算</h4>
+                <h4 class="modal-title">行程详情</h4>
             </div>
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">预算类型</label>
-
+                        <label class="col-sm-4 control-label">事由</label>
+                        <div class="col-sm-6">
+                            <textarea class="form-control" id='reason' style="width: 290px" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">起点</label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="twitter-typeahead"
@@ -103,7 +76,7 @@
                                     <input type="text" class="form-control tt-hint"
                                            disabled="" autocomplete="off" spellcheck="false"
                                            style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                    <div type="text" id="budget_type"
+                                    <div type="text" id="origin"
                                          name="typeahead_example_modal_1"
                                          class="form-control tt-input" autocomplete="off"
                                          spellcheck="false" dir="auto"
@@ -117,7 +90,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">预算费用</label>
+                        <label class="col-sm-4 control-label">终点</label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="twitter-typeahead"
@@ -125,11 +98,46 @@
                                     <input type="text" class="form-control tt-hint"
                                            disabled="" autocomplete="off" spellcheck="false"
                                            style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                    <input type="text" id="budget"
-                                           name="typeahead_example_modal_1"
-                                           class="form-control tt-input" autocomplete="off"
-                                           spellcheck="false" dir="auto"
-                                           style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
+                                    <div type="text" id="destination"
+                                         name="typeahead_example_modal_1"
+                                         class="form-control tt-input" autocomplete="off"
+                                         spellcheck="false" dir="auto"
+                                         style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
+                                        aria-hidden="true"
+                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
+                                        class="tt-dropdown-menu"
+                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
+                                        class="tt-dataset-1"></div></span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="reportrange_div" class="form-group">
+                        <label class="col-sm-4 control-label">起止日期</label>
+                        <div class="col-sm-8">
+                            <div class="col-md-2" style="margin-left:-15px; float: left">
+                                <div id="reportrange" class="btn default">
+                                    <i class="fa fa-calendar"></i>
+                                    <span>
+                                    </span>
+                                    <b class="fa fa-angle-down"></b>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">交通工具</label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                                    <input type="text" class="form-control tt-hint"
+                                           disabled="" autocomplete="off" spellcheck="false"
+                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                    <div type="text" id="vehicle"
+                                         name="typeahead_example_modal_1"
+                                         class="form-control tt-input" autocomplete="off"
+                                         spellcheck="false" dir="auto"
+                                         style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
                                         aria-hidden="true"
                                         style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
                                         class="tt-dropdown-menu"
@@ -143,7 +151,7 @@
             <div id="id" style="display: none"></div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" onclick="rule_save1()"><i class="fa fa-check"></i>保存
+                    <button type="button" class="btn btn-primary" onclick="rule_save()"><i class="fa fa-check"></i>保存
                     </button>
                 </div>
             </div>
@@ -151,90 +159,28 @@
     </div>
 </div>
 <!--/datatables-->
-<div class="modal fade" id="myModal2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">实际预算</h4>
+                <h4 class="modal-title"></h4>
             </div>
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label">实际机票费用</label>
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/KPI/{{ username }}/KPI.xlsx">下载Excel文件</a></h4></label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="twitter-typeahead"
                                       style="position: relative; display: inline-block;">
-                                    <input type="text" class="form-control tt-hint"
-                                           disabled="" autocomplete="off" spellcheck="false"
-                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                    <input type="text" id="airfare"
-                                           name="typeahead_example_modal_1"
-                                           class="form-control tt-input" autocomplete="off"
-                                           spellcheck="false" dir="auto"
-                                           style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
-                                        aria-hidden="true"
-                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                                        class="tt-dropdown-menu"
-                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
-                                        class="tt-dataset-1"></div></span></span>
                             </div>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">实际住宿费用</label>
-                        <div class="col-sm-8">
-                            <div class="input-group">
-                                <span class="twitter-typeahead"
-                                      style="position: relative; display: inline-block;">
-                                    <input type="text" class="form-control tt-hint"
-                                           disabled="" autocomplete="off" spellcheck="false"
-                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                    <input type="text" id="accommodation_cost"
-                                           name="typeahead_example_modal_1"
-                                           class="form-control tt-input" autocomplete="off"
-                                           spellcheck="false" dir="auto"
-                                           style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
-                                        aria-hidden="true"
-                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                                        class="tt-dropdown-menu"
-                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
-                                        class="tt-dataset-1"></div></span></span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">住宿费用支付方式</label>
-
-                        <div class="col-sm-8">
-                            <div class="input-group">
-                                <span class="twitter-typeahead"
-                                      style="position: relative; display: inline-block;">
-                                    <input type="text" class="form-control tt-hint"
-                                           disabled="" autocomplete="off" spellcheck="false"
-                                           style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                    <div type="text" id="payment"
-                                         name="typeahead_example_modal_1"
-                                         class="form-control tt-input" autocomplete="off"
-                                         spellcheck="false" dir="auto"
-                                         style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
-                                        aria-hidden="true"
-                                        style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                                        class="tt-dropdown-menu"
-                                        style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
-                                        class="tt-dataset-1"></div></span></span>
-                            </div>
-                        </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
                     </div>
                 </form>
-            </div>
-            <div id="id" style="display: none"></div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
-                    <button type="button" class="btn btn-primary" onclick="rule_save2()"><i class="fa fa-check"></i>保存
-                    </button>
-                </div>
             </div>
         </div>
     </div>
@@ -266,42 +212,14 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
-    aButtons1 = [
+    aButtons = [
         {% if request.session.status == '0' %}
                 {
-                    "sExtends": 'text',
-                    "sButtonText": '<font color="white">添加预算</font><i class="fa fa-plus"></i>',
-                    "sButtonClass": "btn green",
-                    "fnComplete": function (nButton, oConfig, nRow) {
-                        add1()
-                    }
-                },
-                {
-                    "sExtends": 'text',
-                    "sButtonText": '<font color="white">编辑预算</font><i class="fa fa-edit"></i>',
-                    "sButtonClass": "btn blue",
-                    "fnComplete": function (nButton, oConfig, nRow) {
-                        edit1()
-                    }
-                },
-                {
-                    "sExtends": 'text',
-                    "sButtonText": '<font color="white">删除预算</font><i class="fa fa-times"></i>',
-                    "sButtonClass": "btn red",
-                    "fnComplete": function (nButton, oConfig, nRow) {
-                        del1()
-                    }
-                }
-        {% endif %}
-            ];
-
-
-    aButtons2 = [{
                     "sExtends": 'text',
                     "sButtonText": '<font color="white">添加</font><i class="fa fa-plus"></i>',
                     "sButtonClass": "btn green",
                     "fnComplete": function (nButton, oConfig, nRow) {
-                        add2()
+                        add()
                     }
                 },
                 {
@@ -309,7 +227,7 @@ $(document).ready(function () {
                     "sButtonText": '<font color="white">编辑</font><i class="fa fa-edit"></i>',
                     "sButtonClass": "btn blue",
                     "fnComplete": function (nButton, oConfig, nRow) {
-                        edit2()
+                        edit()
                     }
                 },
                 {
@@ -317,9 +235,11 @@ $(document).ready(function () {
                     "sButtonText": '<font color="white">删除</font><i class="fa fa-times"></i>',
                     "sButtonClass": "btn red",
                     "fnComplete": function (nButton, oConfig, nRow) {
-                        del2()
+                        del()
                     }
-                }];
+                }
+        {% endif %}
+            ];
 
 
     $('#reportrange').daterangepicker({
@@ -380,32 +300,43 @@ $(document).ready(function () {
     });
 
 
-    $('#budget_type').select2({
+    $('#origin').select2({
         multiple: false,
-        placeholder: '选择预算类型',
+        placeholder: '选择起点',
         allowClear: true,
-        data: [{'text':'交通费','id':1},
-               {'text':'膳食费','id':2},
-               {'text':'招待费','id':3},
-               {'text':'其他费用','id':4}]
+        data: [{'text':'上海','id':1},
+               {'text':'北京','id':2},
+               {'text':'广州','id':3},
+               {'text':'深圳','id':4}]
+    });
+    
+
+    $('#destination').select2({
+        multiple: false,
+        placeholder: '选择终点',
+        allowClear: true,
+        data: [{'text':'上海','id':1},
+               {'text':'北京','id':2},
+               {'text':'广州','id':3},
+               {'text':'深圳','id':4}]
     });
 
-    $('#payment').select2({
+
+    $('#vehicle').select2({
         multiple: false,
-        placeholder: '选择支付方式',
+        placeholder: '选择交通工具',
         allowClear: true,
-        data: [{'text':'前台现结','id':1},
-               {'text':'公司月结','id':2},
-               {'text':'无住宿','id':3}]
+        data: [{'text':'飞机','id':1},
+               {'text':'火车','id':2},
+               {'text':'汽车','id':3}]
     });
 
     loaddata()
-    loaddata2()
 });
 
 function loaddata() {
-    oTable = $('#datatables1').dataTable({
-        "sAjaxSource": "/business_trip_budget_data/?rand=" + Math.random(),
+    oTable = $('#datatables').dataTable({
+        "sAjaxSource": "/business_trip_detail_data/?rand=" + Math.random(),
         "sDom": "<'row-fluid'<'span6'T><'span6'f>r><'table-scrollable't><'fluid'<'span3'l><'span4'i><'span5'p>>",
         "bServerSide": true,
         "bPaginate": true, // 是否使用分页
@@ -423,79 +354,11 @@ function loaddata() {
 //                ],
         "oTableTools": {
             "sRowSelect": "single",
-            'aButtons': aButtons1
+            'aButtons': aButtons
         },
         "aoColumns": [
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
-            { "sClass": "center", 'sWidth': "5%", 'bVisible': false}
-
-
-        ],
-        "aaSorting": [
-            [2, 'asc']
-        ],
-        "oLanguage": {
-            "sProcessing": "正在加载数据...",
-            'sSearch': '数据筛选:',
-            "sLengthMenu": "每页显示 _MENU_ 项记录",
-            "sZeroRecords": "没有符合项件的数据...",
-            "sInfo": "当前数据为从第 _START_ 到第 _END_ 项数据；总共有 _TOTAL_ 项记录",
-            "sInfoEmpty": "显示 0 至 0 共 0 项",
-            "sInfoFiltered": "(_MAX_)",
-            "oPaginate": {
-                "sFirst": '首页',
-                "sPrevious": "上一页",
-                "sNext": "下一页",
-                "sLast": "最后一页"
-            }
-
-        },
-        "fnInitComplete": function (oSettings, json) {
-            $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
-        },
-        "fnDrawCallback": function (oSettings) {
-            $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
-        },
-        "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-        },
-        "fnServerData": function (sSource, aoData, fnCallback) {
-            aoData.push({csrfmiddlewaretoken: '{{ csrf_token }}'})
-            $.ajax({
-                "dataType": 'json',
-                "type": "POST",
-                "url": sSource,
-                "data": aoData,
-                "success": fnCallback
-            });
-        }
-    });
-}
-
-
-function loaddata2() {
-    oTable = $('#datatables2').dataTable({
-        "sAjaxSource": "/business_trip_budget_sub_data/?rand=" + Math.random(),
-        "sDom": "<'row-fluid'<'span6'T><'span6'f>r><'table-scrollable't><'fluid'<'span3'l><'span4'i><'span5'p>>",
-        "bServerSide": true,
-        "bPaginate": true, // 是否使用分页
-        "bProcessing": true, //是否显示正在处理的提示
-        "bLengthChange": true, //是否启用设置每页显示记录数
-        "bFilter": true, //是否使用搜索
-        "bStateSave": false,
-        "bDestroy": true,
-        "bSort": true, //是否使用排序
-        "bAutoWidth": true, //列的宽度会根据table的宽度自适应
-        "sPaginationType": "bootstrap",
-//        "aLengthMenu": [
-//                    [5, 15, 20, -1],
-//                    [5, 15, 20, "All"] // change per page values here
-//                ],
-        "oTableTools": {
-            "sRowSelect": "single",
-            'aButtons': aButtons2
-        },
-        "aoColumns": [
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
@@ -543,37 +406,46 @@ function loaddata2() {
     });
 }
 
-
-function add1() {
-    $('#budget_type').select2("data", "");
-    $('#budget').val("");
-    $("#myModal1").modal('show')
+function add() {
+    $('#reason').val("");
+    $('#origin').select2("data", "");
+    $('#destination').select2("data", "");
+    $('#reportrange span').html(moment().format('YYYY-MM-DD') + '  ->  ' + moment().format('YYYY-MM-DD'))
+    $('#vehicle').select2("data", "");
+    $("#myModal").modal('show')
 }
 
 
-function edit1() {
-    var oTT = TableTools.fnGetInstance('datatables1');
+function edit() {
+    var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
-    var budget_type = aData[0][0];
-    var budget = aData[0][1];
-    var id = aData[0][2];
-    $('#budget_type').select2("data",{'text':budget_type});
-    $('#budget').val(budget);
+    var reason = aData[0][0];
+    var origin = aData[0][1];
+    var destination = aData[0][2];
+    var date = aData[0][3]
+    var vehicle = aData[0][4]
+    var id = aData[0][5];
+    $('#reason').val(reason);
+    $('#origin').select2("data",{'text':origin});
+    $('#destination').select2("data",{'text':destination});
+    $('#reportrange span').html(date)
+    $('#vehicle').select2("data",{'text':vehicle});
     $('#id').val(id);
-    $("#myModal1").modal('show')
+    $("#myModal").modal('show')
 }
 
 
 
-function del1() {
-    var oTT = TableTools.fnGetInstance('datatables1');
+function del() {
+    var oTT = TableTools.fnGetInstance('datatables');
     var aData = oTT.fnGetSelectedData();
-    var id = aData[0][2];
-    $.post('/business_trip_budget_del/', {id: id}, function (d) {
+    var parent_id = {{ request.session.parent_id }};
+    var id = aData[0][5];
+    $.post('/business_trip_detail_del/', {id: id, parent_id: parent_id}, function (d) {
         hideAjaxLoad()
         if (d.code == 0) {
             toastr.success(d.msg)
-            $('#datatables1').dataTable().fnDraw()
+            $('#datatables').dataTable().fnDraw()
         } else {
             toastr.error(d.msg)
         }
@@ -582,13 +454,18 @@ function del1() {
 
 
 
-function rule_save1() {
-    var budget_type = $('#budget_type').select2('data');
-    var budget = $('#budget').val();
+function rule_save() {
+    var reason = $('#reason').val();
+    var origin = $('#origin').select2('data');
+    var destination = $('#destination').select2('data');
+    var date = $('#reportrange span').html().split('  -&gt;  ');
+    var begin = date[0]
+    var end = date[1]
+    var vehicle = $('#vehicle').select2('data');
     var parent_id = {{ request.session.parent_id }};
     var id = $('#id').val();
 
-    if (budget_type == null || budget == '') {
+    if (reason == '' || origin == null || destination == null || begin == '' || vehicle == null) {
         toastr.error('不能有空白');
         return;
     }
@@ -597,11 +474,15 @@ function rule_save1() {
     $(self).button('loading');//正在登陆中，显示data-loading-text 标记内容
 
     $.ajax({
-        url: '/business_trip_budget_save/',
+        url: '/business_trip_detail_save/',
         type: "POST",
         data: {
-            budget_type: budget_type['text'],
-            budget: budget,
+            reason: reason,
+            origin: origin['text'],
+            destination: destination['text'],
+            begin: begin,
+            end: end,
+            vehicle: vehicle['text'],
             parent_id: parent_id,
             id: id
         },
@@ -609,106 +490,15 @@ function rule_save1() {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
-                $('#datatables1').dataTable().fnDraw()
+                $('#datatables').dataTable().fnDraw()
             } else {
                 toastr.error(d.msg)
             }
         }
     });
-    $('#myModal1').modal('hide')
+    $('#myModal').modal('hide')
     $(self).button('complete')
 }
-
-
-
-
-function add2() {
-    $('#airfare').val("");
-    $('#accommodation_cost').val("");
-    $('#payment').select2("data", "");
-    $("#myModal2").modal('show')
-}
-
-
-function edit2() {
-    var oTT = TableTools.fnGetInstance('datatables2');
-    var aData = oTT.fnGetSelectedData();
-    var airfare = aData[0][0];
-    var accommodation_cost = aData[0][1];
-    var payment = aData[0][2];
-    var id = aData[0][3];
-    $('#airfare').val(airfare);
-    $('#accommodation_cost').val(accommodation_cost);
-    $('#payment').select2("data",{'text':payment});
-    $('#id').val(id);
-    $("#myModal2").modal('show')
-}
-
-
-
-function del2() {
-    var oTT = TableTools.fnGetInstance('datatables2');
-    var aData = oTT.fnGetSelectedData();
-    var id = aData[0][3];
-    $.post('/business_trip_budget_sub_del/', {id: id}, function (d) {
-        hideAjaxLoad()
-        if (d.code == 0) {
-            toastr.success(d.msg)
-            $('#datatables2').dataTable().fnDraw()
-        } else {
-            toastr.error(d.msg)
-        }
-    })
-}
-
-
-
-function rule_save2() {
-    var airfare = $('#airfare').val();
-    var accommodation_cost = $('#accommodation_cost').val();
-    var payment = $('#payment').select2('data');
-    var parent_id = {{ request.session.parent_id }};
-    var id = $('#id').val();
-
-    if (airfare == ''){
-        airfare = 0
-    }
-    if (accommodation_cost == ''){
-        accommodation_cost = 0
-    }
-    if (payment == null) {
-        toastr.error('不能有空白');
-        return;
-    }
-
-    showAjaxLoad();
-    $(self).button('loading');//正在登陆中，显示data-loading-text 标记内容
-
-    $.ajax({
-        url: '/business_trip_budget_sub_save/',
-        type: "POST",
-        data: {
-            airfare: airfare,
-            accommodation_cost: accommodation_cost,
-            payment: payment['text'],
-            parent_id: parent_id,
-            id: id
-        },
-        success: function (d) {
-            hideAjaxLoad()
-            if (d.code == 0) {
-                toastr.success(d.msg)
-                $('#datatables2').dataTable().fnDraw()
-            } else {
-                toastr.error(d.msg)
-            }
-        }
-    });
-    $('#myModal2').modal('hide')
-    $(self).button('complete')
-}
-
-
 
 </script>
 {% endblock %}

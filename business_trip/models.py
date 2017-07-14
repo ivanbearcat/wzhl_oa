@@ -23,6 +23,12 @@ class budget(models.Model):
     parent_id = models.IntegerField(verbose_name='父id', max_length=8, blank=False)
 
 
+class budget_sub(models.Model):
+    airfare = models.FloatField(verbose_name='实际机票费用', max_length=10, blank=False)
+    accommodation_cost = models.FloatField(verbose_name='实际住宿费用', max_length=10, blank=True)
+    payment = models.CharField(verbose_name='住宿费用支付方式', max_length=10, blank=True)
+    parent_id = models.IntegerField(verbose_name='父id', max_length=8, blank=False, unique=True)
+
 
 class detail(models.Model):
     reason = models.CharField(verbose_name='事由', max_length=256, blank=True)
