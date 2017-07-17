@@ -300,14 +300,62 @@ $(document).ready(function () {
     });
 
 
+    var city = [{'text':'北京市','id':1},
+                {'text':'上海市','id':2},
+                {'text':'广州市','id':3},
+                {'text':'深圳市','id':4},
+                {'text':'成都市','id':5},
+                {'text':'杭州市','id':6},
+                {'text':'武汉市','id':7},
+                {'text':'重庆市','id':8},
+                {'text':'南京市','id':9},
+                {'text':'天津市','id':10},
+                {'text':'苏州市','id':11},
+                {'text':'西安市','id':12},
+                {'text':'长沙市','id':13},
+                {'text':'沈阳市','id':14},
+                {'text':'青岛市','id':15},
+                {'text':'郑州市','id':16},
+                {'text':'大连市','id':17},
+                {'text':'东莞市','id':18},
+                {'text':'宁波市','id':19},
+                {'text':'厦门市','id':20},
+                {'text':'福州市','id':21},
+                {'text':'无锡市','id':22},
+                {'text':'合肥市','id':23},
+                {'text':'昆明市','id':24},
+                {'text':'哈尔滨市','id':25},
+                {'text':'济南市','id':26},
+                {'text':'佛山市','id':27},
+                {'text':'长春市','id':28},
+                {'text':'温州市','id':29},
+                {'text':'石家庄市','id':30},
+                {'text':'南宁市','id':31},
+                {'text':'常州市','id':32},
+                {'text':'泉州市','id':33},
+                {'text':'南昌市','id':34},
+                {'text':'贵阳市','id':35},
+                {'text':'太原市','id':36},
+                {'text':'烟台市','id':37},
+                {'text':'嘉兴市','id':38},
+                {'text':'南通市','id':39},
+                {'text':'金华市','id':40},
+                {'text':'珠海市','id':41},
+                {'text':'惠州市','id':42},
+                {'text':'徐州市','id':43},
+                {'text':'海口市','id':44},
+                {'text':'乌鲁木齐市','id':45},
+                {'text':'绍兴市','id':46},
+                {'text':'中山市','id':47},
+                {'text':'台州市','id':48},
+                {'text':'兰州市','id':49}]
+
+
     $('#origin').select2({
         multiple: false,
         placeholder: '选择起点',
         allowClear: true,
-        data: [{'text':'上海','id':1},
-               {'text':'北京','id':2},
-               {'text':'广州','id':3},
-               {'text':'深圳','id':4}]
+        data: city
     });
     
 
@@ -315,10 +363,7 @@ $(document).ready(function () {
         multiple: false,
         placeholder: '选择终点',
         allowClear: true,
-        data: [{'text':'上海','id':1},
-               {'text':'北京','id':2},
-               {'text':'广州','id':3},
-               {'text':'深圳','id':4}]
+        data: city
     });
 
 
