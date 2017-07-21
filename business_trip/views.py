@@ -11,6 +11,7 @@ import json
 import datetime
 from wzhl_oa.settings import administration, BASE_DIR
 import os
+from threading import Thread
 from openpyxl import load_workbook
 
 
@@ -22,6 +23,12 @@ sys.setdefaultencoding('utf-8')
 @login_required
 def business_trip_table(request):
     path = request.path.split('/')[1]
+
+    orm = table.objects.filter(name=request.user.first_name)
+    for i in orm:
+        if (datetime.datetime.now() - i.commit_time).days >= 7:
+            i.status = 8
+            i.save()
 
     return render(request, 'business_trip/business_trip_table.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                  'path1':'business_trip',
@@ -554,7 +561,7 @@ def business_trip_approve_data(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = [None, None, None, 'apply_time', None, None, None, 'status', None, None, None, 'id', None]
+    sort = [None, None, None, 'apply_time', None, None, None, None, 'status', None, None, None, 'id', None]
 
     if request.user.has_perm('business_trip.can_view_all'):
         if  sSortDir_0 == 'asc':
@@ -644,10 +651,10 @@ def business_trip_approve_data(request):
                         审批不通过 <i class="fa"></i>
                     </a>
                  '''
-        # if i.hotel_reservation == 1:
-        #     hotel_reservation = u'是'
-        # else:
-        #     hotel_reservation = u'否'
+        if i.hotel_reservation == 1:
+            hotel_reservation = u'是'
+        else:
+            hotel_reservation = u'否'
         aaData.append({
                        '0':i.name,
                        '1':detail,
@@ -655,13 +662,14 @@ def business_trip_approve_data(request):
                        '3':i.date,
                        '4':str(i.apply_time),
                        '5':i.travel_partner,
-                       '6':i.budget_sum,
-                       '7':i.status,
-                       '8':export,
-                       '9':approve,
-                       '10':not_approve,
-                       '11':i.id,
-                       '12':i.approve_now
+                       '6':hotel_reservation,
+                       '7':i.budget_sum,
+                       '8':i.status,
+                       '9':export,
+                       '10':approve,
+                       '11':not_approve,
+                       '12':i.id,
+                       '13':i.approve_now
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
@@ -693,19 +701,31 @@ def business_trip_approve_process(request):
                 orm.status = 1
             orm.approve_now = orm3.supervisor
             orm.apply_time = datetime.datetime.now()
+
+            orm4 = user_table.objects.get(name=orm3.supervisor)
+            email = orm4.email
+            Thread(target=send_mail,args=(email,'出差审批提醒','<h3>有一个出差事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/business_trip_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
         elif status == '1':
             orm.status = 2
             orm2 = user_table.objects.get(name=request.user.first_name)
             orm.approve_now = orm2.principal
             orm.apply_time = datetime.datetime.now()
+
+            orm3 = user_table.objects.get(name=orm2.principal)
+            email = orm3.email
+            Thread(target=send_mail,args=(email,'出差审批提醒','<h3>有一个出差事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/business_trip_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
         elif status == '2':
             orm.status = 3
             orm.approve_now = administration['name']
             orm.apply_time = datetime.datetime.now()
+
+            Thread(target=send_mail,args=(administration['email'],'出差审批提醒','<h3>有一个出差事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/business_trip_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
         elif status == '3':
             orm.status = 4
             orm.approve_now = administration['name']
             orm.apply_time = datetime.datetime.now()
+
+            Thread(target=send_mail,args=(administration['email'],'出差审批提醒','<h3>有一个出差事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/business_trip_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
         elif status == '4':
             orm2 = budget_sub.objects.filter(parent_id=_id)
             if len(orm2) <= 0:
