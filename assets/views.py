@@ -453,8 +453,12 @@ def assets_export_excel(request):
         count = 3
         for i in orm:
             try:
+                if i.purchase_date.strftime('%Y/%m/%d') == '1970-01-01':
+                    purchase_date = ''
+                else:
+                    purchase_date = i.purchase_date.strftime('%Y/%m/%d')
                 worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.residual_life,i.department,
-                                                    i.employee,i.purchase_date.strftime('%Y/%m/%d'),'%.2f' % i.payment,
+                                                    i.employee,purchase_date,'%.2f' % i.payment,
                                                     '%.2f' % i.cost,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
                                                     '%.2f' % i.total_depreciation,'%.2f' % i.netbook_value,i.comment,])
                 count += 1
@@ -485,8 +489,12 @@ def assets_export_excel2(request):
         count = 3
         for i in orm:
             try:
+                if i.purchase_date.strftime('%Y/%m/%d') == '1970-01-01':
+                    purchase_date = ''
+                else:
+                    purchase_date = i.purchase_date.strftime('%Y/%m/%d')
                 worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.residual_life,i.department,
-                                                    i.employee,i.purchase_date.strftime('%Y/%m/%d'),'%.2f' % i.payment,
+                                                    i.employee,purchase_date,'%.2f' % i.payment,
                                                     '%.2f' % i.cost,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
                                                     '%.2f' % i.total_depreciation,'%.2f' % i.netbook_value,i.comment,])
                 count += 1
