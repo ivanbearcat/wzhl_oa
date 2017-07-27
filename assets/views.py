@@ -453,7 +453,7 @@ def assets_export_excel(request):
         count = 3
         for i in orm:
             try:
-                if i.purchase_date.strftime('%Y/%m/%d') == '1970-01-01':
+                if str(i.purchase_date) == '1970-01-01':
                     purchase_date = ''
                 else:
                     purchase_date = i.purchase_date.strftime('%Y/%m/%d')
@@ -489,7 +489,7 @@ def assets_export_excel2(request):
         count = 3
         for i in orm:
             try:
-                if i.purchase_date.strftime('%Y/%m/%d') == '1970-01-01':
+                if str(i.purchase_date) == '1970-01-01':
                     purchase_date = ''
                 else:
                     purchase_date = i.purchase_date.strftime('%Y/%m/%d')
