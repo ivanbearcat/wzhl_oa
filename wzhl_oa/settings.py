@@ -210,7 +210,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 HR = {'name':'华慧宁','email':'huahuining@xiaoquan.com'}
 administration = {'name':'储文婷','email':'chuwenting@xiaohulu.com'}
 
-description = ['台式机','显示器','服务器','电视机','投影仪','打印机','ipad','imac','笔记本','交换机','防火墙']
+description = ['台式机','显示器','服务器','电视机','投影仪','打印机','ipad','imac','笔记本','交换机','防火墙','配件']
 model = ['戴尔（DELL）9020MT商用台式机','同方超翔 开票机机箱','戴尔（DELL）U2414H 液晶显示器','戴尔（DELL）R620 服务器',
          '三星无缝拼接电视','明基投影仪','爱心诺 SK-860打印机','惠普（hp）MFP M277dw 彩色打印机','惠普HP M427dw 黑白打印机',
          'iPad平板电脑 16G WiFi版银色','iPad平板电脑 16G WiFi版金色','27 英寸配备 Retina 5K 显示屏的 iMac',
