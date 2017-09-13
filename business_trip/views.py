@@ -26,7 +26,7 @@ def business_trip_table(request):
 
     orm = table.objects.filter(name=request.user.first_name)
     for i in orm:
-        if (datetime.datetime.now() - i.commit_time).days >= 7 and i.status not in (5, 6, 7, 8):
+        if (datetime.datetime.now() - i.commit_time).days >= 20 and i.status not in (5, 6, 7, 8):
             i.status = 8
             i.save()
 

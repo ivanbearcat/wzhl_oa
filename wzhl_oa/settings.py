@@ -18,7 +18,7 @@ MANAGERS = ADMINS
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'wzhl',
+        'NAME': 'wzhl_test',
 	    'USER': 'admin',
 	    'PASSWORD': '!@#rp1qaz@WSX',
 	    'HOST': '127.0.0.1',
@@ -140,6 +140,7 @@ INSTALLED_APPS = (
     'KPI',
     'personal_information',
     'business_trip',
+    'contract',
 )
 
 # A sample logging configuration. The only tangible logging

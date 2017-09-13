@@ -38,7 +38,7 @@ def vacation_table_data(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['name','department','supervisor','principal','join_date','graduate_year','positive_date','sick_leave_num','statutory_annual_leave_available',
+    sort = ['name','work_site','department','supervisor','principal','join_date','graduate_year','positive_date','sick_leave_num','statutory_annual_leave_available',
             'statutory_annual_leave_used','statutory_annual_leave_total','company_annual_leave_available',
             'company_annual_leave_used','company_annual_leave_total','seasons_leave_available','seasons_leave_used',
             'seasons_leave_total','email','id']
@@ -75,25 +75,26 @@ def vacation_table_data(request):
     for i in  result_data:
         aaData.append({
                        '0':i.name,
-                       '1':i.department,
-                       '2':i.supervisor,
-                       '3':i.principal,
-                       '4':str(i.join_date).split('+')[0],
-                       '5':str(i.graduate_year).split('+')[0],
-                       '6':str(i.positive_date).split('+')[0],
-                       '7':i.sick_leave_num,
-                       '8':i.statutory_annual_leave_available,
-                       '9':i.statutory_annual_leave_used,
-                       '10':i.statutory_annual_leave_total,
-                       '11':i.company_annual_leave_available,
-                       '12':i.company_annual_leave_used,
-                       '13':i.company_annual_leave_total,
-                       '14':i.seasons_leave_available,
-                       '15':i.seasons_leave_used,
-                       '16':i.seasons_leave_total,
-                       '17':i.leave_in_lieu,
-                       '18':i.email,
-                       '19':i.id,
+                       '1':i.work_site,
+                       '2':i.department,
+                       '3':i.supervisor,
+                       '4':i.principal,
+                       '5':str(i.join_date).split('+')[0],
+                       '6':str(i.graduate_year).split('+')[0],
+                       '7':str(i.positive_date).split('+')[0],
+                       '8':i.sick_leave_num,
+                       '9':i.statutory_annual_leave_available,
+                       '10':i.statutory_annual_leave_used,
+                       '11':i.statutory_annual_leave_total,
+                       '12':i.company_annual_leave_available,
+                       '13':i.company_annual_leave_used,
+                       '14':i.company_annual_leave_total,
+                       '15':i.seasons_leave_available,
+                       '16':i.seasons_leave_used,
+                       '17':i.seasons_leave_total,
+                       '18':i.leave_in_lieu,
+                       '19':i.email,
+                       '20':i.id,
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
@@ -105,6 +106,7 @@ def vacation_table_data(request):
 @login_required
 def vacation_table_save(request):
     name = request.POST.get('name')
+    work_site = request.POST.get('work_site')
     department = request.POST.get('department')
     supervisor = request.POST.get('supervisor')
     principal = request.POST.get('principal')
@@ -174,7 +176,7 @@ def vacation_table_save(request):
             company_annual_leave_available = company_annual_leave_total
 
 
-        orm = user_table(name=name,department=department,supervisor=supervisor,principal=principal,join_date=join_date,graduate_year=graduate_year,
+        orm = user_table(name=name,work_site=work_site,department=department,supervisor=supervisor,principal=principal,join_date=join_date,graduate_year=graduate_year,
                          email=email,sick_leave_num=0,statutory_annual_leave_available=statutory_annual_leave_available,statutory_annual_leave_used=0,
                          statutory_annual_leave_total=statutory_annual_leave_total,company_annual_leave_available=company_annual_leave_available,
                          company_annual_leave_used=0,company_annual_leave_total=company_annual_leave_total,seasons_leave_available=1,
@@ -190,6 +192,7 @@ def vacation_table_save(request):
     else:
         orm = user_table.objects.get(id=_id)
         orm.name = name
+        orm.work_site = work_site
         orm.department = department
         orm.supervisor = supervisor
         orm.principal = principal
@@ -602,7 +605,7 @@ def vacation_approve_data(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['name','type','reason','apply_time','vacation_date','days',None,'state_interface']
+    sort = ['name','work_site','type','reason','apply_time','vacation_date','days',None,'state_interface']
 
     if request.user.has_perm('vacation.can_view_all'):
         if  sSortDir_0 == 'asc':
@@ -639,16 +642,22 @@ def vacation_approve_data(request):
                                                         Q(state_interface__contains=sSearch)).count()
 
         for i in  result_data:
+            try:
+                work_site_orm = user_table.objects.get(name=i.name)
+                work_site = work_site_orm.work_site
+            except:
+                work_site = ''
             aaData.append({
                            '0':i.name,
-                           '1':i.type,
-                           '2':i.reason,
-                           '3':str(i.apply_time).split('+')[0],
-                           '4':i.vacation_date,
-                           '5':i.days,
-                           '6':i.state,
-                           '7':i.state_interface,
-                           '8':i.id
+                           '1':work_site,
+                           '2':i.type,
+                           '3':i.reason,
+                           '4':str(i.apply_time).split('+')[0],
+                           '5':i.vacation_date,
+                           '6':i.days,
+                           '7':i.state,
+                           '8':i.state_interface,
+                           '9':i.id
                           })
         result = {'sEcho':sEcho,
                    'iTotalRecords':iTotalRecords,
@@ -704,16 +713,22 @@ def vacation_approve_data(request):
                                                         Q(state_interface__contains=sSearch)).count()
 
         for i in  result_data:
+            try:
+                work_site_orm = user_table.objects.get(name=i.name)
+                work_site = work_site_orm.work_site
+            except:
+                work_site = ''
             aaData.append({
                            '0':i.name,
-                           '1':i.type,
-                           '2':i.reason,
-                           '3':str(i.apply_time).split('+')[0],
-                           '4':i.vacation_date,
-                           '5':i.days,
-                           '6':i.state,
-                           '7':i.state_interface,
-                           '8':i.id
+                           '1':work_site,
+                           '2':i.type,
+                           '3':i.reason,
+                           '4':str(i.apply_time).split('+')[0],
+                           '5':i.vacation_date,
+                           '6':i.days,
+                           '7':i.state,
+                           '8':i.state_interface,
+                           '9':i.id
                           })
         result = {'sEcho':sEcho,
                    'iTotalRecords':iTotalRecords,

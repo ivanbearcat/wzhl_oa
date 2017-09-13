@@ -9,6 +9,7 @@ from assets.views import *
 from KPI.views import *
 from personal_information.views import *
 from business_trip.views import *
+from contract.views import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -113,4 +114,13 @@ urlpatterns = patterns('',
     url(r'^business_trip_approve_data/', business_trip_approve_data),
     url(r'^business_trip_approve_process/', business_trip_approve_process),
     url(r'^business_trip_create_excel/', business_trip_create_excel),
+    url(r'^contract_apply/', contract_apply),
+    url(r'^contract_apply_data/', contract_apply_data),
+    url(r'^contract_set_session/', contract_set_session),
+    url(r'^contract_apply_detail/', contract_apply_detail),
+    url(r'^contract_approve/', contract_approve),
+    url(r'^contract_approve_data/', contract_approve_data),
+    url(r'^contract_get_upload/', contract_get_upload),
+    url(r'^contract_approve_process/', contract_approve_process),
+    url(r'^contract_process_detail_data/', contract_process_detail_data),
 )

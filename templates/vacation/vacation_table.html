@@ -31,6 +31,7 @@
                     <thead>
                     <tr>
                         <th>姓名</th>
+                        <th>工作地点</th>
                         <th>部门</th>
                         <th>直属主管</th>
                         <th>部门负责人</th>
@@ -80,6 +81,29 @@
                                                disabled="" autocomplete="off" spellcheck="false"
                                                style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
                                         <div type="text" id="name"
+                                             name="typeahead_example_modal_1"
+                                             class="form-control tt-input" autocomplete="off"
+                                             spellcheck="false" dir="auto"
+                                             style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
+                                            aria-hidden="true"
+                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
+                                            class="tt-dropdown-menu"
+                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
+                                            class="tt-dataset-1"></div></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">工作地点</label>
+
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <span class="twitter-typeahead"
+                                          style="position: relative; display: inline-block;">
+                                        <input type="text" class="form-control tt-hint"
+                                               disabled="" autocomplete="off" spellcheck="false"
+                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                        <div type="text" id="work_site"
                                              name="typeahead_example_modal_1"
                                              class="form-control tt-input" autocomplete="off"
                                              spellcheck="false" dir="auto"
@@ -333,8 +357,15 @@ $(document).ready(function () {
                 }
             }
         ]
-    loaddata()
 
+    $('#work_site').select2({
+        multiple: false,
+        placeholder: '请选择工作地点',
+        allowClear: true,
+        data: [{'text':'上海','id':'上海'},{'text':'南京','id':'南京'},{'text':'西安','id':'西安'},{'text':'北京','id':'北京'}]
+    });
+
+    loaddata()
 
 });
 function loaddata() {
@@ -361,6 +392,7 @@ function loaddata() {
             'aButtons': aButtons
         },
         "aoColumns": [
+            { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
@@ -408,15 +440,15 @@ function loaddata() {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            $('td:eq(8)',nRow).attr('class','success')
             $('td:eq(9)',nRow).attr('class','success')
             $('td:eq(10)',nRow).attr('class','success')
-            $('td:eq(11)',nRow).attr('class','warning')
+            $('td:eq(11)',nRow).attr('class','success')
             $('td:eq(12)',nRow).attr('class','warning')
             $('td:eq(13)',nRow).attr('class','warning')
-            $('td:eq(14)',nRow).attr('class','danger')
+            $('td:eq(14)',nRow).attr('class','warning')
             $('td:eq(15)',nRow).attr('class','danger')
             $('td:eq(16)',nRow).attr('class','danger')
+            $('td:eq(17)',nRow).attr('class','danger')
         },
         "fnServerData": function (sSource, aoData, fnCallback) {
 {#            aoData.push({csrfmiddlewaretoken: '{{ csrf_token }}'})#}
@@ -437,6 +469,7 @@ function rule_save() {
     for (var i in name) {
         name_list.push(name[i]["text"]);
     }
+    var work_site = $('#work_site').select2('data')
     var department = $('#department').val();
     var supervisor = $('#supervisor').select2('data');
     var supervisor_list = []
@@ -453,7 +486,7 @@ function rule_save() {
     var positive_date = $('#positive_date').val()
     var email = $('#email').val();
     var id = $('#id').val();
-    if (name == '' || department == '' || supervisor == '' || principal == '' || join_date == '' || graduate_year == '' || email == '' || positive_date == '') {
+    if (name == '' || work_site == null || department == '' || supervisor == '' || principal == '' || join_date == '' || graduate_year == '' || email == '' || positive_date == '') {
         toastr.error('不能有空白');
         return;
     }
@@ -468,6 +501,7 @@ function rule_save() {
         type: "POST",
         data: {
             name: name_list[0],
+            work_site: work_site['text'],
             department: department,
             supervisor: supervisor_list[0],
             principal: principal_list[0],
@@ -504,6 +538,7 @@ function add() {
     $('#positive_date').attr('disabled',false);
     $('#positive_date_button').show();
     $('#name').select2("data", "");
+    $('#work_site').select2("data", "");
     $('#department').val("");
     $('#supervisor').select2("data", "");
     $('#principal').select2("data", "");
@@ -540,14 +575,15 @@ function edit() {
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
         var name = aData[0][0];
-        var department = aData[0][1];
-        var supervisor = aData[0][2];
-        var principal = aData[0][3];
-        var join_date = aData[0][4];
-        var graduate_year = aData[0][5];
-        var positive_date = aData[0][6];
-        var email = aData[0][18];
-        var id = aData[0][19];
+        var work_site = aData[0][1];
+        var department = aData[0][2];
+        var supervisor = aData[0][3];
+        var principal = aData[0][4];
+        var join_date = aData[0][5];
+        var graduate_year = aData[0][6];
+        var positive_date = aData[0][7];
+        var email = aData[0][19];
+        var id = aData[0][20];
         $.post('/order_form_dropdown/', {id:id,name:name}, function (d) {
             $('#name').select2({
                 multiple: true,
@@ -557,6 +593,9 @@ function edit() {
             });
             $('#name').select2("data",d['edit'])
         })
+
+        $('#work_site').select2("data",{'text':work_site,'id':work_site})
+
         $.post('/order_form_dropdown/', {id:id,name:supervisor}, function (d) {
             $('#supervisor').select2({
                 multiple: true,
@@ -607,7 +646,7 @@ function del() {
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
         showAjaxLoad()
-        $.post('/vacation_table_del/', {id: aData[0][19]}, function (d) {
+        $.post('/vacation_table_del/', {id: aData[0][20]}, function (d) {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
