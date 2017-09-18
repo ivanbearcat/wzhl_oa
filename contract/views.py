@@ -12,6 +12,7 @@ import datetime
 import os
 from libs.common import Num2MoneyFormat
 from django import forms
+from openpyxl import load_workbook
 
 @login_required
 def contract_apply(request):
@@ -180,10 +181,10 @@ def contract_apply_detail(request):
                           u'法务':'FW',
                           u'其他':'QT'}
 
-                if len(table.objects.all()) == 0:
+                if len(table.objects.filter(contract_uuid__contains=uuid_b[contract_class])) == 0:
                     uuid_c = str(datetime.datetime.now().year) + '0001'
                 else:
-                    uuid_c_orm = table.objects.all().order_by('id').reverse()[0]
+                    uuid_c_orm = table.objects.filter(contract_uuid__contains=uuid_b[contract_class]).order_by('id').reverse()[0]
                     uuid_c = str(int(str(datetime.datetime.now().year) + uuid_c_orm.contract_uuid.split('-')[2][4:]) + 1)
 
                 contract_uuid = '-'.join([uuid_a, uuid_b[contract_class], uuid_c])
@@ -540,8 +541,12 @@ def contract_approve_process(request):
         if flag == '1':
             if status == '0':
                 principal_orm = user_table.objects.get(name=orm.name)
-                orm.status = 1
-                orm.approve_now = principal_orm.principal
+                if principal_orm.principal == u'曹津':
+                    orm.status = 2
+                    orm.approve_now = status_owner[orm.status]
+                else:
+                    orm.status = 1
+                    orm.approve_now = principal_orm.principal
 
             if status == '1':
                 for i in detail_orm:
@@ -718,3 +723,103 @@ def contract_process_detail_data(request):
                'aaData':aaData
     }
     return HttpResponse(json.dumps(result),content_type="application/json")
+
+
+
+
+
+@login_required
+def contract_create_excel(requests):
+    _id = requests.POST.get('id')
+    orm = table.objects.get(id=_id)
+
+    if orm.status != 10:
+        return HttpResponse(json.dumps({'code':1,'msg':'您的流程未完成无法生成Excel'}),content_type="application/json")
+
+    contract_uuid = orm.contract_uuid
+    origin_contract_uuid = orm.origin_contract_uuid
+    party_a = orm.party_a
+    apply_time = str(orm.apply_time)
+    name = orm.name
+    department = orm.department
+    finance_class = orm.finance_class
+    contract_class = orm.contract_class
+    contract_name = orm.contract_name
+    party_b = orm.party_b
+    address = orm.address
+    contacts = orm.contacts
+    e_mail = orm.e_mail
+    phone_1 = orm.phone_1
+    phone_2 = orm.phone_2
+    fax = orm.fax
+    bank = orm.bank
+    bank_account = orm.bank_account
+    comment = orm.comment
+    contract_detail = orm.contract_detail
+    contract_amount_figures = orm.contract_amount_figures
+    contract_amount_words = orm.contract_amount_words
+    special_requirements = orm.special_requirements
+    contract_begin_time = str(orm.contract_begin_time)
+    contract_end_time = str(orm.contract_end_time)
+    partner_qualification = orm.partner_qualification
+
+    orm2 = detail.objects.filter(parent_id=_id)
+    process_detail_list = []
+    for i in orm2:
+        process_detail_list.append({'apply_time':i.apply_time,
+                                    'name':i.name,
+                                    'operation':i.operation,
+                                    'archive_path':i.archive_path,
+                                    'comment':i.comment})
+
+    try:
+        wb = load_workbook(filename = BASE_DIR + '/static/files/contract_template.xlsx')
+        ws = wb.active
+        ws['B2'] = contract_uuid
+        ws['F2'] = origin_contract_uuid
+        ws['B3'] = party_a
+        ws['F3'] = apply_time
+        ws['B4'] = name
+        ws['F4'] = department
+        ws['B5'] = finance_class
+        ws['F5'] = contract_class
+        ws['B6'] = contract_name
+        ws['C7'] = party_b
+        ws['C8'] = address
+        ws['C9'] = contacts
+        ws['F9'] = e_mail
+        ws['C10'] = phone_1
+        ws['F10'] = phone_2
+        ws['C11'] = fax
+        ws['C12'] = bank
+        ws['F12'] = bank_account
+        ws['B13'] = comment
+        ws['C14'] = contract_detail
+        ws['D15'] = contract_amount_figures
+        ws['F15'] = contract_amount_words
+        ws['C16'] = special_requirements
+        ws['C17'] = contract_begin_time
+        ws['F17'] = contract_end_time
+        ws['B18'] = partner_qualification
+
+        row_num = 23
+        for i in process_detail_list:
+            ws['B'+str(row_num)] = i['apply_time']
+            ws['C'+str(row_num)] = i['name']
+            if i['operation'] == 1:
+                operation = u'审批通过'
+            elif i['operation'] == 0:
+                operation = u'审批不通过'
+            elif i['operation'] == -1:
+                operation = u'退回修改'
+            ws['D'+str(row_num)] = operation
+            archive_path = os.path.basename(i['archive_path'])
+            ws['E'+str(row_num)] = archive_path
+            ws['F'+str(row_num)] = i['comment']
+            row_num += 1
+
+        wb.save(BASE_DIR + '/static/files/contract.xlsx')
+        return HttpResponse(json.dumps({'code':0,'msg':u'生成成功'}),content_type="application/json")
+    except Exception,e:
+        print e
+        return HttpResponse(json.dumps({'code':1,'msg':str(e)}),content_type="application/json")

@@ -250,11 +250,11 @@
         <a id="back" class="btn btn-sm yellow">
              返回 <i class="fa fa-reply"></i>
         </a>
-{#    {% if status == 1 %}#}
+    {% if status == 0 %}
         <a id="edit" class="btn btn-sm blue">
              修改 <i class="fa fa-edit"></i>
         </a>
-{#    {% endif %}#}
+    {% endif %}
         <div class="portlet box grey">
             <div class="portlet-title">
                 <div class="caption">
@@ -416,7 +416,8 @@
                     <div class="form-actions fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="col-md-offset-11 col-md-9">
+                                <div class="col-md-offset-10 col-md-9">
+                                    <button id="approve" class="btn blue"><i class="fa fa-share"></i> 附件</button>
                                     <button id="submit" class="btn purple" type="submit"><i class="fa fa-check"></i> 提交</button>
                                 </div>
                             </div>
@@ -451,6 +452,84 @@
             </div>
         </div>
 {#    {% endif %}#}
+    </div>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title">合同审批</h4>
+            </div>
+
+
+
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label">附件</label>
+                        <div  class="col-sm-8">
+                            <div class="tab-content no-space">
+                                <div class="tab-pane active" id="tab_images">
+                                    <div class="alert alert-success margin-bottom-10">
+                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                        <i class="fa fa-warning fa-lg"></i> 请将上传文件打包，选择ZIP或RAR格式进行上传
+                                    </div>
+                                    <div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10" style="position: relative;">
+                                        <a id="tab_images_uploader_pickfiles" href="javascript:;" class="btn yellow" style="position: relative; z-index: 1; float:left">
+                                            <i class="fa fa-plus"></i> 选择文件
+                                        </a>
+                                        <a id="tab_images_uploader_uploadfiles" href="javascript:;" class="btn blue" style="float:left; margin-left: 10px">
+                                            <i class="fa fa-share"></i> 上传文件
+                                        </a>
+                                    <div id="html5_191s5i9758q1p7bcdq1badmjb3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 1401px; width: 113px; height: 34px; overflow: hidden; z-index: 0;"><input id="html5_191s5i9758q1p7bcdq1badmjb3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;display:none" multiple="" accept="image/jpeg,image/gif,image/png,application/zip"></div></div>
+                                    <div class="row">
+                                        <div id="tab_images_uploader_filelist" class="col-md-6 col-sm-12"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="add_process_div" class="form-group">
+                        <label class="col-sm-4 control-label">增加流程</label>
+                        <div  class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                                <input type="text" class="form-control tt-hint"
+                                       disabled="" autocomplete="off" spellcheck="false"
+                                       style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                <div type="text" id="add_process"
+                                     name="typeahead_example_modal_1"
+                                     class="form-control tt-input" autocomplete="off"
+                                     spellcheck="false" dir="auto"
+                                     style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
+                                    aria-hidden="true"
+                                    style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
+                                    class="tt-dropdown-menu"
+                                    style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
+                                    class="tt-dataset-1"></div></span></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group last">
+                        <label class="col-sm-4 control-label">备注</label>
+
+                        <div class="col-sm-6">
+                            <textarea class="form-control" id='comment' style="width: 290px" rows="3"></textarea>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div id="id" style="display: none"></div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                <button type="button" class="btn green" onclick="agree()"><i class="fa fa-check"></i> 通过</button>
+                <button type="button" class="btn blue" onclick="back_edit()"><i class="fa fa-edit"></i> 退回修改</button>
+                <button type="button" class="btn red" onclick="disagree()"><i class="fa fa-times"></i> 不通过</button>
+            </div>
+        </div>
     </div>
 </div>
 
@@ -754,6 +833,116 @@ $(document).ready(function () {
     });
 
 
+    $('#upload_button').on('change',function(){
+        $('#upload_show').html($('#upload').val())
+    })
+    $('#upload_show').html('{{ upload }}')
+    $('#upload_show').attr('href','/media/{{ upload_path }}')
+
+    var PluploadCustom = function () {
+        var handleImages = function() {
+            // see http://www.plupload.com/
+            var uploader = new plupload.Uploader({
+                runtimes : 'html5,flash,silverlight,html4',
+
+                browse_button : document.getElementById('tab_images_uploader_pickfiles'), // you can pass in id...
+                container: document.getElementById('tab_images_uploader_container'), // ... or DOM Element itself
+
+                url : "/contract_get_upload/",
+
+                filters : {
+                    max_file_size : '100000000mb',
+                    chunk_size : '1000mb',
+                    mime_types: [
+                        {title : "Zip files", extensions : "zip"},
+                        {title : "RAR files", extensions : "rar"}
+                    ]
+                },
+
+                // Flash settings
+                flash_swf_url : 'assets/plugins/plupload/js/Moxie.swf',
+
+                // Silverlight settings
+                silverlight_xap_url : 'assets/plugins/plupload/js/Moxie.xap',
+                headers : {
+                    "X-CSRFToken":getCookie('_csrf_token')
+                },
+                init: {
+                    PostInit: function() {
+                        $('#tab_images_uploader_filelist').html("");
+
+                        $('#tab_images_uploader_uploadfiles').click(function() {
+                            uploader.start();
+                            return false;
+                        });
+
+                        $('#tab_images_uploader_filelist').on('click', '.added-files .remove', function(){
+                            uploader.removeFile($(this).parent('.added-files').attr("id").replace('uploaded_file_',''));
+                            $(this).parent('.added-files').remove();
+                        });
+                    },
+
+                    FilesAdded: function(up, files) {
+                        plupload.each(files, function(file) {
+                            $('#tab_images_uploader_filelist').text("")
+                            $('#tab_images_uploader_filelist').append('<div class="alert alert-warning added-files" id="uploaded_file_' + file.id + '" style="margin-top:5px">' + file.name + '(' + plupload.formatSize(file.size) + ') <span class="status label label-info"></span>&nbsp;<a href="javascript:;" style="margin-top:-5px" class="remove pull-right btn btn-sm red"><i class="fa fa-times"></i> 移除</a></div>');
+                        });
+                    },
+
+                    UploadProgress: function(up, file) {
+                        $('#uploaded_file_' + file.id + ' > .status').html(file.percent + '%');
+                    },
+
+                    FileUploaded: function(up, file, response) {
+                        var response = $.parseJSON(response.response);
+                        if (response.code == 0) {
+                            var id = response.id; // uploaded file's unique name. Here you can collect uploaded file names and submit an jax request to your server side script to process the uploaded files and update the images tabke
+
+                            $('#uploaded_file_' + file.id + ' > .status').removeClass("label-info").addClass("label-success").html('<i class="fa fa-check"></i>'+response.msg); // set successfull operation
+                            $('#tab_images_uploader_filelist').text("")
+                            toastr.success(response.msg)
+{#                            $('#datatables').dataTable().fnDraw()#}
+                        } else {
+                            $('#uploaded_file_' + file.id + ' > .status').removeClass("label-info").addClass("label-danger").html('<i class="fa fa-warning"></i>'+response.msg); // set failed operation
+                            App.alert({type: 'danger', message: '文件上传失败，请重新上传', closeInSeconds: 10, icon: 'warning'});
+                            toastr.error(response.msg)
+                        }
+                    },
+                    Error: function(up, err) {
+                        App.alert({type: 'danger', message: err.message, closeInSeconds: 10, icon: 'warning'});
+                    }
+                }
+            });
+            uploader.init();
+        }
+
+        return {
+            //main function to initiate the module
+            init: function () {
+                handleImages();
+            }
+        };
+    }();
+
+    PluploadCustom.init()
+
+
+    $('#submit').on('click',function(){
+{#        var id = '{{ id }}'#}
+{#        $.cookie('id',id,{ expires: 1 })#}
+{#        var status = aData[7]#}
+{#        $.cookie('status',status,{ expires: 1 })#}
+{#        var process_type = aData[11]#}
+{#        $.cookie('process_type',process_type,{ expires: 1 })#}
+{#        if (status == '4') {#}
+{#            $('#add_process_div').show()#}
+{#        }else{#}
+{#            $('#add_process_div').hide()#}
+{#        }#}
+        $("#myModal").modal('show')
+    })
+
+
     loaddata()
 
 });
@@ -820,7 +1009,7 @@ function loaddata() {
                 $('td:eq(2)',nRow).html('<div>审批通过</div>')
             }else if(aData[2] == 0){
                 $('td:eq(2)',nRow).html('<div>审批不通过</div>')
-            }else if(aData[2] == -1){
+            }else if(aData[2] == 2){
                 $('td:eq(2)',nRow).html('<div>退回修改</div>')
             }
             $('td:eq(3)',nRow).on('click',function(){

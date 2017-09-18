@@ -123,4 +123,5 @@ urlpatterns = patterns('',
     url(r'^contract_get_upload/', contract_get_upload),
     url(r'^contract_approve_process/', contract_approve_process),
     url(r'^contract_process_detail_data/', contract_process_detail_data),
+    url(r'^contract_create_excel/', contract_create_excel),
 )

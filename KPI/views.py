@@ -634,6 +634,11 @@ def KPI_table_approve_data(request):
                                                         Q(KPI_level__contains=sSearch) | \
                                                         Q(status_interface__contains=sSearch)).count()
     else:
+        subordinate = []
+        subordinate_orm = user_table.objects.filter(Q(supervisor=request.user.first_name) | Q(principal=request.user.first_name))
+        for i in subordinate_orm:
+            subordinate.append(i.name)
+
         orm_KPI_commit_id = user_table.objects.get(name=request.user.first_name)
         KPI_commit_id_list = orm_KPI_commit_id.KPI_commit_id.split(',')
         if KPI_commit_id_list != [u'']:
@@ -648,26 +653,26 @@ def KPI_table_approve_data(request):
 
         if  sSortDir_0 == 'asc':
             if sSearch == '':
-                result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).count()
+                result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(name__in=subordinate)).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(name__in=subordinate)).count()
             else:
-                result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
+                result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(name__in=subordinate)).filter(Q(KPI_name__contains=sSearch) | \
                                                         Q(final_score__contains=sSearch) | \
                                                         Q(status__contains=sSearch)) \
                                                         .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
+                iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(name__in=subordinate)).filter(Q(KPI_name__contains=sSearch) | \
                                                         Q(final_score__contains=sSearch) | \
                                                         Q(status__contains=sSearch)).count()
         else:
             if sSearch == '':
-                result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).count()
+                result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(name__in=subordinate)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(name__in=subordinate)).count()
             else:
-                result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
+                result_data = table.objects.filter(Q(commit_now=request.user.first_name) | Q(name__in=subordinate)).filter(Q(KPI_name__contains=sSearch) | \
                                                         Q(final_score__contains=sSearch) | \
                                                         Q(status__contains=sSearch)) \
                                                         .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(id__in=KPI_commit_id_list) | Q(name__in=subordinate_list)).filter(Q(KPI_name__contains=sSearch) | \
+                iTotalRecords = table.objects.filter(Q(commit_now=request.user.first_name) | Q(name__in=subordinate)).filter(Q(KPI_name__contains=sSearch) | \
                                                         Q(final_score__contains=sSearch) | \
                                                         Q(status__contains=sSearch)).count()
 

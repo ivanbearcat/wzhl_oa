@@ -127,6 +127,33 @@
     </div>
 </div>
 
+<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/contract.xlsx">下载Excel文件</a></h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--/datatables-->
 {% endblock %}
 
@@ -400,7 +427,7 @@ function loaddata() {
             }
 
             $('td:eq(8)',nRow).on('click',function(){
-                $.post('/business_trip_create_excel/', {id:aData[10]}, function (d) {
+                $.post('/contract_create_excel/', {id:aData[10]}, function (d) {
                     if (d.code == 0) {
                         toastr.success(d.msg)
                         $('#myModal2').modal('show')
@@ -456,7 +483,7 @@ function agree(){
 }
 
 function back_edit(){
-    var id = $.cookie('flag')
+    var id = $.cookie('id')
     var status = $.cookie('status')
     var process_type = $.cookie('process_type')
     var comment = $('#comment').val()
@@ -473,7 +500,7 @@ function back_edit(){
 }
 
 function disagree(){
-    var id = $.cookie('flag')
+    var id = $.cookie('id')
     var status = $.cookie('status')
     var process_type = $.cookie('process_type')
     var comment = $('#comment').val()
