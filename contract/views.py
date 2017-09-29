@@ -41,10 +41,10 @@ def contract_apply_data(request):
 
     if  sSortDir_0 == 'asc':
         if sSearch == '':
-            result_data = table.objects.all().order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.all().count()
+            result_data = table.objects.filter(name=request.user.first_name).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table.objects.filter(name=request.user.first_name).count()
         else:
-            result_data = table.objects.all()
+            result_data = table.objects.filter(name=request.user.first_name)
             sSearch_list = sSearch.split()
             for i in range(len(sSearch_list)):
                 result_data = result_data.filter(Q(contract_uuid__contains=sSearch_list[i]) | \
@@ -57,10 +57,10 @@ def contract_apply_data(request):
             result_data = result_data.order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
     else:
         if sSearch == '':
-            result_data = table.objects.all().order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.all().count()
+            result_data = table.objects.filter(name=request.user.first_name).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table.objects.filter(name=request.user.first_name).count()
         else:
-            result_data = table.objects.all()
+            result_data = table.objects.filter(name=request.user.first_name)
             sSearch_list = sSearch.split()
             for i in range(len(sSearch_list)):
                 result_data = result_data.filter(Q(contract_uuid__contains=sSearch_list[i]) | \
@@ -83,7 +83,8 @@ def contract_apply_data(request):
                        '5':i.contract_name,
                        '6':i.contract_amount_figures,
                        '7':i.status,
-                       '8':i.id
+                       '8':i.id,
+                       '9':i.approve_now
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
@@ -192,13 +193,11 @@ def contract_apply_detail(request):
 
                 contract_amount_words = Num2MoneyFormat(float(contract_amount_figures))
 
-                approve_now = user_info_orm.principal
-
                 if party_a == u'上海六界信息技术有限公司':
                     if finance_class == u'无金额':
                         process_type = 'l'
                     else:
-                        if float(contract_amount_figures) >= 100000:
+                        if float(contract_amount_figures) >= 10000:
                             process_type = 'l'
                         else:
                             process_type = 's'
@@ -216,6 +215,14 @@ def contract_apply_detail(request):
                         else:
                             process_type = 's'
 
+                if user_info_orm.principal == u'曹津' and process_type == 'l':
+                    print user_info_orm.principal
+                    status = 2
+                    approve_now = u'龚晓芸'
+                else:
+                    status = 1
+                    approve_now = user_info_orm.principal
+
                 orm = table(party_a=party_a,name=name,department=department,finance_class=finance_class,contract_class=contract_class,\
                             contract_uuid=contract_uuid,origin_contract_uuid=origin_contract_uuid,contract_name=contract_name,\
                             party_b=party_b,address=address,contacts=contacts,e_mail=e_mail,phone_1=phone_1,phone_2=phone_2,\
@@ -223,9 +230,21 @@ def contract_apply_detail(request):
                             contract_amount_figures=contract_amount_figures,contract_amount_words=contract_amount_words,\
                             special_requirements=special_requirements,contract_begin_time=contract_begin_time,\
                             contract_end_time=contract_end_time,partner_qualification=partner_qualification,stamp_status=0,\
-                            archive_status=0,status=1,approve_now=approve_now,commit_time=datetime.datetime.now(),process_type=process_type)
+                            archive_status=0,status=status,approve_now=approve_now,commit_time=datetime.datetime.now(),process_type=process_type)
 
                 orm.save()
+
+                try:
+                    archive_path = request.session['contract_upload_file']
+                    request.session['contract_upload_file'] = ''
+                except KeyError:
+                    archive_path = ''
+
+                orm_last_id = table.objects.all().order_by('id').reverse()[0]
+
+                orm2 = detail(name=request.user.first_name,operation=9,archive_path=archive_path,comment='',parent_id=orm_last_id.id)
+                orm2.save()
+
                 request.session['contract_result'] = u'保存成功'
             except Exception,e:
                 print e
@@ -238,8 +257,7 @@ def contract_apply_detail(request):
             orm = table.objects.get(id=table_id)
             commit = request.session.get('contract_commit')
             print commit
-            if orm.status == 0:
-                orm.status = 1
+
             if commit != '0':
                 orm.party_a = party_a
                 orm.finance_class = finance_class
@@ -264,6 +282,38 @@ def contract_apply_detail(request):
                 orm.partner_qualification = partner_qualification
                 orm.apply_time = datetime.datetime.now()
                 orm.comment = comment
+                if party_a == u'上海六界信息技术有限公司':
+                    if finance_class == u'无金额':
+                        process_type = 'l'
+                    else:
+                        if float(contract_amount_figures) >= 10000:
+                            process_type = 'l'
+                        else:
+                            process_type = 's'
+                elif party_a == u'竹筏科技（北京）科技有限公司':
+                    if finance_class == u'无金额':
+                        process_type = 'l'
+                    if finance_class == u'收':
+                        if float(contract_amount_figures) >= 500000:
+                            process_type = 'l'
+                        else:
+                            process_type = 's'
+                    if finance_class == u'支':
+                        if float(contract_amount_figures) >= 200000:
+                            process_type = 'l'
+                        else:
+                            process_type = 's'
+                orm.process_type = process_type
+
+                if orm.status == 0:
+                    if user_info_orm.principal == u'曹津' and process_type == 'l':
+                        print user_info_orm.principal
+                        orm.status = 2
+                        orm.approve_now = u'龚晓芸'
+                    else:
+                        orm.status = 1
+                        orm.approve_now = user_info_orm.principal
+
                 orm.save()
                 request.session['contract_result'] = u'保存成功'
             # try:
@@ -304,6 +354,8 @@ def contract_apply_detail(request):
                                                      'stamp_status':orm.stamp_status,
                                                      'archive_status':orm.archive_status,
                                                      'status':orm.status,
+                                                     'process_type':orm.process_type,
+                                                     'id':orm.id
                                                      },
                                                     context_instance=RequestContext(request))
         except Exception,e:
@@ -326,6 +378,8 @@ def contract_apply_detail(request):
 
 
 
+
+
 @login_required
 def contract_approve(request):
     path = request.path.split('/')[1]
@@ -333,7 +387,7 @@ def contract_approve(request):
                                                  'path1':'contract',
                                                  'path2':path,
                                                  'page_name1':u'合同管理',
-                                                 'page_name2':u'合同审批',},
+                                                 'page_name2':u'全部合同',},
                                                 context_instance=RequestContext(request))
 
 
@@ -341,6 +395,140 @@ def contract_approve(request):
 
 @login_required
 def contract_approve_data(request):
+    sEcho =  request.POST.get('sEcho') #标志，直接返回
+    iDisplayStart = int(request.POST.get('iDisplayStart'))#第几行开始
+    iDisplayLength = int(request.POST.get('iDisplayLength'))#显示多少行
+    iSortCol_0 = int(request.POST.get("iSortCol_0"))#排序行号
+    sSortDir_0 = request.POST.get('sSortDir_0')#asc/desc
+    sSearch = request.POST.get('sSearch')#高级搜索
+
+    aaData = []
+    sort = ['contract_uuid','apply_time','name','contract_class','party_b','contract_name','contract_amount_figures','status','id']
+
+    subordinate = []
+    subordinate_orm = user_table.objects.filter(principal=request.user.first_name)
+    for i in subordinate_orm:
+        subordinate.append(i.name)
+
+    # if request.user.has_perm('contract.can_view_all'):
+    #     if  sSortDir_0 == 'asc':
+    #         if sSearch == '':
+    #             result_data = table.objects.all().order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+    #             iTotalRecords = table.objects.all().count()
+    #         else:
+    #             result_data = table.objects.all()
+    #             sSearch_list = sSearch.split()
+    #             for i in range(len(sSearch_list)):
+    #                 result_data = result_data.all().filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+    #                                                 Q(party_b__contains=sSearch_list[i]) | \
+    #                                                 Q(contract_name__contains=sSearch_list[i]))
+    #
+    #                 iTotalRecords = result_data.all().filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+    #                                                 Q(party_b__contains=sSearch_list[i]) | \
+    #                                                 Q(contract_name__contains=sSearch_list[i])).count()
+    #             result_data = result_data.order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+    #     else:
+    #         if sSearch == '':
+    #             result_data = table.objects.all().order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+    #             iTotalRecords = table.objects.all().count()
+    #         else:
+    #             result_data = table.objects.all()
+    #             sSearch_list = sSearch.split()
+    #             for i in range(len(sSearch_list)):
+    #                 result_data = result_data.all().filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+    #                                                 Q(party_b__contains=sSearch_list[i]) | \
+    #                                                 Q(contract_name__contains=sSearch_list[i]))
+    #
+    #                 iTotalRecords = result_data.all().filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+    #                                                 Q(party_b__contains=sSearch_list[i]) | \
+    #                                                 Q(contract_name__contains=sSearch_list[i])).count()
+    #             result_data = result_data.order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+    # else:
+    if  sSortDir_0 == 'asc':
+        if sSearch == '':
+            result_data = table.objects.filter(approve_now=request.user.first_name).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table.objects.filter(approve_now=request.user.first_name).count()
+        else:
+            result_data = table.objects.all()
+            sSearch_list = sSearch.split()
+            for i in range(len(sSearch_list)):
+                result_data = result_data.filter(approve_now=request.user.first_name).filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+                                                Q(party_b__contains=sSearch_list[i]) | \
+                                                Q(contract_name__contains=sSearch_list[i]))
+
+                iTotalRecords = result_data.filter(approve_now=request.user.first_name).filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+                                                Q(party_b__contains=sSearch_list[i]) | \
+                                                Q(contract_name__contains=sSearch_list[i])).count()
+            result_data = result_data.order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+    else:
+        if sSearch == '':
+            result_data = table.objects.filter(approve_now=request.user.first_name).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table.objects.filter(approve_now=request.user.first_name).count()
+        else:
+            result_data = table.objects.all()
+            sSearch_list = sSearch.split()
+            for i in range(len(sSearch_list)):
+                result_data = result_data.filter(approve_now=request.user.first_name).filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+                                                Q(party_b__contains=sSearch_list[i]) | \
+                                                Q(contract_name__contains=sSearch_list[i]))
+
+                iTotalRecords = result_data.filter(approve_now=request.user.first_name).filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+                                                Q(party_b__contains=sSearch_list[i]) | \
+                                                Q(contract_name__contains=sSearch_list[i])).count()
+            result_data = result_data.order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+
+
+    for i in  result_data:
+        export = '''
+                    <a class="btn btn-sm green">
+                        生成Excel文件 <i class="fa fa-level-down"></i>
+                    </a>
+                '''
+        approve = '''
+                    <a class="btn btn-sm blue">
+                        审批 <i class="fa"></i>
+                    </a>
+                 '''
+        aaData.append({
+                       '0':i.contract_uuid,
+                       '1':str(i.apply_time),
+                       '2':i.name,
+                       '3':i.contract_class,
+                       '4':i.party_b,
+                       '5':i.contract_name,
+                       '6':i.contract_amount_figures,
+                       '7':i.status,
+                       '8':export,
+                       '9':approve,
+                       '10':i.id,
+                       '11':i.process_type,
+                       '12':i.approve_now
+                      })
+    result = {'sEcho':sEcho,
+               'iTotalRecords':iTotalRecords,
+               'iTotalDisplayRecords':iTotalRecords,
+               'aaData':aaData
+    }
+    return HttpResponse(json.dumps(result),content_type="application/json")
+
+
+
+
+@login_required
+def contract_all(request):
+    path = request.path.split('/')[1]
+    return render(request, 'contract/contract_all.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
+                                                 'path1':'contract',
+                                                 'path2':path,
+                                                 'page_name1':u'合同管理',
+                                                 'page_name2':u'全部合同',},
+                                                context_instance=RequestContext(request))
+
+
+
+
+@login_required
+def contract_all_data(request):
     sEcho =  request.POST.get('sEcho') #标志，直接返回
     iDisplayStart = int(request.POST.get('iDisplayStart'))#第几行开始
     iDisplayLength = int(request.POST.get('iDisplayLength'))#显示多少行
@@ -517,6 +705,8 @@ def contract_approve_process(request):
     comment = request.POST.get('comment')
     add_process = request.POST.get('add_process')
 
+    print _id,type(_id)
+
     status_owner = {2: u'龚晓芸',
                     3: u'高茹',
                     4: u'张莉莹',
@@ -541,7 +731,9 @@ def contract_approve_process(request):
         if flag == '1':
             if status == '0':
                 principal_orm = user_table.objects.get(name=orm.name)
-                if principal_orm.principal == u'曹津':
+                print '!!!!!'
+                print principal_orm.principal
+                if principal_orm.principal == u'曹津' and orm.process_type == 'l':
                     orm.status = 2
                     orm.approve_now = status_owner[orm.status]
                 else:
@@ -549,40 +741,46 @@ def contract_approve_process(request):
                     orm.approve_now = principal_orm.principal
 
             if status == '1':
-                for i in detail_orm:
-                    if status_owner[2] == i.name:
-                        if process_type == 'l':
-                            orm.status = 3
-                        else:
-                            orm.status = 4
-                        break
-                else:
-                    orm.status = 2
+                # for i in detail_orm:
+                #     if status_owner[2] == i.name:
+                #         if process_type == 'l':
+                #             orm.status = 3
+                #         else:
+                #             orm.status = 4
+                #         break
+                # else:
+                #     orm.status = 2
+                orm.status = 2
                 orm.approve_now = status_owner[orm.status]
 
             if status == '2':
-                for i in detail_orm:
-                    if process_type == 'l':
-                        if status_owner[3] == i.name:
-                            orm.status = 4
-                            break
-                        else:
-                             orm.status = 3
-                    else:
-                        if status_owner[4] == i.name:
-                            orm.status = 6
-                            break
-                        else:
-                            orm.status = 4
+                # for i in detail_orm:
+                #     if process_type == 'l':
+                #         if status_owner[3] == i.name:
+                #             orm.status = 4
+                #             break
+                #         else:
+                #              orm.status = 3
+                #     else:
+                #         if status_owner[4] == i.name:
+                #             orm.status = 6
+                #             break
+                #         else:
+                #             orm.status = 4
+                if process_type == 'l':
+                    orm.status = 3
+                else:
+                    orm.status = 4
                 orm.approve_now = status_owner[orm.status]
 
             if status == '3':
-                for i in detail_orm:
-                    if status_owner[4] == i.name:
-                        orm.status = 6
-                        break
-                else:
-                    orm.status = 4
+                # for i in detail_orm:
+                #     if status_owner[4] == i.name:
+                #         orm.status = 6
+                #         break
+                # else:
+                #     orm.status = 4
+                orm.status = 4
                 orm.approve_now = status_owner[orm.status]
 
             if status == '4':
@@ -590,36 +788,45 @@ def contract_approve_process(request):
                     orm.status = 5
                     orm.approve_now = add_process
                 else:
+                    # if process_type == 'l':
+                    #     for i in detail_orm:
+                    #         if status_owner[6] == i.name:
+                    #             orm.status = 7
+                    #             break
+                    #     else:
+                    #         orm.status = 6
+                    # else:
+                    #     orm.status = 8
                     if process_type == 'l':
-                        for i in detail_orm:
-                            if status_owner[6] == i.name:
-                                orm.status = 7
-                                break
-                        else:
-                            orm.status = 6
+                        orm.status = 6
                     else:
                         orm.status = 8
                     orm.approve_now = status_owner[orm.status]
 
             if status == '5':
+                # if process_type == 'l':
+                #     for i in detail_orm:
+                #         if status_owner[6] == i.name:
+                #             orm.status = 7
+                #             break
+                #     else:
+                #         orm.status = 6
+                # else:
+                #     orm.status = 8
                 if process_type == 'l':
-                    for i in detail_orm:
-                        if status_owner[6] == i.name:
-                            orm.status = 7
-                            break
-                    else:
-                        orm.status = 6
+                    orm.status = 6
                 else:
                     orm.status = 8
                 orm.approve_now = status_owner[orm.status]
 
             if status == '6':
-                for i in detail_orm:
-                    if status_owner[7] == i.name:
-                        orm.status = 8
-                        break
-                else:
-                    orm.status = 7
+                # for i in detail_orm:
+                #     if status_owner[7] == i.name:
+                #         orm.status = 8
+                #         break
+                # else:
+                #     orm.status = 7
+                orm.status = 7
                 orm.approve_now = status_owner[orm.status]
 
             if status == '7':
@@ -636,8 +843,8 @@ def contract_approve_process(request):
                 orm.approve_now = ''
                 orm.archive_status = 1
 
-        if flag == '-1':
-            if status >= 4:
+        if flag == '2':
+            if int(status) <= 4:
                 orm.status = 0
                 orm.approve_now = ''
             else:
@@ -729,8 +936,8 @@ def contract_process_detail_data(request):
 
 
 @login_required
-def contract_create_excel(requests):
-    _id = requests.POST.get('id')
+def contract_create_excel(request):
+    _id = request.POST.get('id')
     orm = table.objects.get(id=_id)
 
     if orm.status != 10:
@@ -819,6 +1026,68 @@ def contract_create_excel(requests):
             row_num += 1
 
         wb.save(BASE_DIR + '/static/files/contract.xlsx')
+        return HttpResponse(json.dumps({'code':0,'msg':u'生成成功'}),content_type="application/json")
+    except Exception,e:
+        print e
+        return HttpResponse(json.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+
+
+@login_required
+def contract_approve_alert(request):
+    orm = table.objects.filter(approve_now=request.user.first_name)
+    if len(orm) > 0:
+        msg = '有%s个合同事件等待您的审批' % len(orm)
+        return HttpResponse(json.dumps({'code':0,'msg':msg}),content_type="application/json")
+    else:
+        return HttpResponse(json.dumps({'code':1}),content_type="application/json")
+
+
+
+@login_required
+def export_contract_list(request):
+    year = request.POST.get('year')
+    contract_class = request.POST.get('contract_class')
+    flag = ''
+    if year:
+        flag += 'x'
+    if contract_class:
+        flag += 'y'
+    if flag:
+        if flag == 'x':
+            orm = table.objects.filter(apply_time__year=int(year)).filter(status=10)
+        if flag == 'y':
+            orm = table.objects.filter(contract_class=contract_class).filter(status=10)
+        if flag == 'xy':
+            orm = table.objects.filter(apply_time__year=int(year)).filter(contract_class=contract_class).filter(status=10)
+    else:
+        orm = table.objects.filter(status=10)
+    contract_list = []
+    for i in orm:
+        contract_list.append({'contract_uuid':i.contract_uuid,
+                              'apply_time':str(i.apply_time),
+                              'name':i.name,
+                              'contract_class':i.contract_class,
+                              'party_b':i.party_b,
+                              'contract_name':i.contract_name,
+                              'contract_amount_figures':i.contract_amount_figures})
+    try:
+        wb = load_workbook(filename = BASE_DIR + '/static/files/contract_list_template.xlsx')
+        ws = wb.active
+
+        row_num = 3
+        for i in contract_list:
+            ws['A'+str(row_num)] = i['contract_uuid']
+            ws['B'+str(row_num)] = i['apply_time']
+            ws['C'+str(row_num)] = i['name']
+            ws['D'+str(row_num)] = i['contract_class']
+            ws['E'+str(row_num)] = i['party_b']
+            ws['F'+str(row_num)] = i['contract_name']
+            ws['G'+str(row_num)] = i['contract_amount_figures']
+            ws['H'+str(row_num)] = '已归档'
+            row_num += 1
+
+        wb.save(BASE_DIR + '/static/files/contract_list.xlsx')
         return HttpResponse(json.dumps({'code':0,'msg':u'生成成功'}),content_type="application/json")
     except Exception,e:
         print e

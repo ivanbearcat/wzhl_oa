@@ -290,9 +290,9 @@ def vacation_refresh(request):
             if j.state not in [0,8,9]:
                 if 6 < (datetime.datetime.now() - j.apply_time).days and (j.state == 1 or j.state == 2 or j.state == 3):
                     orm_fetch_email = user_table.objects.get(name=j.approve_now)
-                    Thread(target=send_mail,args=(orm_fetch_email.email,'请假审批过期提醒','<h3>有一个请假事件等待您的审批，还有1天就将过期，请在尽快在OA系统中审批。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    Thread(target=send_mail,args=(orm_fetch_email.email,'请假审批过期提醒','<h3>有一个请假事件等待您的审批，还有1天就将过期，请在尽快在OA系统中审批。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
                     # send_mail(to_addr='%s' % orm_fetch_email.email,subject='请假审批过期提醒',
-                    #           body='<h3>有一个请假事件等待您的审批，还有1天就将过期，请在尽快在OA系统中审批。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    #           body='<h3>有一个请假事件等待您的审批，还有1天就将过期，请在尽快在OA系统中审批。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
 
                 if (datetime.datetime.now() - j.apply_time).days > 7 and (j.state == 1 or j.state == 2 or j.state == 3):
                     j.state = 9
@@ -529,8 +529,8 @@ def vacation_apply_save(request):
             orm.real_days = real_days
             orm.save()
     Thread(target=thread_run).start()
-    Thread(target=send_mail,args=(supervisor_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
-    # send_mail(to_addr=supervisor_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+    Thread(target=send_mail,args=(supervisor_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+    # send_mail(to_addr=supervisor_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
     return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
     # except Exception,e:
     #     print e
@@ -777,8 +777,8 @@ def vacation_approve_process(request):
                         orm_alert_my.approved_id = str(orm.id)
                     orm_alert_my.save()
                     orm.save()
-                    Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
-                    # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
 
                     return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
                 except Exception,e:
@@ -816,8 +816,8 @@ def vacation_approve_process(request):
                     orm_alert.save()
                     orm_alert_my.save()
                     orm.save()
-                    Thread(target=send_mail,args=(principal_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
-                    # send_mail(to_addr=principal_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    Thread(target=send_mail,args=(principal_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    # send_mail(to_addr=principal_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                     return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
                 except Exception,e:
                     print e
@@ -849,8 +849,8 @@ def vacation_approve_process(request):
                         orm_alert.save()
                         orm_alert_my.save()
                         orm.save()
-                        Thread(target=send_mail,args=(HR_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
-                        # send_mail(to_addr=HR_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                        Thread(target=send_mail,args=(HR_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                        # send_mail(to_addr=HR_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                         return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
                     except Exception,e:
                         print e
@@ -890,8 +890,8 @@ def vacation_approve_process(request):
                         orm_alert_my.approved_id = str(orm.id)
                     orm_alert_my.save()
                     orm.save()
-                    Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
-                    # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
 
                     return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
                 except Exception,e:
@@ -924,8 +924,8 @@ def vacation_approve_process(request):
                     orm_alert.save()
                     orm_alert_my.save()
                     orm.save()
-                    Thread(target=send_mail,args=(HR_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
-                    # send_mail(to_addr=HR_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                    Thread(target=send_mail,args=(HR_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    # send_mail(to_addr=HR_email,subject='请假审批提醒',body='<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
                     return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
                 except Exception,e:
                     print e
@@ -966,8 +966,8 @@ def vacation_approve_process(request):
                     orm_alert_my.approved_id = str(orm.id)
                 orm_alert_my.save()
                 orm.save()
-                Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
-                # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
 
                 return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
             except Exception,e:
@@ -1010,8 +1010,8 @@ def vacation_approve_process(request):
                     orm_alert_my.approved_id = str(orm.id)
                 orm_alert_my.save()
                 orm.save()
-                Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
-                # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
+                Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
 
                 return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
             except Exception,e:
@@ -1041,8 +1041,8 @@ def vacation_approve_process(request):
             if orm.type == '调休':
                 fetch_email.leave_in_lieu += orm.days
             fetch_email.save()
-            Thread(target=send_mail,args=(email,'请假申请被拒绝','<h3>您的请假申请被拒绝，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % disagree_reason)).start()
-            # send_mail(to_addr=email,subject='请假申请被拒绝',body='<h3>您的请假申请被拒绝，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br>OA链接：http://oa.xiaoquan.com/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % disagree_reason)
+            Thread(target=send_mail,args=(email,'请假申请被拒绝','<h3>您的请假申请被拒绝，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % disagree_reason)).start()
+            # send_mail(to_addr=email,subject='请假申请被拒绝',body='<h3>您的请假申请被拒绝，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % disagree_reason)
             orm_alert = user_table.objects.get(name=request.user.first_name)
             orm_alert.has_approve -= 1
             if orm_alert.approved_id:

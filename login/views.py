@@ -16,7 +16,7 @@ def login_auth(request):
     if authed and authed.is_active:
         auth.login(request,authed)
 
-        for perm in ['vacation.can_view','assets.can_view','KPI.can_view','personal_information.can_view']:
+        for perm in ['vacation.can_view','assets.can_view','KPI.can_view','personal_information.can_view','contract.can_view_all']:
             if request.user.has_perm(perm):
                 request.session['_'.join(perm.split('.'))] = 1
             else:

@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 @login_required
 def main(request):
     print request.session.get('vacation_can_view')
+    print request.session.get('vacation_can_view_all')
     path = request.path.split('/')[1]
     return render(request,'public/index.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                    'path1':path,

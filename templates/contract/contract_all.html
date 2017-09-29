@@ -12,13 +12,26 @@
 
 {% endblock %}
 {% block body %}
+<div class="form-group">
+{#    <label class="control-label col-md-1">* 财务分类</label>#}
+    <div class="col-md-2">
+        <input type="text" id="year" class="form-control">
+    </div>
+{#    <label class="control-label col-md-offset-2 col-md-1">* 合同类型</label>#}
+    <div class="col-md-2">
+        <input type="text" id="contract_class" class="form-control">
+    </div>
+    <div class="col-md-2">
+        <div id="export" class="btn blue"><i class="fa fa-down"></i> 导出列表到Excel</div>
+    </div>
+</div>
 <div class="row">
     <div class="col-md-12">
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-globe"></i>合同审批
+                    <i class="fa fa-globe"></i>全部合同
                 </div>
             </div>
             <div class="portlet-body">
@@ -154,6 +167,33 @@
     </div>
 </div>
 
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4><a href="/static/files/contract_list.xlsx">下载Excel文件</a></h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-dismiss="modal">关闭</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--/datatables-->
 {% endblock %}
 
@@ -209,6 +249,23 @@ $(document).ready(function () {
         });
     })
 
+    $('#year').select2({
+        multiple: false,
+        placeholder: '请选择导出的年份',
+        allowClear: true,
+        data: [{'text':'2017','id':'2017'},{'text':'2018','id':'2018'},{'text':'2019','id':'2019'},
+               {'text':'2020','id':'2020'},{'text':'2021','id':'2021'},{'text':'2022','id':'2022'},
+               {'text':'2023','id':'2023'}]
+    });
+
+    $('#contract_class').select2({
+        multiple: false,
+        placeholder: '请选择导出的合同分类',
+        allowClear: true,
+        data: [{'text':'商务合作','id':'商务合作'},{'text':'艺人经纪','id':'艺人经纪'},{'text':'市场框架','id':'市场框架'},
+               {'text':'技术开发','id':'技术开发'},{'text':'行政','id':'行政'},{'text':'人事','id':'人事'},
+               {'text':'财务','id':'财务'},{'text':'法务','id':'法务'},{'text':'其他','id':'其他'}]
+    });
 
 
 
@@ -305,7 +362,7 @@ $(document).ready(function () {
 
 function loaddata() {
     oTable = $('#datatables').dataTable({
-        "sAjaxSource": "/contract_approve_data/?rand=" + Math.random(),
+        "sAjaxSource": "/contract_all_data/?rand=" + Math.random(),
         "sDom": "<'row-fluid'<'span6'T><'span6'f>r><'table-scrollable't><'fluid'<'span3'l><'span4'i><'span5'p>>",
         "bServerSide": true,
         "bPaginate": true, // 是否使用分页
@@ -335,7 +392,7 @@ function loaddata() {
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
-            { "sClass": "center", 'sWidth': "10%"},
+            { "sClass": "center", 'sWidth': "10%", 'bVisible': false},
             { "sClass": "center", 'sWidth': "5%", 'bVisible': false},
             { "sClass": "center", 'sWidth': "5%", 'bVisible': false},
             { "sClass": "center", 'sWidth': "5%", 'bVisible': false}
@@ -472,12 +529,7 @@ function agree(){
     var status = $.cookie('status')
     var process_type = $.cookie('process_type')
     var comment = $('#comment').val()
-    var add_process = $('#add_process').select2('data')
-    if (add_process == null){
-        add_process = ''
-    }else{
-        add_process = add_process['text']
-    }
+    var add_process = $('#add_process').val()
     $.post('/contract_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:1}, function (d) {
         if (d.code == 0) {
             toastr.success(d.msg)
@@ -494,12 +546,7 @@ function back_edit(){
     var status = $.cookie('status')
     var process_type = $.cookie('process_type')
     var comment = $('#comment').val()
-    var add_process = $('#add_process').select2('data')
-    if (add_process == null){
-        add_process = ''
-    }else{
-        add_process = add_process['text']
-    }
+    var add_process = $('#add_process').val()
     $.post('/contract_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:2}, function (d) {
         if (d.code == 0) {
             toastr.success(d.msg)
@@ -516,12 +563,7 @@ function disagree(){
     var status = $.cookie('status')
     var process_type = $.cookie('process_type')
     var comment = $('#comment').val()
-    var add_process = $('#add_process').select2('data')
-    if (add_process == null){
-        add_process = ''
-    }else{
-        add_process = add_process['text']
-    }
+    var add_process = $('#add_process').val()
     $.post('/contract_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:0}, function (d) {
         if (d.code == 0) {
             toastr.success(d.msg)
@@ -533,6 +575,19 @@ function disagree(){
     $('#myModal').modal('hide')
 }
 
+
+$('#export').on('click',function(){
+    var year = $('#year').val()
+    var contract_class = $('#contract_class').val()
+    $.post('/export_contract_list/', {year:year, contract_class:contract_class}, function (d) {
+        if (d.code == 0) {
+            toastr.success(d.msg)
+            $('#myModal3').modal('show')
+        } else {
+            toastr.error(d.msg)
+        }
+    })
+})
 
 
 function add(){

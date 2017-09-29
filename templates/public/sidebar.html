@@ -106,30 +106,38 @@
 						</li>
 					</ul>
 				</li>
-{#                <li id="contract">#}
-{#					<a href="javascript:;">#}
-{#						<i class="fa fa-pencil"></i>#}
-{#						<span class="title">#}
-{#							合同管理#}
-{#						</span>#}
-{#						<span class="arrow ">#}
-{#						</span>#}
-{#					</a>#}
-{#					<ul class="sub-menu">#}
-{#                        <li id="contract_apply">#}
-{#							<a href="/contract_apply/">#}
-{#								<i class="fa"></i>#}
-{#								合同申请#}
-{#							</a>#}
-{#						</li>#}
-{#                        <li id="contract_approve">#}
-{#							<a href="/contract_approve/">#}
-{#								<i class="fa"></i>#}
-{#								合同审批#}
-{#							</a>#}
-{#						</li>#}
-{#					</ul>#}
-{#				</li>#}
+                <li id="contract">
+					<a href="javascript:;">
+						<i class="fa fa-pencil"></i>
+						<span class="title">
+							合同管理
+						</span>
+						<span class="arrow ">
+						</span>
+					</a>
+					<ul class="sub-menu">
+                        <li id="contract_apply">
+							<a href="/contract_apply/">
+								<i class="fa"></i>
+								合同申请
+							</a>
+						</li>
+                        <li id="contract_approve">
+							<a href="/contract_approve/">
+								<i class="fa"></i>
+								合同审批
+							</a>
+						</li>
+{#                        {% if request.session.contract_can_view_all %}#}
+                        <li id="contract_all">
+							<a href="/contract_all/">
+								<i class="fa"></i>
+								全部合同
+							</a>
+						</li>
+{#                        {% endif %}#}
+					</ul>
+				</li>
                 {% if request.session.assets_can_view %}
                 <li id="assets">
 					<a href="javascript:;">

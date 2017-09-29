@@ -404,6 +404,32 @@
                                 <input type="text" id="archive_status" name="archive_status" class="form-control">
                             </div>
                         </div>
+                        <div class="form-group">
+                    {% if status == 0 %}
+                        <label class="control-label col-md-1">附件</label>
+                            <div  class="col-md-2">
+                                <div class="tab-content no-space">
+                                    <div class="tab-pane active" id="tab_images">
+                                        <div class="alert alert-success margin-bottom-10">
+                                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
+                                            <i class="fa fa-warning fa-lg"></i> 请将上传文件打包，选择ZIP或RAR格式进行上传
+                                        </div>
+                                        <div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10" style="position: relative;">
+                                            <a id="tab_images_uploader_pickfiles" href="javascript:;" class="btn yellow" style="position: relative; z-index: 1; float:left">
+                                                <i class="fa fa-plus"></i> 选择文件
+                                            </a>
+                                            <a id="tab_images_uploader_uploadfiles" href="javascript:;" class="btn blue" style="float:left; margin-left: 10px">
+                                                <i class="fa fa-share"></i> 上传文件
+                                            </a>
+                                        <div id="html5_191s5i9758q1p7bcdq1badmjb3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 1401px; width: 113px; height: 34px; overflow: hidden; z-index: 0;"><input id="html5_191s5i9758q1p7bcdq1badmjb3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;display:none" multiple="" accept="image/jpeg,image/gif,image/png,application/zip"></div></div>
+                                        <div class="row">
+                                            <div id="tab_images_uploader_filelist" class="col-md-6 col-sm-12"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
                         <div class="form-group last">
                             <label class="control-label col-md-1">备注</label>
                             <div class="col-md-10">
@@ -416,9 +442,12 @@
                     <div class="form-actions fluid">
                         <div class="row">
                             <div class="col-md-12">
-                                <div class="col-md-offset-10 col-md-9">
-                                    <button id="approve" class="btn blue"><i class="fa fa-share"></i> 附件</button>
+                                <div class="col-md-offset-11 col-md-9">
+                                    {% if status != 0 %}
+                                    <div id="approve" class="btn purple"><i class="fa fa-share"></i> 审批</div>
+                                    {% else %}
                                     <button id="submit" class="btn purple" type="submit"><i class="fa fa-check"></i> 提交</button>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -563,6 +592,7 @@
 <script src="/static/assets/plugins/typeahead/handlebars.min.js" ></script>
 <script src="/static/assets/plugins/typeahead/typeahead.min.js" type="text/javascript"></script>
 <script src="/static/assets/scripts/custom/components-form-tools.js"></script>
+<script src="/static/assets/plugins/plupload/js/plupload.full.min.js" ></script>
 
 <script type="text/javascript">
 var oTable;
@@ -668,6 +698,8 @@ $(document).ready(function () {
 {#    $('#resumes_button').on('change',function(){#}
 {#        $('#resumes_show').html($('#resumes').val())#}
 {#    });#}
+    $('#submit').attr('disabled',true)
+
 {% if request.session.contract_id %}
     $('#party_a').select2('data',{'text':'{{ party_a }}','id':'{{ party_a }}'});
     $('#apply_time').val('{{ apply_time }}');
@@ -901,6 +933,7 @@ $(document).ready(function () {
                             $('#uploaded_file_' + file.id + ' > .status').removeClass("label-info").addClass("label-success").html('<i class="fa fa-check"></i>'+response.msg); // set successfull operation
                             $('#tab_images_uploader_filelist').text("")
                             toastr.success(response.msg)
+                            $('#submit').attr('disabled',false)
 {#                            $('#datatables').dataTable().fnDraw()#}
                         } else {
                             $('#uploaded_file_' + file.id + ' > .status').removeClass("label-info").addClass("label-danger").html('<i class="fa fa-warning"></i>'+response.msg); // set failed operation
@@ -927,7 +960,7 @@ $(document).ready(function () {
     PluploadCustom.init()
 
 
-    $('#submit').on('click',function(){
+    $('#approve').on('click',function(){
 {#        var id = '{{ id }}'#}
 {#        $.cookie('id',id,{ expires: 1 })#}
 {#        var status = aData[7]#}
@@ -941,6 +974,23 @@ $(document).ready(function () {
 {#        }#}
         $("#myModal").modal('show')
     })
+
+
+    $.post('/order_form_dropdown/', {}, function (d) {
+        $('#add_process').select2({
+            multiple: false,
+            placeholder: '请选择员工',
+            allowClear: true,
+            data: d['list']
+        });
+    })
+
+    var status = '{{ status }}'
+    if (status == '4') {
+        $('#add_process_div').show()
+    }else{
+        $('#add_process_div').hide()
+    }
 
 
     loaddata()
@@ -1011,6 +1061,8 @@ function loaddata() {
                 $('td:eq(2)',nRow).html('<div>审批不通过</div>')
             }else if(aData[2] == 2){
                 $('td:eq(2)',nRow).html('<div>退回修改</div>')
+            }else if(aData[2] == 9){
+                $('td:eq(2)',nRow).html('<div>合同申请</div>')
             }
             $('td:eq(3)',nRow).on('click',function(){
                 location.href = '/'+aData[3]
@@ -1038,6 +1090,78 @@ function loaddata() {
         toastr.error('{{ request.session.contract_result }}')
     {% endifequal %}
 {% endif %}
+
+
+
+function agree(){
+    var id = $('#id').val()
+    var status = '{{ status }}'
+    var process_type = '{{ process_type }}'
+    var comment = $('#comment').val()
+    var add_process = $('#add_process').select2('data')
+    if (add_process == null){
+        add_process = ''
+    }else{
+        add_process = add_process['text']
+    }
+    $.post('/contract_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:1}, function (d) {
+        if (d.code == 0) {
+            toastr.success(d.msg)
+            $('#datatables').dataTable().fnDraw()
+            setTimeout('location.href = "/contract_apply/"',500)
+        } else {
+            toastr.error(d.msg)
+        }
+    })
+    $('#myModal').modal('hide')
+}
+
+function back_edit(){
+    var id = $('#id').val()
+    var status = '{{ status }}'
+    var process_type = '{{ process_type }}'
+    var comment = $('#comment').val()
+    var add_process = $('#add_process').select2('data')
+    if (add_process == null){
+        add_process = ''
+    }else{
+        add_process = add_process['text']
+    }
+    $.post('/contract_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:2}, function (d) {
+        if (d.code == 0) {
+            toastr.success(d.msg)
+            $('#datatables').dataTable().fnDraw()
+            setTimeout('location.href = "/contract_apply/"',1000)
+        } else {
+            toastr.error(d.msg)
+        }
+    })
+    $('#myModal').modal('hide')
+}
+
+function disagree(){
+    var id = $('#id').val()
+    var status = '{{ status }}'
+    var process_type = '{{ process_type }}'
+    var comment = $('#comment').val()
+    var add_process = $('#add_process').select2('data')
+    if (add_process == null){
+        add_process = ''
+    }else{
+        add_process = add_process['text']
+    }
+    $.post('/contract_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:0}, function (d) {
+        if (d.code == 0) {
+            toastr.success(d.msg)
+            $('#datatables').dataTable().fnDraw()
+            setTimeout('location.href = "/contract_apply/"',1000)
+        } else {
+            toastr.error(d.msg)
+        }
+    })
+    $('#myModal').modal('hide')
+}
+
 
 
 function add(){

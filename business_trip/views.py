@@ -704,7 +704,7 @@ def business_trip_approve_process(request):
 
             orm4 = user_table.objects.get(name=orm3.supervisor)
             email = orm4.email
-            Thread(target=send_mail,args=(email,'出差审批提醒','<h3>有一个出差事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/business_trip_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+            Thread(target=send_mail,args=(email,'出差审批提醒','<h3>有一个出差事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000:10000/business_trip_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
         elif status == '1':
             orm.status = 2
             orm2 = user_table.objects.get(name=request.user.first_name)
@@ -713,19 +713,19 @@ def business_trip_approve_process(request):
 
             orm3 = user_table.objects.get(name=orm2.principal)
             email = orm3.email
-            Thread(target=send_mail,args=(email,'出差审批提醒','<h3>有一个出差事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/business_trip_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+            Thread(target=send_mail,args=(email,'出差审批提醒','<h3>有一个出差事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000:10000/business_trip_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
         elif status == '2':
             orm.status = 3
             orm.approve_now = administration['name']
             orm.apply_time = datetime.datetime.now()
 
-            Thread(target=send_mail,args=(administration['email'],'出差审批提醒','<h3>有一个出差事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/business_trip_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+            Thread(target=send_mail,args=(administration['email'],'出差审批提醒','<h3>有一个出差事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000:10000/business_trip_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
         elif status == '3':
             orm.status = 4
             orm.approve_now = administration['name']
             orm.apply_time = datetime.datetime.now()
 
-            Thread(target=send_mail,args=(administration['email'],'出差审批提醒','<h3>有一个出差事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/business_trip_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+            Thread(target=send_mail,args=(administration['email'],'出差审批提醒','<h3>有一个出差事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000:10000/business_trip_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
         elif status == '4':
             orm2 = budget_sub.objects.filter(parent_id=_id)
             if len(orm2) <= 0:
