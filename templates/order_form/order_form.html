@@ -17,6 +17,138 @@
 {% block body %}
 <div class="row">
     <div class="col-md-12">
+        <div class="col-md-12">
+            <!-- BEGIN BORDERED TABLE PORTLET-->
+        {% if request.session.order_form_can_upload_menu %}
+            <form action="/upload_menu/" enctype="multipart/form-data" method="post">
+                <div class="col-md-6">
+                    <a id="menu_button" class="btn yellow" style="position:relative;width:100px;height:30px;display:inline-block;overflow:hidden;float:left">浏览...
+                        <input type="file" id="menu" name="menu" style="position:absolute;z-index:1;left:0;top:0;opacity:0;">
+                    </a>
+                    <a id="menu_show" style="float:left; padding-left: 5px; padding-top: 5px">请选择文件</a>
+                    <button class="btn btn-sm blue" type="submit" id="upload_conf" style="float:left; margin-left: 5px;">
+                        上传文件 <i class="fa fa-share"></i>
+                    </button>
+                </div>
+            </form>
+        {% endif %}
+            <div class="portlet box grey">
+                <div class="portlet-title">
+                    <div class="caption">
+                        <i class="fa fa-cutlery"></i>一周菜单
+                    </div>
+                </div>
+                <div class="portlet-body">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th style="width: 7%">
+                            </th>
+                            <th>
+                                 周一
+                            </th>
+                            <th>
+                                 周二
+                            </th>
+                            <th>
+                                 周三
+                            </th>
+                            <th>
+                                 周四
+                            </th>
+                            <th>
+                                 周五
+                            </th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td rowspan="2">
+                                 午餐
+                            </td>
+                            <td class="success">
+                                 {{ m11 }}
+                            </td>
+                            <td class="success">
+                                 {{ m21 }}
+                            </td>
+                            <td class="success">
+                                 {{ m31 }}
+                            </td>
+                            <td class="success">
+                                 {{ m41 }}
+                            </td>
+                            <td class="success">
+                                 {{ m51 }}
+                            </td>
+                        </tr>
+                        <tr class="danger">
+                            <td>
+                                 {{ m12 }}
+                            </td>
+                            <td>
+                                 {{ m22 }}
+                            </td>
+                            <td>
+                                 {{ m32 }}
+                            </td>
+                            <td>
+                                 {{ m42 }}
+                            </td>
+                            <td>
+                                 {{ m52 }}
+                            </td>
+                        </tr>
+                        <tr>
+                            <td rowspan="2">
+                                 晚餐
+                            </td>
+                            <td class="success">
+                                 {{ m13 }}
+                            </td>
+                            <td class="success">
+                                 {{ m23 }}
+                            </td>
+                            <td class="success">
+                                 {{ m33 }}
+                            </td>
+                            <td class="success">
+                                 {{ m43 }}
+                            </td>
+                            <td class="success">
+                                 {{ m53 }}
+                            </td>
+                        </tr>
+                        <tr class="danger">
+                            <td>
+                                 {{ m14 }}
+                            </td>
+                            <td>
+                                 {{ m24 }}
+                            </td>
+                            <td>
+                                 {{ m34 }}
+                            </td>
+                            <td>
+                                 {{ m44 }}
+                            </td>
+                            <td>
+                                 {{ m54 }}
+                            </td>
+                        </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+                            <!-- END BORDERED TABLE PORTLET-->
+
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-12">
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
         <div class="col-md-2" style="margin-left:-15px; float: left">
             <div id="reportrange" class="btn default">
@@ -254,8 +386,8 @@
 <script type="text/javascript" src="/static/assets/plugins/data-tables/jquery.dataTables.min.js"></script>
 <script type="text/javascript" src="/static/assets/plugins/data-tables/DT_bootstrap.js"></script>
 
-<script src="/static/assets/plugins/context.js"></script>
-<script src="/static/assets/plugins/jstree/dist/jstree.min.js"></script>
+{#<script src="/static/assets/plugins/context.js"></script>#}
+{#<script src="/static/assets/plugins/jstree/dist/jstree.min.js"></script>#}
 <script src="/static/assets/plugins/holder.js"></script>
 <script src="/static/assets/plugins/stilearn-base.js"></script>
 <script type="text/javascript" src="/static/assets/plugins/bootstrap-select/bootstrap-select.min.js"></script>
@@ -372,6 +504,17 @@ $(document).ready(function () {
 
     loaddata(begin,end,'午餐')
 
+    $('#menu_button').on('change',function(){
+        $('#menu_show').html($('#menu').val())
+    })
+
+    if ('{{ menu_status }}' == 1){
+        toastr.success('保存成功')
+    }
+    if ('{{ menu_status }}' == 2){
+        toastr.error('保存失败')
+    }
+
 });
 
 
@@ -431,11 +574,11 @@ function loaddata(begin,end,type) {
 
         },
         "fnInitComplete": function (oSettings, json) {
-            $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
+{#            $('input[type=checkbox],input[type=radio],input[type=file]').uniform()#}
             $('#star').rating();
         },
         "fnDrawCallback": function (oSettings) {
-            $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
+{#            $('input[type=checkbox],input[type=radio],input[type=file]').uniform()#}
             $('#star').rating();
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {

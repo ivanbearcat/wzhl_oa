@@ -117,7 +117,7 @@
                 </form>
             </div>
             <div id="id" style="display: none"></div>
-            <div class="modal-footer">
+            <div id="button" class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 <button type="button" class="btn green" onclick="agree()"><i class="fa fa-check"></i> 通过</button>
                 <button type="button" class="btn blue" onclick="back_edit()"><i class="fa fa-edit"></i> 退回修改</button>
@@ -211,7 +211,6 @@ $(document).ready(function () {
 
 
 
-
     var PluploadCustom = function () {
         var handleImages = function() {
             // see http://www.plupload.com/
@@ -274,6 +273,7 @@ $(document).ready(function () {
                             $('#uploaded_file_' + file.id + ' > .status').removeClass("label-info").addClass("label-success").html('<i class="fa fa-check"></i>'+response.msg); // set successfull operation
                             $('#tab_images_uploader_filelist').text("")
                             toastr.success(response.msg)
+                            $('#button').show()
 {#                            $('#datatables').dataTable().fnDraw()#}
                         } else {
                             $('#uploaded_file_' + file.id + ' > .status').removeClass("label-info").addClass("label-danger").html('<i class="fa fa-warning"></i>'+response.msg); // set failed operation
@@ -426,6 +426,8 @@ function loaddata() {
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp已归档</div>')
             }else if(aData[7] == 11){
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已退回</div>')
+            }else if(aData[7] == 80){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp合同上传</div>')
             }
 
             $('td:eq(8)',nRow).on('click',function(){
@@ -449,6 +451,9 @@ function loaddata() {
                     $('#add_process_div').show()
                 }else{
                     $('#add_process_div').hide()
+                }
+                if (status == 80){
+                    $('#button').hide()
                 }
                 $("#myModal").modal('show')
             })

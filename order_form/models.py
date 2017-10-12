@@ -2,6 +2,10 @@
 from django.db import models
 
 class user(models.Model):
+    class Meta:
+        permissions = (
+            ("can_upload_menu", "Can upload menu"),
+        )
     name = models.CharField(verbose_name='员工名', max_length=30, blank=False)
     department = models.CharField(verbose_name='部门', max_length=30, blank=False)
     comment = models.CharField(verbose_name='备注', max_length=256)

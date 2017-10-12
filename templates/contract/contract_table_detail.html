@@ -552,7 +552,7 @@
                 </form>
             </div>
             <div id="id" style="display: none"></div>
-            <div class="modal-footer">
+            <div id="button" class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 <button type="button" class="btn green" onclick="agree()"><i class="fa fa-check"></i> 通过</button>
                 <button type="button" class="btn blue" onclick="back_edit()"><i class="fa fa-edit"></i> 退回修改</button>
@@ -699,6 +699,10 @@ $(document).ready(function () {
 {#        $('#resumes_show').html($('#resumes').val())#}
 {#    });#}
     $('#submit').attr('disabled',true)
+
+{% if status == 80 %}
+    $('#button').hide()
+{% endif %}
 
 {% if request.session.contract_id %}
     $('#party_a').select2('data',{'text':'{{ party_a }}','id':'{{ party_a }}'});
@@ -934,6 +938,7 @@ $(document).ready(function () {
                             $('#tab_images_uploader_filelist').text("")
                             toastr.success(response.msg)
                             $('#submit').attr('disabled',false)
+                            $('#button').show()
 {#                            $('#datatables').dataTable().fnDraw()#}
                         } else {
                             $('#uploaded_file_' + file.id + ' > .status').removeClass("label-info").addClass("label-danger").html('<i class="fa fa-warning"></i>'+response.msg); // set failed operation

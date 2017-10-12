@@ -9,6 +9,7 @@ from libs.get_client_ip import get_ip
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 import simplejson,datetime
+from wzhl_oa.settings import BASE_DIR
 
 
 
@@ -109,12 +110,48 @@ import simplejson,datetime
 ######################订餐#############################
 @login_required
 def order_form(request):
+    menu_status = request.GET.get('menu_status')
     path = request.path.split('/')[1]
+
+    menu_list = []
+    with open(BASE_DIR+'/static/files/menu') as f:
+        line = f.readline()
+        while line:
+            menu_list += line.split()
+            line = f.readline()
+
+    print menu_list
+    if len(menu_list) == 20:
+        m11,m12,m13,m14,m21,m22,m23,m24,m31,m32,m33,m34,m41,m42,m43,m44,m51,m52,m53,m54 = menu_list
+    else:
+        m11,m12,m13,m14,m21,m22,m23,m24,m31,m32,m33,m34,m41,m42,m43,m44,m51,m52,m53,m54 = [u'无' for i in range(20)]
+
     return render_to_response('order_form/order_form.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                        'path1':'order_manage',
                                                        'path2':path,
                                                        'page_name1':u'订餐管理',
-                                                       'page_name2':u'订餐'},context_instance=RequestContext(request))
+                                                       'page_name2':u'订餐',
+                                                       'menu_status':menu_status,
+                                                       'm11':m11,
+                                                       'm12':m12,
+                                                       'm13':m13,
+                                                       'm14':m14,
+                                                       'm21':m21,
+                                                       'm22':m22,
+                                                       'm23':m23,
+                                                       'm24':m24,
+                                                       'm31':m31,
+                                                       'm32':m32,
+                                                       'm33':m33,
+                                                       'm34':m34,
+                                                       'm41':m41,
+                                                       'm42':m42,
+                                                       'm43':m43,
+                                                       'm44':m44,
+                                                       'm51':m51,
+                                                       'm52':m52,
+                                                       'm53':m53,
+                                                       'm54':m54},context_instance=RequestContext(request))
 
 @login_required
 def order_form_data(request):
@@ -300,3 +337,18 @@ def order_form_star_save(request):
             return HttpResponse(simplejson.dumps({'code':1,'msg':u'评星失败'}),content_type="application/json")
     except Exception,e:
         return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+
+
+@login_required
+def upload_menu(requests):
+    menu = requests.FILES.get('menu')
+    try:
+        with open(BASE_DIR+'/static/files/menu','w') as f:
+            for data in menu.chunks():
+                f.write(data.decode('gbk').encode('utf8'))
+
+        return HttpResponseRedirect('/order_form/?menu_status=1')
+    except Exception,e:
+        print e
+        return HttpResponseRedirect('/order_form/?menu_status=2')

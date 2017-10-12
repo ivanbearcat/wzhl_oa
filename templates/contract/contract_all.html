@@ -483,6 +483,8 @@ function loaddata() {
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp已归档</div>')
             }else if(aData[7] == 11){
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已退回</div>')
+            }else if(aData[7] == 80){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp合同上传</div>')
             }
 
             $('td:eq(8)',nRow).on('click',function(){

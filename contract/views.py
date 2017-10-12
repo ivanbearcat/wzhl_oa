@@ -834,6 +834,11 @@ def contract_approve_process(request):
                 orm.approve_now = status_owner[orm.status]
 
             if status == '8':
+                orm.status = 80
+                orm.approve_now = orm.name
+                orm.stamp_status = 1
+
+            if status == '80':
                 orm.status = 9
                 orm.approve_now = status_owner[orm.status]
                 orm.stamp_status = 1
