@@ -12,7 +12,7 @@
 
 {% endblock %}
 {% block body %}
-{% if session.requests.contract_can_view_all %}
+{% if request.session.contract_can_view_all %}
 <div class="form-group">
 {#    <label class="control-label col-md-1">* 财务分类</label>#}
     <div class="col-md-2">
