@@ -244,6 +244,9 @@ def KPI_table_detail(request):
         KPI_name = ''
         name = ''
     orm = table.objects.filter(KPI_name=KPI_name).filter(name=name)
+    user_info_orm = user_table.objects.get(name=name)
+    supervisor = user_info_orm.supervisor
+    principal = user_info_orm.principal
 
     if len(orm):
         for i in orm:
@@ -268,6 +271,8 @@ def KPI_table_detail(request):
                                                  'principal_comment':principal_comment,
                                                  'KPI_name':KPI_name,
                                                  'name':name,
+                                                 'supervisor':supervisor,
+                                                 'principal':principal,
                                                  'self_comment_row':len(self_comment.split('\\n')) + 2,
                                                  'supervisor_comment_row':len(supervisor_comment.split('\\n')) + 2,
                                                  'principal_comment_row':len(principal_comment.split('\\n')) + 2},
@@ -582,7 +587,7 @@ def KPI_table_approve(request):
                                                  'path1':'KPI',
                                                  'path2':path,
                                                  'page_name1':u'绩效管理',
-                                                 'page_name2':u'绩效考评',
+                                                 'page_name2':u'绩效待审批',
                                                  'username':request.user.username,
                                                  'KPI_conf_save':KPI_conf_save,
                                                  'expire_info':expire_info},
@@ -590,6 +595,99 @@ def KPI_table_approve(request):
 
 @login_required
 def KPI_table_approve_data(request):
+    sEcho =  request.POST.get('sEcho') #标志，直接返回
+    iDisplayStart = int(request.POST.get('iDisplayStart'))#第几行开始
+    iDisplayLength = int(request.POST.get('iDisplayLength'))#显示多少行
+    iSortCol_0 = int(request.POST.get("iSortCol_0"))#排序行号
+    sSortDir_0 = request.POST.get('sSortDir_0')#asc/desc
+    sSearch = request.POST.get('sSearch')#高级搜索
+
+    aaData = []
+    sort = ['name','KPI_name','final_score','KPI_level','status_interface',None,'id']
+
+    if  sSortDir_0 == 'asc':
+        if sSearch == '':
+            result_data = table.objects.filter(commit_now=request.user.first_name).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table.objects.filter(commit_now=request.user.first_name).count()
+        else:
+            result_data = table.objects.filter(commit_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                                                    Q(KPI_name__contains=sSearch) | \
+                                                    Q(final_score__contains=sSearch) | \
+                                                    Q(KPI_level__contains=sSearch) | \
+                                                    Q(status_interface__contains=sSearch)) \
+                                                    .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table.objects.filter(commit_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                                                    Q(KPI_name__contains=sSearch) | \
+                                                    Q(final_score__contains=sSearch) | \
+                                                    Q(KPI_level__contains=sSearch) | \
+                                                    Q(status_interface__contains=sSearch)).count()
+    else:
+        if sSearch == '':
+            result_data = table.objects.filter(commit_now=request.user.first_name).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table.objects.filter(commit_now=request.user.first_name).count()
+        else:
+            result_data = table.objects.filter(commit_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                                                    Q(KPI_name__contains=sSearch) | \
+                                                    Q(final_score__contains=sSearch) | \
+                                                    Q(KPI_level__contains=sSearch) | \
+                                                    Q(status_interface__contains=sSearch)) \
+                                                    .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table.objects.filter(commit_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                                                    Q(KPI_name__contains=sSearch) | \
+                                                    Q(final_score__contains=sSearch) | \
+                                                    Q(KPI_level__contains=sSearch) | \
+                                                    Q(status_interface__contains=sSearch)).count()
+
+
+    for i in  result_data:
+        export = '''
+                <a class="btn btn-sm green"">
+                    生成Excel文件 <i class="fa fa-level-down"></i>
+                </a>
+            '''
+        aaData.append({
+                       '0':i.name,
+                       '1':i.KPI_name,
+                       '2':i.final_score,
+                       '3':i.KPI_level,
+                       '4':i.status_interface,
+                       '5':export,
+                       '6':i.status,
+                       '7':i.id
+                      })
+    result = {'sEcho':sEcho,
+               'iTotalRecords':iTotalRecords,
+               'iTotalDisplayRecords':iTotalRecords,
+               'aaData':aaData
+    }
+    return HttpResponse(simplejson.dumps(result),content_type="application/json")
+
+
+
+
+@login_required
+def KPI_table_all(request):
+    KPI_conf_save = request.GET.get('KPI_conf_save')
+    path = request.path.split('/')[1]
+
+    orm = ban.objects.all().order_by('id').reverse()
+    if orm:
+        expire_info = '''{0} 的截止日期为 {1}'''.format(orm[0].KPI_name,str(orm[0].ban_date).split('+')[0])
+    else:
+        expire_info = ''
+
+    return render(request, 'KPI/KPI_table_all.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
+                                                 'path1':'KPI',
+                                                 'path2':path,
+                                                 'page_name1':u'绩效管理',
+                                                 'page_name2':u'全部绩效',
+                                                 'username':request.user.username,
+                                                 'KPI_conf_save':KPI_conf_save,
+                                                 'expire_info':expire_info},
+                                                context_instance=RequestContext(request))
+
+@login_required
+def KPI_table_all_data(request):
     sEcho =  request.POST.get('sEcho') #标志，直接返回
     iDisplayStart = int(request.POST.get('iDisplayStart'))#第几行开始
     iDisplayLength = int(request.POST.get('iDisplayLength'))#显示多少行
@@ -701,11 +799,17 @@ def KPI_table_approve_data(request):
     }
     return HttpResponse(simplejson.dumps(result),content_type="application/json")
 
+
+
+
 @login_required
 def KPI_table_detail_approve(request):
     KPI_name = request.session.get('KPI')[0]
     name = request.session.get('KPI')[1]
     orm = table.objects.filter(KPI_name=KPI_name).filter(name=name)
+    user_info_orm = user_table.objects.get(name=name)
+    supervisor = user_info_orm.supervisor
+    principal = user_info_orm.principal
 
     if len(orm):
         for i in orm:
@@ -732,6 +836,8 @@ def KPI_table_detail_approve(request):
                                                  'principal_comment':principal_comment,
                                                  'KPI_name':KPI_name,
                                                  'name':name,
+                                                 'supervisor':supervisor,
+                                                 'principal':principal,
                                                  'commit_now':commit_now,
                                                  'self_comment_row':len(self_comment.split('\\n')) + 2,
                                                  'supervisor_comment_row':len(supervisor_comment.split('\\n')) + 2,
