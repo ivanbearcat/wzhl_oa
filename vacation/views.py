@@ -607,6 +607,92 @@ def vacation_approve_data(request):
     aaData = []
     sort = ['name','work_site','type','reason','apply_time','vacation_date','days',None,'state_interface']
 
+
+    if  sSortDir_0 == 'asc':
+        if sSearch == '':
+            result_data = state.objects.filter(approve_now=request.user.first_name).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = state.objects.filter(approve_now=request.user.first_name).count()
+        else:
+            result_data = state.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                                                    Q(type__contains=sSearch) | \
+                                                    Q(vacation_date__contains=sSearch) | \
+                                                    Q(days__contains=sSearch) | \
+                                                    Q(state_interface__contains=sSearch)) \
+                                                    .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = state.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                                                    Q(type__contains=sSearch) | \
+                                                    Q(vacation_date__contains=sSearch) | \
+                                                    Q(days__contains=sSearch) | \
+                                                    Q(state_interface__contains=sSearch)).count()
+    else:
+        if sSearch == '':
+            result_data = state.objects.filter(approve_now=request.user.first_name).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = state.objects.filter(approve_now=request.user.first_name).count()
+        else:
+            result_data = state.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                                                    Q(type__contains=sSearch) | \
+                                                    Q(vacation_date__contains=sSearch) | \
+                                                    Q(days__contains=sSearch) | \
+                                                    Q(state_interface__contains=sSearch)) \
+                                                    .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = state.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
+                                                    Q(type__contains=sSearch) | \
+                                                    Q(vacation_date__contains=sSearch) | \
+                                                    Q(days__contains=sSearch) | \
+                                                    Q(state_interface__contains=sSearch)).count()
+
+
+    for i in  result_data:
+        try:
+            work_site_orm = user_table.objects.get(name=i.name)
+            work_site = work_site_orm.work_site
+        except:
+            work_site = ''
+        aaData.append({
+                       '0':i.name,
+                       '1':work_site,
+                       '2':i.type,
+                       '3':i.reason,
+                       '4':str(i.apply_time).split('+')[0],
+                       '5':i.vacation_date,
+                       '6':i.days,
+                       '7':i.state,
+                       '8':i.state_interface,
+                       '9':i.id
+                      })
+    result = {'sEcho':sEcho,
+               'iTotalRecords':iTotalRecords,
+               'iTotalDisplayRecords':iTotalRecords,
+               'aaData':aaData
+    }
+    return HttpResponse(simplejson.dumps(result),content_type="application/json")
+
+
+@login_required
+def vacation_all(request):
+    path = request.path.split('/')[1]
+    try:
+        orm = user_table.objects.get(name=request.user.first_name)
+    except Exception:
+        return render(request,'public/no_passing.html')
+    return render(request, 'vacation/vacation_all.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
+                                                       'path1':'vacation',
+                                                       'path2':path,
+                                                       'page_name1':u'请假管理',
+                                                       'page_name2':u'请假申请',},context_instance=RequestContext(request))
+
+@login_required
+def vacation_all_data(request):
+    sEcho =  request.POST.get('sEcho') #标志，直接返回
+    iDisplayStart = int(request.POST.get('iDisplayStart'))#第几行开始
+    iDisplayLength = int(request.POST.get('iDisplayLength'))#显示多少行
+    iSortCol_0 = int(request.POST.get("iSortCol_0"))#排序行号
+    sSortDir_0 = request.POST.get('sSortDir_0')#asc/desc
+    sSearch = request.POST.get('sSearch')#高级搜索
+
+    aaData = []
+    sort = ['name','work_site','type','reason','apply_time','vacation_date','days',None,'state_interface']
+
     if request.user.has_perm('vacation.can_view_all'):
         if  sSortDir_0 == 'asc':
             if sSearch == '':
@@ -640,31 +726,6 @@ def vacation_approve_data(request):
                                                         Q(vacation_date__contains=sSearch) | \
                                                         Q(days__contains=sSearch) | \
                                                         Q(state_interface__contains=sSearch)).count()
-
-        for i in  result_data:
-            try:
-                work_site_orm = user_table.objects.get(name=i.name)
-                work_site = work_site_orm.work_site
-            except:
-                work_site = ''
-            aaData.append({
-                           '0':i.name,
-                           '1':work_site,
-                           '2':i.type,
-                           '3':i.reason,
-                           '4':str(i.apply_time).split('+')[0],
-                           '5':i.vacation_date,
-                           '6':i.days,
-                           '7':i.state,
-                           '8':i.state_interface,
-                           '9':i.id
-                          })
-        result = {'sEcho':sEcho,
-                   'iTotalRecords':iTotalRecords,
-                   'iTotalDisplayRecords':iTotalRecords,
-                   'aaData':aaData
-        }
-        return HttpResponse(simplejson.dumps(result),content_type="application/json")
 
     else:
         subordinate = []
@@ -717,30 +778,31 @@ def vacation_approve_data(request):
                                                         Q(days__contains=sSearch) | \
                                                         Q(state_interface__contains=sSearch)).count()
 
-        for i in  result_data:
-            try:
-                work_site_orm = user_table.objects.get(name=i.name)
-                work_site = work_site_orm.work_site
-            except:
-                work_site = ''
-            aaData.append({
-                           '0':i.name,
-                           '1':work_site,
-                           '2':i.type,
-                           '3':i.reason,
-                           '4':str(i.apply_time).split('+')[0],
-                           '5':i.vacation_date,
-                           '6':i.days,
-                           '7':i.state,
-                           '8':i.state_interface,
-                           '9':i.id
-                          })
-        result = {'sEcho':sEcho,
-                   'iTotalRecords':iTotalRecords,
-                   'iTotalDisplayRecords':iTotalRecords,
-                   'aaData':aaData
-        }
-        return HttpResponse(simplejson.dumps(result),content_type="application/json")
+    for i in  result_data:
+        try:
+            work_site_orm = user_table.objects.get(name=i.name)
+            work_site = work_site_orm.work_site
+        except:
+            work_site = ''
+        aaData.append({
+                       '0':i.name,
+                       '1':work_site,
+                       '2':i.type,
+                       '3':i.reason,
+                       '4':str(i.apply_time).split('+')[0],
+                       '5':i.vacation_date,
+                       '6':i.days,
+                       '7':i.state,
+                       '8':i.state_interface,
+                       '9':i.id
+                      })
+    result = {'sEcho':sEcho,
+               'iTotalRecords':iTotalRecords,
+               'iTotalDisplayRecords':iTotalRecords,
+               'aaData':aaData
+    }
+    return HttpResponse(simplejson.dumps(result),content_type="application/json")
+
 
 @login_required
 def vacation_approve_process(request):
