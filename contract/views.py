@@ -926,7 +926,7 @@ def contract_process_detail_data(request):
                        '1':i.name,
                        '2':i.operation,
                        '3':i.archive_path,
-                       '4':i.comment,
+                       '4':i.comment.replace('\n','</br>'),
                        '5':i.id
                       })
     result = {'sEcho':sEcho,
