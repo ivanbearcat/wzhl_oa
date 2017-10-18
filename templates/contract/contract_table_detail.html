@@ -1072,6 +1072,8 @@ function loaddata() {
             $('td:eq(3)',nRow).on('click',function(){
                 location.href = '/'+aData[3]
             })
+            var regx = new RegExp('^.*/');
+            $('td:eq(3)',nRow).html(aData[3].replace(regx,''))
         },
         "fnServerData": function (sSource, aoData, fnCallback) {
             aoData.push({csrfmiddlewaretoken: '{{ csrf_token }}'})
