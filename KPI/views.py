@@ -455,9 +455,9 @@ def KPI_table_detail_comment_save(request):
     self_comment = request.POST.get('self_comment')
     supervisor_comment = request.POST.get('supervisor_comment')
     principal_comment = request.POST.get('principal_comment')
+    KPI_name = request.POST.get('KPI_name')
+    name = request.POST.get('name')
 
-    KPI_name = request.session.get('KPI')[0]
-    name = request.session.get('KPI')[1]
     orm = table.objects.filter(KPI_name=KPI_name).filter(name=name)
 
     ban_orm = ban.objects.filter(KPI_name=KPI_name)

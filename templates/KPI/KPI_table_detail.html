@@ -329,6 +329,9 @@ $(document).ready(function () {
         }
     });
 
+    var KPI_name = '{{ KPI_name }}'
+    var name = '{{ name }}'
+
 {% if request.session.status == 1 or request.session.status == 2 %}
     flag = 0
 {% elif request.session.status == 3 or request.session.status == 4 or request.session.status == 5 %}
@@ -387,7 +390,7 @@ $(document).ready(function () {
 {#            toastr.error('请填写个人评价')#}
 {#            return#}
 {#        }#}
-        $.post('/KPI_table_detail_comment_save/', {self_comment:self_comment}, function (d) {
+        $.post('/KPI_table_detail_comment_save/', {self_comment:self_comment,KPI_name:KPI_name,name:name}, function (d) {
             showAjaxLoad()
             if (d.code == 1) {
                 toastr.error(d.msg)
@@ -395,7 +398,7 @@ $(document).ready(function () {
                 $("#myModal2").modal('hide')
                 return
             }
-            $.post('/KPI_table_detail_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag}, function (d) {
+            $.post('/KPI_table_detail_commit/', {KPI_name:KPI_name,name:name,flag:flag}, function (d) {
                 $("#myModal2").modal('hide')
                 hideAjaxLoad()
                 if (d.code == 0) {
@@ -409,7 +412,7 @@ $(document).ready(function () {
         })
     {% else %}
         showAjaxLoad()
-        $.post('/KPI_table_detail_commit/', {KPI_name:'{{ KPI_name }}',name:'{{ name }}',flag:flag}, function (d) {
+        $.post('/KPI_table_detail_commit/', {KPI_name:KPI_name,name:name,flag:flag}, function (d) {
             $("#myModal2").modal('hide')
             hideAjaxLoad()
             if (d.code == 0) {
