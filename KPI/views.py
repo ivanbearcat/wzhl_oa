@@ -873,7 +873,7 @@ def KPI_table_detail_approve_commit(request):
                     try:
                         i.save()
                         vacation_user_table_orm2.save()
-                        Thread(target=send_mail,args=(email,'绩效审核提醒','<h3>%s 通过了您设定的绩效目标，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % request.user.first_name)).start()
+                        Thread(target=send_mail,args=(email,'绩效审核提醒','<h3>%s 通过了您设定的绩效目标，可以开始自我评价，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % request.user.first_name)).start()
                         # send_mail(to_addr=email,subject='绩效审核提醒',body='<h3>%s 通过了您设定的绩效目标，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % request.user.first_name)
                         return HttpResponse(simplejson.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
                     except Exception,e:
