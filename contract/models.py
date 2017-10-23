@@ -5,6 +5,7 @@ class table(models.Model):
     class Meta:
         permissions = (
             ("can_view_all", "Can view all"),
+            ("can_view_part", "Can view part"),
         )
     party_a = models.CharField(verbose_name='我方签署公司', max_length=64, blank=False)
     apply_time = models.DateTimeField(verbose_name='申请时间', auto_now_add=True)
