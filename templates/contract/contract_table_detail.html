@@ -250,7 +250,7 @@
         <a id="back" class="btn btn-sm yellow">
              返回 <i class="fa fa-reply"></i>
         </a>
-    {% if status == 0 %}
+    {% if status == -1 %}
         <a id="edit" class="btn btn-sm blue">
              修改 <i class="fa fa-edit"></i>
         </a>
@@ -443,10 +443,14 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="col-md-offset-11 col-md-9">
-                                    {% if status != 0 %}
-                                    <div id="approve" class="btn purple"><i class="fa fa-share"></i> 审批</div>
-                                    {% else %}
+                                    {% if status == 0 %}
                                     <button id="submit" class="btn purple" type="submit"><i class="fa fa-check"></i> 提交</button>
+                                    {% endif %}
+                                    {% if status == -1 %}
+                                    <button id="submit2" class="btn green" type="submit" style="margin-left: -5%"><i class="fa fa-check"></i> 更新</button>
+                                    {% endif %}
+                                    {% if status != 0 %}
+                                    <div id="approve" class="btn purple" style="margin-left: 1%"><i class="fa fa-share"></i> 审批</div>
                                     {% endif %}
                                 </div>
                             </div>
@@ -733,7 +737,9 @@ $(document).ready(function () {
     $('#end').val('{{ contract_begin_time }}')
     $('#partner_qualification').val('{{ partner_qualification }}');
     $('#comment').val('{{ comment }}')
-    $('#submit').hide()
+    {% if status != -1 %}
+        $('#submit').hide()
+    {% endif %}
 {% else %}
     $('#name').val('{{ name }}');
     $('#department').val('{{ department }}');
@@ -774,6 +780,34 @@ $(document).ready(function () {
         history.go(-1)
     });
 
+{#{% if status == -1 %}#}
+{#    $('#contract_uuid').attr('disabled',true);#}
+{#    $('#origin_contract_uuid').attr('disabled',false);#}
+{#    $('#party_a').attr('disabled',false);#}
+{#    $('#apply_time').attr('disabled',true);#}
+{#    $('#name').attr('disabled',true);#}
+{#    $('#department').attr('disabled',true);#}
+{#    $('#finance_class').attr('disabled',false);#}
+{#    $('#contract_class').attr('disabled',false);#}
+{#    $('#contract_name').attr('disabled',false);#}
+{#    $('#party_b').attr('disabled',false);#}
+{#    $('#address').attr('disabled',false);#}
+{#    $('#contacts').attr('disabled',false);#}
+{#    $('#e_mail').attr('disabled',false);#}
+{#    $('#phone_1').attr('disabled',false);#}
+{#    $('#phone_2').attr('disabled',false);#}
+{#    $('#fax').attr('disabled',false);#}
+{#    $('#bank').attr('disabled',false);#}
+{#    $('#bank_account').attr('disabled',false);#}
+{#    $('#contract_detail').attr('disabled',false);#}
+{#    $('#contract_amount_figures').attr('disabled',false);#}
+{#    $('#contract_amount_words').attr('disabled',true);#}
+{#    $('#special_requirements').attr('disabled',false);#}
+{#    $('#reportrange').attr('disabled',false);#}
+{#    $('#partner_qualification').attr('disabled',false);#}
+{#    $('#stamp_status').attr('disabled',true);#}
+{#    $('#archive_status').attr('disabled',true);#}
+{#    $('#comment').attr('disabled',false);#}
 {% if request.session.contract_id %}
     $('#contract_uuid').attr('disabled',true);
     $('#origin_contract_uuid').attr('disabled',true);
@@ -1069,6 +1103,8 @@ function loaddata() {
                 $('td:eq(2)',nRow).html('<div>退回修改</div>')
             }else if(aData[2] == 9){
                 $('td:eq(2)',nRow).html('<div>合同申请</div>')
+            }else if(aData[2] == -1){
+                $('td:eq(2)',nRow).html('<div>申请人修改</div>')
             }
             $('td:eq(3)',nRow).on('click',function(){
                 location.href = '/'+aData[3]

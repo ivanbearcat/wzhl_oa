@@ -307,17 +307,17 @@ def contract_apply_detail(request):
                             process_type = 's'
                 orm.process_type = process_type
 
-                if orm.status == 0:
-                    if user_info_orm.principal == u'曹津' and process_type == 'l':
-                        print user_info_orm.principal
-                        orm.status = 2
-                        orm.approve_now = u'龚晓芸'
-                    else:
-                        orm.status = 1
-                        orm.approve_now = user_info_orm.principal
+                # if orm.status == 0:
+                #     if user_info_orm.principal == u'曹津' and process_type == 'l':
+                #         print user_info_orm.principal
+                #         orm.status = 2
+                #         orm.approve_now = u'龚晓芸'
+                #     else:
+                #         orm.status = 1
+                #         orm.approve_now = user_info_orm.principal
 
                 orm.save()
-                request.session['contract_result'] = u'保存成功'
+                # request.session['contract_result'] = u'保存成功'
             # try:
             #     request.session.pop('contract_commit')
             # except KeyError:
@@ -770,9 +770,8 @@ def contract_approve_process(request):
 
         detail_orm = detail.objects.filter(parent_id=_id)
         if flag == '1':
-            if status == '0':
+            if status == '-1':
                 principal_orm = user_table.objects.get(name=orm.name)
-                print '!!!!!'
                 print principal_orm.principal
                 if principal_orm.principal == u'曹津' and orm.process_type == 'l':
                     orm.status = 2
@@ -780,6 +779,7 @@ def contract_approve_process(request):
                 else:
                     orm.status = 1
                     orm.approve_now = principal_orm.principal
+                flag = '-1'
 
             if status == '1':
                 # for i in detail_orm:
@@ -891,8 +891,8 @@ def contract_approve_process(request):
 
         if flag == '2':
             if int(status) <= 4:
-                orm.status = 0
-                orm.approve_now = ''
+                orm.status = -1
+                orm.approve_now = orm.name
             else:
                 orm.status = 4
                 orm.approve_now = status_owner[orm.status]
