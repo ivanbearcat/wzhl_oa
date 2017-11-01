@@ -748,13 +748,6 @@ def contract_approve_process(request):
 
     print _id,type(_id)
 
-    status_owner = {2: u'龚晓芸',
-                    3: u'高茹',
-                    4: u'张莉莹',
-                    6: u'王娟',
-                    7: u'曹津',
-                    8: u'张莉莹',
-                    9: u'张莉莹'}
 
     try:
         try:
@@ -764,6 +757,23 @@ def contract_approve_process(request):
             archive_path = ''
 
         orm = table.objects.get(id=_id)
+
+        if orm.party_a == '上海六界信息技术有限公司':
+            status_owner = {2: u'龚晓芸',
+                            3: u'高茹',
+                            4: u'张莉莹',
+                            6: u'王娟',
+                            7: u'曹津',
+                            8: u'张莉莹',
+                            9: u'张莉莹'}
+        else:
+            status_owner = {2: u'龚晓芸',
+                            3: u'高茹',
+                            4: u'张莉莹',
+                            6: u'王娟',
+                            7: u'曹津',
+                            8: u'卞蓓',
+                            9: u'张莉莹'}
 
         if request.user.first_name != orm.approve_now:
             return HttpResponse(json.dumps({'code':1,'msg':u'您不是审批人'}),content_type="application/json")
