@@ -24,11 +24,11 @@ sys.setdefaultencoding('utf-8')
 def business_trip_table(request):
     path = request.path.split('/')[1]
 
-    orm = table.objects.filter(name=request.user.first_name)
-    for i in orm:
-        if (datetime.datetime.now() - i.commit_time).days >= 20 and i.status not in (5, 6, 7, 8):
-            i.status = 8
-            i.save()
+    # orm = table.objects.filter(name=request.user.first_name)
+    # for i in orm:
+    #     if (datetime.datetime.now() - i.commit_time).days >= 20 and i.status not in (5, 6, 7, 8):
+    #         i.status = 8
+    #         i.save()
 
     return render(request, 'business_trip/business_trip_table.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                  'path1':'business_trip',
