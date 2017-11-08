@@ -141,6 +141,7 @@ INSTALLED_APPS = (
     'personal_information',
     'business_trip',
     'contract',
+    'seal',
 )
 
 # A sample logging configuration. The only tangible logging
