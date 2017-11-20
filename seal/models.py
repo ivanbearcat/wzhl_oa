@@ -18,6 +18,8 @@ class table(models.Model):
     borrow_begin_time = models.DateField(verbose_name='外借开始时间', blank=False)
     borrow_end_time = models.DateField(verbose_name='外借终止时间', blank=False)
     comment = models.CharField(verbose_name='备注', max_length=512, blank=True)
+    status = models.IntegerField(verbose_name='状态', max_length=2, blank=False)
+    approve_now = models.CharField(verbose_name='当前审批人', max_length=30, blank=True)
 
 
 class detail(models.Model):

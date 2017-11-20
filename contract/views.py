@@ -165,7 +165,7 @@ def contract_apply_detail(request):
 
     table_id =  request.session.get('contract_id')
     if not table_id:
-        if party_a and party_b:
+        if party_a and finance_class and contract_class and contract_name and party_b and contacts and phone_1 and contract_detail and contract_amount_figures:
             try:
                 if party_a == u'上海六界信息技术有限公司':
                     uuid_a = 'SHLJ'
@@ -783,6 +783,30 @@ def contract_approve_process(request):
             if status == '-1':
                 principal_orm = user_table.objects.get(name=orm.name)
                 print principal_orm.principal
+
+                if orm.party_a == u'上海六界信息技术有限公司':
+                    if orm.finance_class == u'无金额':
+                        orm.process_type = 'l'
+                    else:
+                        if float(orm.contract_amount_figures) >= 10000:
+                            orm.process_type = 'l'
+                        else:
+                            orm.process_type = 's'
+                elif orm.party_a == u'竹筏科技（北京）科技有限公司' or orm.party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
+                    if orm.finance_class == u'无金额':
+                        orm.process_type = 'l'
+                    if orm.finance_class == u'收':
+                        if float(orm.contract_amount_figures) >= 500000:
+                            orm.process_type = 'l'
+                        else:
+                            orm.process_type = 's'
+                    if orm.finance_class == u'支':
+                        if float(orm.contract_amount_figures) >= 200000:
+                            orm.process_type = 'l'
+                        else:
+                            orm.process_type = 's'
+                orm.save()
+
                 if principal_orm.principal == u'曹津' and orm.process_type == 'l':
                     orm.status = 2
                     orm.approve_now = status_owner[orm.status]

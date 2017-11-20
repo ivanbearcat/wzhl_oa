@@ -12,239 +12,239 @@
 
 {% endblock %}
 {% block body %}
-<div class="row">
-    <ul class="nav nav-pills nav-justified steps">
-    {% if status >= 0 %}
-        <li class="active">
-            <a class="step">
-                <span class="number">
-                     0
-                </span>
-                <span class="desc">
-                    <i class="fa fa-check"></i> 发起人
-                </span>
-            </a>
-        </li>
-    {% else %}
-        <li>
-            <a class="step">
-                <span class="number">
-                     1
-                </span>
-                <span class="desc">
-                    <i class="fa fa-times"></i> 发起人
-                </span>
-            </a>
-        </li>
-    {% endif %}
-    {% if status > 1 %}
-        <li class="active">
-            <a class="step">
-                <span class="number">
-                     1
-                </span>
-                <span class="desc">
-                    <i class="fa fa-check"></i> 中心负责人
-                </span>
-            </a>
-        </li>
-    {% else %}
-        <li>
-            <a class="step">
-                <span class="number">
-                     1
-                </span>
-                <span class="desc">
-                    <i class="fa fa-times"></i> 中心负责人
-                </span>
-            </a>
-        </li>
-    {% endif %}
-    {% if status > 2 %}
-        <li class="active">
-            <a class="step">
-                <span class="number">
-                     2
-                </span>
-                <span class="desc">
-                    <i class="fa fa-check"></i> 财务
-                </span>
-            </a>
-        </li>
-    {% else %}
-        <li>
-            <a class="step">
-                <span class="number">
-                     2
-                </span>
-                <span class="desc">
-                    <i class="fa fa-times"></i> 财务
-                </span>
-            </a>
-        </li>
-    {% endif %}
-    {% if status > 3 %}
-        <li class="active">
-            <a class="step">
-                <span class="number">
-                     3
-                </span>
-                <span class="desc">
-                    <i class="fa fa-check"></i> 财务总
-                </span>
-            </a>
-        </li>
-    {% else %}
-        <li>
-            <a class="step">
-                <span class="number">
-                     3
-                </span>
-                <span class="desc">
-                    <i class="fa fa-times"></i> 财务总
-                </span>
-            </a>
-        </li>
-    {% endif %}
-    {% if status > 4 %}
-        <li class="active">
-            <a class="step">
-                <span class="number">
-                     4
-                </span>
-                <span class="desc">
-                    <i class="fa fa-check"></i> 法务
-                </span>
-            </a>
-        </li>
-    {% else %}
-        <li>
-            <a class="step">
-                <span class="number">
-                     4
-                </span>
-                <span class="desc">
-                    <i class="fa fa-times"></i> 法务
-                </span>
-            </a>
-        </li>
-    {% endif %}
-    {% if status > 5 %}
-        <li class="active">
-            <a class="step">
-                <span class="number">
-                     5
-                </span>
-                <span class="desc">
-                    <i class="fa fa-check"></i> 法务总
-                </span>
-            </a>
-        </li>
-    {% else %}
-        <li>
-            <a class="step">
-                <span class="number">
-                     5
-                </span>
-                <span class="desc">
-                    <i class="fa fa-times"></i> 可选流程
-                </span>
-            </a>
-        </li>
-    {% endif %}
-    {% if status > 6 %}
-        <li class="active">
-            <a class="step">
-                <span class="number">
-                     6
-                </span>
-                <span class="desc">
-                    <i class="fa fa-check"></i> 可选流程
-                </span>
-            </a>
-        </li>
-    {% else %}
-        <li>
-            <a class="step">
-                <span class="number">
-                     6
-                </span>
-                <span class="desc">
-                    <i class="fa fa-times"></i> 法务总
-                </span>
-            </a>
-        </li>
-    {% endif %}
-    {% if status > 7 %}
-        <li class="active">
-            <a class="step">
-                <span class="number">
-                     7
-                </span>
-                <span class="desc">
-                    <i class="fa fa-check"></i> 总经理
-                </span>
-            </a>
-        </li>
-    {% else %}
-        <li>
-            <a class="step">
-                <span class="number">
-                     7
-                </span>
-                <span class="desc">
-                    <i class="fa fa-times"></i> 总经理
-                </span>
-            </a>
-        </li>
-    {% endif %}
-    {% if status > 8 %}
-        <li class="active">
-            <a class="step">
-                <span class="number">
-                     8
-                </span>
-                <span class="desc">
-                    <i class="fa fa-check"></i> 盖章
-                </span>
-            </a>
-        </li>
-    {% else %}
-        <li>
-            <a class="step">
-                <span class="number">
-                     8
-                </span>
-                <span class="desc">
-                    <i class="fa fa-times"></i> 盖章
-                </span>
-            </a>
-        </li>
-    {% endif %}
-    {% if status > 9 %}
-        <li class="active">
-            <a class="step">
-                <span class="number">
-                     9
-                </span>
-                <span class="desc">
-                    <i class="fa fa-check"></i> 归档
-                </span>
-            </a>
-        </li>
-    {% else %}
-        <li>
-            <a class="step">
-                <span class="number">
-                     9
-                </span>
-                <span class="desc">
-                    <i class="fa fa-times"></i> 归档
-                </span>
-            </a>
-        </li>
-    {% endif %}
-    <br>
+{#<div class="row">#}
+{#    <ul class="nav nav-pills nav-justified steps">#}
+{#    {% if status >= 0 %}#}
+{#        <li class="active">#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     0#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-check"></i> 发起人#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% else %}#}
+{#        <li>#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     1#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-times"></i> 发起人#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{#    {% if status > 1 %}#}
+{#        <li class="active">#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     1#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-check"></i> 中心负责人#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% else %}#}
+{#        <li>#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     1#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-times"></i> 中心负责人#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{#    {% if status > 2 %}#}
+{#        <li class="active">#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     2#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-check"></i> 财务#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% else %}#}
+{#        <li>#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     2#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-times"></i> 财务#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{#    {% if status > 3 %}#}
+{#        <li class="active">#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     3#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-check"></i> 财务总#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% else %}#}
+{#        <li>#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     3#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-times"></i> 财务总#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{#    {% if status > 4 %}#}
+{#        <li class="active">#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     4#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-check"></i> 法务#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% else %}#}
+{#        <li>#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     4#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-times"></i> 法务#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{#    {% if status > 5 %}#}
+{#        <li class="active">#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     5#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-check"></i> 法务总#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% else %}#}
+{#        <li>#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     5#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-times"></i> 可选流程#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{#    {% if status > 6 %}#}
+{#        <li class="active">#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     6#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-check"></i> 可选流程#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% else %}#}
+{#        <li>#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     6#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-times"></i> 法务总#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{#    {% if status > 7 %}#}
+{#        <li class="active">#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     7#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-check"></i> 总经理#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% else %}#}
+{#        <li>#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     7#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-times"></i> 总经理#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{#    {% if status > 8 %}#}
+{#        <li class="active">#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     8#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-check"></i> 盖章#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% else %}#}
+{#        <li>#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     8#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-times"></i> 盖章#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{#    {% if status > 9 %}#}
+{#        <li class="active">#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     9#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-check"></i> 归档#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% else %}#}
+{#        <li>#}
+{#            <a class="step">#}
+{#                <span class="number">#}
+{#                     9#}
+{#                </span>#}
+{#                <span class="desc">#}
+{#                    <i class="fa fa-times"></i> 归档#}
+{#                </span>#}
+{#            </a>#}
+{#        </li>#}
+{#    {% endif %}#}
+{#    <br>#}
     <div class="col-md-12">
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
         <a id="back" class="btn btn-sm yellow">
@@ -258,7 +258,7 @@
         <div class="portlet box grey">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-reorder"></i>合同信息
+                    <i class="fa fa-reorder"></i>印章信息
                 </div>
             </div>
             <div class="portlet-body form">
@@ -266,119 +266,43 @@
                 <form class="form-horizontal form-bordered" onsubmit ="getElementById('submit').disabled=true; return true;" target=”_blank” action="/contract_apply_detail/"  enctype="multipart/form-data" method="post">
                     <div class="form-body">
                         <div class="form-group">
-                            <label class="control-label col-md-1">合同编号</label>
-                            <div class="col-md-2">
-                                <input type="text" id="contract_uuid" name="contract_uuid" class="form-control">
-                            </div>
-                            <label class="control-label col-md-offset-2 col-md-1">原合同编号</label>
-                            <div class="col-md-2">
-                                <input type="text" id="origin_contract_uuid" name="origin_contract_uuid" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1">* 我方签署公司</label>
-                            <div class="col-md-2">
-                                <input type="text" id="party_a" name="party_a" class="form-control">
-                            </div>
-                            <label class="control-label col-md-offset-2 col-md-1">申请时间</label>
-                            <div class="col-md-2">
-                                <input type="text" id="apply_time" name="apply_time" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
                             <label class="control-label col-md-1">申请人</label>
                             <div class="col-md-2">
                                 <input type="text" id="name" name="name" class="form-control">
                             </div>
-                            <label class="control-label col-md-offset-2 col-md-1">所属中心</label>
+                            <label class="control-label col-md-offset-2 col-md-1">编号</label>
+                            <div class="col-md-2">
+                                <input type="text" id="uuid" name="uuid" class="form-control">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="control-label col-md-1">中心</label>
                             <div class="col-md-2">
                                 <input type="text" id="department" name="department" class="form-control">
                             </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1">* 财务分类</label>
+                            <label class="control-label col-md-offset-2 col-md-1">使用方式</label>
                             <div class="col-md-2">
-                                <input type="text" id="finance_class" name="finance_class" class="form-control">
-                            </div>
-                            <label class="control-label col-md-offset-2 col-md-1">* 合同类型</label>
-                            <div class="col-md-2">
-                                <input type="text" id="contract_class" name="contract_class" class="form-control">
+                                <input type="text" id="usage" name="usage" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-1">* 合同名称</label>
+                            <label class="control-label col-md-1">印章/证照归属</label>
                             <div class="col-md-2">
-                                <input type="text" id="contract_name" name="contract_name" class="form-control">
+                                <input type="text" id="seal_from" name="seal_from" class="form-control">
                             </div>
-                            <label class="control-label col-md-offset-2 col-md-1">* 合作方名称</label>
+                            <label class="control-label col-md-offset-2 col-md-1">印章/证照类型</label>
                             <div class="col-md-2">
-                                <input type="text" id="party_b" name="party_b" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1">联系地址</label>
-                            <div class="col-md-2">
-                                <input type="text" id="address" name="address" class="form-control">
-                            </div>
-                            <label class="control-label col-md-offset-2 col-md-1">* 联系人</label>
-                            <div class="col-md-2">
-                                <input type="text" id="contacts" name="contacts" class="form-control">
+                                <input type="text" id="seal_class" name="seal_class" class="form-control">
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-1">邮箱</label>
-                            <div class="col-md-2">
-                                <input type="text" id="e_mail" name="e_mail" class="form-control">
-                            </div>
-                            <label class="control-label col-md-offset-2 col-md-1">* 电话1</label>
-                            <div class="col-md-2">
-                                <input type="text" id="phone_1" name="phone_1" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1">电话2</label>
-                            <div class="col-md-2">
-                                <input type="text" id="phone_2" name="phone_2" class="form-control">
-                            </div>
-                            <label class="control-label col-md-offset-2 col-md-1">传真</label>
-                            <div class="col-md-2">
-                                <input type="text" id="fax" name="fax" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1">开户行</label>
-                            <div class="col-md-2">
-                                <input type="text" id="bank" name="bank" class="form-control">
-                            </div>
-                            <label class="control-label col-md-offset-2 col-md-1">银行账号</label>
-                            <div class="col-md-2">
-                                <input type="text" id="bank_account" name="bank_account" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1">* 合同概要</label>
+                            <label class="control-label col-md-1">事由</label>
                             <div class="col-md-7">
-                                <textarea id="contract_detail" name="contract_detail" placeholder="" rows="2" maxlength="" class="form-control"></textarea>
+                                <textarea id="reason" name="reason" placeholder="" rows="2" maxlength="" class="form-control"></textarea>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-1">* 合同金额小写</label>
-                            <div class="col-md-2">
-                                <input type="text" id="contract_amount_figures" name="contract_amount_figures" class="form-control">
-                            </div>
-                            <label class="control-label col-md-offset-2 col-md-1">合同金额大写</label>
-                            <div class="col-md-2">
-                                <input type="text" id="contract_amount_words" name="contract_amount_words" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1">特殊要求</label>
-                            <div class="col-md-7">
-                                <textarea id="special_requirements" name="special_requirements" placeholder="" rows="2" maxlength="" class="form-control"></textarea>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label class="control-label col-md-1">合同有效期</label>
+                            <label class="control-label col-md-1">借用期限</label>
                             <div class="col-md-2">
                                 <div id="reportrange" class="btn default">
                                     <input type="text" id="begin" name="begin" style="display: none">
@@ -389,23 +313,8 @@
                                     <b class="fa fa-angle-down"></b>
                                 </div>
                             </div>
-                            <label class="control-label col-md-offset-2 col-md-1">合作方资质</label>
-                            <div class="col-md-2">
-                                <input type="text" id="partner_qualification" name="partner_qualification" class="form-control">
-                            </div>
                         </div>
                         <div class="form-group">
-                            <label class="control-label col-md-1">盖章情况</label>
-                            <div class="col-md-2">
-                                <input type="text" id="stamp_status" name="stamp_status" class="form-control">
-                            </div>
-                            <label class="control-label col-md-offset-2 col-md-1">归档情况</label>
-                            <div class="col-md-2">
-                                <input type="text" id="archive_status" name="archive_status" class="form-control">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                    {% if status == 0 %}
                         <label class="control-label col-md-1">附件</label>
                             <div  class="col-md-2">
                                 <div class="tab-content no-space">
@@ -429,11 +338,10 @@
                                 </div>
                             </div>
                         </div>
-                    {% endif %}
-                        <div class="form-group last">
+                        <div class="form-group">
                             <label class="control-label col-md-1">备注</label>
-                            <div class="col-md-10">
-                                <textarea id="comment" name="comment" placeholder="" rows="3" maxlength="" class="form-control"></textarea>
+                            <div class="col-md-7">
+                                <textarea id="comment" name="comment" placeholder="" rows="2" maxlength="" class="form-control"></textarea>
                             </div>
                         </div>
                         <input id="id" name="id" style="display:none">
@@ -474,7 +382,6 @@
                         <th>提交时间</th>
                         <th>提交人</th>
                         <th>意见</th>
-                        <th>附件</th>
                         <th>审批内容</th>
                         <th>ID</th>
                     </tr>
@@ -652,31 +559,30 @@ $(document).ready(function () {
 
 
 
-    $('#finance_class').select2({
+    $('#usage').select2({
         multiple: false,
-        placeholder: '请选择财务分类',
+        placeholder: '请选择使用方式',
         allowClear: true,
-        data: [{'text':'收','id':'收'},{'text':'支','id':'支'},{'text':'无金额','id':'无金额'}]
+        data: [{'text':'使用','id':'使用'},{'text':'外借','id':'外借'}]
     });
 
-    $('#contract_class').select2({
+    $('#seal_from').select2({
         multiple: false,
-        placeholder: '请选择合同分类',
-        allowClear: true,
-        data: [{'text':'商务合作','id':'商务合作'},{'text':'艺人经纪','id':'艺人经纪'},{'text':'市场框架','id':'市场框架'},
-               {'text':'技术开发','id':'技术开发'},{'text':'行政','id':'行政'},{'text':'人事','id':'人事'},
-               {'text':'财务','id':'财务'},{'text':'法务','id':'法务'},{'text':'其他','id':'其他'}]
-    });
-
-    $('#party_a').select2({
-        multiple: false,
-        placeholder: '请选择公司',
+        placeholder: '请选择印章/证照归属公司',
         allowClear: true,
         data: [{'text':'上海六界信息技术有限公司','id':'上海六界信息技术有限公司'},
                {'text':'竹筏科技（北京）科技有限公司','id':'竹筏科技（北京）科技有限公司'},
                {'text':'霍尔果斯柒色葫芦广告科技有限公司','id':'霍尔果斯柒色葫芦广告科技有限公司'}]
     });
 
+    $('#seal_class').select2({
+        multiple: false,
+        placeholder: '请选择印章/证照分类',
+        allowClear: true,
+        data: [{'text':'公章','id':'公章'},{'text':'法人章','id':'法人章'},{'text':'知识产权类证照','id':'知识产权类证照'},
+               {'text':'营业性演出许可证','id':'营业性演出许可证'},{'text':'广播电视节目制作经营许可证','id':'广播电视节目制作经营许可证'},
+               {'text':'网络文化经营许可证','id':'网络文化经营许可证'},{'text':'增值电信业务许可证','id':'增值电信业务许可证'}]
+    });
 
 {#    $('#phone').inputmask({#}
 {#        "mask": "99999999999"#}
@@ -709,34 +615,17 @@ $(document).ready(function () {
     $('#button').hide()
 {% endif %}
 
-{% if request.session.contract_id %}
-    $('#party_a').select2('data',{'text':'{{ party_a }}','id':'{{ party_a }}'});
-    $('#apply_time').val('{{ apply_time }}');
+{% if request.session.seal_id %}
     $('#name').val('{{ name }}');
+    $('#uuid').val('{{ uuid }}');
     $('#department').val('{{ department }}');
-    $('#finance_class').select2('data',{'text':'{{ finance_class }}','id':'{{ finance_class }}'});
-    $('#contract_class').select2('data',{'text':'{{ contract_class }}','id':'{{ contract_class }}'});
-    $('#contract_uuid').val('{{ contract_uuid }}');
-    $('#origin_contract_uuid').val('{{ origin_contract_uuid }}');
-    $('#contract_name').val('{{ contract_name }}');
-    $('#party_b').val('{{ party_b }}');
-    $('#address').val('{{ address }}');
-    $('#contacts').val('{{ contacts }}');
-    $('#e_mail').val('{{ e_mail }}');
-    $('#phone_1').val('{{ phone_1 }}');
-    $('#phone_2').val('{{ phone_2 }}');
-    $('#fax').val('{{ fax }}');
-    $('#bank').val('{{ bank }}');
-    $('#bank_account').val('{{ bank_account }}');
-    $('#contract_detail').val('{{ contract_detail }}');
-    $('#contract_amount_figures').val('{{ contract_amount_figures }}');
-    $('#contract_amount_words').val('{{ contract_amount_words }}');
-    $('#special_requirements').val('{{ special_requirements }}');
-    $('#reportrange span').html('{{ contract_begin_time }}' + '  ->  ' + '{{ contract_end_time }}');
-    $('#begin').val('{{ contract_begin_time }}')
-    $('#end').val('{{ contract_begin_time }}')
-    $('#partner_qualification').val('{{ partner_qualification }}');
-    $('#comment').val('{{ comment }}')
+    $('#seal_from').select2('data',{'text':'{{ seal_from }}','id':'{{ seal_from }}'});
+    $('#seal_class').select2('data',{'text':'{{ seal_class }}','id':'{{ seal_class }}'});
+    $('#usage').select2('data',{'text':'{{ usage }}','id':'{{ usage }}'});
+    $('#reason').val('{{ reason }}');
+    $('#archive_path').val('{{ archive_path }}');
+    $('#reportrange span').html('{{ borrow_begin_time }}' + '  ->  ' + '{{ borrow_end_time }}');
+    $('#comment').val('{{ comment }}');
     {% if status != -1 %}
         $('#submit').hide()
     {% endif %}
@@ -749,25 +638,6 @@ $(document).ready(function () {
 {% endif %}
 
 
-{% if stamp_status %}
-    $('#stamp_status').val('已盖章');
-{% else %}
-    $('#stamp_status').val('未盖章');
-{% endif %}
-{% if archive_status %}
-    $('#archive_status').val('已归档');
-{% else %}
-    $('#archive_status').val('未归档');
-{% endif %}
-
-
-{#    $('#resumes_show').html('{{ resumes }}')#}
-{#    $('#resumes_show').attr('href','/media/{{ resumes_path }}')#}
-{#    $('#direction').val('{{ direction }}')#}
-{#    $('#resource_state').select2('data',{'text':'{{ resource_state }}','id':'{{ resource_state }}'})#}
-{#    $('#comment').val('{{ comment }}')#}
-{#    $('#state_change_time').val('{{ state_change_time }}')#}
-{#    $('#executor').select2('data',{'text':'{{ executor }}','id':'{{ executor }}'})#}
     $('#id').val('{{ id }}')
 
     $('#commit').val('1')
@@ -780,127 +650,48 @@ $(document).ready(function () {
         history.go(-1)
     });
 
-{#{% if status == -1 %}#}
-{#    $('#contract_uuid').attr('disabled',true);#}
-{#    $('#origin_contract_uuid').attr('disabled',false);#}
-{#    $('#party_a').attr('disabled',false);#}
-{#    $('#apply_time').attr('disabled',true);#}
-{#    $('#name').attr('disabled',true);#}
-{#    $('#department').attr('disabled',true);#}
-{#    $('#finance_class').attr('disabled',false);#}
-{#    $('#contract_class').attr('disabled',false);#}
-{#    $('#contract_name').attr('disabled',false);#}
-{#    $('#party_b').attr('disabled',false);#}
-{#    $('#address').attr('disabled',false);#}
-{#    $('#contacts').attr('disabled',false);#}
-{#    $('#e_mail').attr('disabled',false);#}
-{#    $('#phone_1').attr('disabled',false);#}
-{#    $('#phone_2').attr('disabled',false);#}
-{#    $('#fax').attr('disabled',false);#}
-{#    $('#bank').attr('disabled',false);#}
-{#    $('#bank_account').attr('disabled',false);#}
-{#    $('#contract_detail').attr('disabled',false);#}
-{#    $('#contract_amount_figures').attr('disabled',false);#}
-{#    $('#contract_amount_words').attr('disabled',true);#}
-{#    $('#special_requirements').attr('disabled',false);#}
-{#    $('#reportrange').attr('disabled',false);#}
-{#    $('#partner_qualification').attr('disabled',false);#}
-{#    $('#stamp_status').attr('disabled',true);#}
-{#    $('#archive_status').attr('disabled',true);#}
-{#    $('#comment').attr('disabled',false);#}
-{% if request.session.contract_id %}
-    $('#contract_uuid').attr('disabled',true);
-    $('#origin_contract_uuid').attr('disabled',true);
-    $('#party_a').attr('disabled',true);
-    $('#apply_time').attr('disabled',true);
+
+{% if request.session.seal_id %}
     $('#name').attr('disabled',true);
+    $('#uuid').attr('disabled',true);
     $('#department').attr('disabled',true);
-    $('#finance_class').attr('disabled',true);
-    $('#contract_class').attr('disabled',true);
-    $('#contract_name').attr('disabled',true);
-    $('#party_b').attr('disabled',true);
-    $('#address').attr('disabled',true);
-    $('#contacts').attr('disabled',true);
-    $('#e_mail').attr('disabled',true);
-    $('#phone_1').attr('disabled',true);
-    $('#phone_2').attr('disabled',true);
-    $('#fax').attr('disabled',true);
-    $('#bank').attr('disabled',true);
-    $('#bank_account').attr('disabled',true);
-    $('#contract_detail').attr('disabled',true);
-    $('#contract_amount_figures').attr('disabled',true);
-    $('#contract_amount_words').attr('disabled',true);
-    $('#special_requirements').attr('disabled',true);
+    $('#seal_from').attr('disabled',true);
+    $('#seal_class').attr('disabled',true);
+    $('#usage').attr('disabled',true);
+    $('#reason').attr('disabled',true);
+    $('#archive_path').attr('disabled',true);
     $('#reportrange').attr('disabled',true);
-    $('#partner_qualification').attr('disabled',true);
-    $('#stamp_status').attr('disabled',true);
-    $('#archive_status').attr('disabled',true);
     $('#comment').attr('disabled',true);
+    $('#tab_images_uploader_uploadfiles').attr('disabled',true);
 {% else %}
-    $('#contract_uuid').attr('disabled',true);
-    $('#origin_contract_uuid').attr('disabled',false);
-    $('#party_a').attr('disabled',false);
-    $('#apply_time').attr('disabled',true);
     $('#name').attr('disabled',true);
+    $('#uuid').attr('disabled',true);
     $('#department').attr('disabled',true);
-    $('#finance_class').attr('disabled',false);
-    $('#contract_class').attr('disabled',false);
-    $('#contract_name').attr('disabled',false);
-    $('#party_b').attr('disabled',false);
-    $('#address').attr('disabled',false);
-    $('#contacts').attr('disabled',false);
-    $('#e_mail').attr('disabled',false);
-    $('#phone_1').attr('disabled',false);
-    $('#phone_2').attr('disabled',false);
-    $('#fax').attr('disabled',false);
-    $('#bank').attr('disabled',false);
-    $('#bank_account').attr('disabled',false);
-    $('#contract_detail').attr('disabled',false);
-    $('#contract_amount_figures').attr('disabled',false);
-    $('#contract_amount_words').attr('disabled',true);
-    $('#special_requirements').attr('disabled',false);
+    $('#seal_from').attr('disabled',false);
+    $('#seal_class').attr('disabled',false);
+    $('#usage').attr('disabled',false);
+    $('#reason').attr('disabled',false);
+    $('#archive_path').attr('disabled',false);
     $('#reportrange').attr('disabled',false);
-    $('#partner_qualification').attr('disabled',false);
-    $('#stamp_status').attr('disabled',true);
-    $('#archive_status').attr('disabled',true);
     $('#comment').attr('disabled',false);
+    $('#tab_images_uploader_uploadfiles').attr('disabled',false);
 {% endif %}
 
     $('#edit').on('click',function(){
-        $('#contract_uuid').attr('disabled',true);
-        $('#origin_contract_uuid').attr('disabled',false);
-        $('#party_a').attr('disabled',false);
-        $('#apply_time').attr('disabled',true);
         $('#name').attr('disabled',true);
+        $('#uuid').attr('disabled',true);
         $('#department').attr('disabled',true);
-        $('#finance_class').attr('disabled',false);
-        $('#contract_class').attr('disabled',false);
-        $('#contract_name').attr('disabled',false);
-        $('#party_b').attr('disabled',false);
-        $('#address').attr('disabled',false);
-        $('#contacts').attr('disabled',false);
-        $('#e_mail').attr('disabled',false);
-        $('#phone_1').attr('disabled',false);
-        $('#phone_2').attr('disabled',false);
-        $('#fax').attr('disabled',false);
-        $('#bank').attr('disabled',false);
-        $('#bank_account').attr('disabled',false);
-        $('#contract_detail').attr('disabled',false);
-        $('#contract_amount_figures').attr('disabled',false);
-        $('#contract_amount_words').attr('disabled',true);
-        $('#special_requirements').attr('disabled',false);
+        $('#seal_from').attr('disabled',false);
+        $('#seal_class').attr('disabled',false);
+        $('#usage').attr('disabled',false);
+        $('#reason').attr('disabled',false);
+        $('#archive_path').attr('disabled',false);
         $('#reportrange').attr('disabled',false);
-        $('#partner_qualification').attr('disabled',false);
-        $('#stamp_status').attr('disabled',true);
-        $('#archive_status').attr('disabled',true);
         $('#comment').attr('disabled',false);
+        $('#tab_images_uploader_uploadfiles').attr('disabled',false);
         $('#submit').show()
         $('#edit').attr('disabled',true);
-        $.post('/contract_set_session/', {commit:1}, function (d) {})
-    });
-
-    $('#contract_amount_figures').on('change',function(){
-        $('#contract_amount_words').val('')
+        $.post('/seal_set_session/', {commit:1}, function (d) {})
     });
 
 
@@ -919,7 +710,7 @@ $(document).ready(function () {
                 browse_button : document.getElementById('tab_images_uploader_pickfiles'), // you can pass in id...
                 container: document.getElementById('tab_images_uploader_container'), // ... or DOM Element itself
 
-                url : "/contract_get_upload/",
+                url : "/seal_get_upload/",
 
                 filters : {
                     max_file_size : '100000000mb',
@@ -1039,7 +830,7 @@ $(document).ready(function () {
 
 function loaddata() {
     oTable = $('#datatables').dataTable({
-        "sAjaxSource": "/contract_process_detail_data/?rand=" + Math.random(),
+        "sAjaxSource": "/seal_process_detail_data/?rand=" + Math.random(),
         "sDom": "<'row-fluid'<'span6'T><'span6'f>r><'table-scrollable't><'fluid'<'span3'l><'span4'i><'span5'p>>",
         "bServerSide": true,
         "bPaginate": true, // 是否使用分页
@@ -1064,13 +855,12 @@ function loaddata() {
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "30%"},
             { "sClass": "center", 'sWidth': "10%"},
-            { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "5%", 'bVisible': false}
 
 
         ],
         "aaSorting": [
-            [6, 'desc']
+            [5, 'desc']
         ],
         "oLanguage": {
             "sProcessing": "正在加载数据...",
@@ -1106,11 +896,11 @@ function loaddata() {
             }else if(aData[2] == -1){
                 $('td:eq(2)',nRow).html('<div>申请人修改</div>')
             }
-            $('td:eq(3)',nRow).on('click',function(){
-                location.href = '/'+aData[3]
-            })
-            var regx = new RegExp('^.*/');
-            $('td:eq(3)',nRow).html(aData[3].replace(regx,''))
+{#            $('td:eq(3)',nRow).on('click',function(){#}
+{#                location.href = '/'+aData[3]#}
+{#            })#}
+{#            var regx = new RegExp('^.*/');#}
+{#            $('td:eq(3)',nRow).html(aData[3].replace(regx,''))#}
         },
         "fnServerData": function (sSource, aoData, fnCallback) {
             aoData.push({csrfmiddlewaretoken: '{{ csrf_token }}'})
@@ -1126,12 +916,12 @@ function loaddata() {
 }
 
 
-{% if request.session.contract_result %}
-    {% ifequal request.session.contract_result '保存成功' %}
+{% if request.session.seal_result %}
+    {% ifequal request.session.seal_result '保存成功' %}
         toastr.success('保存成功')
-        setTimeout('location.href = "/contract_apply/"',500)
+        setTimeout('location.href = "/seal_apply/"',500)
     {% else %}
-        toastr.error('{{ request.session.contract_result }}')
+        toastr.error('{{ request.session.seal_result }}')
     {% endifequal %}
 {% endif %}
 
@@ -1148,11 +938,11 @@ function agree(){
     }else{
         add_process = add_process['text']
     }
-    $.post('/contract_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:1}, function (d) {
+    $.post('/seal_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:1}, function (d) {
         if (d.code == 0) {
             toastr.success(d.msg)
             $('#datatables').dataTable().fnDraw()
-            setTimeout('location.href = "/contract_apply/"',500)
+            setTimeout('location.href = "/seal_apply/"',500)
         } else {
             toastr.error(d.msg)
         }
@@ -1171,11 +961,11 @@ function back_edit(){
     }else{
         add_process = add_process['text']
     }
-    $.post('/contract_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:2}, function (d) {
+    $.post('/seal_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:2}, function (d) {
         if (d.code == 0) {
             toastr.success(d.msg)
             $('#datatables').dataTable().fnDraw()
-            setTimeout('location.href = "/contract_apply/"',1000)
+            setTimeout('location.href = "/seal_apply/"',1000)
         } else {
             toastr.error(d.msg)
         }
@@ -1194,11 +984,11 @@ function disagree(){
     }else{
         add_process = add_process['text']
     }
-    $.post('/contract_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:0}, function (d) {
+    $.post('/seal_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:0}, function (d) {
         if (d.code == 0) {
             toastr.success(d.msg)
             $('#datatables').dataTable().fnDraw()
-            setTimeout('location.href = "/contract_apply/"',1000)
+            setTimeout('location.href = "/seal_apply/"',1000)
         } else {
             toastr.error(d.msg)
         }
@@ -1206,13 +996,6 @@ function disagree(){
     $('#myModal').modal('hide')
 }
 
-
-
-function add(){
-    $.post('/personal_information_interview_set_session/', {id:0}, function (d) {
-        location.href = '/personal_information_interview_detail/'
-    })
-}
 
 </script>
 {% endblock %}

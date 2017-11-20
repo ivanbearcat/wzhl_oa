@@ -10,6 +10,7 @@ from KPI.views import *
 from personal_information.views import *
 from business_trip.views import *
 from contract.views import *
+from seal.views import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -133,4 +134,11 @@ urlpatterns = patterns('',
     url(r'^contract_create_excel/', contract_create_excel),
     url(r'^contract_approve_alert/', contract_approve_alert),
     url(r'^export_contract_list/', export_contract_list),
+    url(r'^seal_apply/', seal_apply),
+    url(r'^seal_apply_data/', seal_apply_data),
+    url(r'^seal_set_session/', seal_set_session),
+    url(r'^seal_apply_detail/', seal_apply_detail),
+    url(r'^seal_approve/', seal_approve),
+    url(r'^seal_approve_data/', seal_approve_data),
+    url(r'^seal_get_upload/', seal_get_upload),
 )

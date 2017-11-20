@@ -14,45 +14,43 @@
 {% block body %}
 <div class="row">
     <div class="col-md-2 col-md-3 col-sm-6 col-xs-12">
-        <div class="dashboard-stat red">
-            <div class="visual">
-                <i class="fa fa-download"></i>
-            </div>
-            <div class="details">
-                <div class="number">
-                </div>
-                <a href="/static/files/2017六界合同管理制度.pdf">
-                    <div class="desc">
-                         查阅合同管理制度<br>
-                        (右键另存为可下载)
-                    </div>
-                </a>
-            </div>
+{#        <div class="dashboard-stat red">#}
+{#            <div class="visual">#}
+{#                <i class="fa fa-download"></i>#}
+{#            </div>#}
+{#            <div class="details">#}
+{#                <div class="number">#}
+{#                </div>#}
+{#                <a href="/static/files/2017六界合同管理制度.pdf">#}
+{#                    <div class="desc">#}
+{#                         查阅合同管理制度<br>#}
+{#                        (右键另存为可下载)#}
+{#                    </div>#}
+{#                </a>#}
+{#            </div>#}
 {#                    <a class="more" href="#">#}
 {#                         View more <i class="m-icon-swapright m-icon-white"></i>#}
 {#                    </a>#}
-        </div>
+{#        </div>#}
     </div>
     <div class="col-md-12">
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-globe"></i>合同申请
+                    <i class="fa fa-globe"></i>印章申请
                 </div>
             </div>
             <div class="portlet-body">
                 <table class="table table-striped table-bordered table-hover table-full-width"  id="datatables">
                     <thead>
                     <tr>
-                        <th>合同编号</th>
-                        <th>申请时间</th>
+                        <th>编号</th>
                         <th>申请人</th>
-                        <th>合同类型</th>
-                        <th>合作方</th>
-                        <th>合同名称</th>
-                        <th>合同金额</th>
-                        <th>合同状态</th>
+                        <th>中心</th>
+                        <th>印章/证照类型</th>
+                        <th>使用方式</th>
+                        <th>状态</th>
                         <th>ID</th>
                     </tr>
                     </thead>
@@ -110,7 +108,7 @@ $(document).ready(function () {
 
 function loaddata() {
     oTable = $('#datatables').dataTable({
-        "sAjaxSource": "/contract_apply_data/?rand=" + Math.random(),
+        "sAjaxSource": "/seal_apply_data/?rand=" + Math.random(),
         "sDom": "<'row-fluid'<'span6'T><'span6'f>r><'table-scrollable't><'fluid'<'span3'l><'span4'i><'span5'p>>",
         "bServerSide": true,
         "bPaginate": true, // 是否使用分页
@@ -137,14 +135,12 @@ function loaddata() {
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
-            { "sClass": "center", 'sWidth': "10%"},
-            { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "5%", 'bVisible': false}
 
 
         ],
         "aaSorting": [
-            [8, 'desc']
+            [7, 'desc']
         ],
         "oLanguage": {
             "sProcessing": "正在加载数据...",
@@ -170,25 +166,15 @@ function loaddata() {
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
             $('td',nRow).on('click',function(){
-                $.post('/contract_set_session/', {id:aData[8], commit:0}, function (d) {
-                    location.href = '/contract_apply_detail/'
+                $.post('/seal_set_session/', {id:aData[6], commit:0}, function (d) {
+                    location.href = '/seal_apply_detail/'
                 })
             })
 
-            if(aData[7] == 1 || aData[7] == 2 || aData[7] == 3 || aData[7] == 4 || aData[7] == 5 || aData[7] == 6 || aData[7] == 7){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp等待 ' + aData[9] + ' 审批</div>')
-            }else if(aData[7] == -1){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp申请人修改</div>')
-            }else if(aData[7] == 8){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp待盖章</div>')
-            }else if(aData[7] == 9){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp已盖章</div>')
-            }else if(aData[7] == 10){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp已归档</div>')
-            }else if(aData[7] == 11){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已退回</div>')
-            }else if(aData[7] == 80){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp合同上传</div>')
+            if(aData[5] == 1 || aData[5] == 2 || aData[5] == 3 || aData[5] == 4){
+                $('td:eq(5)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp等待 ' + aData[7] + ' 审批</div>')
+            }else if(aData[5] == 80){
+                $('td:eq(5)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp合同上传</div>')
             }
         },
         "fnServerData": function (sSource, aoData, fnCallback) {
@@ -207,8 +193,8 @@ function loaddata() {
 
 
 function add(){
-    $.post('/contract_set_session/', {id:0}, function (d) {
-        location.href = '/contract_apply_detail/'
+    $.post('/seal_set_session/', {id:0}, function (d) {
+        location.href = '/seal_apply_detail/'
     })
 }
 
