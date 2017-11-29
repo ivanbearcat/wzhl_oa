@@ -312,7 +312,7 @@ function loaddata() {
         "bProcessing": true, //是否显示正在处理的提示
         "bLengthChange": true, //是否启用设置每页显示记录数
         "bFilter": true, //是否使用搜索
-        "bStateSave": false,
+        "bStateSave": true,
         "bDestroy": true,
         "bSort": true, //是否使用排序
         "bAutoWidth": true, //列的宽度会根据table的宽度自适应
@@ -421,13 +421,13 @@ function loaddata() {
             }else if(aData[7] == 8){
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp待盖章</div>')
             }else if(aData[7] == 9){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp已盖章</div>')
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp已上传</div>')
             }else if(aData[7] == 10){
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp已归档</div>')
             }else if(aData[7] == 11){
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已退回</div>')
             }else if(aData[7] == 80){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp合同上传</div>')
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp已盖章</div>')
             }
 
             $('td:eq(8)',nRow).on('click',function(){

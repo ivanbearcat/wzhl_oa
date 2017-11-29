@@ -618,6 +618,76 @@ def contract_all_data(request):
                                                     Q(party_b__contains=sSearch_list[i]) | \
                                                     Q(contract_name__contains=sSearch_list[i])).count()
                 result_data = result_data.order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+    elif request.user.has_perm('contract.can_view_liujie'):
+        if  sSortDir_0 == 'asc':
+            if sSearch == '':
+                result_data = table.objects.filter(contract_uuid__contains='SHLJ').order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(contract_uuid__contains='SHLJ').count()
+            else:
+                result_data = table.objects.filter(contract_uuid__contains='SHLJ')
+                sSearch_list = sSearch.split()
+                for i in range(len(sSearch_list)):
+                    result_data = result_data.filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+                                                    Q(party_b__contains=sSearch_list[i]) | \
+                                                    Q(contract_name__contains=sSearch_list[i]))
+
+                    iTotalRecords = result_data.filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+                                                    Q(party_b__contains=sSearch_list[i]) | \
+                                                    Q(contract_name__contains=sSearch_list[i])).count()
+                result_data = result_data.order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+        else:
+            if sSearch == '':
+                result_data = table.objects.filter(contract_uuid__contains='SHLJ').order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(contract_uuid__contains='SHLJ').count()
+            else:
+                result_data = table.objects.filter(contract_uuid__contains='SHLJ')
+                sSearch_list = sSearch.split()
+                for i in range(len(sSearch_list)):
+                    result_data = result_data.filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+                                                    Q(party_b__contains=sSearch_list[i]) | \
+                                                    Q(contract_name__contains=sSearch_list[i]))
+
+                    iTotalRecords = result_data.filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+                                                    Q(party_b__contains=sSearch_list[i]) | \
+                                                    Q(contract_name__contains=sSearch_list[i])).count()
+                result_data = result_data.order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+    elif request.user.has_perm('contract.can_view_shangwu'):
+        orm = user_table.objects.filter(department=u'商务中心')
+        shangwu_name_list = []
+        for i in orm:
+            shangwu_name_list.append(i.name)
+        if  sSortDir_0 == 'asc':
+            if sSearch == '':
+                result_data = table.objects.filter(name__in=shangwu_name_list).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(name__in=shangwu_name_list).count()
+            else:
+                result_data = table.objects.filter(name__in=shangwu_name_list)
+                sSearch_list = sSearch.split()
+                for i in range(len(sSearch_list)):
+                    result_data = result_data.filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+                                                    Q(party_b__contains=sSearch_list[i]) | \
+                                                    Q(contract_name__contains=sSearch_list[i]))
+
+                    iTotalRecords = result_data.filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+                                                    Q(party_b__contains=sSearch_list[i]) | \
+                                                    Q(contract_name__contains=sSearch_list[i])).count()
+                result_data = result_data.order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+        else:
+            if sSearch == '':
+                result_data = table.objects.filter(name__in=shangwu_name_list).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+                iTotalRecords = table.objects.filter(name__in=shangwu_name_list).count()
+            else:
+                result_data = table.objects.filter(name__in=shangwu_name_list)
+                sSearch_list = sSearch.split()
+                for i in range(len(sSearch_list)):
+                    result_data = result_data.filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+                                                    Q(party_b__contains=sSearch_list[i]) | \
+                                                    Q(contract_name__contains=sSearch_list[i]))
+
+                    iTotalRecords = result_data.filter(Q(contract_uuid__contains=sSearch_list[i]) | \
+                                                    Q(party_b__contains=sSearch_list[i]) | \
+                                                    Q(contract_name__contains=sSearch_list[i])).count()
+                result_data = result_data.order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
     else:
         if  sSortDir_0 == 'asc':
             if sSearch == '':

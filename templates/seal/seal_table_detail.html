@@ -263,7 +263,7 @@
             </div>
             <div class="portlet-body form">
                 <!-- BEGIN FORM-->
-                <form class="form-horizontal form-bordered" onsubmit ="getElementById('submit').disabled=true; return true;" target=”_blank” action="/contract_apply_detail/"  enctype="multipart/form-data" method="post">
+                <form class="form-horizontal form-bordered" onsubmit ="getElementById('submit').disabled=true; return true;" target=”_blank” action="/seal_apply_detail/"  enctype="multipart/form-data" method="post">
                     <div class="form-body">
                         <div class="form-group">
                             <label class="control-label col-md-1">申请人</label>
@@ -301,7 +301,8 @@
                                 <textarea id="reason" name="reason" placeholder="" rows="2" maxlength="" class="form-control"></textarea>
                             </div>
                         </div>
-                        <div class="form-group">
+                    {% if usage == '外借' %}
+                        <div id="borrow_time" class="form-group">
                             <label class="control-label col-md-1">借用期限</label>
                             <div class="col-md-2">
                                 <div id="reportrange" class="btn default">
@@ -314,6 +315,22 @@
                                 </div>
                             </div>
                         </div>
+                    {% else %}
+                        <div id="borrow_time" class="form-group" style="display: none">
+                            <label class="control-label col-md-1">借用期限</label>
+                            <div class="col-md-2">
+                                <div id="reportrange" class="btn default">
+                                    <input type="text" id="begin" name="begin" style="display: none">
+                                    <input type="text" id="end" name="end" style="display: none">
+                                    <i class="fa fa-calendar"></i>
+                                    <span>
+                                    </span>
+                                    <b class="fa fa-angle-down"></b>
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                    {% if status < 1 %}
                         <div class="form-group">
                         <label class="control-label col-md-1">附件</label>
                             <div  class="col-md-2">
@@ -337,6 +354,14 @@
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    {% endif %}
+                        <div class="form-group">
+                        <label class="control-label col-md-1">附件文件</label>
+{#                            <div  class="col-md-3   ">#}
+{#                                <a id="seal_file"  href="/{{ archive_path }}"><h4>{{ archive_path }}</h4></a>#}
+{#                            </div>#}
+                            {% include 'seal/seal_table_detail_sub.html' %}
                         </div>
                         <div class="form-group">
                             <label class="control-label col-md-1">备注</label>
@@ -400,37 +425,37 @@
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                <h4 class="modal-title">合同审批</h4>
+                <h4 class="modal-title">印章审批</h4>
             </div>
 
 
 
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
-                    <div class="form-group">
-                        <label class="col-sm-4 control-label">附件</label>
-                        <div  class="col-sm-8">
-                            <div class="tab-content no-space">
-                                <div class="tab-pane active" id="tab_images">
-                                    <div class="alert alert-success margin-bottom-10">
-                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>
-                                        <i class="fa fa-warning fa-lg"></i> 请将上传文件打包，选择ZIP或RAR格式进行上传
-                                    </div>
-                                    <div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10" style="position: relative;">
-                                        <a id="tab_images_uploader_pickfiles" href="javascript:;" class="btn yellow" style="position: relative; z-index: 1; float:left">
-                                            <i class="fa fa-plus"></i> 选择文件
-                                        </a>
-                                        <a id="tab_images_uploader_uploadfiles" href="javascript:;" class="btn blue" style="float:left; margin-left: 10px">
-                                            <i class="fa fa-share"></i> 上传文件
-                                        </a>
-                                    <div id="html5_191s5i9758q1p7bcdq1badmjb3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 1401px; width: 113px; height: 34px; overflow: hidden; z-index: 0;"><input id="html5_191s5i9758q1p7bcdq1badmjb3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;display:none" multiple="" accept="image/jpeg,image/gif,image/png,application/zip"></div></div>
-                                    <div class="row">
-                                        <div id="tab_images_uploader_filelist" class="col-md-6 col-sm-12"></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+{#                    <div class="form-group">#}
+{#                        <label class="col-sm-4 control-label">附件</label>#}
+{#                        <div  class="col-sm-8">#}
+{#                            <div class="tab-content no-space">#}
+{#                                <div class="tab-pane active" id="tab_images">#}
+{#                                    <div class="alert alert-success margin-bottom-10">#}
+{#                                        <button type="button" class="close" data-dismiss="alert" aria-hidden="true"></button>#}
+{#                                        <i class="fa fa-warning fa-lg"></i> 请将上传文件打包，选择ZIP或RAR格式进行上传#}
+{#                                    </div>#}
+{#                                    <div id="tab_images_uploader_container" class="text-align-reverse margin-bottom-10" style="position: relative;">#}
+{#                                        <a id="tab_images_uploader_pickfiles" href="javascript:;" class="btn yellow" style="position: relative; z-index: 1; float:left">#}
+{#                                            <i class="fa fa-plus"></i> 选择文件#}
+{#                                        </a>#}
+{#                                        <a id="tab_images_uploader_uploadfiles" href="javascript:;" class="btn blue" style="float:left; margin-left: 10px">#}
+{#                                            <i class="fa fa-share"></i> 上传文件#}
+{#                                        </a>#}
+{#                                    <div id="html5_191s5i9758q1p7bcdq1badmjb3_container" class="moxie-shim moxie-shim-html5" style="position: absolute; top: 0px; left: 1401px; width: 113px; height: 34px; overflow: hidden; z-index: 0;"><input id="html5_191s5i9758q1p7bcdq1badmjb3" type="file" style="font-size: 999px; opacity: 0; position: absolute; top: 0px; left: 0px; width: 100%; height: 100%;display:none" multiple="" accept="image/jpeg,image/gif,image/png,application/zip"></div></div>#}
+{#                                    <div class="row">#}
+{#                                        <div id="tab_images_uploader_filelist" class="col-md-6 col-sm-12"></div>#}
+{#                                    </div>#}
+{#                                </div>#}
+{#                            </div>#}
+{#                        </div>#}
+{#                    </div>#}
                     <div id="add_process_div" class="form-group">
                         <label class="col-sm-4 control-label">增加流程</label>
                         <div  class="col-sm-8">
@@ -511,7 +536,6 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
-
     $('#reportrange').daterangepicker({
         opens: (App.isRTL() ? 'left' : 'right'),
 
@@ -557,8 +581,6 @@ $(document).ready(function () {
     );
 
 
-
-
     $('#usage').select2({
         multiple: false,
         placeholder: '请选择使用方式',
@@ -579,10 +601,21 @@ $(document).ready(function () {
         multiple: false,
         placeholder: '请选择印章/证照分类',
         allowClear: true,
-        data: [{'text':'公章','id':'公章'},{'text':'法人章','id':'法人章'},{'text':'知识产权类证照','id':'知识产权类证照'},
+        data: [{'text':'公章','id':'公章'},{'text':'法人章','id':'法人章'},{'text':'营业执照','id':'营业执照'},{'text':'知识产权类证照','id':'知识产权类证照'},
                {'text':'营业性演出许可证','id':'营业性演出许可证'},{'text':'广播电视节目制作经营许可证','id':'广播电视节目制作经营许可证'},
                {'text':'网络文化经营许可证','id':'网络文化经营许可证'},{'text':'增值电信业务许可证','id':'增值电信业务许可证'}]
     });
+
+    $('#usage').on("click", function () {
+        if ($('#usage').select2('data')['text'] == '使用'){
+            $('#borrow_time').hide()
+        }
+    })
+    $('#usage').on("click", function () {
+        if ($('#usage').select2('data')['text'] == '外借'){
+            $('#borrow_time').show()
+        }
+    })
 
 {#    $('#phone').inputmask({#}
 {#        "mask": "99999999999"#}
@@ -766,6 +799,7 @@ $(document).ready(function () {
                             $('#submit').attr('disabled',false)
                             $('#button').show()
 {#                            $('#datatables').dataTable().fnDraw()#}
+                            $('#seal_file').load('/seal_apply_detail_sub/')
                         } else {
                             $('#uploaded_file_' + file.id + ' > .status').removeClass("label-info").addClass("label-danger").html('<i class="fa fa-warning"></i>'+response.msg); // set failed operation
                             App.alert({type: 'danger', message: '文件上传失败，请重新上传', closeInSeconds: 10, icon: 'warning'});
@@ -817,7 +851,7 @@ $(document).ready(function () {
     })
 
     var status = '{{ status }}'
-    if (status == '4') {
+    if (status == '2') {
         $('#add_process_div').show()
     }else{
         $('#add_process_div').hide()
@@ -837,7 +871,7 @@ function loaddata() {
         "bProcessing": true, //是否显示正在处理的提示
         "bLengthChange": true, //是否启用设置每页显示记录数
         "bFilter": true, //是否使用搜索
-        "bStateSave": false,
+        "bStateSave": true,
         "bDestroy": true,
         "bSort": true, //是否使用排序
         "bAutoWidth": true, //列的宽度会根据table的宽度自适应
@@ -853,8 +887,8 @@ function loaddata() {
         "aoColumns": [
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
-            { "sClass": "center", 'sWidth': "30%"},
             { "sClass": "center", 'sWidth': "10%"},
+            { "sClass": "center", 'sWidth': "30%"},
             { "sClass": "center", 'sWidth': "5%", 'bVisible': false}
 
 

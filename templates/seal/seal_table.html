@@ -115,7 +115,7 @@ function loaddata() {
         "bProcessing": true, //是否显示正在处理的提示
         "bLengthChange": true, //是否启用设置每页显示记录数
         "bFilter": true, //是否使用搜索
-        "bStateSave": false,
+        "bStateSave": true,
         "bDestroy": true,
         "bSort": true, //是否使用排序
         "bAutoWidth": true, //列的宽度会根据table的宽度自适应
@@ -171,10 +171,16 @@ function loaddata() {
                 })
             })
 
-            if(aData[5] == 1 || aData[5] == 2 || aData[5] == 3 || aData[5] == 4){
+            if(aData[5] == 1 || aData[5] == 2 || aData[5] == 3){
                 $('td:eq(5)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp等待 ' + aData[7] + ' 审批</div>')
-            }else if(aData[5] == 80){
-                $('td:eq(5)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp合同上传</div>')
+            }else if(aData[5] == 4) {
+                $('td:eq(5)', nRow).html('<div><img src="/static/assets/img/running.png">&nbsp待归还</div>')
+            }else if(aData[5] == 5){
+                $('td:eq(5)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp已完成</div>')
+            }else if(aData[5] == 6){
+                $('td:eq(5)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已拒绝</div>')
+            }else if(aData[5] == -1){
+                $('td:eq(5)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp申请人修改</div>')
             }
         },
         "fnServerData": function (sSource, aoData, fnCallback) {

@@ -6,6 +6,8 @@ class table(models.Model):
         permissions = (
             ("can_view_all", "Can view all"),
             ("can_view_part", "Can view part"),
+            ("can_view_shangwu", "Can view shangwu"),
+            ("can_view_liujie", "Can view liujie"),
         )
     party_a = models.CharField(verbose_name='我方签署公司', max_length=64, blank=False)
     apply_time = models.DateTimeField(verbose_name='申请时间', auto_now_add=True)
@@ -39,7 +41,6 @@ class table(models.Model):
     approve_now = models.CharField(verbose_name='当前审批人', max_length=30, blank=True)
     commit_time = models.DateTimeField(verbose_name='提交时间', blank=True)
     process_type = models.CharField(verbose_name='处理类型', max_length=2, blank=False)
-
 
 
 class detail(models.Model):
