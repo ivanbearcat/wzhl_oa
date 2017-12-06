@@ -294,7 +294,7 @@ def last_order_form_save(request):
     # name = request.POST.get('name')
     # type = request.POST.get('type')
     # comment = request.POST.get('comment')
-    name = '薛智敏'
+    name = request.user.first_name
     orm = order.objects.filter(order_name=name).order_by('add_time').reverse()
     last_order_time = orm[0].add_time
 
