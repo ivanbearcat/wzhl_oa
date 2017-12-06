@@ -670,6 +670,36 @@ function rule_save() {
     $('#myModal').modal('hide')
     $(self).button('complete')
 }
+
+
+
+function last_rule_save() {
+    showAjaxLoad()
+    $(self).button('loading');//正在登陆中，显示data-loading-text 标记内容
+
+    $.ajax({
+        url: '/last_order_form_save/',
+        type: "POST",
+        data: {},
+        success: function (d) {
+            hideAjaxLoad()
+            if (d.code == 0) {
+                toastr.success(d.msg)
+                $('#datatables').dataTable().fnDraw()
+            } else {
+                toastr.error(d.msg)
+            }
+        }
+    });
+    $('#myModal').modal('hide')
+    $(self).button('complete')
+}
+
+
+
+
+
+
 function contain(Array, s) {
     for (var i = 0; i < Array.length; i++)
         if (Array[i] == s)
