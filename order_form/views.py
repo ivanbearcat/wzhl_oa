@@ -282,8 +282,57 @@ def order_form_save(request):
         # orm.save()
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'订餐成功'}),content_type="application/json")
     except Exception,e:
-        logger.error(e,comment)
+        logger.error(e)
         return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+
+
+
+@login_required
+def last_order_form_save(request):
+    # _id = request.POST.get('id')
+    # name = request.POST.get('name')
+    # type = request.POST.get('type')
+    # comment = request.POST.get('comment')
+    name = '薛智敏'
+    orm = order.objects.filter(order_name=name).order_by('add_time').reverse()
+    last_order_time = orm[0].add_time
+
+    begin = last_order_time.date()
+    end = last_order_time + datetime.timedelta(1)
+    end = end.date()
+
+    time_now = datetime.datetime.now().time()
+    begin_now = datetime.datetime.now().date()
+    end_now = datetime.datetime.now() + datetime.timedelta(1)
+    end_now = end_now.date()
+
+    if not request.user.is_staff:
+        if time_now > datetime.time(11,00):
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'已经超过一键订餐时间'}),content_type="application/json")
+
+    try:
+        orm2 = order.objects.filter(add_time__range=(begin,end)).filter(order_name=name)
+        order_list = []
+        for i in orm2:
+            order_list.append((i.name, i.type))
+        for i in order_list:
+            check_orm = order.objects.filter(add_time__range=(begin_now,end_now)).filter(name=i[0]).filter(type=i[1])
+            if check_orm:
+                continue
+            orm = order(name=i[0],type=i[1],comment='',order_name=request.user.first_name,star=0)
+            orm.save()
+
+        return HttpResponse(simplejson.dumps({'code':0,'msg':u'一键订餐成功'}),content_type="application/json")
+    except Exception,e:
+        logger.error(e)
+        return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+
+
+
+
+
 
 @login_required
 def order_form_del(request):

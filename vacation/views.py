@@ -288,13 +288,13 @@ def vacation_refresh(request):
         orm_state = state.objects.filter(name=i.name)
         for j in orm_state:
             if j.state not in [0,8,9]:
-                if 6 < (datetime.datetime.now() - j.apply_time).days and (j.state == 1 or j.state == 2 or j.state == 3):
+                if 21 < (datetime.datetime.now() - j.apply_time).days and (j.state == 1 or j.state == 2 or j.state == 3):
                     orm_fetch_email = user_table.objects.get(name=j.approve_now)
-                    Thread(target=send_mail,args=(orm_fetch_email.email,'请假审批过期提醒','<h3>有一个请假事件等待您的审批，还有1天就将过期，请在尽快在OA系统中审批。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    Thread(target=send_mail,args=(orm_fetch_email.email,'请假审批过期提醒','<h3>有一个请假事件等待您的审批，还有7天就将过期，请在尽快在OA系统中审批。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
                     # send_mail(to_addr='%s' % orm_fetch_email.email,subject='请假审批过期提醒',
                     #           body='<h3>有一个请假事件等待您的审批，还有1天就将过期，请在尽快在OA系统中审批。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
 
-                if (datetime.datetime.now() - j.apply_time).days > 7 and (j.state == 1 or j.state == 2 or j.state == 3):
+                if (datetime.datetime.now() - j.apply_time).days > 30 and (j.state == 1 or j.state == 2 or j.state == 3):
                     j.state = 9
                     j.state_interface = '已过期'
                     orm_fetch_approve_now = user_table.objects.get(name=j.approve_now)

@@ -183,7 +183,7 @@ def seal_apply_detail(request):
     else:
         try:
             orm = table.objects.get(id=table_id)
-            if seal_from and seal_class and usage and reason and borrow_begin_time and borrow_end_time:
+            if seal_from and seal_class and usage and reason:
                 commit = request.session.get('seal_commit')
 
                 if commit != '0':
@@ -201,8 +201,9 @@ def seal_apply_detail(request):
                     orm.usage = usage
                     orm.reason = reason
                     orm.archive_path = archive_path
-                    orm.borrow_begin_time = borrow_begin_time
-                    orm.borrow_end_time = borrow_end_time
+                    if borrow_begin_time and borrow_end_time:
+                        orm.borrow_begin_time = borrow_begin_time
+                        orm.borrow_end_time = borrow_end_time
                     orm.comment = comment
 
                     # if orm.status == 0:
@@ -643,12 +644,16 @@ def seal_approve_process(request):
                 if orm.seal_class == u'法人章':
                     orm.approve_now = u'高茹'
                 else:
-                    orm.approve_now = u'王娟'
+                    orm.approve_now = u'张莉莹'
 
             if status == '2':
                 if orm.usage == u'使用':
-                    status = 5
-                    approve_now = ''
+                    if add_process:
+                        orm.status = 3
+                        orm.approve_now = add_process
+                    else:
+                        orm.status = 5
+                        orm.approve_now = ''
                 else:
                     if add_process:
                         orm.status = 3
@@ -657,11 +662,15 @@ def seal_approve_process(request):
                         orm.status = 4
 
             if status == '3':
-                orm.status = 4
-                if orm.seal_class == u'法人章':
-                    orm.approve_now = u'高茹'
+                if orm.usage == u'使用':
+                    orm.status = 5
+                    orm.approve_now = ''
                 else:
-                    orm.approve_now = u'王娟'
+                    orm.status = 4
+                    if orm.seal_class == u'法人章':
+                        orm.approve_now = u'高茹'
+                    else:
+                        orm.approve_now = u'张莉莹'
 
             if status == '4':
                 orm.status = 5
