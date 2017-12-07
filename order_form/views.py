@@ -297,6 +297,7 @@ def last_order_form_save(request):
     name = request.user.first_name
     orm = order.objects.filter(order_name=name).order_by('add_time').reverse()
     last_order_time = orm[0].add_time
+    print last_order_time
 
     begin = last_order_time.date()
     end = last_order_time + datetime.timedelta(1)
@@ -316,6 +317,7 @@ def last_order_form_save(request):
         order_list = []
         for i in orm2:
             order_list.append((i.name, i.type))
+        print order_list
         for i in order_list:
             check_orm = order.objects.filter(add_time__range=(begin_now,end_now)).filter(name=i[0]).filter(type=i[1])
             if check_orm:

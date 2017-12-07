@@ -153,13 +153,8 @@ def contract_apply_detail(request):
     archive_status = 0
     status = 0
     if contract_amount_figures:
-        if int(contract_amount_figures) == 0:
+        if float(contract_amount_figures) == 0.0:
             finance_class = u'无金额'
-
-    print contract_uuid,origin_contract_uuid,party_a,name,finance_class,contract_class,contract_name,party_b,address,contacts,e_mail,phone_1,phone_2,\
-          fax,bank,bank_account,contract_detail,contract_amount_figures,special_requirements,contract_begin_time,contract_end_time,\
-          partner_qualification,comment,_id
-
 
     try:
         request.session.pop('contract_result')
