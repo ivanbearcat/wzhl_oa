@@ -448,7 +448,7 @@ $(document).ready(function () {
 
 function loaddata() {
     oTable = $('#datatables').dataTable({
-        "sAjaxSource": "/assets_table_data2/?rand=" + Math.random(),
+        "sAjaxSource": "/assets_table_data3/?rand=" + Math.random(),
         "sDom": "<'row-fluid'<'span6'T><'span6'f>r><'table-scrollable't><'fluid'<'span3'l><'span4'i><'span5'p>>",
         "bServerSide": true,
         "bPaginate": true, // 是否使用分页
@@ -580,7 +580,7 @@ function rule_save() {
 
 
     $.ajax({
-        url: '/assets_table_save2/',
+        url: '/assets_table_save3/',
         type: "POST",
         data: {
             FANO:FANO,
@@ -694,7 +694,7 @@ function edit() {
 
 function export_excel_file(){
     showAjaxLoad()
-    $.post('/assets_export_excel2/', {}, function (d) {
+    $.post('/assets_export_excel3/', {}, function (d) {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)

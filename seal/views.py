@@ -73,7 +73,7 @@ def seal_apply_data(request):
         aaData.append({
                        '0':i.uuid,
                        '1':i.name,
-                       '2':i.department,
+                       '2':i.reason,
                        '3':i.seal_class,
                        '4':i.usage,
                        '5':i.status,
@@ -149,11 +149,14 @@ def seal_apply_detail(request):
                     uuid = str(datetime.datetime.now().year) + '-0001'
                 else:
                     uuid_orm = table.objects.filter(uuid__contains=year).order_by('id').reverse()[0]
-                    uuid = str(datetime.datetime.now().year) + '-' + str(int(uuid_orm.uuid.split('-')[1]) + 1)
+                    num = str(int(uuid_orm.uuid.split('-')[1]) + 1)
+                    if len(num) < 4:
+                        num = '0' * (4 - len(num)) + num
+                    uuid = str(datetime.datetime.now().year) + '-' + num
 
 
                 status = 1
-                approve_now = user_info_orm.principal
+                approve_now = user_info_orm.supervisor
 
                 try:
                     archive_path = request.session['seal_upload_file']
@@ -388,7 +391,7 @@ def seal_approve_data(request):
         aaData.append({
                        '0':i.uuid,
                        '1':i.name,
-                       '2':i.department,
+                       '2':i.reason,
                        '3':i.seal_class,
                        '4':i.usage,
                        '5':i.status,
@@ -541,7 +544,7 @@ def seal_all_data(request):
         aaData.append({
                        '0':i.uuid,
                        '1':i.name,
-                       '2':i.department,
+                       '2':i.reason,
                        '3':i.seal_class,
                        '4':i.usage,
                        '5':i.status,
@@ -632,19 +635,23 @@ def seal_approve_process(request):
         detail_orm = detail.objects.filter(parent_id=_id)
         if flag == '1':
             if status == '-1':
-                principal_orm = user_table.objects.get(name=orm.name)
-                print principal_orm.principal
+                supervisor_orm = user_table.objects.get(name=orm.name)
+                print supervisor_orm.supervisor
 
                 orm.status = 1
-                orm.approve_now = principal_orm.principal
+                orm.approve_now = supervisor_orm.supervisor
                 flag = '-1'
 
             if status == '1':
-                orm.status = 2
-                if orm.seal_class == u'法人章':
-                    orm.approve_now = u'高茹'
+                if orm.name == u'龚晓芸' or orm.name == u'张莉莹':
+                    orm.status = 5
+                    orm.approve_now = ''
                 else:
-                    orm.approve_now = u'张莉莹'
+                    orm.status = 2
+                    if orm.seal_class == u'法人章':
+                        orm.approve_now = u'龚晓芸'
+                    else:
+                        orm.approve_now = u'张莉莹'
 
             if status == '2':
                 if orm.usage == u'使用':
@@ -668,7 +675,7 @@ def seal_approve_process(request):
                 else:
                     orm.status = 4
                     if orm.seal_class == u'法人章':
-                        orm.approve_now = u'高茹'
+                        orm.approve_now = u'龚晓芸'
                     else:
                         orm.approve_now = u'张莉莹'
 
@@ -765,6 +772,10 @@ def seal_process_detail_data(request):
                        '3':i.comment.replace('\n','</br>'),
                        '4':i.id
                       })
+    if parent_id:
+        orm = table.objects.get(id=parent_id)
+        if orm.status == 5 and orm.usage == u'外借':
+            aaData[0]['2'] = 10
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
                'iTotalDisplayRecords':iTotalRecords,
@@ -828,6 +839,8 @@ def seal_create_excel(request):
                 operation = u'审批不通过'
             elif i['operation'] == -1:
                 operation = u'退回修改'
+            elif i['operation'] == 9:
+                operation = u'印章申请'
             ws['D'+str(row_num)] = operation
             ws['E'+str(row_num)] = i['comment']
             row_num += 1

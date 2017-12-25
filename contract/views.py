@@ -1167,6 +1167,8 @@ def contract_create_excel(request):
                 operation = u'审批不通过'
             elif i['operation'] == -1:
                 operation = u'退回修改'
+            elif i['operation'] == 9:
+                operation = u'合同申请'
             ws['D'+str(row_num)] = operation
             archive_path = os.path.basename(i['archive_path'])
             ws['E'+str(row_num)] = archive_path

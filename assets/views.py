@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.db.models.query_utils import Q
-from assets.models import table, table2, log
+from assets.models import table, table2, table3, log
 from libs.common import int_format
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -34,6 +34,19 @@ def assets_table2(request):
                                                        'page_name2':u'六界资产表'},context_instance=RequestContext(request))
 
 
+
+@login_required
+def assets_table3(request):
+    path = request.path.split('/')[1]
+    if not request.user.has_perm('assets.can_view'):
+        return render(request,'public/no_passing.html')
+    return render(request, 'assets/assets_table3.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
+                                                       'path1':'assets',
+                                                       'path2':path,
+                                                       'page_name1':u'资产管理',
+                                                       'page_name2':u'租赁资产表'},context_instance=RequestContext(request))
+
+
 @login_required
 def assets_table_data(request):
     sEcho =  request.POST.get('sEcho') #标志，直接返回
@@ -44,7 +57,7 @@ def assets_table_data(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['FANO','description','model','category','residual_life','department','employee','purchase_date','payment',
+    sort = ['FANO','description','model','serial_number','residual_life','department','employee','purchase_date','payment',
             'cost','residual_value','depreciation','total_depreciation','netbook_value','comment']
 
     if  sSortDir_0 == 'asc':
@@ -55,7 +68,7 @@ def assets_table_data(request):
             result_data = table.objects.filter(Q(FANO__contains=sSearch) | \
                                                     Q(description__contains=sSearch) | \
                                                     Q(model__contains=sSearch) | \
-                                                    Q(category__contains=sSearch) | \
+                                                    Q(serial_number__contains=sSearch) | \
                                                     Q(department__contains=sSearch) | \
                                                     Q(employee__contains=sSearch) | \
                                                     Q(comment__contains=sSearch)) \
@@ -63,7 +76,7 @@ def assets_table_data(request):
             iTotalRecords = table.objects.filter(Q(FANO__contains=sSearch) | \
                                                     Q(description__contains=sSearch) | \
                                                     Q(model__contains=sSearch) | \
-                                                    Q(category__contains=sSearch) | \
+                                                    Q(serial_number__contains=sSearch) | \
                                                     Q(department__contains=sSearch) | \
                                                     Q(employee__contains=sSearch) | \
                                                     Q(comment__contains=sSearch)).count()
@@ -75,7 +88,7 @@ def assets_table_data(request):
             result_data = table.objects.filter(Q(FANO__contains=sSearch) | \
                                                     Q(description__contains=sSearch) | \
                                                     Q(model__contains=sSearch) | \
-                                                    Q(category__contains=sSearch) | \
+                                                    Q(serial_number__contains=sSearch) | \
                                                     Q(department__contains=sSearch) | \
                                                     Q(employee__contains=sSearch) | \
                                                     Q(comment__contains=sSearch)) \
@@ -83,7 +96,7 @@ def assets_table_data(request):
             iTotalRecords = table.objects.filter(Q(FANO__contains=sSearch) | \
                                                     Q(description__contains=sSearch) | \
                                                     Q(model__contains=sSearch) | \
-                                                    Q(category__contains=sSearch) | \
+                                                    Q(serial_number__contains=sSearch) | \
                                                     Q(department__contains=sSearch) | \
                                                     Q(employee__contains=sSearch) | \
                                                     Q(comment__contains=sSearch)).count()
@@ -108,7 +121,7 @@ def assets_table_data(request):
                        '0':i.FANO,
                        '1':i.description,
                        '2':i.model,
-                       '3':i.category,
+                       '3':i.serial_number,
                        '4':i.residual_life,
                        '5':i.department,
                        '6':i.employee,
@@ -140,7 +153,7 @@ def assets_table_data2(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['FANO','description','model','category','residual_life','department','employee','purchase_date','payment',
+    sort = ['FANO','description','model','serial_number','residual_life','department','employee','purchase_date','payment',
             'cost','residual_value','depreciation','total_depreciation','netbook_value','comment']
 
     if  sSortDir_0 == 'asc':
@@ -151,7 +164,7 @@ def assets_table_data2(request):
             result_data = table2.objects.filter(Q(FANO__contains=sSearch) | \
                                                     Q(description__contains=sSearch) | \
                                                     Q(model__contains=sSearch) | \
-                                                    Q(category__contains=sSearch) | \
+                                                    Q(serial_number__contains=sSearch) | \
                                                     Q(department__contains=sSearch) | \
                                                     Q(employee__contains=sSearch) | \
                                                     Q(comment__contains=sSearch)) \
@@ -159,7 +172,7 @@ def assets_table_data2(request):
             iTotalRecords = table2.objects.filter(Q(FANO__contains=sSearch) | \
                                                     Q(description__contains=sSearch) | \
                                                     Q(model__contains=sSearch) | \
-                                                    Q(category__contains=sSearch) | \
+                                                    Q(serial_number__contains=sSearch) | \
                                                     Q(department__contains=sSearch) | \
                                                     Q(employee__contains=sSearch) | \
                                                     Q(comment__contains=sSearch)).count()
@@ -171,7 +184,7 @@ def assets_table_data2(request):
             result_data = table2.objects.filter(Q(FANO__contains=sSearch) | \
                                                     Q(description__contains=sSearch) | \
                                                     Q(model__contains=sSearch) | \
-                                                    Q(category__contains=sSearch) | \
+                                                    Q(serial_number__contains=sSearch) | \
                                                     Q(department__contains=sSearch) | \
                                                     Q(employee__contains=sSearch) | \
                                                     Q(comment__contains=sSearch)) \
@@ -179,7 +192,7 @@ def assets_table_data2(request):
             iTotalRecords = table2.objects.filter(Q(FANO__contains=sSearch) | \
                                                     Q(description__contains=sSearch) | \
                                                     Q(model__contains=sSearch) | \
-                                                    Q(category__contains=sSearch) | \
+                                                    Q(serial_number__contains=sSearch) | \
                                                     Q(department__contains=sSearch) | \
                                                     Q(employee__contains=sSearch) | \
                                                     Q(comment__contains=sSearch)).count()
@@ -204,7 +217,7 @@ def assets_table_data2(request):
                        '0':i.FANO,
                        '1':i.description,
                        '2':i.model,
-                       '3':i.category,
+                       '3':i.serial_number,
                        '4':i.residual_life,
                        '5':i.department,
                        '6':i.employee,
@@ -224,6 +237,104 @@ def assets_table_data2(request):
                'aaData':aaData
     }
     return HttpResponse(simplejson.dumps(result),content_type="application/json")
+
+
+
+@login_required
+def assets_table_data3(request):
+    sEcho =  request.POST.get('sEcho') #标志，直接返回
+    iDisplayStart = int(request.POST.get('iDisplayStart'))#第几行开始
+    iDisplayLength = int(request.POST.get('iDisplayLength'))#显示多少行
+    iSortCol_0 = int(request.POST.get("iSortCol_0"))#排序行号
+    sSortDir_0 = request.POST.get('sSortDir_0')#asc/desc
+    sSearch = request.POST.get('sSearch')#高级搜索
+
+    aaData = []
+    sort = ['FANO','description','model','serial_number','residual_life','department','employee','purchase_date','payment',
+            'cost','residual_value','depreciation','total_depreciation','netbook_value','comment']
+
+    if  sSortDir_0 == 'asc':
+        if sSearch == '':
+            result_data = table3.objects.all().order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table3.objects.all().count()
+        else:
+            result_data = table3.objects.filter(Q(FANO__contains=sSearch) | \
+                                                    Q(description__contains=sSearch) | \
+                                                    Q(model__contains=sSearch) | \
+                                                    Q(serial_number__contains=sSearch) | \
+                                                    Q(department__contains=sSearch) | \
+                                                    Q(employee__contains=sSearch) | \
+                                                    Q(comment__contains=sSearch)) \
+                                                    .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table3.objects.filter(Q(FANO__contains=sSearch) | \
+                                                    Q(description__contains=sSearch) | \
+                                                    Q(model__contains=sSearch) | \
+                                                    Q(serial_number__contains=sSearch) | \
+                                                    Q(department__contains=sSearch) | \
+                                                    Q(employee__contains=sSearch) | \
+                                                    Q(comment__contains=sSearch)).count()
+    else:
+        if sSearch == '':
+            result_data = table3.objects.all().order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table3.objects.all().count()
+        else:
+            result_data = table3.objects.filter(Q(FANO__contains=sSearch) | \
+                                                    Q(description__contains=sSearch) | \
+                                                    Q(model__contains=sSearch) | \
+                                                    Q(serial_number__contains=sSearch) | \
+                                                    Q(department__contains=sSearch) | \
+                                                    Q(employee__contains=sSearch) | \
+                                                    Q(comment__contains=sSearch)) \
+                                                    .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = table3.objects.filter(Q(FANO__contains=sSearch) | \
+                                                    Q(description__contains=sSearch) | \
+                                                    Q(model__contains=sSearch) | \
+                                                    Q(serial_number__contains=sSearch) | \
+                                                    Q(department__contains=sSearch) | \
+                                                    Q(employee__contains=sSearch) | \
+                                                    Q(comment__contains=sSearch)).count()
+
+    for i in  result_data:
+        i_dict = {}
+        i_dict['payment'] = int_format(float('%.2f' % i.payment))
+        i_dict['cost'] = int_format(float('%.2f' % i.cost))
+        i_dict['residual_value'] = int_format(float('%.2f' % i.residual_value))
+        i_dict['depreciation'] = int_format(float('%.2f' % i.depreciation))
+        i_dict['total_depreciation'] = int_format(float('%.2f' % i.total_depreciation))
+        i_dict['netbook_value'] = int_format(float('%.2f' % i.netbook_value))
+        for j in i_dict.keys():
+            i_dict[j] = re.sub(r'\.(?P<d>\d)$','.\g<d>0',i_dict[j])
+
+        if str(i.purchase_date) == '1970-01-01':
+            purchase_date = ''
+        else:
+            purchase_date = str(i.purchase_date)
+
+        aaData.append({
+                       '0':i.FANO,
+                       '1':i.description,
+                       '2':i.model,
+                       '3':i.serial_number,
+                       '4':i.residual_life,
+                       '5':i.department,
+                       '6':i.employee,
+                       '7':purchase_date,
+                       '8':i_dict['payment'],
+                       '9':i_dict['cost'],
+                       '10':i_dict['residual_value'],
+                       '11':i_dict['depreciation'],
+                       '12':i_dict['total_depreciation'],
+                       '13':i_dict['netbook_value'],
+                       '14':i.comment,
+                       '15':i.id
+                      })
+    result = {'sEcho':sEcho,
+               'iTotalRecords':iTotalRecords,
+               'iTotalDisplayRecords':iTotalRecords,
+               'aaData':aaData
+    }
+    return HttpResponse(simplejson.dumps(result),content_type="application/json")
+
 
 
 @login_required
@@ -278,6 +389,7 @@ def assets_table_save(request):
     _description = request.POST.get('description')
     _model = request.POST.get('model')
     _category = request.POST.get('category')
+    serial_number = request.POST.get('serial_number')
     _department = request.POST.get('department')
     employee = request.POST.get('employee')
     purchase_date = request.POST.get('purchase_date')
@@ -314,7 +426,7 @@ def assets_table_save(request):
                 if not purchase_date or purchase_date == 'None':
                     purchase_date = datetime.date(1970,1,1)
 
-                orm = table(FANO=FANO,description=_description,model=_model,category=_category,department=_department,
+                orm = table(FANO=FANO,description=_description,model=_model,category=_category,serial_number=serial_number,department=_department,
                             employee=employee,purchase_date=purchase_date,payment=payment,cost=cost,residual_life=category[str(_category)][0],
                             residual_value=residual_value,depreciation=depreciation,total_depreciation=0,
                             netbook_value=float(cost),comment=comment)
@@ -344,6 +456,7 @@ def assets_table_save(request):
                     log_orm.save()
 
                 orm.purchase_date = purchase_date
+                orm.serial_number = serial_number
                 orm.department = _department
                 orm.employee = employee
                 orm.comment = comment
@@ -362,6 +475,7 @@ def assets_table_save2(request):
     _description = request.POST.get('description')
     _model = request.POST.get('model')
     _category = request.POST.get('category')
+    serial_number = request.POST.get('serial_number')
     _department = request.POST.get('department')
     employee = request.POST.get('employee')
     purchase_date = request.POST.get('purchase_date')
@@ -398,7 +512,7 @@ def assets_table_save2(request):
                 if not purchase_date or purchase_date == 'None':
                     purchase_date = datetime.date(1970,1,1)
 
-                orm = table2(FANO=FANO,description=_description,model=_model,category=_category,department=_department,
+                orm = table2(FANO=FANO,description=_description,model=_model,category=_category,serial_number=serial_number,department=_department,
                             employee=employee,purchase_date=purchase_date,payment=payment,cost=cost,residual_life=category[str(_category)][0],
                             residual_value=residual_value,depreciation=depreciation,total_depreciation=0,
                             netbook_value=float(cost),comment=comment)
@@ -428,6 +542,7 @@ def assets_table_save2(request):
                     log_orm.save()
 
                 orm.purchase_date = purchase_date
+                orm.serial_number = serial_number
                 orm.department = _department
                 orm.employee = employee
                 orm.comment = comment
@@ -437,6 +552,82 @@ def assets_table_save2(request):
     except Exception,e:
         print e
         return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+
+
+@login_required
+def assets_table_save3(request):
+    FANO = request.POST.get('FANO')
+    _description = request.POST.get('description')
+    _model = request.POST.get('model')
+    _category = request.POST.get('category')
+    serial_number = request.POST.get('serial_number')
+    _department = request.POST.get('department')
+    employee = request.POST.get('employee')
+    purchase_date = request.POST.get('purchase_date')
+    payment = request.POST.get('payment')
+    cost = request.POST.get('cost')
+    comment = request.POST.get('comment')
+    count = request.POST.get('count')
+    _id = request.POST.get('id')
+
+    try:
+        if not count:
+            count = 1
+        for c in range(int(count)):
+            if not _id:
+                residual_value = round(float(cost) * 0.05, 2)
+                depreciation = round((float(cost) - residual_value) / category[str(_category)][0], 2)
+
+                if not _department:
+                    _department = ''
+                if not employee:
+                    employee = ''
+                if not purchase_date or purchase_date == 'None':
+                    purchase_date = datetime.date(1970,1,1)
+
+                orm = table3(FANO=FANO,description=_description,model=_model,category=_category,serial_number=serial_number,department=_department,
+                            employee=employee,purchase_date=purchase_date,payment=payment,cost=cost,residual_life=category[str(_category)][0],
+                            residual_value=residual_value,depreciation=depreciation,total_depreciation=0,
+                            netbook_value=float(cost),comment=comment)
+                orm.save()
+
+                if employee:
+                    comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 分配给了 <b>%s</b>' % (FANO,_description,_model,employee)
+                    log_orm = log(comment=comment_info)
+                    log_orm.save()
+
+            else:
+                if employee == None:
+                    employee = ''
+                if _department == None:
+                    _department = ''
+                if not purchase_date or purchase_date == 'None':
+                    purchase_date = datetime.date(1970,1,1)
+
+                orm = table3.objects.get(id=_id)
+                if employee != orm.employee:
+                    if employee:
+                        comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 分配给了 <b>%s</b>' % (orm.FANO,_description,_model,employee)
+                        log_orm = log(comment=comment_info)
+                    else:
+                        comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 从 <b>%s</b> 被回收了 ' % (orm.FANO,_description,_model,orm.employee)
+                        log_orm = log(comment=comment_info)
+                    log_orm.save()
+
+                orm.purchase_date = purchase_date
+                orm.serial_number = serial_number
+                orm.department = _department
+                orm.employee = employee
+                orm.comment = comment
+                orm.save()
+
+        return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
+    except Exception,e:
+        print e
+        return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+
 
 
 @login_required
@@ -509,6 +700,45 @@ def assets_export_excel2(request):
     except Exception,e:
         print e
         return HttpResponse(simplejson.dumps({'code':1,'msg':u'生成Excel文件失败'}),content_type="application/json")
+
+
+
+@login_required
+def assets_export_excel3(request):
+    try:
+        workbook = xlsxwriter.Workbook(BASE_DIR + '/static/files/zulin_fixed_assets.xlsx')
+        worksheet = workbook.add_worksheet()
+
+        title = ['编号','描述','型号','类别','剩余月','部门','员工','购买日期','含税价','原价','残值','折旧价','累计折旧价','剩余价值','备注']
+
+        worksheet.write_row('B2',title)
+
+        orm = table3.objects.all()
+        count = 3
+        for i in orm:
+            try:
+                if str(i.purchase_date) == '1970-01-01':
+                    purchase_date = ''
+                else:
+                    purchase_date = i.purchase_date.strftime('%Y/%m/%d')
+                worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.residual_life,i.department,
+                                                    i.employee,purchase_date,'%.2f' % i.payment,
+                                                    '%.2f' % i.cost,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
+                                                    '%.2f' % i.total_depreciation,'%.2f' % i.netbook_value,i.comment,])
+                count += 1
+            except:
+                worksheet.write_row('B%s' % count, [i.FANO,i.description,i.model,i.category,i.residual_life,i.department,
+                                                    i.employee,i.purchase_date,'%.2f' % i.payment,
+                                                    '%.2f' % i.cost,'%.2f' % i.residual_value,'%.2f' % i.depreciation,
+                                                    '%.2f' % i.total_depreciation,'%.2f' % i.netbook_value,i.comment,])
+                count += 1
+        workbook.close()
+        return HttpResponse(simplejson.dumps({'code':0,'msg':u'生成Excel文件成功'}),content_type="application/json")
+    except Exception,e:
+        print e
+        return HttpResponse(simplejson.dumps({'code':1,'msg':u'生成Excel文件失败'}),content_type="application/json")
+
+
 
 
 @login_required

@@ -88,6 +88,42 @@
                         {% endif %}
 					</ul>
 				</li>
+{#                <li id="repay">#}
+{#					<a href="javascript:;">#}
+{#						<i class="fa fa-cny"></i>#}
+{#						<span class="title">#}
+{#							报销管理#}
+{#						</span>#}
+{#						<span class="arrow ">#}
+{#						</span>#}
+{#					</a>#}
+{#					<ul class="sub-menu">#}
+{#                        <li id="repay_set">#}
+{#							<a href="/repay_set/">#}
+{#								<i class="fa"></i>#}
+{#								预算填写#}
+{#							</a>#}
+{#						</li>#}
+{#                        <li id="repay_apply">#}
+{#							<a href="/repay_apply/">#}
+{#								<i class="fa"></i>#}
+{#								报销申请#}
+{#							</a>#}
+{#						</li>#}
+{#                        <li id="repay_approve">#}
+{#							<a href="/repay_approve/">#}
+{#								<i class="fa"></i>#}
+{#								报销审批#}
+{#							</a>#}
+{#						</li>#}
+{#                        <li id="repay_all">#}
+{#							<a href="/repay_all/">#}
+{#								<i class="fa"></i>#}
+{#								全部报销#}
+{#							</a>#}
+{#						</li>#}
+{#					</ul>#}
+{#				</li>#}
                 <li id="business_trip">
 					<a href="javascript:;">
 						<i class="fa fa-plane"></i>
@@ -167,6 +203,12 @@
 								六界资产表
 							</a>
 						</li>
+                        <li id="assets_table3">
+							<a href="/assets_table3/">
+								<i class="fa"></i>
+								租赁资产表
+							</a>
+						</li>
                         <li id="assets_log">
 							<a href="/assets_log/">
 								<i class="fa"></i>
@@ -206,36 +248,36 @@
 						</li>
 					</ul>
 				</li>
-{#                <li id="seal">#}
-{#					<a href="javascript:;">#}
-{#						<i class="fa fa-archive"></i>#}
-{#						<span class="title">#}
-{#							印章管理#}
-{#						</span>#}
-{#						<span class="arrow ">#}
-{#						</span>#}
-{#					</a>#}
-{#					<ul class="sub-menu">#}
-{#                        <li id="seal_apply">#}
-{#							<a href="/seal_apply/">#}
-{#								<i class="fa"></i>#}
-{#								印章申请#}
-{#							</a>#}
-{#						</li>#}
-{#                        <li id="seal_approve">#}
-{#							<a href="/seal_approve/">#}
-{#								<i class="fa"></i>#}
-{#								印章审批#}
-{#							</a>#}
-{#						</li>#}
-{#                        <li id="seal_all">#}
-{#							<a href="/seal_all/">#}
-{#								<i class="fa"></i>#}
-{#								全部印章#}
-{#							</a>#}
-{#						</li>#}
-{#					</ul>#}
-{#				</li>#}
+                <li id="seal">
+					<a href="javascript:;">
+						<i class="fa fa-archive"></i>
+						<span class="title">
+							印章管理
+						</span>
+						<span class="arrow ">
+						</span>
+					</a>
+					<ul class="sub-menu">
+                        <li id="seal_apply">
+							<a href="/seal_apply/">
+								<i class="fa"></i>
+								印章申请
+							</a>
+						</li>
+                        <li id="seal_approve">
+							<a href="/seal_approve/">
+								<i class="fa"></i>
+								印章审批
+							</a>
+						</li>
+                        <li id="seal_all">
+							<a href="/seal_all/">
+								<i class="fa"></i>
+								全部印章
+							</a>
+						</li>
+					</ul>
+				</li>
                 {% if request.session.personal_information_can_view %}
                 <li id="personal_information">
 					<a href="javascript:;">

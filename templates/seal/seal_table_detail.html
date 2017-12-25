@@ -609,11 +609,13 @@ $(document).ready(function () {
     $('#usage').on("click", function () {
         if ($('#usage').select2('data')['text'] == '使用'){
             $('#borrow_time').hide()
+            $('#submit').attr('disabled',true)
         }
     })
     $('#usage').on("click", function () {
         if ($('#usage').select2('data')['text'] == '外借'){
             $('#borrow_time').show()
+            $('#submit').attr('disabled',false)
         }
     })
 
@@ -926,9 +928,11 @@ function loaddata() {
             }else if(aData[2] == 2){
                 $('td:eq(2)',nRow).html('<div>退回修改</div>')
             }else if(aData[2] == 9){
-                $('td:eq(2)',nRow).html('<div>合同申请</div>')
+                $('td:eq(2)',nRow).html('<div>印章申请</div>')
             }else if(aData[2] == -1){
                 $('td:eq(2)',nRow).html('<div>申请人修改</div>')
+            }else if(aData[2] == 10){
+                $('td:eq(2)',nRow).html('<div>已归还</div>')
             }
 {#            $('td:eq(3)',nRow).on('click',function(){#}
 {#                location.href = '/'+aData[3]#}

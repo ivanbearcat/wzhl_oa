@@ -28,7 +28,7 @@
                         <th>编号</th>
                         <th>描述</th>
                         <th>型号</th>
-                        <th>类别</th>
+                        <th>序列号</th>
                         <th>剩余月</th>
                         <th>部门</th>
                         <th>员工</th>
@@ -141,6 +141,28 @@
                                              class="form-control tt-input" autocomplete="off"
                                              spellcheck="false" dir="auto"
                                              style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
+                                            aria-hidden="true"
+                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
+                                            class="tt-dropdown-menu"
+                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
+                                            class="tt-dataset-1"></div></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">序列号</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <span class="twitter-typeahead"
+                                          style="position: relative; display: inline-block;">
+                                        <input type="text" class="form-control tt-hint"
+                                               disabled="" autocomplete="off" spellcheck="false"
+                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                        <input type="text" id="serial_number"
+                                               name="typeahead_example_modal_1"
+                                               class="form-control tt-input" autocomplete="off"
+                                               spellcheck="false" dir="auto"
+                                               style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
                                             aria-hidden="true"
                                             style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
                                             class="tt-dropdown-menu"
@@ -513,6 +535,7 @@ function rule_save() {
     var model = $('#model').val();
     var category = $('#category').select2('data')
 {#    var department = $('#department').select2('data')#}
+    var serial_number = $('#serial_number').val();
     var department = $('#department').val();
     var employee = $('#employee').select2('data')
     var purchase_date = $('#purchase_date').val()
@@ -522,7 +545,7 @@ function rule_save() {
     var comment = $('#comment').val();
     var id = $('#id').val();
 
-    if (FANO == '' || description == '' || model == '' || category == '' || payment == '' || cost == '') {
+    if (FANO == '' || description == '' || model == '' || payment == '' || cost == '') {
         toastr.error('不能为空')
         return;
     }
@@ -564,6 +587,7 @@ function rule_save() {
             description:description_list[0],
             model:model,
             category:category_list[0],
+            serial_number:serial_number,
             department:department,
             employee:employee_list[0],
             purchase_date:purchase_date,
@@ -600,6 +624,7 @@ function add() {
     $('#model').val("")
     $('#category').select2("data", "")
 {#    $('#department').select2("data", "")#}
+    $('#serial_number').val("")
     $('#department').val("")
     $('#employee').select2("data", "")
     $('#purchase_date').val("")
@@ -626,7 +651,7 @@ function edit() {
         var FANO = aData[0][0];
         var description = aData[0][1];
         var model = aData[0][2];
-        var category = aData[0][3];
+        var serial_number = aData[0][3];
         var department = aData[0][5];
         var employee = aData[0][6];
         var purchase_date = aData[0][7];
@@ -636,7 +661,7 @@ function edit() {
         var id = aData[0][15];
 
         $('#FANO').val(FANO)
-        $.post('/assets_table_dropdown/', {id:id,description:description,model:model,category:category,
+        $.post('/assets_table_dropdown/', {id:id,description:description,model:model,
                                             department:department}, function (d) {
             $('#description').select2("data",d['description_edit'])
 {#            $('#model').select2("data",d['model_edit'])#}
