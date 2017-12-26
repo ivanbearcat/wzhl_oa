@@ -314,7 +314,7 @@ def vacation_refresh(request):
                     elif j.type == '季度假':
                         i.seasons_leave_available += j.days
                         i.seasons_leave_used -= j.days
-                    elif j.type == '调休假':
+                    elif j.type == '调休':
                         i.leave_in_lieu += j.days
 
                     try:
