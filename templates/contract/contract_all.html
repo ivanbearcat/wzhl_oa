@@ -244,7 +244,7 @@ $(document).ready(function () {
 
     $.post('/order_form_dropdown/', {}, function (d) {
         $('#add_process').select2({
-            multiple: false,
+            multiple: true,
             placeholder: '请选择员工',
             allowClear: true,
             data: d['list']

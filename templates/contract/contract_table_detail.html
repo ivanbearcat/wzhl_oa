@@ -1018,7 +1018,7 @@ $(document).ready(function () {
 
     $.post('/order_form_dropdown/', {}, function (d) {
         $('#add_process').select2({
-            multiple: false,
+            multiple: true,
             placeholder: '请选择员工',
             allowClear: true,
             data: d['list']
@@ -1143,10 +1143,10 @@ function agree(){
     var process_type = '{{ process_type }}'
     var comment = $('#comment2').val()
     var add_process = $('#add_process').select2('data')
-    if (add_process == null){
+    if (add_process == ''){
         add_process = ''
     }else{
-        add_process = add_process['text']
+        add_process = add_process[0]['text']
     }
     $.post('/contract_approve_process/', {id:id, status:status, process_type:process_type, comment:comment, add_process:add_process, flag:1}, function (d) {
         if (d.code == 0) {
