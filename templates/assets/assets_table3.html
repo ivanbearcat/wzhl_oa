@@ -29,16 +29,17 @@
                         <th>描述</th>
                         <th>型号</th>
                         <th>序列号</th>
-                        <th>剩余月</th>
+{#                        <th>剩余月</th>#}
                         <th>部门</th>
                         <th>员工</th>
-                        <th>购买日期</th>
-                        <th>含税价</th>
-                        <th>原价</th>
-                        <th>残值</th>
-                        <th>折旧价</th>
-                        <th>累计折旧价</th>
-                        <th>剩余价值</th>
+                        <th>起租日期</th>
+                        <th>过期日期</th>
+                        <th>月租金(含税)</th>
+{#                        <th>原价</th>#}
+{#                        <th>残值</th>#}
+{#                        <th>折旧价</th>#}
+{#                        <th>累计折旧价</th>#}
+{#                        <th>剩余价值</th>#}
                         <th>备注</th>
                         <th>ID</th>
                     </tr>
@@ -127,7 +128,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
+                        <div id="category_div" class="form-group">
                             <label class="col-sm-4 control-label">类别</label>
                             <div class="col-sm-8">
                                 <div class="input-group">
@@ -216,7 +217,7 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-4 control-label">购买日期</label>
+                            <label class="col-sm-4 control-label">起租日期</label>
                             <div class="col-sm-8">
                                 <div class="input-group">
                                     <div class="input-group input-medium date date-picker" style="float: left" data-date-format="yyyy-mm-dd" data-date-end-date="+31d" >
@@ -231,7 +232,22 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-4 control-label">含税价格</label>
+                            <label class="col-sm-4 control-label">到期日期</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <div class="input-group input-medium date date-picker" style="float: left" data-date-format="yyyy-mm-dd" data-date-end-date="+31d" >
+
+                                        <input type="text" class="form-control" id='expire_date' readonly="">
+                                        <span class="input-group-btn">
+                                            <button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+                                        </span>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">月租金(含税)</label>
 
                             <div class="col-sm-8">
                                 <div class="input-group">
@@ -253,30 +269,30 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group">
-                            <label class="col-sm-4 control-label">原价</label>
-
-                            <div class="col-sm-8">
-                                <div class="input-group">
-                                    <span class="twitter-typeahead"
-                                          style="position: relative; display: inline-block;">
-                                        <input type="text" class="form-control tt-hint"
-                                               disabled="" autocomplete="off" spellcheck="false"
-                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                        <input type="text" id="cost"
-                                               name="typeahead_example_modal_1"
-                                               class="form-control tt-input" autocomplete="off"
-                                               spellcheck="false" dir="auto"
-                                               style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
-                                            aria-hidden="true"
-                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
-                                            class="tt-dropdown-menu"
-                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
-                                            class="tt-dataset-1"></div></span></span>
-
-                                </div><button id="auto_calculate" type="button" class="btn btn-primary">自动计算</button>
-                            </div>
-                        </div>
+{#                        <div class="form-group">#}
+{#                            <label class="col-sm-4 control-label">原价</label>#}
+{##}
+{#                            <div class="col-sm-8">#}
+{#                                <div class="input-group">#}
+{#                                    <span class="twitter-typeahead"#}
+{#                                          style="position: relative; display: inline-block;">#}
+{#                                        <input type="text" class="form-control tt-hint"#}
+{#                                               disabled="" autocomplete="off" spellcheck="false"#}
+{#                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">#}
+{#                                        <input type="text" id="cost"#}
+{#                                               name="typeahead_example_modal_1"#}
+{#                                               class="form-control tt-input" autocomplete="off"#}
+{#                                               spellcheck="false" dir="auto"#}
+{#                                               style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre#}
+{#                                            aria-hidden="true"#}
+{#                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span#}
+{#                                            class="tt-dropdown-menu"#}
+{#                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div#}
+{#                                            class="tt-dataset-1"></div></span></span>#}
+{##}
+{#                                </div><button id="auto_calculate" type="button" class="btn btn-primary">自动计算</button>#}
+{#                            </div>#}
+{#                        </div>#}
                         <div class="modal-body form">
 {#                        <div class="form-group">#}
 {#                            <label class="col-sm-4 control-label">数量(选填)</label>#}
@@ -479,11 +495,6 @@ function loaddata() {
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
-            { "sClass": "center", 'sWidth': "10%"},
-            { "sClass": "center", 'sWidth': "10%"},
-            { "sClass": "center", 'sWidth': "10%"},
-            { "sClass": "center", 'sWidth': "10%"},
-            { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "5%", 'bVisible': false}
 
 
@@ -539,13 +550,14 @@ function rule_save() {
     var department = $('#department').val();
     var employee = $('#employee').select2('data')
     var purchase_date = $('#purchase_date').val()
+    var expire_date = $('#expire_date').val()
     var payment = $('#payment').val();
-    var cost = $('#cost').val();
+{#    var cost = $('#cost').val();#}
     var count = $('#count').val()
     var comment = $('#comment').val();
     var id = $('#id').val();
 
-    if (FANO == '' || description == '' || model == '' || payment == '' || cost == '') {
+    if (FANO == '' || description == '' || model == '' || payment == '') {
         toastr.error('不能为空')
         return;
     }
@@ -591,8 +603,9 @@ function rule_save() {
             department:department,
             employee:employee_list[0],
             purchase_date:purchase_date,
+            expire_date:expire_date,
             payment:payment,
-            cost:cost,
+{#            cost:cost,#}
             count:count,
             comment:comment,
             id:id
@@ -628,6 +641,7 @@ function add() {
     $('#department').val("")
     $('#employee').select2("data", "")
     $('#purchase_date').val("")
+    $('#expire_date').val("")
     $('#payment').val("")
     $('#cost').val("")
     $('count').val("")
@@ -652,13 +666,13 @@ function edit() {
         var description = aData[0][1];
         var model = aData[0][2];
         var serial_number = aData[0][3];
-        var department = aData[0][5];
-        var employee = aData[0][6];
-        var purchase_date = aData[0][7];
+        var department = aData[0][4];
+        var employee = aData[0][5];
+        var purchase_date = aData[0][6];
+        var expire_date = aData[0][7]
         var payment = aData[0][8];
-        var cost = aData[0][9];
-        var comment = aData[0][14];
-        var id = aData[0][15];
+        var comment = aData[0][9];
+        var id = aData[0][10];
 
         $('#FANO').val(FANO)
         $.post('/assets_table_dropdown/', {id:id,description:description,model:model,
@@ -672,20 +686,20 @@ function edit() {
             $('#employee').select2("data",d['edit'])
         })
         $('#model').val(model)
+        $('#serial_number').val(serial_number)
         $('#department').val(department)
         $('#purchase_date').val(purchase_date)
+        $('#expire_date').val(expire_date)
         $('#payment').val(payment)
-        $('#cost').val(cost)
         $('#comment').val(comment)
         $('#id').val(id)
 
         $('#FANO').attr('disabled',true)
         $('#description').attr('disabled',true)
         $('#model').attr('disabled',true)
-        $('#category').attr('disabled',true)
+        $('#category_div').hide()
         $('#count').attr('disabled',true)
         $('#payment').attr('disabled',true)
-        $('#cost').attr('disabled',true)
         $('#auto_calculate').attr('disabled',true)
 
         $("#myModal").modal('show')

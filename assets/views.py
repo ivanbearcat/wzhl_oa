@@ -250,8 +250,7 @@ def assets_table_data3(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['FANO','description','model','serial_number','residual_life','department','employee','purchase_date','payment',
-            'cost','residual_value','depreciation','total_depreciation','netbook_value','comment']
+    sort = ['FANO','description','model','serial_number','department','employee','purchase_date','expire_date','payment','comment']
 
     if  sSortDir_0 == 'asc':
         if sSearch == '':
@@ -297,11 +296,11 @@ def assets_table_data3(request):
     for i in  result_data:
         i_dict = {}
         i_dict['payment'] = int_format(float('%.2f' % i.payment))
-        i_dict['cost'] = int_format(float('%.2f' % i.cost))
-        i_dict['residual_value'] = int_format(float('%.2f' % i.residual_value))
-        i_dict['depreciation'] = int_format(float('%.2f' % i.depreciation))
-        i_dict['total_depreciation'] = int_format(float('%.2f' % i.total_depreciation))
-        i_dict['netbook_value'] = int_format(float('%.2f' % i.netbook_value))
+        # i_dict['cost'] = int_format(float('%.2f' % i.cost))
+        # i_dict['residual_value'] = int_format(float('%.2f' % i.residual_value))
+        # i_dict['depreciation'] = int_format(float('%.2f' % i.depreciation))
+        # i_dict['total_depreciation'] = int_format(float('%.2f' % i.total_depreciation))
+        # i_dict['netbook_value'] = int_format(float('%.2f' % i.netbook_value))
         for j in i_dict.keys():
             i_dict[j] = re.sub(r'\.(?P<d>\d)$','.\g<d>0',i_dict[j])
 
@@ -310,23 +309,23 @@ def assets_table_data3(request):
         else:
             purchase_date = str(i.purchase_date)
 
+        if str(i.expire_date) == '1970-01-01':
+            expire_date = ''
+        else:
+            expire_date = str(i.expire_date)
+
         aaData.append({
                        '0':i.FANO,
                        '1':i.description,
                        '2':i.model,
                        '3':i.serial_number,
-                       '4':i.residual_life,
-                       '5':i.department,
-                       '6':i.employee,
-                       '7':purchase_date,
+                       '4':i.department,
+                       '5':i.employee,
+                       '6':purchase_date,
+                       '7':expire_date,
                        '8':i_dict['payment'],
-                       '9':i_dict['cost'],
-                       '10':i_dict['residual_value'],
-                       '11':i_dict['depreciation'],
-                       '12':i_dict['total_depreciation'],
-                       '13':i_dict['netbook_value'],
-                       '14':i.comment,
-                       '15':i.id
+                       '9':i.comment,
+                       '10':i.id
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
@@ -565,62 +564,66 @@ def assets_table_save3(request):
     _department = request.POST.get('department')
     employee = request.POST.get('employee')
     purchase_date = request.POST.get('purchase_date')
+    expire_date = request.POST.get('expire_date')
     payment = request.POST.get('payment')
-    cost = request.POST.get('cost')
+    # cost = request.POST.get('cost')
     comment = request.POST.get('comment')
     count = request.POST.get('count')
     _id = request.POST.get('id')
 
     try:
-        if not count:
-            count = 1
-        for c in range(int(count)):
-            if not _id:
-                residual_value = round(float(cost) * 0.05, 2)
-                depreciation = round((float(cost) - residual_value) / category[str(_category)][0], 2)
+        # if not count:
+        #     count = 1
+        # for c in range(int(count)):
+        if not _id:
+            # residual_value = round(float(cost) * 0.05, 2)
+            # depreciation = round((float(cost) - residual_value) / category[str(_category)][0], 2)
 
-                if not _department:
-                    _department = ''
-                if not employee:
-                    employee = ''
-                if not purchase_date or purchase_date == 'None':
-                    purchase_date = datetime.date(1970,1,1)
+            if not _department:
+                _department = ''
+            if not employee:
+                employee = ''
+            if not purchase_date or purchase_date == 'None':
+                purchase_date = datetime.date(1970,1,1)
+            if not expire_date or expire_date == 'None':
+                expire_date = datetime.date(1970,1,1)
 
-                orm = table3(FANO=FANO,description=_description,model=_model,category=_category,serial_number=serial_number,department=_department,
-                            employee=employee,purchase_date=purchase_date,payment=payment,cost=cost,residual_life=category[str(_category)][0],
-                            residual_value=residual_value,depreciation=depreciation,total_depreciation=0,
-                            netbook_value=float(cost),comment=comment)
-                orm.save()
+            orm = table3(FANO=FANO,description=_description,model=_model,category=_category,serial_number=serial_number,department=_department,
+                        employee=employee,purchase_date=purchase_date,expire_date=expire_date,payment=payment,comment=comment)
+            orm.save()
 
+            if employee:
+                comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 分配给了 <b>%s</b>' % (FANO,_description,_model,employee)
+                log_orm = log(comment=comment_info)
+                log_orm.save()
+
+        else:
+            if employee == None:
+                employee = ''
+            if _department == None:
+                _department = ''
+            if not purchase_date or purchase_date == 'None':
+                purchase_date = datetime.date(1970,1,1)
+            if not expire_date or expire_date == 'None':
+                expire_date = datetime.date(1970,1,1)
+
+            orm = table3.objects.get(id=_id)
+            if employee != orm.employee:
                 if employee:
-                    comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 分配给了 <b>%s</b>' % (FANO,_description,_model,employee)
+                    comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 分配给了 <b>%s</b>' % (orm.FANO,_description,_model,employee)
                     log_orm = log(comment=comment_info)
-                    log_orm.save()
+                else:
+                    comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 从 <b>%s</b> 被回收了 ' % (orm.FANO,_description,_model,orm.employee)
+                    log_orm = log(comment=comment_info)
+                log_orm.save()
 
-            else:
-                if employee == None:
-                    employee = ''
-                if _department == None:
-                    _department = ''
-                if not purchase_date or purchase_date == 'None':
-                    purchase_date = datetime.date(1970,1,1)
-
-                orm = table3.objects.get(id=_id)
-                if employee != orm.employee:
-                    if employee:
-                        comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 分配给了 <b>%s</b>' % (orm.FANO,_description,_model,employee)
-                        log_orm = log(comment=comment_info)
-                    else:
-                        comment_info = '<b>%s</b> | %s | %s &nbsp&nbsp 从 <b>%s</b> 被回收了 ' % (orm.FANO,_description,_model,orm.employee)
-                        log_orm = log(comment=comment_info)
-                    log_orm.save()
-
-                orm.purchase_date = purchase_date
-                orm.serial_number = serial_number
-                orm.department = _department
-                orm.employee = employee
-                orm.comment = comment
-                orm.save()
+            orm.purchase_date = purchase_date
+            orm.expire_date = expire_date
+            orm.serial_number = serial_number
+            orm.department = _department
+            orm.employee = employee
+            orm.comment = comment
+            orm.save()
 
         return HttpResponse(simplejson.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
     except Exception,e:
