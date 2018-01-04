@@ -11,6 +11,7 @@ from personal_information.views import *
 from business_trip.views import *
 from contract.views import *
 from seal.views import *
+from repay.views import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -154,4 +155,9 @@ urlpatterns = patterns('',
     url(r'^seal_create_excel/', seal_create_excel),
     url(r'^seal_approve_alert/', seal_approve_alert),
     url(r'^export_seal_list/', export_seal_list),
+    url(r'^budget_table/', budget_table),
+    url(r'^budget_table_data/', budget_table_data),
+    url(r'^budget_table_save/', budget_table_save),
+    url(r'^repay_log/', repay_log),
+    url(r'^repay_log_data/', repay_log_data),
 )
