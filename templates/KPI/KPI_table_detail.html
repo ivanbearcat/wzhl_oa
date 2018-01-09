@@ -789,5 +789,12 @@ function grade_(){
     }
 }
 
+
+function myrefresh()
+{
+    $('#datatables').dataTable().fnDraw()
+}
+setInterval("myrefresh()",10000);
+
 </script>
 {% endblock %}

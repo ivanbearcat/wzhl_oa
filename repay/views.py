@@ -189,3 +189,15 @@ def repay_log_data(request):
                'aaData':aaData
     }
     return HttpResponse(json.dumps(result),content_type="application/json")
+
+
+
+
+@login_required
+def repay_apply(request):
+    path = request.path.split('/')[1]
+    return render(request, 'repay/repay_apply.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
+                                                       'path1':'repay',
+                                                       'path2':path,
+                                                       'page_name1':u'报销管理',
+                                                       'page_name2':u'报销申请'},context_instance=RequestContext(request))

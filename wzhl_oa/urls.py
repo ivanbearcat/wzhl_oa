@@ -160,4 +160,5 @@ urlpatterns = patterns('',
     url(r'^budget_table_save/', budget_table_save),
     url(r'^repay_log/', repay_log),
     url(r'^repay_log_data/', repay_log_data),
+    url(r'^repay_apply/', repay_apply),
 )
