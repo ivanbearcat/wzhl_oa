@@ -276,6 +276,8 @@ def contract_apply_detail(request):
                 orm.comment = comment
                 orm.contract_detail = contract_detail
                 orm.contract_amount_figures = contract_amount_figures
+                contract_amount_words = Num2MoneyFormat(float(contract_amount_figures))
+                orm.contract_amount_words = contract_amount_words
                 orm.special_requirements = special_requirements
                 orm.contract_begin_time = contract_begin_time
                 orm.contract_end_time = contract_end_time
