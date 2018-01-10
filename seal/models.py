@@ -13,7 +13,7 @@ class table(models.Model):
     seal_from = models.CharField(verbose_name='印章/证照归属', max_length=64, blank=False)
     seal_class = models.CharField(verbose_name='印章/证照类型', max_length=64, blank=False)
     usage = models.CharField(verbose_name='使用方式', max_length=16, blank=False)
-    reason = models.CharField(verbose_name='事由', max_length=16, blank=False)
+    reason = models.CharField(verbose_name='事由', max_length=128, blank=False)
     archive_path = models.CharField(verbose_name='附件', max_length=128, blank=True)
     borrow_begin_time = models.DateField(verbose_name='外借开始时间', blank=False)
     borrow_end_time = models.DateField(verbose_name='外借终止时间', blank=False)
