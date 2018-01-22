@@ -161,4 +161,6 @@ urlpatterns = patterns('',
     url(r'^repay_log/', repay_log),
     url(r'^repay_log_data/', repay_log_data),
     url(r'^repay_apply/', repay_apply),
+    url(r'^repay_apply_sub/', repay_apply_sub),
+    url(r'^repay_apply_data/', repay_apply_data),
 )

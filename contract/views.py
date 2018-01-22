@@ -770,13 +770,14 @@ def handle_uploaded_file(request,f):
         # file_name = path + f.name
         today = datetime.datetime.now()
         os.system('mkdir -p {0}{1}/{2}/{3}/'.format(path, today.year, today.month, today.day))
-        full_name = '{0}{1}/{2}/{3}/{4}'.format(path, today.year, today.month, today.day, f.name)
+        full_name = '{0}/{1}{2}/{3}/{4}/{5}'.format(BASE_DIR, path, today.year, today.month, today.day, f.name)
+        time = datetime.datetime.now().strftime('%H%M%S')
         if os.path.isfile(full_name):
-            time = datetime.datetime.now().strftime('%H%M%S')
-            full_name =  '{0}{1}/{2}/{3}/{4}_{5}'.format(path, today.year, today.month, today.day, time, f.name)
+            full_name =  '{0}/{1}{2}/{3}/{4}/{5}_{6}'.format(BASE_DIR, path, today.year, today.month, today.day, time, f.name)
             # orm = upload_files.objects.get(file_name=f.name)
             # orm.file_name = f.name + '_' + time
             # orm.save()
+        print full_name
         file = open(full_name, 'wb+')
         for chunk in f.chunks():
             file.write(chunk)
@@ -784,7 +785,7 @@ def handle_uploaded_file(request,f):
         file_size = os.path.getsize(full_name)
         # upload_files.objects.create(file_name=f.name,file_size=file_size,upload_user=request.user.username)
 
-        request.session['contract_upload_file'] = full_name
+        request.session['contract_upload_file'] = '{0}{1}/{2}/{3}/{4}_{5}'.format(path, today.year, today.month, today.day, time, f.name)
         result_code = 0
     except Exception, e:
         import traceback

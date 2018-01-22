@@ -280,45 +280,9 @@ def seal_apply_detail_sub(request):
         archive_path = request.session['seal_upload_file']
     except KeyError:
         archive_path = ''
-    return render(request, 'seal/seal_table_detail_sub.html',{'archive_path':archive_path},context_instance=RequestContext(request))
+    return render(request, 'seal/seal_table_detail_sub.html',{'archive_path':archive_path,
+                                                              'archive_path_filename':os.path.basename(archive_path)},context_instance=RequestContext(request))
 
-
-
-
-class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    file = forms.FileField()
-
-@login_required
-def handle_uploaded_file(request,f):
-    file_name = ''
-    try:
-        path = 'media/'
-        # file_name = path + f.name
-        today = datetime.datetime.now()
-        os.system('mkdir -p {0}{1}/{2}/{3}/'.format(path, today.year, today.month, today.day))
-        full_name = '{0}{1}/{2}/{3}/{4}'.format(path, today.year, today.month, today.day, f.name)
-        if os.path.isfile(full_name):
-            time = datetime.datetime.now().strftime('%H%M%S')
-            full_name =  '{0}{1}/{2}/{3}/{4}_{5}'.format(path, today.year, today.month, today.day, time, f.name)
-            # orm = upload_files.objects.get(file_name=f.name)
-            # orm.file_name = f.name + '_' + time
-            # orm.save()
-        file = open(full_name, 'wb+')
-        for chunk in f.chunks():
-            file.write(chunk)
-        file.close()
-        file_size = os.path.getsize(full_name)
-        # upload_files.objects.create(file_name=f.name,file_size=file_size,upload_user=request.user.username)
-
-        request.session['seal_upload_file'] = full_name
-        result_code = 0
-    except Exception, e:
-        import traceback
-        print traceback.format_exc()
-        # logger.error(e)
-        result_code = 1
-    return result_code
 
 
 
@@ -578,11 +542,11 @@ def handle_uploaded_file(request,f):
         path = 'media/'
         # file_name = path + f.name
         today = datetime.datetime.now()
-        os.system('mkdir -p {0}{1}/{2}/{3}/'.format(path, today.year, today.month, today.day))
-        full_name = '{0}{1}/{2}/{3}/{4}'.format(path, today.year, today.month, today.day, f.name)
+        os.system('mkdir -p {0}/{1}{2}/{3}/{4}/'.format(BASE_DIR, path, today.year, today.month, today.day))
+        full_name = '{0}/{1}{2}/{3}/{4}/{5}'.format(BASE_DIR, path, today.year, today.month, today.day, f.name)
         if os.path.isfile(full_name):
             time = datetime.datetime.now().strftime('%H%M%S')
-            full_name =  '{0}{1}/{2}/{3}/{4}_{5}'.format(path, today.year, today.month, today.day, time, f.name)
+            full_name =  '{0}/{1}{2}/{3}/{4}/{5}_{6}'.format(BASE_DIR, path, today.year, today.month, today.day, time, f.name)
             # orm = upload_files.objects.get(file_name=f.name)
             # orm.file_name = f.name + '_' + time
             # orm.save()
@@ -593,7 +557,7 @@ def handle_uploaded_file(request,f):
         file_size = os.path.getsize(full_name)
         # upload_files.objects.create(file_name=f.name,file_size=file_size,upload_user=request.user.username)
 
-        request.session['seal_upload_file'] = full_name
+        request.session['seal_upload_file'] = '{0}{1}/{2}/{3}/{4}'.format(path, today.year, today.month, today.day, f.name)
         result_code = 0
     except Exception, e:
         import traceback
