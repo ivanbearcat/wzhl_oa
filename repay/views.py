@@ -320,7 +320,7 @@ def repay_apply_data(request):
 
 
 @login_required
-def vacation_apply_save(request):
+def repay_apply_save(request):
     budget_class = request.POST.get('budget_class')
     budget_class_level2 = request.POST.get('budget_class_level2')
     department = request.POST.get('department')
