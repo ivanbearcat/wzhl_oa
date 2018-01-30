@@ -276,10 +276,15 @@ def seal_apply_detail_sub(request):
     #     orm = user_table.objects.get(name=request.user.first_name)
     # except Exception:
     #     return render(request,'public/no_passing.html')
-    try:
-        archive_path = request.session['seal_upload_file']
-    except KeyError:
-        archive_path = ''
+    table_id =  request.session.get('seal_id')
+    if not table_id:
+        try:
+            archive_path = request.session['seal_upload_file']
+        except KeyError:
+            archive_path = ''
+    else:
+        orm = table.objects.get(id=table_id)
+        archive_path = orm.archive_path
     return render(request, 'seal/seal_table_detail_sub.html',{'archive_path':archive_path,
                                                               'archive_path_filename':os.path.basename(archive_path)},context_instance=RequestContext(request))
 
