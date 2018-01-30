@@ -167,7 +167,7 @@ def contract_apply_detail(request):
             try:
                 if party_a == u'上海六界信息技术有限公司':
                     uuid_a = 'SHLJ'
-                elif party_a == u'竹筏科技（北京）科技有限公司':
+                elif party_a == u'北京七葫芦科技有限公司':
                     uuid_a = 'BJZF'
                 elif party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
                     uuid_a = 'HCQSHL'
@@ -201,7 +201,7 @@ def contract_apply_detail(request):
                             process_type = 'l'
                         else:
                             process_type = 's'
-                elif party_a == u'竹筏科技（北京）科技有限公司' or party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
+                elif party_a == u'北京七葫芦科技有限公司' or party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
                     if finance_class == u'无金额':
                         process_type = 'l'
                     if finance_class == u'收':
@@ -292,7 +292,7 @@ def contract_apply_detail(request):
                             process_type = 'l'
                         else:
                             process_type = 's'
-                elif party_a == u'竹筏科技（北京）科技有限公司' or party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
+                elif party_a == u'北京七葫芦科技有限公司' or party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
                     if finance_class == u'无金额':
                         process_type = 'l'
                     if finance_class == u'收':
@@ -863,7 +863,7 @@ def contract_approve_process(request):
                             orm.process_type = 'l'
                         else:
                             orm.process_type = 's'
-                elif orm.party_a == u'竹筏科技（北京）科技有限公司' or orm.party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
+                elif orm.party_a == u'北京七葫芦科技有限公司' or orm.party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
                     if orm.finance_class == u'无金额':
                         orm.process_type = 'l'
                     if orm.finance_class == u'收':
