@@ -413,9 +413,10 @@ def vacation_apply_data(request):
                        '3':str(i.apply_time).split('+')[0],
                        '4':i.vacation_date,
                        '5':i.days,
-                       '6':i.state,
-                       '7':i.state_interface,
-                       '8':i.id
+                       '6':i.handover_to,
+                       '7':i.state,
+                       '8':i.state_interface,
+                       '9':i.id
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
@@ -432,6 +433,7 @@ def vacation_apply_save(request):
     begin = request.POST.get('begin')
     end = request.POST.get('end')
     half_day = request.POST.get('half_day')
+    handover_to = request.POST.get('handover_to')
 
     # try:
     if begin == end:
@@ -481,7 +483,7 @@ def vacation_apply_save(request):
     supervisor_email = orm_supervisor.email
 
     orm = state(name=request.user.first_name,type=type,reason=reason,vacation_date=vacation_date,days=days,
-                state_interface=state_interface,state=1,approve_now=approve_now,real_days=0)
+                handover_to=handover_to,state_interface=state_interface,state=1,approve_now=approve_now,real_days=0)
 
     log_info = '<b>%s</b> 申请了 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,type,vacation_date,state_interface)
     orm_log = operation_log(name=request.user.first_name,operation=log_info)
@@ -662,9 +664,10 @@ def vacation_approve_data(request):
                        '4':str(i.apply_time).split('+')[0],
                        '5':i.vacation_date,
                        '6':i.days,
-                       '7':i.state,
-                       '8':i.state_interface,
-                       '9':i.id
+                       '7':i.handover_to,
+                       '8':i.state,
+                       '9':i.state_interface,
+                       '10':i.id
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
@@ -798,9 +801,10 @@ def vacation_all_data(request):
                        '4':str(i.apply_time).split('+')[0],
                        '5':i.vacation_date,
                        '6':i.days,
-                       '7':i.state,
-                       '8':i.state_interface,
-                       '9':i.id
+                       '7':i.handover_to,
+                       '8':i.state,
+                       '9':i.state_interface,
+                       '10':i.id
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,

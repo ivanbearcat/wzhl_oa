@@ -43,6 +43,7 @@ class state(models.Model):
     apply_time = models.DateTimeField(verbose_name='申请时间', auto_now_add=True)
     vacation_date = models.CharField(verbose_name='请假日期', max_length=64, blank=False)
     days = models.FloatField(verbose_name='请假天数', max_length=10, blank=False)
+    handover_to = models.CharField(verbose_name='工作交接人', max_length=30, blank=False)
     state_interface = models.CharField(verbose_name='状态显示', max_length=30, blank=False)
     state = models.PositiveSmallIntegerField(verbose_name='状态', max_length=1)
     approve_now = models.CharField(verbose_name='当前审批人', max_length=30, blank=False)

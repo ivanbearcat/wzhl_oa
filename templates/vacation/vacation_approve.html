@@ -89,6 +89,7 @@
                         <th>申请时间</th>
                         <th>请假日期</th>
                         <th>请假天数</th>
+                        <th>工作交接人</th>
                         <th>状态</th>
                         <th>审批状态</th>
                         <th>ID</th>
@@ -405,6 +406,7 @@ function loaddata() {
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "15%"},
             { "sClass": "center", 'sWidth': "5%"},
+            { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "10%", 'bVisible': false},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%", 'bVisible': false}
@@ -437,12 +439,12 @@ function loaddata() {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            if(aData[7] == 1 || aData[7] == 2 || aData[7] == 3){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp'+aData[8]+'</div>')
-            }else if(aData[7] == 8){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp'+aData[8]+'</div>')
+            if(aData[8] == 1 || aData[8] == 2 || aData[8] == 3){
+                $('td:eq(8)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp'+aData[9]+'</div>')
+            }else if(aData[8] == 8){
+                $('td:eq(8)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp'+aData[9]+'</div>')
             }else{
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp'+aData[8]+'</div>')
+                $('td:eq(8)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp'+aData[9]+'</div>')
             }
         },
         "fnServerData": function (sSource, aoData, fnCallback) {
@@ -520,7 +522,7 @@ function agree_verify() {
     var flag = 0
     if (aData.length >= 1) {
         for (var i in aData) {
-            if (aData[i][7] == 8 || aData[i][7] == 9 || aData[i][7] == 0) {
+            if (aData[i][8] == 8 || aData[i][8] == 9 || aData[i][8] == 0) {
                 toastr.error('这条申请已经审批过了')
             } else {
                 flag += 1
@@ -541,7 +543,7 @@ function agree() {
     var aData = oTT.fnGetSelectedData();
     showAjaxLoad()
     for (var i in aData) {
-        var dst_id = aData[i][9]
+        var dst_id = aData[i][10]
         $.ajax({
             url: '/vacation_approve_process/',
             type: "POST",
@@ -569,7 +571,7 @@ function disagree_verify() {
     var flag = 0
     if (aData.length >= 1) {
         for (var i in aData) {
-            if (aData[i][7] == 8 || aData[i][7] == 9 || aData[i][7] == 0) {
+            if (aData[i][8] == 8 || aData[i][8] == 9 || aData[i][8] == 0) {
                 toastr.error('这条申请已经审批过了')
             } else {
                 flag += 1
@@ -590,7 +592,7 @@ function disagree() {
     var aData = oTT.fnGetSelectedData();
     showAjaxLoad()
     for (var i in aData) {
-        var dst_id = aData[i][9]
+        var dst_id = aData[i][10]
         var disagree_reason = $('#disagree_reason').val()
         $.ajax({
             url: '/vacation_approve_process/',
