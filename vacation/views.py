@@ -613,7 +613,7 @@ def vacation_approve_data(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['name','work_site','type','reason','apply_time','vacation_date','days',None,'state_interface']
+    sort = ['name','work_site','type','reason','apply_time','vacation_date','days','handover_to',None,'state_interface']
 
 
     if  sSortDir_0 == 'asc':
@@ -700,7 +700,7 @@ def vacation_all_data(request):
     sSearch = request.POST.get('sSearch')#高级搜索
 
     aaData = []
-    sort = ['name','work_site','type','reason','apply_time','vacation_date','days',None,'state_interface']
+    sort = ['name','work_site','type','reason','apply_time','vacation_date','days','handover_to',None,'state_interface']
 
     if request.user.has_perm('vacation.can_view_all'):
         if  sSortDir_0 == 'asc':
