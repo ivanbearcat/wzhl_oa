@@ -628,12 +628,12 @@ def seal_approve_process(request):
                         orm.approve_now = u'龚晓芸'
                         Thread(target=send_mail,args=('gongxiaoyun@xiaohulu.com','印章审核提醒','<h3>有一个印章审批等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
                 else:
-                    if orm.name == u'张莉莹':
+                    if orm.name == u'吴佳伟':
                         orm.status = 5
                         orm.approve_now = ''
                     else:
                         orm.status = 2
-                        orm.approve_now = u'张莉莹'
+                        orm.approve_now = u'吴佳伟'
                         Thread(target=send_mail,args=('zhangliying@xiaohulu.com','印章审核提醒','<h3>有一个印章审批等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
 
             if status == '2':
@@ -665,7 +665,7 @@ def seal_approve_process(request):
                         orm.approve_now = u'龚晓芸'
                         Thread(target=send_mail,args=('gongxiaoyun@xiaohulu.com','印章审核提醒','<h3>有一个印章审批等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
                     else:
-                        orm.approve_now = u'张莉莹'
+                        orm.approve_now = u'吴佳伟'
                         Thread(target=send_mail,args=('zhangliying@xiaohulu.com','印章审核提醒','<h3>有一个印章审批等待您的处理，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/KPI_table_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
             if status == '4':
                 orm.status = 5

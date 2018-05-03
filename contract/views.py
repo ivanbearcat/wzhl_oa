@@ -831,15 +831,15 @@ def contract_approve_process(request):
         if orm.party_a == '上海六界信息技术有限公司':
             status_owner = {2: u'龚晓芸',
                             3: u'高茹',
-                            4: u'张莉莹',
+                            4: u'吴佳伟',
                             6: u'王娟',
                             7: u'曹津',
-                            8: u'张莉莹',
-                            9: u'张莉莹'}
+                            8: u'吴佳伟',
+                            9: u'吴佳伟'}
         else:
             status_owner = {2: u'龚晓芸',
                             3: u'高茹',
-                            4: u'张莉莹',
+                            4: u'吴佳伟',
                             6: u'王娟',
                             7: u'曹津',
                             8: u'卞蓓',
