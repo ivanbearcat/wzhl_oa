@@ -296,8 +296,8 @@ def repay_apply_data(request):
                                                     Q(contract_uuid__contains=sSearch)).count()
 
     for i in  result_data:
-        if i.apply_time.month != datetime.datetime.now().month and i.status not in (7,8,0):
-            i.status = 0
+        if i.apply_time.month != datetime.datetime.now().month and i.status not in (7,8,9):
+            i.status = 9
             i.save()
         aaData.append({
                        '0':i.name,
