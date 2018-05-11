@@ -43,3 +43,12 @@ class repay(models.Model):
     comment = models.CharField(verbose_name='备注', max_length=256, blank=True)
     status = models.PositiveSmallIntegerField(verbose_name='状态', max_length=1)
     approve_now = models.CharField(verbose_name='当前审批人', max_length=30, blank=False)
+
+
+
+class detail(models.Model):
+    apply_time = models.DateTimeField(verbose_name='提交时间', auto_now_add=True)
+    name = models.CharField(verbose_name='提交人', max_length=8, blank=False)
+    operation = models.IntegerField(verbose_name='意见', max_length=2, blank=False)
+    comment = models.CharField(verbose_name='审批内容', max_length=512, blank=True)
+    parent_id = models.IntegerField(verbose_name='父ID', max_length=8, blank=False)

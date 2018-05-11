@@ -742,17 +742,17 @@ def vacation_all_data(request):
         for i in subordinate_orm:
             subordinate.append(i.name)
 
-        orm_approved_id = user_table.objects.get(name=request.user.first_name)
-        approved_id_list = orm_approved_id.approved_id.split(',')
-        if approved_id_list != [u'']:
-            approved_id_list = map(lambda x:int(x), approved_id_list)
-        else:
-            approved_id_list = []
-
-        if  orm_approved_id.subordinate:
-            subordinate_list = orm_approved_id.subordinate.split(',')
-        else:
-            subordinate_list = []
+        # orm_approved_id = user_table.objects.get(name=request.user.first_name)
+        # approved_id_list = orm_approved_id.approved_id.split(',')
+        # if approved_id_list != [u'']:
+        #     approved_id_list = map(lambda x:int(x), approved_id_list)
+        # else:
+        #     approved_id_list = []
+        #
+        # if  orm_approved_id.subordinate:
+        #     subordinate_list = orm_approved_id.subordinate.split(',')
+        # else:
+        #     subordinate_list = []
 
         if  sSortDir_0 == 'asc':
             if sSearch == '':

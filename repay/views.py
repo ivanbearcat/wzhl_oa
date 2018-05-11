@@ -3,7 +3,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.template import RequestContext
 from django.db.models.query_utils import Q
-from repay.models import budget, log, repay
+from repay.models import budget, log, repay, detail
 from vacation.models import user_table
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
@@ -299,6 +299,7 @@ def repay_apply_data(request):
         if i.apply_time.month != datetime.datetime.now().month and i.status not in (7,8,9):
             i.status = 9
             i.save()
+
         aaData.append({
                        '0':i.name,
                        '1':str(i.apply_time),
@@ -442,8 +443,27 @@ def repay_apply_bank_detail(request):
     if _id is not None:
         orm = repay.objects.get(id=_id)
         status = orm.status
+        budget_class = orm.budget_class
+        amount = orm.amount
+        payment_date = str(orm.payment_date)
+        beneficiary_name = orm.beneficiary_name
+        beneficiary_bank = orm.beneficiary_bank
+        beneficiary_account = orm.beneficiary_account
+        description = orm.description
+        payment_type = orm.payment_type
+        invoice_type = orm.invoice_type
     else:
         status = 0
+        budget_class = ''
+        amount = ''
+        payment_date = ''
+        beneficiary_name = ''
+        beneficiary_bank = ''
+        beneficiary_account = ''
+        description = ''
+        payment_type = ''
+        invoice_type = ''
+        _id = ''
     path = request.path.split('/')[1]
 
     user_orm = user_table.objects.get(name=request.user.first_name)
@@ -455,7 +475,17 @@ def repay_apply_bank_detail(request):
                                                        'page_name2':u'银行报销申请',
                                                        'status':status,
                                                        'name':user_orm.name,
-                                                       'department':user_orm.department},context_instance=RequestContext(request))
+                                                       'department':user_orm.department,
+                                                       'budget_class':budget_class,
+                                                       'amount':amount,
+                                                       'payment_date':payment_date,
+                                                       'beneficiary_name':beneficiary_name,
+                                                       'beneficiary_bank':beneficiary_bank,
+                                                       'beneficiary_account':beneficiary_account,
+                                                       'description':description,
+                                                       'payment_type':payment_type,
+                                                       'invoice_type':invoice_type,
+                                                       'id':_id},context_instance=RequestContext(request))
 
 
 
@@ -576,19 +606,28 @@ def repay_approve_data(request):
 def repay_approve_process(request):
     flag = request.POST.get('flag')
     _id = request.POST.get('id')
+    comment = request.POST.get('comment')
     add_process = request.POST.get('add_process')
     print add_process,_id
 
     orm = repay.objects.get(id=_id)
     orm2 = user_table.objects.get(name=request.user.first_name)
 
+    if request.user.first_name != orm.approve_now:
+        return HttpResponse(json.dumps({'code':1,'msg':u'您不是审批人'}),content_type="application/json")
+
     if flag == '1':
         if orm.status == 1:
-            orm.status = 2
-            orm.approve_now = orm2.principal
-            orm3 = user_table.objects.get(name=orm2.principal)
-            email = orm3.email
-            Thread(target=send_mail,args=(email,'报销审批提醒','<h3>有一个报销事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/repay_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+            if orm2.principal == '曹津':
+                orm.status = 3
+                orm.approve_now = u'龚晓芸'
+                Thread(target=send_mail,args=('gongxiaoyun@xiaohulu.com','报销审批提醒','<h3>有一个报销事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/repay_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+            else:
+                orm.status = 2
+                orm.approve_now = orm2.principal
+                orm3 = user_table.objects.get(name=orm2.principal)
+                email = orm3.email
+                Thread(target=send_mail,args=(email,'报销审批提醒','<h3>有一个报销事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/repay_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
         elif orm.status == 2:
             orm.status = 3
             orm.approve_now = u'龚晓芸'
@@ -619,28 +658,33 @@ def repay_approve_process(request):
         elif orm.status == 6:
             orm.status = 7
             orm.approve_now = ''
+    elif flag == '2':
+        orm.status = 0
+        orm.approve_now = orm.name
     else:
-            orm.status = 8
-            orm.approve_now = ''
+        orm.status = 8
+        orm.approve_now = ''
 
-            apply_date = orm.apply_time.date()
+        apply_date = orm.apply_time.date()
 
-            day = str(apply_date.month)
-            if len(day) == 1:
-                day = '0' + day
-            year_month = str(apply_date.year) + '-' + day
+        day = str(apply_date.month)
+        if len(day) == 1:
+            day = '0' + day
+        year_month = str(apply_date.year) + '-' + day
 
-            budget_orm = budget.objects.filter(date=year_month).filter(department=orm.department).filter(budget_class=orm.budget_class)
-            if len(budget_orm) == 1:
-                for i in budget_orm:
-                    budget_used = i.budget_used - orm.amount
-                    i.budget_used = budget_used
-                    i.budget_available = i.budget_summary - i.budget_used
-                    i.save()
-            else:
-                return HttpResponse(json.dumps({'code':1,'msg':u'匹配到多条预算项目'}),content_type="application/json")
+        budget_orm = budget.objects.filter(date=year_month).filter(department=orm.department).filter(budget_class=orm.budget_class)
+        if len(budget_orm) == 1:
+            for i in budget_orm:
+                budget_used = i.budget_used - orm.amount
+                i.budget_used = budget_used
+                i.budget_available = i.budget_summary - i.budget_used
+                i.save()
+        else:
+            return HttpResponse(json.dumps({'code':1,'msg':u'匹配到多条预算项目'}),content_type="application/json")
 
     orm.save()
+    orm2 = detail(name=request.user.first_name,operation=flag,comment=comment,parent_id=_id)
+    orm2.save()
     return HttpResponse(json.dumps({'code':0,'msg':u'提交成功'}),content_type="application/json")
 
 
@@ -747,6 +791,62 @@ def repay_all_data(request):
                        '14':i.status,
                        '15':i.id,
                        '16':i.approve_now
+                      })
+    result = {'sEcho':sEcho,
+               'iTotalRecords':iTotalRecords,
+               'iTotalDisplayRecords':iTotalRecords,
+               'aaData':aaData
+    }
+    return HttpResponse(json.dumps(result),content_type="application/json")
+
+
+
+
+@login_required
+def repay_process_detail_data(request):
+    parent_id = request.GET.get('parent_id')
+    sEcho =  request.POST.get('sEcho') #标志，直接返回
+    iDisplayStart = int(request.POST.get('iDisplayStart'))#第几行开始
+    iDisplayLength = int(request.POST.get('iDisplayLength'))#显示多少行
+    iSortCol_0 = int(request.POST.get("iSortCol_0"))#排序行号
+    sSortDir_0 = request.POST.get('sSortDir_0')#asc/desc
+    sSearch = request.POST.get('sSearch')#高级搜索
+
+    aaData = []
+    sort = ['apply_time','name','operation','comment','id']
+
+    if  sSortDir_0 == 'asc':
+        if sSearch == '':
+            result_data = detail.objects.filter(parent_id=parent_id).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = detail.objects.filter(parent_id=parent_id).count()
+        else:
+            result_data = detail.objects.filter(parent_id=parent_id).filter(Q(name__contains=sSearch) | \
+                                                                                          Q(comment__contains=sSearch) | \
+                                                                                          Q(id__contains=sSearch)) \
+                                            .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = detail.objects.filter(parent_id=parent_id).filter(Q(name__contains=sSearch) | \
+                                                                                          Q(comment__contains=sSearch) | \
+                                                                                          Q(id__contains=sSearch)).count()
+    else:
+        if sSearch == '':
+            result_data = detail.objects.filter(parent_id=parent_id).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = detail.objects.filter(parent_id=parent_id).count()
+        else:
+            result_data = detail.objects.filter(parent_id=parent_id).filter(Q(name__contains=sSearch) | \
+                                                                                          Q(comment__contains=sSearch) | \
+                                                                                          Q(id__contains=sSearch)) \
+                                            .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
+            iTotalRecords = detail.objects.filter(parent_id=parent_id).filter(Q(name__contains=sSearch) | \
+                                                                                          Q(comment__contains=sSearch) | \
+                                                                                          Q(id__contains=sSearch)).count()
+
+    for i in  result_data:
+        aaData.append({
+                       '0':str(i.apply_time),
+                       '1':i.name,
+                       '2':i.operation,
+                       '3':i.comment.replace('\n','</br>'),
+                       '4':i.id
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,

@@ -171,4 +171,5 @@ urlpatterns = patterns('',
     url(r'^repay_approve_process/', repay_approve_process),
     url(r'^repay_all/', repay_all),
     url(r'^repay_all_data/', repay_all_data),
+    url(r'^repay_process_detail_data/', repay_process_detail_data),
 )
