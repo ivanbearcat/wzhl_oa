@@ -14,6 +14,7 @@ from wzhl_oa.settings import HR,BASE_DIR
 import simplejson,datetime,xlsxwriter
 from threading import Thread
 
+
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -301,8 +302,6 @@ def vacation_refresh(request):
                 # if (datetime.datetime.now() - j.apply_time).days > 30 and (j.state == 1 or j.state == 2 or j.state == 3):
                     j.state = 9
                     j.state_interface = '已过期'
-                    orm_fetch_approve_now = user_table.objects.get(name=j.approve_now)
-                    orm_fetch_approve_now.has_approve -= 1
                     j.approve_now = ''
 
                     if j.type == '法定年假':
@@ -318,7 +317,7 @@ def vacation_refresh(request):
                         i.leave_in_lieu += j.days
 
                     try:
-                        orm_fetch_approve_now.save()
+
                         j.save()
                     except Exception,e:
                         print e
