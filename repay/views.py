@@ -121,7 +121,7 @@ def budget_table_save(request):
         else:
             orm = budget.objects.get(id=_id)
             orm.budget_added = orm.budget_added + float(budget_added)
-            orm.budget_summary = orm.budget_added + orm.budget_summary
+            orm.budget_summary = float(budget_added) + orm.budget_summary
             orm.budget_available = orm.budget_summary - orm.budget_used
             orm.save()
 
@@ -130,6 +130,21 @@ def budget_table_save(request):
             orm_log.save()
 
         return HttpResponse(json.dumps({'code':0,'msg':u'保存成功'}),content_type="application/json")
+    except Exception,e:
+        print e
+        return HttpResponse(json.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+
+
+@login_required
+def budget_table_del(request):
+    _id = request.POST.get('id')
+    orm = budget.objects.get(id=_id)
+    if orm.budget_used != 0:
+        return HttpResponse(json.dumps({'code':1,'msg':u'该项预算已被使用，无法删除'}),content_type="application/json")
+    try:
+        orm.delete()
+        return HttpResponse(json.dumps({'code':0,'msg':u'删除成功'}),content_type="application/json")
     except Exception,e:
         print e
         return HttpResponse(json.dumps({'code':1,'msg':str(e)}),content_type="application/json")
@@ -344,6 +359,7 @@ def repay_apply_save(request):
     beneficiary_bank = request.POST.get('beneficiary_bank')
     contract_uuid = request.POST.get('contract_uuid')
     payment_date = request.POST.get('payment_date')
+    _id = request.POST.get('id')
 
     try:
 
@@ -363,9 +379,10 @@ def repay_apply_save(request):
         elif budget_orm[0].budget_available <= 0 and budget_orm[0].budget_available < float(amount):
             return HttpResponse(json.dumps({'code':1,'msg':u'该项预算金额不足'}),content_type="application/json")
         else:
-            budget_orm[0].budget_used = budget_orm[0].budget_used + float(amount)
-            budget_orm[0].budget_available = budget_orm[0].budget_summary - budget_orm[0].budget_used
-            budget_orm[0].save()
+            if not _id:
+                budget_orm[0].budget_used = budget_orm[0].budget_used + float(amount)
+                budget_orm[0].budget_available = budget_orm[0].budget_summary - budget_orm[0].budget_used
+                budget_orm[0].save()
 
             amount_words = Num2MoneyFormat(float(amount))
 
@@ -376,11 +393,31 @@ def repay_apply_save(request):
             if contract_uuid is None:
                 contract_uuid = ''
 
-            orm = repay(name=name,budget_class=budget_class,budget_class_level2=budget_class_level2,department=department,
-                        description=description,amount=amount,amount_words=amount_words,payment_class=payment_class,
-                        beneficiary_name=beneficiary_name,beneficiary_account=beneficiary_account,
-                        beneficiary_bank=beneficiary_bank,contract_uuid=contract_uuid,payment_date=payment_date,status=1,
-                        payment_type=payment_type,invoice_type=invoice_type,approve_now=approve_now)
+            if _id:
+                orm = repay.objects.get(id=_id)
+                orm.name = name
+                orm.budget_class = budget_class
+                orm.budget_class_level2 = budget_class_level2
+                orm.department = department
+                orm.description = description
+                orm.amount = amount
+                orm.amount_words = amount_words
+                orm.payment_class = payment_class
+                orm.beneficiary_name = beneficiary_name
+                orm.beneficiary_account = beneficiary_account
+                orm.beneficiary_bank = beneficiary_bank
+                orm.contract_uuid = contract_uuid
+                orm.payment_date = payment_date
+                orm.status = 1
+                orm.payment_type = payment_type
+                orm.invoice_type = invoice_type
+                orm.approve_now = approve_now
+            else:
+                orm = repay(name=name,budget_class=budget_class,budget_class_level2=budget_class_level2,department=department,
+                            description=description,amount=amount,amount_words=amount_words,payment_class=payment_class,
+                            beneficiary_name=beneficiary_name,beneficiary_account=beneficiary_account,
+                            beneficiary_bank=beneficiary_bank,contract_uuid=contract_uuid,payment_date=payment_date,status=1,
+                            payment_type=payment_type,invoice_type=invoice_type,approve_now=approve_now)
 
             # log_info = '<b>%s</b> 申请了 <b>%s</b>，日期为 <b>%s</b>，当前状态为 <b>%s</b>' % (request.user.first_name,type,vacation_date,state_interface)
             # orm_log = operation_log(name=request.user.first_name,operation=log_info)
@@ -814,6 +851,9 @@ def repay_process_detail_data(request):
 
     aaData = []
     sort = ['apply_time','name','operation','comment','id']
+
+    if not parent_id:
+        parent_id = None
 
     if  sSortDir_0 == 'asc':
         if sSearch == '':

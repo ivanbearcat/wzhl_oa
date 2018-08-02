@@ -766,9 +766,10 @@ class UploadFileForm(forms.Form):
 def handle_uploaded_file(request,f):
     file_name = ''
     try:
-        path = 'media/'
+        path = BASE_DIR + '/media/'
         # file_name = path + f.name
         today = datetime.datetime.now()
+        print 'mkdir -p {0}{1}/{2}/{3}/'.format(path, today.year, today.month, today.day)
         os.system('mkdir -p {0}{1}/{2}/{3}/'.format(path, today.year, today.month, today.day))
         full_name = '{0}{1}/{2}/{3}/{4}'.format(path, today.year, today.month, today.day, f.name)
         time = datetime.datetime.now().strftime('%H%M%S')
