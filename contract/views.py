@@ -766,19 +766,19 @@ class UploadFileForm(forms.Form):
 def handle_uploaded_file(request,f):
     file_name = ''
     try:
-        path = BASE_DIR + '/media/'
+        path = 'media/'
         # file_name = path + f.name
         today = datetime.datetime.now()
-        print 'mkdir -p {0}{1}/{2}/{3}/'.format(path, today.year, today.month, today.day)
-        os.system('mkdir -p {0}{1}/{2}/{3}/'.format(path, today.year, today.month, today.day))
+        print 'mkdir -p {0}/{1}{2}/{3}/{4}/'.format(BASE_DIR, path, today.year, today.month, today.day)
+        os.system('mkdir -p {0}/{1}{2}/{3}/{4}/'.format(BASE_DIR, path, today.year, today.month, today.day))
         full_name = '{0}{1}/{2}/{3}/{4}'.format(path, today.year, today.month, today.day, f.name)
         time = datetime.datetime.now().strftime('%H%M%S')
-        if os.path.isfile(full_name):
+        if os.path.isfile(BASE_DIR + '/' + full_name):
             full_name =  '{0}{1}/{2}/{3}/{4}_{5}'.format(path, today.year, today.month, today.day, time, f.name)
             # orm = upload_files.objects.get(file_name=f.name)
             # orm.file_name = f.name + '_' + time
             # orm.save()
-        file = open(full_name, 'wb+')
+        file = open(BASE_DIR + '/' + full_name, 'wb+')
         for chunk in f.chunks():
             file.write(chunk)
         file.close()
