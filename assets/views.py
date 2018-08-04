@@ -755,13 +755,13 @@ def assets_refresh(request):
             residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
             if residual_life < 0:
                 residual_life = 0
-                total_depreciation = category[str(i.category)][0]
+                total_depreciation = round(i.depreciation * category[str(i.category)][0], 2)
             else:
                 total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)
 
             i.residual_life = residual_life
             i.total_depreciation = total_depreciation
-            i.netbook_value = round(i.cost - i.total_depreciation, 2)
+            i.netbook_value = round(i.cost - total_depreciation, 2)
             i.save()
         orm2 = table2.objects.all()
         for i in orm2:
@@ -770,13 +770,13 @@ def assets_refresh(request):
             residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
             if residual_life < 0:
                 residual_life = 0
-                total_depreciation = category[str(i.category)][0]
+                total_depreciation = round(i.depreciation * category[str(i.category)][0], 2)
             else:
                 total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)
 
             i.residual_life = residual_life
             i.total_depreciation = total_depreciation
-            i.netbook_value = round(i.cost - i.total_depreciation, 2)
+            i.netbook_value = round(i.cost - total_depreciation, 2)
             i.save()
         return HttpResponse('OK',content_type="application/json")
     except Exception,e:
