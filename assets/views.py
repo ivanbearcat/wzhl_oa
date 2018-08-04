@@ -752,16 +752,30 @@ def assets_refresh(request):
         for i in orm:
             if not i.purchase_date or str(i.purchase_date).split('+')[0] == '1970-01-01':
                 continue
-            i.residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
-            i.total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)
+            residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
+            if residual_life < 0:
+                residual_life = 0
+                total_depreciation = category[str(i.category)][0]
+            else:
+                total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)
+
+            i.residual_life = residual_life
+            i.total_depreciation = total_depreciation
             i.netbook_value = round(i.cost - i.total_depreciation, 2)
             i.save()
         orm2 = table2.objects.all()
         for i in orm2:
             if not i.purchase_date or str(i.purchase_date).split('+')[0] == '1970-01-01':
                 continue
-            i.residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
-            i.total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)
+            residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
+            if residual_life < 0:
+                residual_life = 0
+                total_depreciation = category[str(i.category)][0]
+            else:
+                total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)
+
+            i.residual_life = residual_life
+            i.total_depreciation = total_depreciation
             i.netbook_value = round(i.cost - i.total_depreciation, 2)
             i.save()
         return HttpResponse('OK',content_type="application/json")
