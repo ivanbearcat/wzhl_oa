@@ -754,7 +754,6 @@ def assets_refresh(request):
                 continue
             residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
             if residual_life < 0:
-                residual_life = 0
                 total_depreciation = round(i.depreciation * category[str(i.category)][0], 2)
             else:
                 total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)
@@ -769,7 +768,6 @@ def assets_refresh(request):
                 continue
             residual_life = category[str(i.category)][0] - (today - i.purchase_date).days // 30.5
             if residual_life < 0:
-                residual_life = 0
                 total_depreciation = round(i.depreciation * category[str(i.category)][0], 2)
             else:
                 total_depreciation = round(i.depreciation * ((today - i.purchase_date).days // 30.5), 2)
