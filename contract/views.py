@@ -171,6 +171,8 @@ def contract_apply_detail(request):
                     uuid_a = 'BJZF'
                 elif party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
                     uuid_a = 'HCQSHL'
+                elif party_a == u'上海陆色网络科技有限公司':
+                    uuid_a = 'SHLS'
 
                 uuid_b = {u'商务合作':'SWHZ',
                           u'艺人经纪':'YRJJ',
@@ -193,7 +195,7 @@ def contract_apply_detail(request):
 
                 contract_amount_words = Num2MoneyFormat(float(contract_amount_figures))
 
-                if party_a == u'上海六界信息技术有限公司':
+                if party_a == u'上海六界信息技术有限公司' or party_a == '上海陆色网络科技有限公司':
                     if finance_class == u'无金额':
                         process_type = 'l'
                     else:
@@ -284,7 +286,7 @@ def contract_apply_detail(request):
                 orm.partner_qualification = partner_qualification
                 orm.apply_time = datetime.datetime.now()
                 orm.comment = comment
-                if party_a == u'上海六界信息技术有限公司':
+                if party_a == u'上海六界信息技术有限公司' or party_a == '上海陆色网络科技有限公司':
                     if finance_class == u'无金额':
                         process_type = 'l'
                     else:
@@ -829,7 +831,7 @@ def contract_approve_process(request):
 
         orm = table.objects.get(id=_id)
 
-        if orm.party_a == '上海六界信息技术有限公司':
+        if orm.party_a == '上海六界信息技术有限公司' or orm.party_a == '上海陆色网络科技有限公司':
             status_owner = {2: u'龚晓芸',
                             3: u'高茹',
                             4: u'吴佳伟',
@@ -855,7 +857,7 @@ def contract_approve_process(request):
                 principal_orm = user_table.objects.get(name=orm.name)
                 print principal_orm.principal
 
-                if orm.party_a == u'上海六界信息技术有限公司':
+                if orm.party_a == u'上海六界信息技术有限公司' or orm.party_a == '上海陆色网络科技有限公司':
                     if orm.finance_class == u'无金额':
                         orm.process_type = 'l'
                     else:
