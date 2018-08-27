@@ -30,7 +30,7 @@ class table(models.Model):
     comment = models.CharField(verbose_name='备注', max_length=512, blank=True)
     contract_detail = models.CharField(verbose_name='合同概要', max_length=400, blank=False)
     contract_amount_figures = models.FloatField(verbose_name='合同总金额小写', max_length=16, blank=False)
-    contract_amount_words = models.CharField(verbose_name='合同总金额大写', max_length=16, blank=False)
+    contract_amount_words = models.CharField(verbose_name='合同总金额大写', max_length=32, blank=False)
     special_requirements = models.CharField(verbose_name='特殊要求', max_length=512, blank=True)
     contract_begin_time = models.DateField(verbose_name='开始时间', blank=False)
     contract_end_time = models.DateField(verbose_name='终止时间', blank=False)

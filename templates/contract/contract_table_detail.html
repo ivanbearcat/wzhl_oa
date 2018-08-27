@@ -14,6 +14,7 @@
 {% block body %}
 <div class="row">
     <ul class="nav nav-pills nav-justified steps">
+{% if status < 31 or status > 33 %}
     {% if status >= 0 %}
         <li class="active">
             <a class="step">
@@ -221,7 +222,7 @@
             </a>
         </li>
     {% endif %}
-    {% if status > 9 %}
+    {% if status > 9 and status != 80 %}
         <li class="active">
             <a class="step">
                 <span class="number">
@@ -244,6 +245,78 @@
             </a>
         </li>
     {% endif %}
+{% else %}
+    {% if status > 30 %}
+        <li class="active">
+            <a class="step">
+                <span class="number">
+                     0
+                </span>
+                <span class="desc">
+                    <i class="fa fa-check"></i> 发起人
+                </span>
+            </a>
+        </li>
+    {% else %}
+        <li>
+            <a class="step">
+                <span class="number">
+                     1
+                </span>
+                <span class="desc">
+                    <i class="fa fa-times"></i> 发起人
+                </span>
+            </a>
+        </li>
+    {% endif %}
+    {% if status > 31 %}
+        <li class="active">
+            <a class="step">
+                <span class="number">
+                     1
+                </span>
+                <span class="desc">
+                    <i class="fa fa-check"></i> 财务
+                </span>
+            </a>
+        </li>
+    {% else %}
+        <li>
+            <a class="step">
+                <span class="number">
+                     1
+                </span>
+                <span class="desc">
+                    <i class="fa fa-times"></i> 财务
+                </span>
+            </a>
+        </li>
+    {% endif %}
+    {% if status > 32 %}
+        <li class="active">
+            <a class="step">
+                <span class="number">
+                     2
+                </span>
+                <span class="desc">
+                    <i class="fa fa-check"></i> 法务
+                </span>
+            </a>
+        </li>
+    {% else %}
+        <li>
+            <a class="step">
+                <span class="number">
+                     2
+                </span>
+                <span class="desc">
+                    <i class="fa fa-times"></i> 法务
+                </span>
+            </a>
+        </li>
+    {% endif %}
+{% endif %}
+
     <br>
     <div class="col-md-12">
         <!-- BEGIN EXAMPLE TABLE PORTLET-->
@@ -450,7 +523,16 @@
                                     <button id="submit2" class="btn green" type="submit" style="margin-left: -5%"><i class="fa fa-check"></i> 更新</button>
                                     {% endif %}
                                     {% if status != 0 %}
-                                    <div id="approve" class="btn purple" style="margin-left: 1%"><i class="fa fa-share"></i> 审批</div>
+                                        {% if status == 80 or status == 10 %}
+{#                                        <div id="cancellation" class="btn red" style="margin-left: -5%"><i class="fa fa-share"></i> 作废</div>#}
+                                            {% if status != 10 %}
+                                        <div id="approve" class="btn purple" style="margin-left: 1%"><i class="fa fa-share"></i> 审批</div>
+                                            {% endif %}
+                                        {% else %}
+                                            {% if status != 10 and status != 11 and status != 33 %}
+                                        <div id="approve" class="btn purple" style="margin-left: 1%"><i class="fa fa-share"></i> 审批</div>
+                                            {% endif %}
+                                        {% endif %}
                                     {% endif %}
                                 </div>
                             </div>
@@ -500,7 +582,7 @@
 
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
-                    <div class="form-group">
+                    <div id="upload_div" class="form-group">
                         <label class="col-sm-4 control-label">附件</label>
                         <div  class="col-sm-8">
                             <div class="tab-content no-space">
@@ -559,13 +641,48 @@
             <div id="button" class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 <button type="button" class="btn green" onclick="agree()"><i class="fa fa-check"></i> 通过</button>
+                {% if status != 31 and status != 32 %}
                 <button type="button" class="btn blue" onclick="back_edit()"><i class="fa fa-edit"></i> 退回修改</button>
+                {% endif %}
                 <button type="button" class="btn red" onclick="disagree()"><i class="fa fa-times"></i> 不通过</button>
             </div>
         </div>
     </div>
 </div>
+<div class="modal fade" id="myModal2" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body form">
+                <form action="#" class="form-horizontal form-row-seperated">
+                    <div class="form-group">
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>您确定要作废吗</h4></label>
+                        <div class="col-sm-8">
+                            <div class="input-group">
+                                <span class="twitter-typeahead"
+                                      style="position: relative; display: inline-block;">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group last">
+                        <label class="col-sm-4 control-label">备注</label>
 
+                        <div class="col-sm-6">
+                            <textarea class="form-control" id='comment2' style="width: 290px" rows="3"></textarea>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                        <button type="button" class="btn btn-primary" onclick="cancellation()"><i class="fa fa-check"></i>确定</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 <!--/datatables-->
 {% endblock %}
 
@@ -673,7 +790,11 @@ $(document).ready(function () {
         data: [{'text':'上海六界信息技术有限公司','id':'上海六界信息技术有限公司'},
                {'text':'北京七葫芦科技有限公司','id':'北京七葫芦科技有限公司'},
                {'text':'霍尔果斯柒色葫芦广告科技有限公司','id':'霍尔果斯柒色葫芦广告科技有限公司'},
-               {'text':'上海陆色网络科技有限公司','id':'上海陆色网络科技有限公司'}]
+               {'text':'Six World Inc.','id':'Six World Inc.'},
+               {'text':'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）','id':'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）'},
+               {'text':'上海陆色网络科技有限公司','id':'上海陆色网络科技有限公司'},
+               {'text':'上海果豆网络科技有限公司','id':'上海果豆网络科技有限公司'},
+               {'text':'北京葫芦豆科技有限公司','id':'北京葫芦豆科技有限公司'}]
     });
 
 
@@ -706,6 +827,11 @@ $(document).ready(function () {
 
 {% if status == 80 %}
     $('#button').hide()
+{% endif %}
+
+{% if status == 31 or status == 32 %}
+    $('#upload_div').hide()
+    $('#add_process_div').hide()
 {% endif %}
 
 {% if request.session.contract_id %}
@@ -1000,18 +1126,11 @@ $(document).ready(function () {
 
 
     $('#approve').on('click',function(){
-{#        var id = '{{ id }}'#}
-{#        $.cookie('id',id,{ expires: 1 })#}
-{#        var status = aData[7]#}
-{#        $.cookie('status',status,{ expires: 1 })#}
-{#        var process_type = aData[11]#}
-{#        $.cookie('process_type',process_type,{ expires: 1 })#}
-{#        if (status == '4') {#}
-{#            $('#add_process_div').show()#}
-{#        }else{#}
-{#            $('#add_process_div').hide()#}
-{#        }#}
         $("#myModal").modal('show')
+    })
+
+    $('#cancellation').on('click',function(){
+        $("#myModal2").modal('show')
     })
 
 
@@ -1100,6 +1219,8 @@ function loaddata() {
                 $('td:eq(2)',nRow).html('<div>审批不通过</div>')
             }else if(aData[2] == 2){
                 $('td:eq(2)',nRow).html('<div>退回修改</div>')
+            }else if(aData[2] == 3){
+                $('td:eq(2)',nRow).html('<div>申请作废</div>')
             }else if(aData[2] == 9){
                 $('td:eq(2)',nRow).html('<div>合同申请</div>')
             }else if(aData[2] == -1){
@@ -1137,11 +1258,12 @@ function loaddata() {
 
 
 function agree(){
-    var id = $('#id').val()
-    var status = '{{ status }}'
-    var process_type = '{{ process_type }}'
-    var comment = $('#comment2').val()
-    var add_process = $('#add_process').select2('data')
+    var id = $('#id').val();
+    var status = '{{ status }}';
+    var process_type = '{{ process_type }}';
+    var comment = $('#comment2').val();
+    var add_process = $('#add_process').select2('data');
+
     if (add_process == ''){
         add_process = ''
     }else{
@@ -1205,7 +1327,28 @@ function disagree(){
     $('#myModal').modal('hide')
 }
 
-
+function cancellation(){
+    var id = $('#id').val()
+    var status = '{{ status }}'
+{#    var process_type = '{{ process_type }}'#}
+    var comment = $('#comment2').val()
+{#    var add_process = $('#add_process').select2('data')#}
+{#    if (add_process == null){#}
+{#        add_process = ''#}
+{#    }else{#}
+{#        add_process = add_process['text']#}
+{#    }#}
+    $.post('/contract_approve_process/', {id:id, status:status, comment:comment, flag:3}, function (d) {
+        if (d.code == 0) {
+            toastr.success(d.msg)
+            $('#datatables').dataTable().fnDraw()
+            setTimeout('location.href = "/contract_apply/"',1000)
+        } else {
+            toastr.error(d.msg)
+        }
+    })
+    $('#myModal').modal('hide')
+}
 
 function add(){
     $.post('/personal_information_interview_set_session/', {id:0}, function (d) {

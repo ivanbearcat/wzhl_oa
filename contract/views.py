@@ -171,8 +171,16 @@ def contract_apply_detail(request):
                     uuid_a = 'BJZF'
                 elif party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
                     uuid_a = 'HCQSHL'
+                elif party_a == u'Six World Inc.':
+                    uuid_a = 'SWI'
+                elif party_a == u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）':
+                    uuid_a = 'LJYL'
                 elif party_a == u'上海陆色网络科技有限公司':
                     uuid_a = 'SHLS'
+                elif party_a == u'上海果豆网络科技有限公司':
+                    uuid_a = 'SHGD'
+                elif party_a == u'北京葫芦豆科技有限公司':
+                    uuid_a = 'BJHLD'
 
                 uuid_b = {u'商务合作':'SWHZ',
                           u'艺人经纪':'YRJJ',
@@ -195,7 +203,8 @@ def contract_apply_detail(request):
 
                 contract_amount_words = Num2MoneyFormat(float(contract_amount_figures))
 
-                if party_a == u'上海六界信息技术有限公司' or party_a == '上海陆色网络科技有限公司':
+                if party_a in [u'上海六界信息技术有限公司', 'Six World Inc.', u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）',
+                               u'上海陆色网络科技有限公司',u'上海果豆网络科技有限公司',u'北京葫芦豆科技有限公司']:
                     if finance_class == u'无金额':
                         process_type = 'l'
                     else:
@@ -286,7 +295,8 @@ def contract_apply_detail(request):
                 orm.partner_qualification = partner_qualification
                 orm.apply_time = datetime.datetime.now()
                 orm.comment = comment
-                if party_a == u'上海六界信息技术有限公司' or party_a == '上海陆色网络科技有限公司':
+                if party_a in [u'上海六界信息技术有限公司', 'Six World Inc.', u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）',
+                               u'上海陆色网络科技有限公司',u'上海果豆网络科技有限公司',u'北京葫芦豆科技有限公司']:
                     if finance_class == u'无金额':
                         process_type = 'l'
                     else:
@@ -831,7 +841,8 @@ def contract_approve_process(request):
 
         orm = table.objects.get(id=_id)
 
-        if orm.party_a == '上海六界信息技术有限公司' or orm.party_a == '上海陆色网络科技有限公司':
+        if orm.party_a in [u'上海六界信息技术有限公司', 'Six World Inc.', u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）',
+                           u'上海陆色网络科技有限公司',u'上海果豆网络科技有限公司',u'北京葫芦豆科技有限公司']:
             status_owner = {2: u'龚晓芸',
                             3: u'高茹',
                             4: u'吴佳伟',
@@ -848,8 +859,10 @@ def contract_approve_process(request):
                             8: u'卞蓓',
                             9: u'卞蓓'}
 
+        print status
         if request.user.first_name != orm.approve_now:
-            return HttpResponse(json.dumps({'code':1,'msg':u'您不是审批人'}),content_type="application/json")
+            if not (status == '10' and orm.name == request.user.first_name):
+                return HttpResponse(json.dumps({'code':1,'msg':u'您不是审批人'}),content_type="application/json")
 
         detail_orm = detail.objects.filter(parent_id=_id)
         if flag == '1':
@@ -857,7 +870,8 @@ def contract_approve_process(request):
                 principal_orm = user_table.objects.get(name=orm.name)
                 print principal_orm.principal
 
-                if orm.party_a == u'上海六界信息技术有限公司' or orm.party_a == '上海陆色网络科技有限公司':
+                if orm.party_a in [u'上海六界信息技术有限公司', 'Six World Inc.', u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）',
+                                   u'上海陆色网络科技有限公司',u'上海果豆网络科技有限公司',u'北京葫芦豆科技有限公司']:
                     if orm.finance_class == u'无金额':
                         orm.process_type = 'l'
                     else:
@@ -996,6 +1010,17 @@ def contract_approve_process(request):
                 orm.approve_now = ''
                 orm.archive_status = 1
 
+            if status == '31':
+                orm.status = 32
+                if orm.name != status_owner[4]:
+                    orm.approve_now = status_owner[4]
+                else:
+                    orm.approve_now = status_owner[6]
+
+            if status == '32':
+                orm.status = 33
+                orm.approve_now = ''
+
         if flag == '2':
             if int(status) <= 4:
                 orm.status = -1
@@ -1003,6 +1028,13 @@ def contract_approve_process(request):
             else:
                 orm.status = 4
                 orm.approve_now = status_owner[orm.status]
+
+        if flag == '3':
+                orm.status = 31
+                if orm.name != status_owner[2]:
+                    orm.approve_now = status_owner[2]
+                else:
+                    orm.approve_now = status_owner[3]
 
         if flag == '0':
             orm.status = 11

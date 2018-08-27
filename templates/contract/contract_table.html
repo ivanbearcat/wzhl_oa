@@ -187,7 +187,11 @@ function loaddata() {
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp已归档</div>')
             }else if(aData[7] == 11){
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已退回</div>')
-            }else if(aData[7] == 80){
+            }else if(aData[7] == 31 || aData[7] == 32){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp待作废</div>')
+            }else if(aData[7] == 33){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已作废</div>')
+            }else if(aData[7] == 80 ){
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp已盖章</div>')
             }
         },

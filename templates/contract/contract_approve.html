@@ -56,9 +56,7 @@
                 <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
                 <h4 class="modal-title">合同审批</h4>
             </div>
-
-
-
+            {% if status != 31 and status != 32 %}
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
                     <div class="form-group">
@@ -107,6 +105,7 @@
                             </div>
                         </div>
                     </div>
+                    {% endif %}
                     <div class="form-group last">
                         <label class="col-sm-4 control-label">备注</label>
 
@@ -120,7 +119,9 @@
             <div id="button" class="modal-footer">
                 <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
                 <button type="button" class="btn green" onclick="agree()"><i class="fa fa-check"></i> 通过</button>
+                {% if status != 31 and status != 32 %}
                 <button type="button" class="btn blue" onclick="back_edit()"><i class="fa fa-edit"></i> 退回修改</button>
+                {% endif %}
                 <button type="button" class="btn red" onclick="disagree()"><i class="fa fa-times"></i> 不通过</button>
             </div>
         </div>
@@ -335,7 +336,7 @@ function loaddata() {
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%"},
-            { "sClass": "center", 'sWidth': "10%"},
+            { "sClass": "center", 'sWidth': "5%", 'bVisible': false},
             { "sClass": "center", 'sWidth': "5%", 'bVisible': false},
             { "sClass": "center", 'sWidth': "5%", 'bVisible': false},
             { "sClass": "center", 'sWidth': "5%", 'bVisible': false}
@@ -398,11 +399,6 @@ function loaddata() {
                     location.href = '/contract_apply_detail/'
                 })
             })
-            $('td:eq(0)',nRow).on('click',function(){
-                $.post('/contract_set_session/', {id:aData[10], commit:0}, function (d) {
-                    location.href = '/contract_apply_detail/'
-                })
-            })
             $('td:eq(6)',nRow).on('click',function(){
                 $.post('/contract_set_session/', {id:aData[10], commit:0}, function (d) {
                     location.href = '/contract_apply_detail/'
@@ -426,6 +422,10 @@ function loaddata() {
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp已归档</div>')
             }else if(aData[7] == 11){
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已退回</div>')
+            }else if(aData[7] == 31 || aData[7] == 32){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp待作废</div>')
+            }else if(aData[7] == 33){
+                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp已作废</div>')
             }else if(aData[7] == 80){
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp已盖章</div>')
             }
