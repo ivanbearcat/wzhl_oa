@@ -14,9 +14,6 @@ from wzhl_oa.settings import HR,BASE_DIR
 import simplejson,datetime,xlsxwriter
 from threading import Thread
 
-def send_mail(a,b,c):
-    pass
-
 import sys
 reload(sys)
 sys.setdefaultencoding('utf-8')
@@ -946,7 +943,7 @@ def vacation_approve_process(request):
                             orm_alert_my.approved_id = str(orm.id)
                         orm_alert_my.save()
                         orm.save()
-                        Thread(target=send_mail,args=(apply_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                        Thread(target=send_mail,args=(HR_email,'请假申请已批准','<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
                         # send_mail(to_addr=apply_email,subject='请假申请已批准',body='<h3>您的请假申请已被批准，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')
 
                         return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")

@@ -255,6 +255,11 @@ jQuery(document).ready(function() {
             toastr.warning(d.msg)
         } else {}
     })
+    $.post('/work_out_approve_alert/', {}, function (d) {
+        if (d.code == 0) {
+            toastr.warning(d.msg)
+        } else {}
+    })
 });
 
 

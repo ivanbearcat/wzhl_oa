@@ -5,6 +5,7 @@ from login.views import *
 from order_form.views import *
 from user_manage.views import *
 from vacation.views import *
+from work_out.views import *
 from assets.views import *
 from KPI.views import *
 from personal_information.views import *
@@ -63,6 +64,16 @@ urlpatterns = patterns('',
     url(r'^vacation_log_data/', vacation_log_data),
     url(r'^vacation_export_excel/', vacation_export_excel),
     url(r'^refresh_subordinate/', refresh_subordinate),
+    url(r'^work_out_apply/', work_out_apply),
+    url(r'^work_out_apply_data/', work_out_apply_data),
+    url(r'^work_out_apply_save/', work_out_apply_save),
+    url(r'^work_out_apply_del/', work_out_apply_del),
+    url(r'^work_out_approve/', work_out_approve),
+    url(r'^work_out_approve_data/', work_out_approve_data),
+    url(r'^work_out_all/', work_out_all),
+    url(r'^work_out_all_data/', work_out_all_data),
+    url(r'^work_out_approve_process/', work_out_approve_process),
+    url(r'^work_out_approve_alert/', work_out_approve_alert),
     url(r'^assets_table/', assets_table),
     url(r'^assets_table2/', assets_table2),
     url(r'^assets_table3/', assets_table3),

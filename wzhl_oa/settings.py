@@ -136,6 +136,7 @@ INSTALLED_APPS = (
     'user_manage',
     'order_form',
     'vacation',
+    'work_out',
     'assets',
     'KPI',
     'personal_information',

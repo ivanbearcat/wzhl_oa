@@ -16,97 +16,10 @@
 {% block body %}
 <div class="row">
     <div class="col-md-12">
-        <!-- BEGIN EXAMPLE TABLE PORTLET-->
-{#        <div style="width: 9%;float:left">#}
-{#            <a href="/static/files/auto_alert.exe">#}
-{#                <h3>#}
-{#                    <span class="label label-danger">请假政策文件下载</span>#}
-{#                </h3>#}
-{#            </a>#}
-{#        </div>#}
-        <div class="container">
-
-            {% include 'vacation/vacation_apply_sub.html' %}
-            <br>
-            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
-                <div class="dashboard-stat red">
-                    <div class="visual">
-                        <i class="fa fa-download"></i>
-                    </div>
-                    <div class="details">
-                        <div class="number">
-                        </div>
-                        <a href="/static/files/员工手册 V3-正式版.pdf">
-                            <div class="desc">
-                                 查阅员工手册<br>
-                                (右键另存为可下载)
-                            </div>
-                        </a>
-                    </div>
-{#                    <a class="more" href="#">#}
-{#                         View more <i class="m-icon-swapright m-icon-white"></i>#}
-{#                    </a>#}
-                </div>
-            </div>
-{#            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">#}
-{#                <div class="dashboard-stat blue">#}
-{#                    <div class="visual">#}
-{#                        <i class="fa fa-coffee"></i>#}
-{#                    </div>#}
-{#                    <div class="details">#}
-{#                        <div class="number">#}
-{#                             {{ statutory_annual_leave_available }}#}
-{#                        </div>#}
-{#                        <div class="desc">#}
-{#                             法定年假剩余天数#}
-{#                        </div>#}
-{#                    </div>#}
-            {#        <a class="more" href="#">#}
-            {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
-            {#        </a>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">#}
-{#                <div class="dashboard-stat purple">#}
-{#                    <div class="visual">#}
-{#                        <i class="fa fa-coffee"></i>#}
-{#                    </div>#}
-{#                    <div class="details">#}
-{#                        <div class="number">#}
-{#                             {{ company_annual_leave_available }}#}
-{#                        </div>#}
-{#                        <div class="desc">#}
-{#                             公司年假剩余天数#}
-{#                        </div>#}
-{#                    </div>#}
-            {#        <a class="more" href="#">#}
-            {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
-            {#        </a>#}
-{#                </div>#}
-{#            </div>#}
-{#            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">#}
-{#                <div class="dashboard-stat yellow">#}
-{#                    <div class="visual">#}
-{#                        <i class="fa fa-coffee"></i>#}
-{#                    </div>#}
-{#                    <div class="details">#}
-{#                        <div class="number">#}
-{#                             {{ seasons_leave_available }}#}
-{#                        </div>#}
-{#                        <div class="desc">#}
-{#                             季度假剩余天数#}
-{#                        </div>#}
-{#                    </div>#}
-            {#        <a class="more" href="#">#}
-            {#             View more <i class="m-icon-swapright m-icon-white"></i>#}
-            {#        </a>#}
-{#                </div>#}
-{#            </div>#}
-        </div>
         <div class="portlet box grey tasks-widget">
             <div class="portlet-title">
                 <div class="caption">
-                    <i class="fa fa-globe"></i>请假申请
+                    <i class="fa fa-globe"></i>公事外出申请
                 </div>
             </div>
             <div class="portlet-body">
@@ -114,11 +27,13 @@
                     <thead>
                     <tr>
                         <th>姓名</th>
-                        <th>请假类型</th>
-                        <th>请假原由</th>
+                        <th>原由</th>
+                        <th>城市</th>
+                        <th>地点</th>
+                        <th>拜访对象</th>
                         <th>申请时间</th>
-                        <th>请假日期</th>
-                        <th>请假天数</th>
+                        <th>日期</th>
+                        <th>天数</th>
                         <th>工作交接人</th>
                         <th>状态</th>
                         <th>审批状态</th>
@@ -138,12 +53,12 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                    <h4 class="modal-title">请假申请</h4>
+                    <h4 class="modal-title">公事外出申请</h4>
                 </div>
                 <div class="modal-body form">
                     <form action="#" class="form-horizontal form-row-seperated">
                         <div class="form-group">
-                            <label class="col-sm-4 control-label">请假类型</label>
+                            <label class="col-sm-4 control-label">城市</label>
 
                             <div class="col-sm-8">
                                 <div class="input-group">
@@ -152,7 +67,7 @@
                                         <input type="text" class="form-control tt-hint"
                                                disabled="" autocomplete="off" spellcheck="false"
                                                style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
-                                        <div type="text" id="type"
+                                        <div type="text" id="city"
                                              name="typeahead_example_modal_1"
                                              class="form-control tt-input" autocomplete="off"
                                              spellcheck="false" dir="auto"
@@ -166,13 +81,80 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-sm-4 control-label">请假原由</label>
+                            <label class="col-sm-4 control-label">行政区</label>
+
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <span class="twitter-typeahead"
+                                          style="position: relative; display: inline-block;">
+                                        <input type="text" class="form-control tt-hint"
+                                               disabled="" autocomplete="off" spellcheck="false"
+                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                        <div type="text" id="district"
+                                             name="typeahead_example_modal_1"
+                                             class="form-control tt-input" autocomplete="off"
+                                             spellcheck="false" dir="auto"
+                                             style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"></div><pre
+                                            aria-hidden="true"
+                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
+                                            class="tt-dropdown-menu"
+                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
+                                            class="tt-dataset-1"></div></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">地点</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <span class="twitter-typeahead"
+                                          style="position: relative; display: inline-block;">
+                                        <input type="text" class="form-control tt-hint"
+                                               disabled="" autocomplete="off" spellcheck="false"
+                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                        <input type="text" id="place"
+                                               name="typeahead_example_modal_1"
+                                               class="form-control tt-input" autocomplete="off"
+                                               spellcheck="false" dir="auto"
+                                               style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
+                                            aria-hidden="true"
+                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
+                                            class="tt-dropdown-menu"
+                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
+                                            class="tt-dataset-1"></div></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">拜访对象</label>
+                            <div class="col-sm-8">
+                                <div class="input-group">
+                                    <span class="twitter-typeahead"
+                                          style="position: relative; display: inline-block;">
+                                        <input type="text" class="form-control tt-hint"
+                                               disabled="" autocomplete="off" spellcheck="false"
+                                               style="position: absolute; top: 0px; left: 0px; border-color: transparent; box-shadow: none; background: none 0% 0% / auto repeat scroll padding-box border-box rgb(255, 255, 255);">
+                                        <input type="text" id="target"
+                                               name="typeahead_example_modal_1"
+                                               class="form-control tt-input" autocomplete="off"
+                                               spellcheck="false" dir="auto"
+                                               style="width: 250px;position: relative; vertical-align: top; background-color: transparent;"><pre
+                                            aria-hidden="true"
+                                            style="position: absolute; visibility: hidden; white-space: nowrap; font-family: 'Open Sans', sans-serif; font-size: 14px; font-style: normal; font-variant: normal; font-weight: 400; word-spacing: 0px; letter-spacing: 0px; text-indent: 0px; text-rendering: auto; text-transform: none;"></pre><span
+                                            class="tt-dropdown-menu"
+                                            style="position: absolute; top: 100%; left: 0px; z-index: 100; display: none;"><div
+                                            class="tt-dataset-1"></div></span></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-sm-4 control-label">原由</label>
                             <div class="col-sm-6">
                                 <textarea class="form-control" id='reason' style="width: 290px" rows="3"></textarea>
                             </div>
                         </div>
                         <div id="reportrange_div" class="form-group">
-                            <label class="col-sm-4 control-label">请假日期</label>
+                            <label class="col-sm-4 control-label">日期</label>
                             <div class="col-sm-8">
                                 <div class="col-md-2" style="margin-left:-15px; float: left">
                                     <div id="reportrange" class="btn default">
@@ -278,7 +260,7 @@
             <div class="modal-body form">
                 <form action="#" class="form-horizontal form-row-seperated">
                     <div class="form-group">
-                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>申请病假请上传当地2级及以上公立医院出具的病假单或有效医院诊断证明扫描件，并将原件交至人力资源部。</h4></label>
+                        <label class="col-sm-4 control-label" style="text-align:center;width:100%"><h4>公事外出时请在到达外勤地点后使用钉钉签到，签到地点需与申请信息保持一致，否则将做缺勤处理</h4></label>
                         <div class="col-sm-8">
                             <div class="input-group">
                                 <span class="twitter-typeahead"
@@ -351,26 +333,61 @@ var aButtons
 /* Formating function for row details */
 
 $(document).ready(function () {
-    $('#type').select2({
+    $('#city').select2({
         multiple: false,
-        placeholder: '选择申请类型',
+        placeholder: '选择城市',
         allowClear: true,
-        data: [{'text':'法定年假','id':1},{'text':'公司年假','id':2},{'text':'季度假','id':3},
-            {'text':'病假','id':4},{'text':'调休','id':5},{'text':'事假','id':6},{'text':'婚假','id':7},
-            {'text':'产假','id':8},{'text':'陪产假','id':9},{'text':'丧假','id':10},{'text':'加班','id':11}]
+        data: [{'text':'上海','id':1},{'text':'北京','id':2},{'text':'西安','id':3},{'text':'南京','id':4}]
     });
 
-    $('#type').on("click", function () {
-        if ($('#type').select2('data')['text'] == '病假'){
-            $("#myModal3").modal('show')
-            $("#half_day_div").hide()
-            $("#half_day").select2("data", "")
-        }else{
-            $("#half_day_div").show()
+    $('#district').select2({
+        multiple: false,
+        placeholder: '选择行政区域',
+        allowClear: true,
+        data: []
+    });
+
+    $('#city').on("click", function () {
+        if ($('#city').select2('data')['text'] == '上海'){
+            $("#district").select2({
+                multiple: false,
+                placeholder: '选择行政区域',
+                allowClear: true,
+                data: [{'text':'黄浦区','id':1},{'text':'徐汇区','id':2},{'text':'长宁区','id':3},{'text':'静安区','id':4},
+                       {'text':'普陀区','id':5},{'text':'虹口区','id':6},{'text':'杨浦区','id':7},{'text':'闵行区','id':8},
+                       {'text':'宝山区','id':9},{'text':'嘉定区','id':10},{'text':'浦东新区','id':11},{'text':'金山区','id':12},
+                       {'text':'松江区','id':13},{'text':'青浦区','id':14},{'text':'奉贤区','id':15},{'text':'崇明区','id':16}]
+            })
+        }else if ($('#city').select2('data')['text'] == '北京'){
+            $("#district").select2({
+                multiple: false,
+                placeholder: '选择行政区域',
+                allowClear: true,
+                data: [{'text':'朝阳区','id':1},{'text':'海淀区','id':2},{'text':'丰台区','id':3},{'text':'昌平区','id':4},
+                       {'text':'大兴区','id':5},{'text':'通州区','id':6},{'text':'西城区','id':7},{'text':'房山区','id':8},
+                       {'text':'顺义区','id':9},{'text':'东城区','id':10},{'text':'石景山区','id':11},{'text':'密云区','id':12},
+                       {'text':'平谷区','id':13},{'text':'怀柔区','id':14},{'text':'延庆区','id':15},{'text':'门头沟区','id':16}]
+            })
+        }else if ($('#city').select2('data')['text'] == '南京'){
+            $("#district").select2({
+                multiple: false,
+                placeholder: '选择行政区域',
+                allowClear: true,
+                data: [{'text':'玄武区','id':1},{'text':'秦淮区','id':2},{'text':'鼓楼区','id':3},{'text':'建邺区','id':4},
+                       {'text':'栖霞区','id':5},{'text':'雨花台区','id':6},{'text':'浦口区','id':7},{'text':'江宁区','id':8},
+                       {'text':'六合区','id':9},{'text':'溧水区','id':10},{'text':'高淳区','id':11}]
+            })
+        }else if ($('#city').select2('data')['text'] == '西安'){
+            $("#district").select2({
+                multiple: false,
+                placeholder: '选择行政区域',
+                allowClear: true,
+                data: [{'text':'未央区','id':1},{'text':'新城区','id':2},{'text':'碑林区','id':3},{'text':'莲湖区','id':4},
+                       {'text':'灞桥区','id':5},{'text':'雁塔区','id':6},{'text':'阎良区','id':7},{'text':'临潼区','id':8},
+                       {'text':'长安区','id':9},{'text':'高陵区','id':10},{'text':'鄠邑区','id':11},{'text':'蓝田县','id':12},
+                       {'text':'周至县','id':13},{'text':'西咸新区','id':14}]
+            })
         }
-{#        if ($('#type').select2('data')['text'] == '调休'){#}
-{#            $("#myModal4").modal('show')#}
-{#        }#}
     })
 
     $('#reportrange').daterangepicker({
@@ -378,7 +395,7 @@ $(document).ready(function () {
 
     //    startDate: moment().subtract('days', 29),
     //    endDate: moment(),
-        minDate: moment().subtract(90,'days'),
+        minDate: moment().subtract('days', 1),
         maxDate: moment().add(90,'days'),
         dateLimit: {
             days: 2800
@@ -481,7 +498,7 @@ $(document).ready(function () {
 });
 function loaddata() {
     oTable = $('#datatables').dataTable({
-        "sAjaxSource": "/vacation_apply_data/?rand=" + Math.random(),
+        "sAjaxSource": "/work_out_apply_data/?rand=" + Math.random(),
         "sDom": "<'row-fluid'<'span6'T><'span6'f>r><'table-scrollable't><'fluid'<'span3'l><'span4'i><'span5'p>>",
         "bServerSide": true,
         "bPaginate": true, // 是否使用分页
@@ -502,6 +519,8 @@ function loaddata() {
             'aButtons': aButtons
         },
         "aoColumns": [
+            { "sClass": "center", 'sWidth': "5%"},
+            { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "15%"},
@@ -541,12 +560,12 @@ function loaddata() {
             $('input[type=checkbox],input[type=radio],input[type=file]').uniform()
         },
         "fnRowCallback": function (nRow, aData, iDisplayIndex, iDisplayIndexFull) {
-            if(aData[7] == 1 || aData[7] == 2 || aData[7] == 3){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp'+aData[8]+'</div>')
-            }else if(aData[7] == 8){
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp'+aData[8]+'</div>')
+            if(aData[9] == 1 || aData[9] == 2 || aData[9] == 3){
+                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp'+aData[10]+'</div>')
+            }else if(aData[9] == 8){
+                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/running.png">&nbsp'+aData[10]+'</div>')
             }else{
-                $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp'+aData[8]+'</div>')
+                $('td:eq(9)',nRow).html('<div><img src="/static/assets/img/stoping.png">&nbsp'+aData[10]+'</div>')
             }
         },
         "fnServerData": function (sSource, aoData, fnCallback) {
@@ -563,7 +582,10 @@ function loaddata() {
 }
 
 function rule_save() {
-    var type = $('#type').select2('data');
+    var city = $('#city').select2('data');
+    var district = $('#district').select2('data');
+    var place = $('#place').val();
+    var target = $('#target').val();
     var reason = $('#reason').val();
     var vacation_date = $('#reportrange span').html().split('  -&gt;  ')
     var begin = vacation_date[0]
@@ -571,7 +593,7 @@ function rule_save() {
     var half_day = $('#half_day').select2('data');
     var handover_to = $('#handover_to').select2('data')
 
-    if (type == null || handover_to == '') {
+    if (city == null || reason == '' || handover_to == '') {
         toastr.error('请填写完整')
         return;
     }
@@ -596,10 +618,13 @@ function rule_save() {
 
 
     $.ajax({
-        url: '/vacation_apply_save/',
+        url: '/work_out_apply_save/',
         type: "POST",
         data: {
-            type: type['text'],
+            city: city['text'],
+            district: district['text'],
+            place: place,
+            target: target,
             reason: reason,
             begin: begin,
             end: end,
@@ -607,7 +632,6 @@ function rule_save() {
             handover_to: handover_to
         },
         success: function (d) {
-            $('#refresh').load('/vacation_apply_sub/')
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
@@ -627,8 +651,12 @@ function contain(Array, s) {
     return false;
 }
 function add() {
+    $("#myModal3").modal('show')
     $('#days').html("")
-    $('#type').select2("data", "")
+    $('#city').select2("data", "")
+    $('#district').select2("data", "")
+    $('#place').val("")
+    $('#target').val("")
     $('#reason').val("")
     $('#reportrange span').html(moment().format('YYYY-MM-DD') + '  ->  ' + moment().format('YYYY-MM-DD'))
     $('#half_day').select2("data", "")
@@ -660,7 +688,7 @@ function del() {
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
         showAjaxLoad()
-        $.post('/vacation_apply_del/', {id: aData[0][9]}, function (d) {
+        $.post('/work_out_apply_del/', {id: aData[0][11]}, function (d) {
             $('#refresh').load('/vacation_apply_sub/')
             hideAjaxLoad()
             if (d.code == 0) {
