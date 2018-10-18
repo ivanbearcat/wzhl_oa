@@ -593,7 +593,7 @@ function rule_save() {
     var half_day = $('#half_day').select2('data');
     var handover_to = $('#handover_to').select2('data')
 
-    if (city == null || reason == '' || handover_to == '') {
+    if (city == null || district == null || place == '' || target == '' || reason == '' || handover_to == '') {
         toastr.error('请填写完整')
         return;
     }
