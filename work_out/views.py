@@ -47,33 +47,17 @@ def work_out_apply_data(request):
             result_data = table.objects.filter(name=request.user.first_name).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
             iTotalRecords = table.objects.filter(name=request.user.first_name).count()
         else:
-            result_data = table.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
-                                                                                    Q(type__contains=sSearch) | \
-                                                                                    Q(vacation_date__contains=sSearch) | \
-                                                                                    Q(days__contains=sSearch) | \
-                                                                                    Q(state_interface__contains=sSearch)) \
+            result_data = table.objects.filter(name=request.user.first_name).filter(name__contains=sSearch) \
                                                     .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
-                                                                                    Q(type__contains=sSearch) | \
-                                                                                    Q(vacation_date__contains=sSearch) | \
-                                                                                    Q(days__contains=sSearch) | \
-                                                                                    Q(state_interface__contains=sSearch)).count()
+            iTotalRecords = table.objects.filter(name=request.user.first_name).filter(name__contains=sSearch).count()
     else:
         if sSearch == '':
             result_data = table.objects.filter(name=request.user.first_name).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
             iTotalRecords = table.objects.filter(name=request.user.first_name).count()
         else:
-            result_data = table.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
-                                                                                    Q(type__contains=sSearch) | \
-                                                                                    Q(vacation_date__contains=sSearch) | \
-                                                                                    Q(days__contains=sSearch) | \
-                                                                                    Q(state_interface__contains=sSearch)) \
+            result_data = table.objects.filter(name=request.user.first_name).filter(name__contains=sSearch) \
                                                     .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.filter(name=request.user.first_name).filter(Q(name__contains=sSearch) | \
-                                                                                    Q(type__contains=sSearch) | \
-                                                                                    Q(vacation_date__contains=sSearch) | \
-                                                                                    Q(days__contains=sSearch) | \
-                                                                                    Q(state_interface__contains=sSearch)).count()
+            iTotalRecords = table.objects.filter(name=request.user.first_name).filter(name__contains=sSearch).count()
 
     for i in  result_data:
         aaData.append({
@@ -195,33 +179,17 @@ def work_out_approve_data(request):
             result_data = table.objects.filter(approve_now=request.user.first_name).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
             iTotalRecords = table.objects.filter(approve_now=request.user.first_name).count()
         else:
-            result_data = table.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
-                                                    Q(type__contains=sSearch) | \
-                                                    Q(vacation_date__contains=sSearch) | \
-                                                    Q(days__contains=sSearch) | \
-                                                    Q(state_interface__contains=sSearch)) \
+            result_data = table.objects.filter(approve_now=request.user.first_name).filter(name__contains=sSearch) \
                                                     .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
-                                                    Q(type__contains=sSearch) | \
-                                                    Q(vacation_date__contains=sSearch) | \
-                                                    Q(days__contains=sSearch) | \
-                                                    Q(state_interface__contains=sSearch)).count()
+            iTotalRecords = table.objects.filter(approve_now=request.user.first_name).filter(name__contains=sSearch).count()
     else:
         if sSearch == '':
             result_data = table.objects.filter(approve_now=request.user.first_name).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
             iTotalRecords = table.objects.filter(approve_now=request.user.first_name).count()
         else:
-            result_data = table.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
-                                                    Q(type__contains=sSearch) | \
-                                                    Q(vacation_date__contains=sSearch) | \
-                                                    Q(days__contains=sSearch) | \
-                                                    Q(state_interface__contains=sSearch)) \
+            result_data = table.objects.filter(approve_now=request.user.first_name).filter(name__contains=sSearch) \
                                                     .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-            iTotalRecords = table.objects.filter(approve_now=request.user.first_name).filter(Q(name__contains=sSearch) | \
-                                                    Q(type__contains=sSearch) | \
-                                                    Q(vacation_date__contains=sSearch) | \
-                                                    Q(days__contains=sSearch) | \
-                                                    Q(state_interface__contains=sSearch)).count()
+            iTotalRecords = table.objects.filter(approve_now=request.user.first_name).filter(name__contains=sSearch).count()
 
 
     for i in  result_data:
@@ -284,33 +252,17 @@ def work_out_all_data(request):
                 result_data = table.objects.all().order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
                 iTotalRecords = table.objects.all().count()
             else:
-                result_data = table.objects.filter(Q(name__contains=sSearch) | \
-                                                        Q(type__contains=sSearch) | \
-                                                        Q(vacation_date__contains=sSearch) | \
-                                                        Q(days__contains=sSearch) | \
-                                                        Q(state_interface__contains=sSearch)) \
+                result_data = table.objects.filter(name__contains=sSearch) \
                                                         .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = table.objects.filter(Q(name__contains=sSearch) | \
-                                                        Q(type__contains=sSearch) | \
-                                                        Q(vacation_date__contains=sSearch) | \
-                                                        Q(days__contains=sSearch) | \
-                                                        Q(state_interface__contains=sSearch)).count()
+                iTotalRecords = table.objects.filter(name__contains=sSearch).count()
         else:
             if sSearch == '':
                 result_data = table.objects.all().order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
                 iTotalRecords = table.objects.all().count()
             else:
-                result_data = table.objects.filter(Q(name__contains=sSearch) | \
-                                                        Q(type__contains=sSearch) | \
-                                                        Q(vacation_date__contains=sSearch) | \
-                                                        Q(days__contains=sSearch) | \
-                                                        Q(state_interface__contains=sSearch)) \
+                result_data = table.objects.filter(name__contains=sSearch) \
                                                         .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = table.objects.filter(Q(name__contains=sSearch) | \
-                                                        Q(type__contains=sSearch) | \
-                                                        Q(vacation_date__contains=sSearch) | \
-                                                        Q(days__contains=sSearch) | \
-                                                        Q(state_interface__contains=sSearch)).count()
+                iTotalRecords = table.objects.filter(name__contains=sSearch).count()
 
     else:
         subordinate = []
@@ -335,33 +287,17 @@ def work_out_all_data(request):
                 result_data = table.objects.filter(Q(approve_now=request.user.first_name) | Q(name__in=subordinate)).order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
                 iTotalRecords = table.objects.filter(Q(approve_now=request.user.first_name) | Q(name__in=subordinate)).count()
             else:
-                result_data = table.objects.filter(Q(approve_now=request.user.first_name) | Q(name__in=subordinate)).filter(Q(name__contains=sSearch) | \
-                                                        Q(type__contains=sSearch) | \
-                                                        Q(vacation_date__contains=sSearch) | \
-                                                        Q(days__contains=sSearch) | \
-                                                        Q(state_interface__contains=sSearch)) \
+                result_data = table.objects.filter(Q(approve_now=request.user.first_name) | Q(name__in=subordinate)).filter(name__contains=sSearch) \
                                                         .order_by(sort[iSortCol_0])[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = table.objects.filter(Q(approve_now=request.user.first_name) | Q(name__in=subordinate)).filter(Q(name__contains=sSearch) | \
-                                                        Q(type__contains=sSearch) | \
-                                                        Q(vacation_date__contains=sSearch) | \
-                                                        Q(days__contains=sSearch) | \
-                                                        Q(state_interface__contains=sSearch)).count()
+                iTotalRecords = table.objects.filter(Q(approve_now=request.user.first_name) | Q(name__in=subordinate)).filter(name__contains=sSearch).count()
         else:
             if sSearch == '':
                 result_data = table.objects.filter(Q(approve_now=request.user.first_name) | Q(name__in=subordinate)).order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
                 iTotalRecords = table.objects.filter(Q(approve_now=request.user.first_name) | Q(name__in=subordinate)).count()
             else:
-                result_data = table.objects.filter(Q(approve_now=request.user.first_name) | Q(name__in=subordinate)).filter(Q(name__contains=sSearch) | \
-                                                        Q(type__contains=sSearch) | \
-                                                        Q(vacation_date__contains=sSearch) | \
-                                                        Q(days__contains=sSearch) | \
-                                                        Q(state_interface__contains=sSearch)) \
+                result_data = table.objects.filter(Q(approve_now=request.user.first_name) | Q(name__in=subordinate)).filter(name__contains=sSearch) \
                                                         .order_by(sort[iSortCol_0]).reverse()[iDisplayStart:iDisplayStart+iDisplayLength]
-                iTotalRecords = table.objects.filter(Q(approve_now=request.user.first_name) | Q(name__in=subordinate)).filter(Q(name__contains=sSearch) | \
-                                                        Q(type__contains=sSearch) | \
-                                                        Q(vacation_date__contains=sSearch) | \
-                                                        Q(days__contains=sSearch) | \
-                                                        Q(state_interface__contains=sSearch)).count()
+                iTotalRecords = table.objects.filter(Q(approve_now=request.user.first_name) | Q(name__in=subordinate)).filter(name__contains=sSearch).count()
 
     for i in  result_data:
         try:
