@@ -29,6 +29,7 @@ class table(models.Model):
     bank_account = models.CharField(verbose_name='银行账号', max_length=24, blank=True)
     comment = models.CharField(verbose_name='备注', max_length=512, blank=True)
     contract_detail = models.CharField(verbose_name='合同概要', max_length=400, blank=False)
+    currency_type = models.CharField(verbose_name='货币类型', max_length=16, blank=False)
     contract_amount_figures = models.FloatField(verbose_name='合同总金额小写', max_length=16, blank=False)
     contract_amount_words = models.CharField(verbose_name='合同总金额大写', max_length=32, blank=False)
     special_requirements = models.CharField(verbose_name='特殊要求', max_length=512, blank=True)

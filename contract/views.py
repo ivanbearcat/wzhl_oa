@@ -134,6 +134,7 @@ def contract_apply_detail(request):
     bank = request.POST.get('bank')
     bank_account = request.POST.get('bank_account')
     contract_detail = request.POST.get('contract_detail')
+    currency_type = request.POST.get('currency_type')
     contract_amount_figures = request.POST.get('contract_amount_figures')
     special_requirements = request.POST.get('special_requirements')
     contract_begin_time = request.POST.get('begin')
@@ -203,28 +204,31 @@ def contract_apply_detail(request):
 
                 contract_amount_words = Num2MoneyFormat(float(contract_amount_figures))
 
-                if party_a in [u'上海六界信息技术有限公司', 'Six World Inc.', u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）',
-                               u'上海陆色网络科技有限公司',u'上海果豆网络科技有限公司',u'北京葫芦豆科技有限公司']:
-                    if finance_class == u'无金额':
-                        process_type = 'l'
-                    else:
-                        if float(contract_amount_figures) >= 10000:
+                if currency_type != '美元':
+                    if party_a in [u'上海六界信息技术有限公司', 'Six World Inc.', u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）',
+                                   u'上海陆色网络科技有限公司',u'上海果豆网络科技有限公司',u'北京葫芦豆科技有限公司']:
+                        if finance_class == u'无金额':
                             process_type = 'l'
                         else:
-                            process_type = 's'
-                elif party_a == u'北京七葫芦科技有限公司' or party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
-                    if finance_class == u'无金额':
-                        process_type = 'l'
-                    if finance_class == u'收':
-                        if float(contract_amount_figures) >= 500000:
+                            if float(contract_amount_figures) >= 10000:
+                                process_type = 'l'
+                            else:
+                                process_type = 's'
+                    elif party_a == u'北京七葫芦科技有限公司' or party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
+                        if finance_class == u'无金额':
                             process_type = 'l'
-                        else:
-                            process_type = 's'
-                    if finance_class == u'支':
-                        if float(contract_amount_figures) >= 200000:
-                            process_type = 'l'
-                        else:
-                            process_type = 's'
+                        if finance_class == u'收':
+                            if float(contract_amount_figures) >= 500000:
+                                process_type = 'l'
+                            else:
+                                process_type = 's'
+                        if finance_class == u'支':
+                            if float(contract_amount_figures) >= 200000:
+                                process_type = 'l'
+                            else:
+                                process_type = 's'
+                else:
+                    process_type = 'l'
 
                 if user_info_orm.principal == u'曹津' and process_type == 'l':
                     print user_info_orm.principal
@@ -238,7 +242,7 @@ def contract_apply_detail(request):
                             contract_uuid=contract_uuid,origin_contract_uuid=origin_contract_uuid,contract_name=contract_name,\
                             party_b=party_b,address=address,contacts=contacts,e_mail=e_mail,phone_1=phone_1,phone_2=phone_2,\
                             fax=fax,bank=bank,bank_account=bank_account,comment=comment,contract_detail=contract_detail,\
-                            contract_amount_figures=contract_amount_figures,contract_amount_words=contract_amount_words,\
+                            currency_type=currency_type,contract_amount_figures=contract_amount_figures,contract_amount_words=contract_amount_words,\
                             special_requirements=special_requirements,contract_begin_time=contract_begin_time,\
                             contract_end_time=contract_end_time,partner_qualification=partner_qualification,stamp_status=0,\
                             archive_status=0,status=status,approve_now=approve_now,commit_time=datetime.datetime.now(),process_type=process_type)
@@ -286,6 +290,7 @@ def contract_apply_detail(request):
                 orm.bank_account = bank_account
                 orm.comment = comment
                 orm.contract_detail = contract_detail
+                orm.currency_type = currency_type
                 orm.contract_amount_figures = contract_amount_figures
                 contract_amount_words = Num2MoneyFormat(float(contract_amount_figures))
                 orm.contract_amount_words = contract_amount_words
@@ -295,28 +300,33 @@ def contract_apply_detail(request):
                 orm.partner_qualification = partner_qualification
                 orm.apply_time = datetime.datetime.now()
                 orm.comment = comment
-                if party_a in [u'上海六界信息技术有限公司', 'Six World Inc.', u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）',
-                               u'上海陆色网络科技有限公司',u'上海果豆网络科技有限公司',u'北京葫芦豆科技有限公司']:
-                    if finance_class == u'无金额':
-                        process_type = 'l'
-                    else:
-                        if float(contract_amount_figures) >= 10000:
+
+                if currency_type != '美元':
+                    if party_a in [u'上海六界信息技术有限公司', 'Six World Inc.', u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）',
+                                   u'上海陆色网络科技有限公司',u'上海果豆网络科技有限公司',u'北京葫芦豆科技有限公司']:
+                        if finance_class == u'无金额':
                             process_type = 'l'
                         else:
-                            process_type = 's'
-                elif party_a == u'北京七葫芦科技有限公司' or party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
-                    if finance_class == u'无金额':
-                        process_type = 'l'
-                    if finance_class == u'收':
-                        if float(contract_amount_figures) >= 500000:
+                            if float(contract_amount_figures) >= 10000:
+                                process_type = 'l'
+                            else:
+                                process_type = 's'
+                    elif party_a == u'北京七葫芦科技有限公司' or party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
+                        if finance_class == u'无金额':
                             process_type = 'l'
-                        else:
-                            process_type = 's'
-                    if finance_class == u'支':
-                        if float(contract_amount_figures) >= 200000:
-                            process_type = 'l'
-                        else:
-                            process_type = 's'
+                        if finance_class == u'收':
+                            if float(contract_amount_figures) >= 500000:
+                                process_type = 'l'
+                            else:
+                                process_type = 's'
+                        if finance_class == u'支':
+                            if float(contract_amount_figures) >= 200000:
+                                process_type = 'l'
+                            else:
+                                process_type = 's'
+                else:
+                    process_type = 'l'
+
                 orm.process_type = process_type
 
                 # if orm.status == 0:
@@ -359,6 +369,7 @@ def contract_apply_detail(request):
                                                      'bank_account':orm.bank_account,
                                                      'comment':orm.comment.replace('\r\n','\\n'),
                                                      'contract_detail':orm.contract_detail.replace('\r\n','\\n'),
+                                                     'currency_type':orm.currency_type,
                                                      'contract_amount_figures':orm.contract_amount_figures,
                                                      'contract_amount_words':orm.contract_amount_words,
                                                      'special_requirements':orm.special_requirements.replace('\r\n','\\n'),
@@ -869,29 +880,31 @@ def contract_approve_process(request):
             if status == '-1':
                 principal_orm = user_table.objects.get(name=orm.name)
                 print principal_orm.principal
-
-                if orm.party_a in [u'上海六界信息技术有限公司', 'Six World Inc.', u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）',
-                                   u'上海陆色网络科技有限公司',u'上海果豆网络科技有限公司',u'北京葫芦豆科技有限公司']:
-                    if orm.finance_class == u'无金额':
-                        orm.process_type = 'l'
-                    else:
-                        if float(orm.contract_amount_figures) >= 10000:
+                if orm.currency_type != '美元':
+                    if orm.party_a in [u'上海六界信息技术有限公司', 'Six World Inc.', u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）',
+                                       u'上海陆色网络科技有限公司',u'上海果豆网络科技有限公司',u'北京葫芦豆科技有限公司']:
+                        if orm.finance_class == u'无金额':
                             orm.process_type = 'l'
                         else:
-                            orm.process_type = 's'
-                elif orm.party_a == u'北京七葫芦科技有限公司' or orm.party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
-                    if orm.finance_class == u'无金额':
-                        orm.process_type = 'l'
-                    if orm.finance_class == u'收':
-                        if float(orm.contract_amount_figures) >= 500000:
+                            if float(orm.contract_amount_figures) >= 10000:
+                                orm.process_type = 'l'
+                            else:
+                                orm.process_type = 's'
+                    elif orm.party_a == u'北京七葫芦科技有限公司' or orm.party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
+                        if orm.finance_class == u'无金额':
                             orm.process_type = 'l'
-                        else:
-                            orm.process_type = 's'
-                    if orm.finance_class == u'支':
-                        if float(orm.contract_amount_figures) >= 200000:
-                            orm.process_type = 'l'
-                        else:
-                            orm.process_type = 's'
+                        if orm.finance_class == u'收':
+                            if float(orm.contract_amount_figures) >= 500000:
+                                orm.process_type = 'l'
+                            else:
+                                orm.process_type = 's'
+                        if orm.finance_class == u'支':
+                            if float(orm.contract_amount_figures) >= 200000:
+                                orm.process_type = 'l'
+                            else:
+                                orm.process_type = 's'
+                else:
+                    orm.process_type = 'l'
                 orm.save()
 
                 if principal_orm.principal == u'曹津' and orm.process_type == 'l':
