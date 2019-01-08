@@ -549,7 +549,7 @@ function agree() {
     $.post('/business_trip_approve_process/', {id:id, status:status, flag:1}, function (d) {
         if (d.code == 0) {
             toastr.success(d.msg)
-            $('#datatables').dataTable().fnDraw()
+            $('#datatables').dataTable().fnDraw(false)
         } else {
             toastr.error(d.msg)
         }
@@ -565,7 +565,7 @@ function disagree() {
     $.post('/business_trip_approve_process/', {id:id, status:status, flag:0}, function (d) {
         if (d.code == 0) {
             toastr.success(d.msg)
-            $('#datatables').dataTable().fnDraw()
+            $('#datatables').dataTable().fnDraw(false)
         } else {
             toastr.error(d.msg)
         }
