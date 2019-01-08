@@ -832,3 +832,14 @@ def business_trip_create_excel(requests):
     except Exception,e:
         print e
         return HttpResponse(json.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+
+
+
+@login_required
+def business_trip_approve_alert(request):
+    orm = table.objects.filter(approve_now=request.user.first_name)
+    if len(orm) > 0:
+        msg = '有%s个出差事件等待您的审批' % len(orm)
+        return HttpResponse(json.dumps({'code':0,'msg':msg}),content_type="application/json")
+    else:
+        return HttpResponse(json.dumps({'code':1}),content_type="application/json")

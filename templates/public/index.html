@@ -260,6 +260,11 @@ jQuery(document).ready(function() {
             toastr.warning(d.msg)
         } else {}
     })
+    $.post('/business_trip_approve_alert/', {}, function (d) {
+        if (d.code == 0) {
+            toastr.warning(d.msg)
+        } else {}
+    })
 });
 
 
