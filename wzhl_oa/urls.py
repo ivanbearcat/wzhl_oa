@@ -13,6 +13,7 @@ from business_trip.views import *
 from contract.views import *
 from seal.views import *
 from repay.views import *
+from used_form.views import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -44,6 +45,7 @@ urlpatterns = patterns('',
     url(r'^order_form_del/', order_form_del),
     url(r'^upload_menu/', upload_menu),
     url(r'^summary/', summary),
+    url(r'^used_form/', used_form),
     url(r'^vacation_table/', vacation_table),
     url(r'^vacation_table_data/', vacation_table_data),
     url(r'^vacation_table_save/', vacation_table_save),
