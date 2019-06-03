@@ -729,7 +729,7 @@ function round(v,e){
 
 $('#auto_calculate').click(function(){
     var payment = $('#payment').val()
-    $('#cost').val(round(payment / 1.17,2))
+    $('#cost').val(round(payment - (payment / 100 * 13),2))
 })
 
 </script>
