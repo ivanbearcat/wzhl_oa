@@ -234,6 +234,26 @@
 {#                        {% endif %}#}
 					</ul>
 				</li>
+            {% if request.session.contract_can_view_anchor_contract %}
+                <li id="anchor_contract">
+					<a href="javascript:;">
+						<i class="fa fa-pencil"></i>
+						<span class="title">
+							艺人合同
+						</span>
+						<span class="arrow ">
+						</span>
+					</a>
+					<ul class="sub-menu">
+                        <li id="anchor_contract_table">
+							<a href="/anchor_contract_table/">
+								<i class="fa"></i>
+								艺人合同管理
+							</a>
+						</li>
+					</ul>
+				</li>
+            {% endif %}
                 {% if request.session.assets_can_view %}
                 <li id="assets">
 					<a href="javascript:;">
