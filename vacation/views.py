@@ -433,8 +433,8 @@ def vacation_apply_save(request):
     half_day = request.POST.get('half_day')
     handover_to = request.POST.get('handover_to')
 
-    if type == '加班' and datetime.datetime.now().isoweekday() in [1, 2, 3, 4, 5]:
-        return HttpResponse(simplejson.dumps({'code': 1, 'msg': u'周一至周五无法申请加班'}), content_type="application/json")
+    # if type == '加班' and datetime.datetime.now().isoweekday() in [1, 2, 3, 4, 5]:
+    #     return HttpResponse(simplejson.dumps({'code': 1, 'msg': u'周一至周五无法申请加班'}), content_type="application/json")
     # try:
     if begin == end:
         days = 1
