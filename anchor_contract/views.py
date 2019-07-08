@@ -8,7 +8,7 @@ import json
 
 
 # server_name = 'http://voting-test1.hub520.com'
-server_name = 'http://qacontract.xiaohulu.com'
+server_name = 'http://contract.xiaohulu.com'
 
 @login_required
 def anchor_contract_table(request):
@@ -30,15 +30,22 @@ def anchor_contract_data(request):
     _type = data.get('type')
     data = {
         'client_id': 'admin',
-        'type': int(_type),
+        'type': 2,
         'pagesize': 1000000000
     }
     res = requests.post(server_name + '/contractsList', data=data)
     res = json.loads(res.text)
+
     if res.get('code') == '0':
-        tableData = res['data']['list']
+        tableData_all = res['data']['list']
     else:
         return HttpResponse(json.dumps({'code': 1, 'msg': res['msg']}), content_type="application/json")
+
+    tableData = []
+    for i in tableData_all:
+        if i['party_a'] == int(_type):
+            tableData.append(i)
+
     for i in tableData:
         if i['party_a'] == 1:
             i['status'] = '未签署'

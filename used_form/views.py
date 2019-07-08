@@ -3,14 +3,16 @@ from django.shortcuts import render
 from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 import os
+from wzhl_oa.settings import BASE_DIR
 
 
 @login_required
 def used_form(request):
-    hr_forms_bd = os.listdir('./media/used_form/hr/bd')
-    hr_forms_zd = os.listdir('./media/used_form/hr/zd')
-    fn_forms_bd = os.listdir('./media/used_form/fn/bd')
-    fn_forms_zd = os.listdir('./media/used_form/fn/zd')
+    print(BASE_DIR , '++++++++++++')
+    hr_forms_bd = os.listdir(BASE_DIR + '/media/used_form/hr/bd')
+    hr_forms_zd = os.listdir(BASE_DIR + '/media/used_form/hr/zd')
+    fn_forms_bd = os.listdir(BASE_DIR + '/media/used_form/fn/bd')
+    fn_forms_zd = os.listdir(BASE_DIR + '/media/used_form/fn/zd')
     path = request.path.split('/')[1]
     return render(request, 'used_form/used_form.html',{'user':'%s%s' % (request.user.last_name,request.user.first_name),
                                                  'path1':'form',
