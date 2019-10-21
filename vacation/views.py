@@ -577,10 +577,10 @@ def vacation_apply_del(request):
             orm_user.leave_in_lieu += orm.days
         orm_user.save()
 
-        approve_now = orm.approve_now
-        orm_supervisor = user_table.objects.get(name=approve_now)
-        orm_supervisor.has_approve -= 1
-        orm_supervisor.save()
+        # approve_now = orm.approve_now
+        # orm_supervisor = user_table.objects.get(name=approve_now)
+        # orm_supervisor.has_approve -= 1
+        # orm_supervisor.save()
 
         log_info = '<b>%s</b> 取消了 <b>%s</b> 的申请，日期为 <b>%s</b>' % (request.user.first_name,orm.type,orm.vacation_date)
         orm_log = operation_log(name=request.user.first_name,operation=log_info)
