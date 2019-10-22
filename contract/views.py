@@ -13,6 +13,9 @@ import os
 from libs.common import Num2MoneyFormat
 from django import forms
 from openpyxl import load_workbook
+from threading import Thread
+from libs.sendmail import send_mail
+
 
 @login_required
 def contract_apply(request):
@@ -1054,6 +1057,11 @@ def contract_approve_process(request):
         if flag == '0':
             orm.status = 11
             orm.approve_now = ''
+
+        approve_now_orm = user_table.objects.get(name=orm.approve_now)
+        email = approve_now_orm.email
+        Thread(target=send_mail, args=(email, '合同审批提醒',
+                                       '<h3>有一个合同事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/contract_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
 
         orm.apply_time = datetime.datetime.now()
         orm.save()
