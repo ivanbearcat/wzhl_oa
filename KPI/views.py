@@ -957,8 +957,8 @@ def create_excel(requests):
     user_table_orm = user_table.objects.get(name=KPI_table_orm.name)
     KPI_table_detail_orm_iter = table_detail.objects.filter(name=KPI_table_orm.name,KPI_name=KPI_table_orm.KPI_name)
 
-    if KPI_table_orm.status != 7:
-        return HttpResponse(simplejson.dumps({'code':1,'msg':'您的绩效未完成无法生成Excel'}),content_type="application/json")
+    #if KPI_table_orm.status != 7:
+    #    return HttpResponse(simplejson.dumps({'code':1,'msg':'您的绩效未完成无法生成Excel'}),content_type="application/json")
 
     name = user_table_orm.name
     join_date = user_table_orm.join_date
