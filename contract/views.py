@@ -1058,8 +1058,8 @@ def contract_approve_process(request):
             orm.status = 11
             orm.approve_now = ''
 
-        approve_now_orm = user_table.objects.get(name=orm.approve_now)
-        if approve_now_orm:
+        if orm.approve_now:
+            approve_now_orm = user_table.objects.get(name=orm.approve_now)
             email = approve_now_orm.email
             Thread(target=send_mail, args=(email, '合同审批提醒',
                                        '<h3>有一个合同事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/contract_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
