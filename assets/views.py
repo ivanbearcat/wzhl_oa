@@ -940,7 +940,7 @@ def assets_export_excel3(request):
 @login_required
 def assets_export_excel4(request):
     try:
-        workbook = xlsxwriter.Workbook(BASE_DIR + '/static/files/liujie_fixed_assets.xlsx')
+        workbook = xlsxwriter.Workbook(BASE_DIR + '/static/files/luse_fixed_assets.xlsx')
         worksheet = workbook.add_worksheet()
 
         title = ['编号','描述','型号','类别','剩余月','部门','员工','购买日期','含税价','原价','残值','折旧价','累计折旧价','剩余价值','备注']
