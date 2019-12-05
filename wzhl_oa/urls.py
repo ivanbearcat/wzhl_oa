@@ -15,6 +15,7 @@ from seal.views import *
 from repay.views import *
 from used_form.views import *
 from anchor_contract.views import *
+from organization.views import *
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -196,4 +197,6 @@ urlpatterns = patterns('',
     url(r'^anchor_contract_data/', anchor_contract_data),
     url(r'^anchor_contract_view/', anchor_contract_view),
     url(r'^anchor_contract_sign/', anchor_contract_sign),
+    url(r'^organization_main/', organization_main),
+    url(r'^organization_sub1/', organization_sub1),
 )
