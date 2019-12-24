@@ -94,8 +94,9 @@ def vacation_table_data(request):
                        '16':i.seasons_leave_used,
                        '17':i.seasons_leave_total,
                        '18':i.leave_in_lieu,
-                       '19':i.email,
-                       '20':i.id,
+                       '19': i.last_year_leave,
+                       '20':i.email,
+                       '21':i.id,
                       })
     result = {'sEcho':sEcho,
                'iTotalRecords':iTotalRecords,
@@ -182,7 +183,7 @@ def vacation_table_save(request):
                          statutory_annual_leave_total=statutory_annual_leave_total,company_annual_leave_available=company_annual_leave_available,
                          company_annual_leave_used=0,company_annual_leave_total=company_annual_leave_total,seasons_leave_available=1,
                          seasons_leave_used=0,seasons_leave_total=1,leave_in_lieu=0,has_approve=0,approved_id='',
-                         has_KPI_commit=0,KPI_commit_id='',positive_date=positive_date_datetime)
+                         has_KPI_commit=0,KPI_commit_id='',positive_date=positive_date_datetime,last_year_leave=0)
 
         try:
             orm.save()
@@ -314,6 +315,8 @@ def vacation_refresh(request):
                         i.seasons_leave_used -= j.days
                     elif j.type == '调休':
                         i.leave_in_lieu += j.days
+                    elif j.type == '去年假期':
+                        i.last_year_leave += j.days
 
                     try:
 
@@ -344,6 +347,7 @@ def vacation_apply(request):
                                                        'statutory_annual_leave_available':orm.statutory_annual_leave_available,
                                                        'company_annual_leave_available':orm.company_annual_leave_available,
                                                        'seasons_leave_available':orm.seasons_leave_available,
+                                                       'last_year_leave': orm.last_year_leave,
                                                        'leave_in_lieu':orm.leave_in_lieu},context_instance=RequestContext(request))
 
 @login_required
@@ -356,6 +360,7 @@ def vacation_apply_sub(request):
     return render(request, 'vacation/vacation_apply_sub.html',{'statutory_annual_leave_available':orm.statutory_annual_leave_available,
                                                        'company_annual_leave_available':orm.company_annual_leave_available,
                                                        'seasons_leave_available':orm.seasons_leave_available,
+                                                       'last_year_leave': orm.last_year_leave,
                                                        'leave_in_lieu':orm.leave_in_lieu},context_instance=RequestContext(request))
 
 @login_required
@@ -477,6 +482,10 @@ def vacation_apply_save(request):
         if days > orm_fetch_supervisor.leave_in_lieu:
             return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的调休剩余不足'}),content_type="application/json")
         orm_fetch_supervisor.leave_in_lieu -= days
+    if type == '去年假期':
+        if days > orm_fetch_supervisor.last_year_leave:
+            return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的去年假期剩余不足'}),content_type="application/json")
+        orm_fetch_supervisor.last_year_leave -= days
 
     orm_fetch_supervisor.save()
 
@@ -575,6 +584,8 @@ def vacation_apply_del(request):
             orm_user.seasons_leave_used -= orm.days
         if orm.type == '调休':
             orm_user.leave_in_lieu += orm.days
+        if orm.type == '去年假期':
+            orm_user.last_year_leave += orm.days
         orm_user.save()
 
         # approve_now = orm.approve_now

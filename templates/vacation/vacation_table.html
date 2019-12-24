@@ -49,6 +49,7 @@
                         <th>已用季度假</th>
                         <th>总季度假</th>
                         <th>调休假</th>
+                        <th>去年假期</th>
                         <th>邮箱地址</th>
                         <th>ID</th>
                     </tr>
@@ -411,6 +412,7 @@ function loaddata() {
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "5%"},
+            { "sClass": "center", 'sWidth': "5%"},
             { "sClass": "center", 'sWidth': "10%"},
             { "sClass": "center", 'sWidth': "10%", 'bVisible': false}
         ],
@@ -646,7 +648,7 @@ function del() {
     var aData = oTT.fnGetSelectedData();
     if (aData.length == 1) {
         showAjaxLoad()
-        $.post('/vacation_table_del/', {id: aData[0][20]}, function (d) {
+        $.post('/vacation_table_del/', {id: aData[0][21]}, function (d) {
             hideAjaxLoad()
             if (d.code == 0) {
                 toastr.success(d.msg)
