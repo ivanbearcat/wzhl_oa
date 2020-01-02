@@ -1221,6 +1221,8 @@ def vacation_approve_process(request):
                 fetch_email.seasons_leave_used -= orm.days
             if orm.type == '调休':
                 fetch_email.leave_in_lieu += orm.days
+            if orm.type == '去年假期':
+                fetch_email.last_year_leave += orm.days
             fetch_email.save()
             Thread(target=send_mail,args=(email,'请假申请被拒绝','<h3>您的请假申请被拒绝，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % disagree_reason)).start()
             # send_mail(to_addr=email,subject='请假申请被拒绝',body='<h3>您的请假申请被拒绝，请在OA系统中查看。</h3><br>拒绝理由：<font color="red">%s</font><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。' % disagree_reason)
