@@ -584,8 +584,8 @@ function edit() {
         var join_date = aData[0][5];
         var graduate_year = aData[0][6];
         var positive_date = aData[0][7];
-        var email = aData[0][19];
-        var id = aData[0][20];
+        var email = aData[0][20];
+        var id = aData[0][21];
         $.post('/order_form_dropdown/', {id:id,name:name}, function (d) {
             $('#name').select2({
                 multiple: true,
