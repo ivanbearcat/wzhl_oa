@@ -487,6 +487,8 @@ def vacation_apply_save(request):
             return HttpResponse(simplejson.dumps({'code':1,'msg':u'您的去年假期剩余不足'}),content_type="application/json")
         if datetime.datetime.now().date() >= datetime.date(datetime.datetime.now().year, 4, 1):
             return HttpResponse(simplejson.dumps({'code': 1, 'msg': u'您的去年假期已超过使用期限'}),content_type="application/json")
+        if datetime.date(int(begin.split()[0].split('-')[0]), int(begin.split()[0].split('-')[1]), int(begin.split()[0].split('-')[2])) >= datetime.date(datetime.datetime.now().year, 4, 1):
+            return HttpResponse(simplejson.dumps({'code': 1, 'msg': u'超出使用日期限制'}),content_type="application/json")
         orm_fetch_supervisor.last_year_leave -= days
 
     orm_fetch_supervisor.save()
