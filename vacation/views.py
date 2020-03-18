@@ -880,22 +880,46 @@ def vacation_approve_process(request):
                     return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
             if orm.state == 1:
                 orm_fetch_principal = user_table.objects.get(name=orm.name)
-                # if orm_fetch_principal.supervisor != orm_fetch_principal.principal and orm.real_days >= 2:
-                approve_now = orm_fetch_principal.principal
-                state_interface = u'等待 ' + orm_fetch_principal.principal + u' 审批'
-                orm_supervisor = user_table.objects.get(name=approve_now)
-                supervisor_email = orm_supervisor.email
-                Thread(target=send_mail,args=(supervisor_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
-                try:
-                    orm.state_interface = state_interface
-                    orm.approve_now = approve_now
-                    orm.state = 2
-                    orm.save()
-                    return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
-                except Exception,e:
-                    print e
-                    return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
-                # else:
+                if orm_fetch_principal.supervisor != orm_fetch_principal.principal:
+                    approve_now = orm_fetch_principal.principal
+                    state_interface = u'等待 ' + orm_fetch_principal.principal + u' 审批'
+                    orm_supervisor = user_table.objects.get(name=approve_now)
+                    supervisor_email = orm_supervisor.email
+                    Thread(target=send_mail,args=(supervisor_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    try:
+                        orm.state_interface = state_interface
+                        orm.approve_now = approve_now
+                        orm.state = 2
+                        orm.save()
+                        return HttpResponse(simplejson.dumps({'code':0,'msg':u'审批成功'}),content_type="application/json")
+                    except Exception,e:
+                        print e
+                        return HttpResponse(simplejson.dumps({'code':1,'msg':str(e)}),content_type="application/json")
+                else:
+                    HR_email = HR['email']
+                    state_interface = u'等待 ' + HR['name'] + u' 审批'
+                    state_interface = state_interface
+                    approve_now = HR['name']
+                    Thread(target=send_mail, args=(HR_email, '请假审批提醒',
+                                                   '<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+
+                    # orm_fetch_supervisor = user_table.objects.get(name=orm.name)
+                    # approve_now = orm_fetch_supervisor.supervisor
+                    # state_interface = u'等待 ' + orm_fetch_supervisor.supervisor + u' 审批'
+                    # orm_supervisor = user_table.objects.get(name=approve_now)
+                    # supervisor_email = orm_supervisor.email
+                    # Thread(target=send_mail,args=(supervisor_email,'请假审批提醒','<h3>有一个请假事件等待您的审批，请在OA系统中查看。</h3><br>OA链接：http://oa.xiaoquan.com:10000/vacation_approve/</br><br>此邮件为自动发送的提醒邮件，请勿回复。')).start()
+                    try:
+                        orm.state_interface = state_interface
+                        orm.approve_now = approve_now
+                        orm.state = 3
+                        orm.save()
+                        return HttpResponse(simplejson.dumps({'code': 0, 'msg': u'审批成功'}),
+                                            content_type="application/json")
+                    except Exception, e:
+                        print e
+                        return HttpResponse(simplejson.dumps({'code': 1, 'msg': str(e)}),
+                                            content_type="application/json")
                 #     orm.state_interface = '已批准'
                 #     orm.state = 8
                 #     orm.approve_now = ''
