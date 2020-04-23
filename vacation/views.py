@@ -642,7 +642,10 @@ def vacation_approve_data(request):
     sort = ['name','work_site','type','reason','apply_time','vacation_date','days','handover_to',None,'state_interface']
 
     user_orm = user_table.objects.get(name=request.user.first_name)
-    cc_list = user_orm.cc.split(',')
+    if user_orm.cc:
+        cc_list = user_orm.cc.split(',')
+    else:
+        cc_list = []
     print cc_list
     
     if  sSortDir_0 == 'asc':
