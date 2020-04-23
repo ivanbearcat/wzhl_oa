@@ -32,6 +32,7 @@ class user_table(models.Model):
     subordinate = models.CharField(verbose_name='下属', max_length=10240, blank=True)
     positive_date = models.DateField(verbose_name='转正日期', auto_now_add=False)
     last_year_leave = models.FloatField(verbose_name='去年假期')
+    cc = models.CharField(verbose_name='抄送', max_length=30, blank=True, unique=True)
 
 class state(models.Model):
     class Meta:
