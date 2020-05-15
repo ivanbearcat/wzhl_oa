@@ -211,7 +211,7 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 
 #custom
-HR = {'name':'沈蓉菲','email':'shenrongfei@xiaohulu.com1'}
+HR = {'name':'夏姝月','email':'xiashuyue@xiaohulu.com'}
 administration = {'name':'夏姝月','email':'xiashuyue@xiaohulu.com'}
 
 description = ['台式机','显示器','服务器','电视机','投影仪','打印机','ipad','imac','笔记本','交换机','防火墙','配件']
