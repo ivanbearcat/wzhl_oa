@@ -410,7 +410,7 @@ function loaddata() {
                 })
             })
 
-            if(aData[7] == 1 || aData[7] == 2 || aData[7] == 3 || aData[7] == 4 || aData[7] == 5 || aData[7] == 6 || aData[7] == 7){
+            if(aData[7] == 1 || aData[7] == -15 || aData[7] == 2 || aData[7] == 3 || aData[7] == 4 || aData[7] == 5 || aData[7] == 6 || aData[7] == 7){
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp等待 ' + aData[12] + ' 审批</div>')
             }else if(aData[7] == -1){
                 $('td:eq(7)',nRow).html('<div><img src="/static/assets/img/waiting.png">&nbsp申请人修改</div>')
