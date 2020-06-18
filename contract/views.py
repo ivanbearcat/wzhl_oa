@@ -219,7 +219,7 @@ def contract_apply_detail(request):
                                 process_type = 'l'
                             else:
                                 process_type = 's'
-                    elif party_a == u'北京七葫芦科技有限公司' or party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
+                    elif party_a == u'霍尔果斯柒色葫芦广告科技有限公司':
                         if finance_class == u'无金额':
                             process_type = 'l'
                         if finance_class == u'收':
@@ -234,14 +234,16 @@ def contract_apply_detail(request):
                                 process_type = 's'
                 else:
                     process_type = 'l'
-
-                if user_info_orm.principal == u'曹津' and process_type == 'l':
-                    print user_info_orm.principal
-                    status = 2
-                    approve_now = u'龚晓芸'
-                else:
+                if party_a == u'北京七葫芦科技有限公司':
+                    status = 1
+                    approve_now = u'卞蓓'
+                elif user_info_orm.supervisor == u'曹津' and process_type == 'l':
+                    print user_info_orm.supervisor
                     status = 1
                     approve_now = user_info_orm.principal
+                else:
+                    status = -15
+                    approve_now = user_info_orm.supervisor
 
                 orm = table(party_a=party_a,name=name,department=department,finance_class=finance_class,contract_class=contract_class,\
                             contract_uuid=contract_uuid,origin_contract_uuid=origin_contract_uuid,contract_name=contract_name,\
@@ -866,6 +868,14 @@ def contract_approve_process(request):
                             7: u'曹津',
                             8: u'吴佳伟',
                             9: u'吴佳伟'}
+        elif orm.party_a == u'北京七葫芦科技有限公司':
+            status_owner = {2: u'龚晓芸',
+                            3: u'高茹',
+                            4: u'吴佳伟',
+                            6: u'王娟',
+                            7: u'曹津',
+                            8: u'卞蓓',
+                            9: u'吴佳伟'}
         else:
             status_owner = {2: u'龚晓芸',
                             3: u'高茹',
@@ -912,13 +922,22 @@ def contract_approve_process(request):
                     orm.process_type = 'l'
                 orm.save()
 
-                if principal_orm.principal == u'曹津' and orm.process_type == 'l':
-                    orm.status = 2
-                    orm.approve_now = status_owner[orm.status]
-                else:
+                if orm.party_a == u'北京七葫芦科技有限公司':
+                    orm.status = 1
+                    orm.approve_now = u'卞蓓'
+                elif principal_orm.supervisor == u'曹津' and process_type == 'l':
                     orm.status = 1
                     orm.approve_now = principal_orm.principal
+                else:
+                    orm.status = -15
+                    orm.approve_now = user_info_orm.supervisor
+
                 flag = '-1'
+
+            if status == '-15':
+                principal_orm = user_table.objects.get(name=orm.name)
+                orm.status = 1
+                orm.approve_now = principal_orm.principal
 
             if status == '1':
                 # for i in detail_orm:
