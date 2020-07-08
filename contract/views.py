@@ -930,7 +930,7 @@ def contract_approve_process(request):
                     orm.approve_now = principal_orm.principal
                 else:
                     orm.status = -15
-                    orm.approve_now = user_info_orm.supervisor
+                    orm.approve_now = principal_orm.supervisor
 
                 flag = '-1'
 
