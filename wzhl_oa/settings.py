@@ -211,8 +211,8 @@ TEMPLATE_CONTEXT_PROCESSORS = (
 
 
 #custom
-HR = {'name':'夏姝月','email':'xiashuyue@xiaohulu.com'}
-administration = {'name':'夏姝月','email':'xiashuyue@xiaohulu.com'}
+HR = {'name':'刘亚玲','email':'liuyaling@xiaoquan.com'}
+administration = {'name':'刘亚玲','email':'liuyaling@xiaoquan.com'}
 
 description = ['台式机','显示器','服务器','电视机','投影仪','打印机','ipad','imac','笔记本','交换机','防火墙','配件']
 model = ['戴尔（DELL）9020MT商用台式机','同方超翔 开票机机箱','戴尔（DELL）U2414H 液晶显示器','戴尔（DELL）R620 服务器',
