@@ -925,7 +925,7 @@ def contract_approve_process(request):
                 if orm.party_a == u'北京七葫芦科技有限公司':
                     orm.status = 1
                     orm.approve_now = u'卞蓓'
-                elif principal_orm.supervisor == u'曹津' and process_type == 'l':
+                elif (principal_orm.supervisor == u'曹津' and process_type == 'l') or principal_orm.supervisor == principal_orm.principal:
                     orm.status = 1
                     orm.approve_now = principal_orm.principal
                 else:
