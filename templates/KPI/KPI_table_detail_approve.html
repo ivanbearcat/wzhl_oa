@@ -449,10 +449,20 @@ $(document).ready(function () {
         var oTT = TableTools.fnGetInstance('datatables');
         oTT.fnSelectAll()
         var aData = oTT.fnGetSelectedData();
-        var sum = 0
+        var sum = 0;
+        var sum1 = 0;
+        var sum2 = 0;
+        var sum3 = 0;
         for (var i in aData){
-            sum += aData[i][8]
+            sum1 += aData[i][4]
         }
+        for (var i in aData){
+            sum2 += aData[i][6]
+        }
+        for (var i in aData){
+            sum3 += aData[i][8]
+        }
+        sum = sum1 * 0.2 + sum2 * 0.3 + sum3 *0.5
         oTT.fnSelectNone()
 
     {% if request.session.status == 4 %}
