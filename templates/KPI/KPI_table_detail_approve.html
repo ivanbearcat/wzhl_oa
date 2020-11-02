@@ -456,14 +456,18 @@ $(document).ready(function () {
         for (var i in aData){
             sum1 += aData[i][4]
         }
-        for (var i in aData){
-            sum2 += aData[i][6]
+        for (var i in aData) {
+            if (aData[i][6] == 0) {
+                sum2 += aData[i][8]
+            }else{
+                sum2 += aData[i][6]
+            }
         }
         for (var i in aData){
             sum3 += aData[i][8]
         }
         sum = sum1 * 0.2 + sum2 * 0.3 + sum3 *0.5
-        oTT.fnSelectNone()
+        oTT.fnSelectNone();
 
     {% if request.session.status == 4 %}
         var supervisor_comment = $('#supervisor_comment').val()
