@@ -244,7 +244,7 @@ def contract_apply_detail(request):
                 if party_a == u'北京七葫芦科技有限公司':
                     status = 1
                     approve_now = u'卞蓓'
-                elif user_info_orm.supervisor == u'曹津' and process_type == 'l':
+                elif (user_info_orm.supervisor == u'曹津' and process_type == 'l') or user_info_orm.supervisor == user_info_orm.principal:
                     print user_info_orm.supervisor
                     status = 1
                     approve_now = user_info_orm.principal
