@@ -216,7 +216,7 @@ def contract_apply_detail(request):
                 contract_amount_words = Num2MoneyFormat(float(contract_amount_figures))
 
                 if currency_type != '美元':
-                    if party_a in [u'上海六界信息技术有限公司', 'Six World Inc.', u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）',
+                    if party_a in [u'上海六界信息技术有限公司', u'北京七葫芦科技有限公司', 'Six World Inc.', u'六界娱乐有限公司（SIX WORLD ENTERTAINMENT LIMITED）',
                                    u'上海陆色网络科技有限公司',u'上海果豆网络科技有限公司',u'北京葫芦豆科技有限公司',u'上海六赞网络科技有限公司',
                                    u'北京六娱信息技术有限公司',u'浙江星果文化传媒有限公司',u'浙江六趣网络科技有限公司']:
                         if finance_class == u'无金额':
