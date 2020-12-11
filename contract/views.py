@@ -873,7 +873,7 @@ def contract_approve_process(request):
             status_owner = {2: u'龚晓芸',
                             3: u'高茹',
                             4: u'吴佳伟',
-                            6: u'王娟',
+                            6: u'王海峰',
                             7: u'曹津',
                             8: u'吴佳伟',
                             9: u'吴佳伟'}
@@ -881,7 +881,7 @@ def contract_approve_process(request):
             status_owner = {2: u'龚晓芸',
                             3: u'高茹',
                             4: u'吴佳伟',
-                            6: u'王娟',
+                            6: u'王海峰',
                             7: u'曹津',
                             8: u'卞蓓',
                             9: u'吴佳伟'}
@@ -889,7 +889,7 @@ def contract_approve_process(request):
             status_owner = {2: u'龚晓芸',
                             3: u'高茹',
                             4: u'吴佳伟',
-                            6: u'王娟',
+                            6: u'王海峰',
                             7: u'曹津',
                             8: u'卞蓓',
                             9: u'卞蓓'}
